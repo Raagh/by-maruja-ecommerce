@@ -2,7 +2,7 @@ import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
-import Index from '../../pages/index';
+import Index from '../../src/pages/index';
 
 let container: HTMLDivElement = null;
 

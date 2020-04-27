@@ -1,22 +1,39 @@
 {
   "name": "by-maruja-ecommerce",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "ecommerce website for by maruja women accesories",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "dependencies": {
     "next": "9.3.5",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/node-fetch": "^2.5.2",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.2",
+    "react-test-renderer": "^16.10.2",
+    "ts-jest": "^25.4.0",
     "jest": "^25.4.0",
+    "prettier": "2.0.2",
+    "tslint": "6.1.0",
+    "tslint-config-prettier": "1.18.0",
     "typescript": "^3.8.3"
   }
 }

@@ -5,14 +5,11 @@
   "rules": {
     "ordered-imports": true,
     "object-literal-sort-keys": false,
-    "interface-name": true,
-    "max-line-length": [
-      true,
-      { "limit": 150, "ignore-pattern": "^import |^export {(.*?)}" }
-    ],
+    "interface-name": false,
+    "max-line-length": [true, { "limit": 150, "ignore-pattern": "^import |^export {(.*?)}" }],
     "no-shadowed-variable": false,
     "variable-name": false,
-    "member-ordering": false,
+    "member-ordering": true,
     "no-var-requires": false,
     "no-empty": false,
     "max-func-body-length": [true, { "ignore-comments": true }],

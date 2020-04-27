@@ -33,3 +33,9 @@ Run the folowing command for running the entire test suite
 ```bash
 npm run test
 ```
+
+or this one to run in watch mode
+
+```bash
+npm run test-watch
+```

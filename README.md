@@ -40,3 +40,7 @@ or this one to run in watch mode
 ```bash
 npm run test-watch
 ```
+
+## Architecture
+
+![Architecture Diagram](./architecture-diagram.png)

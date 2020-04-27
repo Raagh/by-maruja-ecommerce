@@ -7,6 +7,7 @@ This project is an e-commerce built for `by maruja`.
 - Next.js
 - TypeScript
 - Jest
+- Enzyme
 - Sanity
 - Vercel
 

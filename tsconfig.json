@@ -16,9 +16,9 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "isolatedModules": true
   },
   "exclude": ["node_modules", "__mocks__/*"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@types/*"]
 }

@@ -13,7 +13,6 @@ export default () => {
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js! for by maruja ecommerce</a>
         </h1>
-
         <p className="description">
           Get started by editing <code>pages/index.tsx</code>
         </p>

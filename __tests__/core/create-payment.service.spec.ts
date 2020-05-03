@@ -1,24 +1,25 @@
 // import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment.mock';
-import configure from '../../src/core/configure-mercadopago';
-import createPayment from '../../src/core/create-payment.service';
+import { MercadoPagoPaymentRequest } from 'mercadopago';
+import createPaymentLink from '../../src/core/create-payment.service';
+import configureMercadoPagoSDK from '../../src/core/mercadopago.service';
 
 test('MercadoPago endpoint should return proper response for create payment endpoint', async () => {
   // Arrange
-  configure();
+  configureMercadoPagoSDK();
   const paymentData = {
     items: [
-      ({
+      {
         title: 'Dummy Item',
         description: 'Multicolor Item',
         quantity: 1,
         currency_id: 'ARS',
         unit_price: 10.0,
-      } as unknown) as PaymentItem,
+      },
     ],
-  };
+  } as MercadoPagoPaymentRequest;
 
   // Act
-  const result = await createPayment(paymentData);
+  const result = await createPaymentLink(paymentData);
 
   // Assert
   expect(result).toBeDefined();

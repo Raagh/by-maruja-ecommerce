@@ -16,7 +16,7 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "isolatedModules": true
   },
   "exclude": ["node_modules", "__mocks__/*"],

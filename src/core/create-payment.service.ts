@@ -1,7 +1,8 @@
-import mercadopago from 'mercadopago';
+import { MercadoPagoPaymentRequest } from 'mercadopago';
+import { createPreference } from './mercadopago.service';
 
-export default async function createPayment(data: any) {
-  const result = await mercadopago.preferences.create(data);
+export default async function createPaymentLink(data: MercadoPagoPaymentRequest) {
+  const result = await createPreference(data);
 
   return result ? result.response.init_point : null;
 }

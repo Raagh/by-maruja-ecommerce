@@ -26,6 +26,7 @@ declare module 'mercadopago' {
   export interface MercadoPagoResponse {
     response: {
       init_point: string;
+      sandbox_init_point: string;
     };
   }
 
@@ -37,6 +38,8 @@ declare module 'mercadopago' {
       failure: string;
     };
     auto_return?: string;
+    external_reference: string;
+    expires: boolean;
     // tracks: [Object];
     // metadata: [Object];
     // payer: [Object];

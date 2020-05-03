@@ -1,7 +1,7 @@
-// import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment.mock';
 import { MercadoPagoPaymentRequest } from 'mercadopago';
 import createPaymentLink from '../../src/core/create-payment.service';
 import configureMercadoPagoSDK from '../../src/core/mercadopago.service';
+import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment.mock';
 
 test('MercadoPago endpoint should return proper response for create payment endpoint', async () => {
   // Arrange
@@ -23,5 +23,5 @@ test('MercadoPago endpoint should return proper response for create payment endp
 
   // Assert
   expect(result).toBeDefined();
-  expect(result).toContain('https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=');
+  expect(result).toEqual(createPaymentMock.init_point);
 });

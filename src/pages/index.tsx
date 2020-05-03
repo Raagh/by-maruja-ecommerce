@@ -1,7 +1,13 @@
+import axios from 'axios';
 import Head from 'next/head';
 import React from 'react';
 
 export default () => {
+  const contactCreatePayment = () => {
+    axios.post('http://localhost:3000/api/create-payment', {})
+    .then((data) => alert(JSON.stringify(data)));
+  }
+
   return (
     <div id="home" className="container">
       <Head>
@@ -16,6 +22,7 @@ export default () => {
         <p className="description">
           Get started by editing <code>pages/index.tsx</code>
         </p>
+        <button onClick = {contactCreatePayment}>Call MercadoPago</button>
       </main>
 
       <footer>

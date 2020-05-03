@@ -9,16 +9,16 @@ export const mock = {
   binary_mode: false,
   client_id: '7136722070390133',
   collector_id: 478787616,
-  coupon_code: null,
-  coupon_labels: null,
+  coupon_code: "",
+  coupon_labels: "",
   date_created: '2020-05-01T18:15:21.308+00:00',
-  expiration_date_from: null,
-  expiration_date_to: null,
+  expiration_date_from: "",
+  expiration_date_to: "",
   expires: false,
   external_reference: '',
   id: '478787616-69da0d4e-a762-4f10-b7eb-574a8b501341',
   init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=478787616-69da0d4e-a762-4f10-b7eb-574a8b501341',
-  internal_metadata: null,
+  internal_metadata: "",
   items: [
     {
       id: '',
@@ -33,7 +33,7 @@ export const mock = {
   marketplace: 'NONE',
   marketplace_fee: 0,
   metadata: {},
-  notification_url: null,
+  notification_url: "",
   operation_type: 'regular_payment',
   payer: {
     phone: {
@@ -43,7 +43,7 @@ export const mock = {
     address: {
       zip_code: '',
       street_name: '',
-      street_number: null,
+      street_number: "",
     },
     email: '',
     identification: {
@@ -52,12 +52,12 @@ export const mock = {
     },
     name: '',
     surname: '',
-    date_created: null,
-    last_purchase: null,
+    date_created: "",
+    last_purchase: "",
   },
   payment_methods: {
-    default_card_id: null,
-    default_payment_method_id: null,
+    default_card_id: "",
+    default_payment_method_id: "",
     excluded_payment_methods: [
       {
         id: '',
@@ -68,11 +68,11 @@ export const mock = {
         id: '',
       },
     ],
-    installments: null,
-    default_installments: null,
+    installments: "",
+    default_installments: "",
   },
-  processing_modes: null,
-  product_id: null,
+  processing_modes: "",
+  product_id: "",
   redirect_urls: {
     failure: '',
     pending: '',
@@ -81,18 +81,18 @@ export const mock = {
   sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=478787616-69da0d4e-a762-4f10-b7eb-574a8b501341',
   site_id: 'MLA',
   shipments: {
-    default_shipping_method: null,
+    default_shipping_method: "",
     receiver_address: {
       zip_code: '',
       street_name: '',
-      street_number: null,
+      street_number: "",
       floor: '',
       apartment: '',
-      city_name: null,
-      state_name: null,
-      country_name: null,
+      city_name: "",
+      state_name: "",
+      country_name: "",
     },
   },
-  total_amount: null,
-  last_updated: null,
+  total_amount: "",
+  last_updated: "",
 };

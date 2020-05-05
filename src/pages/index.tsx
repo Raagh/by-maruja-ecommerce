@@ -1,7 +1,15 @@
+import axios from 'axios';
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
+import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 
 export default () => {
+  const [buttonText, setButtonText] = useState('');
+
+  const contactCreatePayment = () => {
+    axios.post('http://localhost:3000/api/create-payment', paymentDataRequest).then((result) => setButtonText(result.data));
+  };
+
   return (
     <div id="home" className="container">
       <Head>
@@ -13,10 +21,11 @@ export default () => {
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js! for by maruja ecommerce</a>
         </h1>
-
         <p className="description">
           Get started by editing <code>pages/index.tsx</code>
         </p>
+        <button onClick={contactCreatePayment}>Call MercadoPago</button>
+        <p id="buttonText">{buttonText}</p>
       </main>
 
       <footer>

@@ -17,10 +17,10 @@ test('configureMercadoPagoSDK should configure mercado pago with the correct con
   });
 });
 
-test('createPreference should create preference on mercado pago sdk with proper data', () => {
+test('createPreference should create preference on mercado pago sdk with proper data', async () => {
   const mockedInstance = mocked(preferences.create);
 
-  createPreference(paymentDataMock);
+  await createPreference(paymentDataMock);
 
   expect(mockedInstance).toBeCalledTimes(1);
   expect(mockedInstance).toBeCalledWith(paymentDataMock);

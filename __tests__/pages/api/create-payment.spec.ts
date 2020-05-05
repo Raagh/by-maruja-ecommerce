@@ -16,8 +16,7 @@ test('createPayment api should return 200 when passed correct data', async () =>
       paymentDataRequest,
     },
   });
-  const mockedCreatePaymentLink = mocked(createPaymentLink);
-  mockedCreatePaymentLink.mockResolvedValue(paymentDataReponse.init_point);
+  mocked(createPaymentLink).mockResolvedValue(paymentDataReponse.response.init_point);
   const response = createResponse();
 
   // Act
@@ -36,13 +35,12 @@ test('createPayment api should return init_point when passed correct data', asyn
       paymentDataRequest,
     },
   });
-  const mockedCreatePaymentLink = mocked(createPaymentLink);
-  mockedCreatePaymentLink.mockResolvedValue(paymentDataReponse.init_point);
+  mocked(createPaymentLink).mockResolvedValue(paymentDataReponse.response.init_point);
   const response = createResponse();
 
   // Act
   await createPayment(request, response);
 
   // Assert
-  expect(response._getJSONData()).toEqual(paymentDataReponse.init_point);
+  expect(response._getJSONData()).toEqual(paymentDataReponse.response.init_point);
 });

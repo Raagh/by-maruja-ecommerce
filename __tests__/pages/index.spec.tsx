@@ -29,7 +29,7 @@ it('button should say "Call MercadoPago"', () => {
 it('when button is clicked the api request should have the correct values', () => {
   const wrapper = shallow(<Index />);
   const mockedPost = mocked(axios.post);
-  mockedPost.mockResolvedValue(paymentDataReponse.init_point);
+  mockedPost.mockResolvedValue(paymentDataReponse.response.init_point);
 
   wrapper.find('button').simulate('click');
 

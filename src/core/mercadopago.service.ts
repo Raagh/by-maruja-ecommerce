@@ -1,6 +1,6 @@
 import { configure, MercadoPagoPaymentRequest, preferences } from 'mercadopago';
 
-export default function configureMercadoPagoSDK() {
+export function configureMercadoPagoSDK() {
   configure({
     sandbox: true,
     access_token: process.env.accessToken,

@@ -129,8 +129,6 @@ const Index = (props: any) => {
 };
 
 Index.getInitialProps = async function () {
-  console.log(sanity.clientConfig);
-
   return await sanity.fetch(
     `
     *[_type == "product"][0]

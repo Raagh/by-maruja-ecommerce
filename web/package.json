@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "ecommerce website for by maruja women accesories",
   "private": true,
+  "contributors": [
+    "Patricio Ferraggi <pattferraggi@gmail.com>",
+    "Manuel Aceituno <manuel.n.aceituno@gmail.com>"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

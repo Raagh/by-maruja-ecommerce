@@ -27,7 +27,9 @@ const Index = (props: any) => {
         </p>
         <button onClick={contactCreatePayment}>Call MercadoPago</button>
         <p id="buttonText">{buttonText}</p>
-        <p>{props.name}</p>
+        <p>
+          Nombre: {props.name} - Stock: {props.stock} - Precio: {props.price}
+        </p>
       </main>
 
       <footer>

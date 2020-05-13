@@ -1,9 +1,10 @@
 import axios from 'axios';
 import Head from 'next/head';
 import React, { useState } from 'react';
+import sanity from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 
-export default () => {
+const Index = (props: any) => {
   const [buttonText, setButtonText] = useState('');
 
   const contactCreatePayment = () => {
@@ -26,6 +27,9 @@ export default () => {
         </p>
         <button onClick={contactCreatePayment}>Call MercadoPago</button>
         <p id="buttonText">{buttonText}</p>
+        <p>
+          Nombre: {props.name} - Stock: {props.stock} - Precio: {props.price}
+        </p>
       </main>
 
       <footer>
@@ -125,3 +129,13 @@ export default () => {
     </div>
   );
 };
+
+Index.getInitialProps = async function () {
+  return await sanity.fetch(
+    `
+    *[_type == "product"][0]
+  `
+  );
+};
+
+export default Index;

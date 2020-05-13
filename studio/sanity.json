@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "project": {
+    "name": "by-maruja-ecommerce"
+  },
+  "api": {
+    "projectId": "x7biewak",
+    "dataset": "maruja-dataset"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}

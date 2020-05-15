@@ -84,7 +84,7 @@ const Index = (props: any) => {
 
   return (
     <Container>
-      <GlobalStyle></GlobalStyle>
+      <GlobalStyle />
       <Head>
         <title>By Maruja</title>
         <link rel="icon" href="/favicon.ico" />

@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Layout from '../../src/components/Layout';
+import Layout from '../../../src/components/shared/layout';
 
 describe("Layout", () => {
     it('renders', () => {

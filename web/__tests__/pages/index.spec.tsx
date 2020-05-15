@@ -8,10 +8,10 @@ import { mock as paymentDataReponse } from '../../__mocks__/mercado-pago-create-
 
 jest.mock('axios');
 
-it('should render Welcome', () => {
+it('should render the title', () => {
   const wrapper = render(<Index />);
 
-  expect(wrapper.text()).toContain('Welcome to Next.js');
+  expect(wrapper.text()).toContain('This is a title');
 });
 
 it('should render a button', () => {
@@ -34,5 +34,5 @@ it('when button is clicked the api request should have the correct values', () =
   wrapper.find('button').simulate('click');
 
   expect(axios.post).toBeCalledTimes(1);
-  expect(axios.post).toBeCalledWith('http://localhost:3000/api/create-payment', paymentDataRequest);
+  expect(axios.post).toBeCalledWith('/api/create-payment', paymentDataRequest);
 });

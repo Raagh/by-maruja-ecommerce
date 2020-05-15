@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { globalStyles } from '../../config/globalstyles';
+import NavBar from './navBar';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -34,6 +35,7 @@ const Layout = ( props : any) => {
                 <title>By Maruja</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <NavBar/>
             {props.children}
         </div>
     );

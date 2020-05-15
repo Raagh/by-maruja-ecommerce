@@ -8,4 +8,10 @@ describe("NavBar", () => {
 
         expect(wrapper.exists()).toBe(true);
     });
+
+    it('displays the menu, the logo and the bag', () => {
+        const wrapper = shallow(<NavBar />);
+
+        expect(wrapper.find('img').length).toEqual(3);
+    });
 });

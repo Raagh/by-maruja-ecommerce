@@ -29,7 +29,7 @@ const Menu = styled.img`
 const NavBar = () => {
     return (
         <Container>
-            <Menu src= "/assets/Menu 1.svg" alt = "Menu icon" />
+            <Menu src= "/assets/Menu.svg" alt = "Menu icon" />
             <Logo src= "/assets/Logo.svg" alt = "Maruja Logo" />
             <Bag src= "/assets/Bag.svg" alt = "Bag icon" />    
         </Container>

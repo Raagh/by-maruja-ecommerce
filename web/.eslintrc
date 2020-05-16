@@ -58,6 +58,10 @@
           "**/*.test.jsx",
           "**/*.test.ts",
           "**/*.test.tsx",
+          "**/*.spec.js",
+          "**/*.spec.jsx",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
           "src/tests/**/*"
         ]
       }

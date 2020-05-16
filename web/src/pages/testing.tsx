@@ -72,7 +72,9 @@ const Index = (props: any) => {
             Nombre: {props.name} - Stock: {props.stock} - Precio: {props.price}
           </p>
           <br />
-          <button onClick={contactCreatePayment}>Call MercadoPago</button>
+          <button type="button" onClick={contactCreatePayment}>
+            Call MercadoPago
+          </button>
           <br />
           <p id="buttonText">{buttonText}</p>
         </Main>
@@ -82,7 +84,7 @@ const Index = (props: any) => {
 };
 
 Index.getInitialProps = async () => {
-  return await sanity.fetch(
+  return sanity.fetch(
     `
     *[_type == "product"][0]
   `

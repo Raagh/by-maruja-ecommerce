@@ -9,11 +9,13 @@ const Container = styled.section`
   justify-content: space-between;
   align-items: flex-start;
 
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+
   background-color: ${colors.ui.lightBackground};
 `;
 
 const Bag = styled.img`
-  margin-right: 1.5rem;
   margin-top: 1.5rem;
 `;
 
@@ -22,7 +24,6 @@ const Logo = styled.img`
 `;
 
 const Menu = styled.img`
-  margin-left: 1.5rem;
   margin-top: 26px;
 `;
 

@@ -1,17 +1,19 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import NavBar from '../../../src/components/shared/navBar';
+import NavBar, {Bag, Logo, Menu} from '../../../src/components/shared/navBar';
 
-describe("NavBar", () => {
-    it('renders', () => {
+describe("NavBar component", () => {
+    it('should render', () => {
         const wrapper = shallow(<NavBar />);
 
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('displays the menu, the logo and the bag', () => {
+    it('should display the menu, the logo and the bag', () => {
         const wrapper = shallow(<NavBar />);
 
-        expect(wrapper.find('img').length).toEqual(3);
+        expect(wrapper.find(Bag).length).toEqual(1);
+        expect(wrapper.find(Logo).length).toEqual(1);
+        expect(wrapper.find(Menu).length).toEqual(1);
     });
 });

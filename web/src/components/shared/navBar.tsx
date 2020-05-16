@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {colors} from '../../config/globalstyles';
 
 const Container = styled.section`
   min-width: 100wh;
@@ -7,30 +8,33 @@ const Container = styled.section`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+
+  background-color: ${colors.ui.lightBackground};
 `;
 
 const Bag = styled.img`
-  margin-right: 27px;
-  margin-top: 24px;
+  margin-right: 1.5rem;
+  margin-top: 1.5rem;
 `;
 
 const Logo = styled.img`
-  margin-top: 8px;
+  margin-top: .5rem;
 `;
 
 const Menu = styled.img`
-  margin-left: 24px;
+  margin-left: 1.5rem;
   margin-top: 26px;
 `;
 
 const NavBar = () => {
     return (
         <Container>
-            <Menu src= "/assets/ICN-Menu 1.svg" alt = "Menu icon" />
+            <Menu src= "/assets/Menu 1.svg" alt = "Menu icon" />
             <Logo src= "/assets/Logo.svg" alt = "Maruja Logo" />
-            <Bag src= "/assets/bag.svg" alt = "Bag icon" />    
+            <Bag src= "/assets/Bag.svg" alt = "Bag icon" />    
         </Container>
     );
   };
 
 export default NavBar;
+export {Bag, Logo, Menu};

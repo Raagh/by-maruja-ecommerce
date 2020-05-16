@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { globalStyles } from '../../config/globalstyles';
+import { fonts } from '../../config/globalstyles';
 import NavBar from './navBar';
 
 const GlobalStyle = createGlobalStyle`
@@ -11,12 +11,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: ${globalStyles.primaryFontName};
+    font-family: ${fonts.primary.name};
     src: url('/fonts/Ortica-Light.woff') format("woff");
   }
 
   @font-face {
-    font-family: ${globalStyles.secondaryFontName};
+    font-family: ${fonts.secondary.name};
     src: url('/fonts/Mr-Eaves-XL-Modern.woff') format("woff");
   }
 

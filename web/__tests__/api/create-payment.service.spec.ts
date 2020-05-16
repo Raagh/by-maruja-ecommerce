@@ -1,7 +1,7 @@
 import { mocked } from 'ts-jest/utils';
-import createPaymentLink from '../../src/core/create-payment.service';
-import { configureMercadoPagoSDK } from '../../src/core/mercadopago.service';
-import { createPreference } from '../../src/core/mercadopago.service';
+import createPaymentLink from '../../src/api/create-payment.service';
+import { configureMercadoPagoSDK, createPreference } from '../../src/api/mercadopago.service';
+
 import { mock as paymentData } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment-response.mock';
 

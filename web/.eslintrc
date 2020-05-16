@@ -13,6 +13,7 @@
     }
   },
   "rules": {
+    "no-nested-ternary": 0,
     "object-curly-spacing": ["warn", "always"],
     "no-unused-vars": [
       "warn",
@@ -37,7 +38,7 @@
     "max-len": [
       "warn",
       {
-        "code": 80,
+        "code": 120,
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
         "ignoreComments": true
@@ -73,6 +74,7 @@
     "react/no-unescaped-entities": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "no-underscore-dangle": "off"
   }
 }

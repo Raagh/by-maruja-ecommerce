@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import sanity from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
-import { globalStyles } from '../config/globalstyles';
+import { colors, fonts } from '../config/globalstyles';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -13,12 +13,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: ${globalStyles.primaryFontName};
+    font-family: ${fonts.primary.name};
     src: url('/fonts/Ortica-Light.woff') format("woff");
   }
 
   @font-face {
-    font-family: ${globalStyles.secondaryFontName};
+    font-family: ${fonts.secondary.name};
     src: url('/fonts/Mr-Eaves-XL-Modern.woff') format("woff");
   }
 
@@ -52,27 +52,27 @@ const Title = styled.h1`
   line-height: 1.15;
   font-size: 4rem;
   text-align: center;
-  font-family: ${globalStyles.primaryFontName};
-  font-weight: ${globalStyles.primaryFontRegular};
-  color: ${globalStyles.primaryColor};
+  font-family: ${fonts.primary.name};
+  font-weight: ${fonts.primary.regularWeight};
+  color: ${colors.primary.dark};
 `;
 
 const Subtitle = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
   text-align: center;
-  font-family: ${globalStyles.secondaryFontName};
-  font-weight: ${globalStyles.secondaryFontRegular};
-  color: ${globalStyles.secondaryColor};
+  font-family: ${fonts.secondary.name};
+  font-weight: ${fonts.secondary.regularWeight};
+  color: ${colors.secondary.default};
 `;
 
 const SubtitleHighlight = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
   text-align: center;
-  font-family: ${globalStyles.secondaryFontName};
-  font-weight: ${globalStyles.secondaryFontBold};
-  color: ${globalStyles.secondaryColor};
+  font-family: ${fonts.secondary.name};
+  font-weight: ${fonts.secondary.boldWeight};
+  color: ${colors.ui.darkSurface};
 `;
 
 const Index = (props: any) => {

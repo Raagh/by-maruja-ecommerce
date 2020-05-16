@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {colors} from '../../config/globalstyles';
+import { colors } from '../../config/globalstyles';
 
 const Container = styled.section`
   min-width: 100wh;
@@ -20,7 +20,7 @@ const Bag = styled.img`
 `;
 
 const Logo = styled.img`
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 `;
 
 const Menu = styled.img`
@@ -28,14 +28,13 @@ const Menu = styled.img`
 `;
 
 const NavBar = () => {
-    return (
-        <Container>
-            <Menu src= "/assets/Menu.svg" alt = "Menu icon" />
-            <Logo src= "/assets/Logo.svg" alt = "Maruja Logo" />
-            <Bag src= "/assets/Bag.svg" alt = "Bag icon" />    
-        </Container>
-    );
-  };
+  return (
+    <Container>
+      <Menu src="/assets/Menu.svg" alt="Menu icon" />
+      <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
+      <Bag src="/assets/Bag.svg" alt="Bag icon" />
+    </Container>
+  );
+};
 
 export default NavBar;
-export {Bag, Logo, Menu};

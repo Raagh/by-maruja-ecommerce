@@ -5,7 +5,7 @@ import { configureMercadoPagoSDK, createPreference } from '../../src/api/mercado
 import { mock as paymentData } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment-response.mock';
 
-jest.mock('../../src/core/mercadopago.service');
+jest.mock('../../src/api/mercadopago.service');
 
 beforeAll(() => {
   configureMercadoPagoSDK();

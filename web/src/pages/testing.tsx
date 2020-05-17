@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import sanity from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import Layout from '../components/shared/layout';
-import { colors, fonts } from '../config/globalstyles';
+import { colors, typography } from '../config/globalstyles';
 
 const Container = styled.section`
   min-height: 100vh;
@@ -29,8 +29,8 @@ const Title = styled.h1`
   line-height: 1.15;
   font-size: 4rem;
   text-align: center;
-  font-family: ${fonts.primary.name};
-  font-weight: ${fonts.primary.regularWeight};
+  font-family: ${typography.titles.h1.font.name};
+  font-weight: ${typography.titles.h1.font.regularWeight};
   color: ${colors.primary.dark};
 `;
 
@@ -38,8 +38,8 @@ const Subtitle = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
   text-align: center;
-  font-family: ${fonts.secondary.name};
-  font-weight: ${fonts.secondary.regularWeight};
+  font-family: ${typography.subtitle.font.name};
+  font-weight: ${typography.subtitle.font.regularWeight};
   color: ${colors.secondary.default};
 `;
 
@@ -47,8 +47,8 @@ const SubtitleHighlight = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
   text-align: center;
-  font-family: ${fonts.secondary.name};
-  font-weight: ${fonts.secondary.boldWeight};
+  font-family: ${typography.subtitle.font.name};
+  font-weight: ${typography.subtitle.font.boldWeight};
   color: ${colors.ui.darkSurface};
 `;
 

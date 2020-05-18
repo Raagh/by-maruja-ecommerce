@@ -7,7 +7,7 @@ const primaryColors = {
 const uiColors = {
   lightBackground: '#FFFCF9',
   whiteBackground: '#FFFFFF',
-  darkSurface: '#3E3939',
+  darkSurface: '#513232',
   grey5percent: '#F5F5F5',
   copy: '#3E3939',
   error: '#AC4F4F',

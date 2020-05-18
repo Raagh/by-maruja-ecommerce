@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import sanity from '../../lib/sanity';
+import { sanity } from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import Layout from '../components/shared/layout';
 import { colors, typography } from '../config/globalstyles';

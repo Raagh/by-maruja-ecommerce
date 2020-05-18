@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "by-maruja-ecommerce"
+    "name": "By Maruja"
   },
   "api": {
     "projectId": "x7biewak",
@@ -16,15 +16,17 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
     }
   ]
 }

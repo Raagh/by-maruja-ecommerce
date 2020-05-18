@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { typography, colors } from '../../config/globalstyles';
 import Button from '../shared/button';
+import { urlFor } from '../../../lib/sanity';
 
 const Container = styled.article`
   text-align: center;
@@ -33,13 +35,19 @@ const Img = styled.img`
   width: 100%;
 `;
 
-const Hero = () => {
+type HeroProps = {
+  title: string;
+  subtitle: string;
+  image: SanityImageSource;
+};
+
+const Hero = (props: HeroProps) => {
   return (
     <Container>
-      <Img src="./hero-image.png" alt="hero image" />
+      <Img src={urlFor(props.image).url()} alt="hero image" />
       <TextContainer>
-        <Title>Nuevos looks de otoño</Title>
-        <SubTitle>Sweater amplio color neutro, jeans, borcegos y maruja</SubTitle>
+        <Title>{props.title}</Title>
+        <SubTitle>{props.subtitle}</SubTitle>
         <Button text="Conocé más" />
       </TextContainer>
     </Container>

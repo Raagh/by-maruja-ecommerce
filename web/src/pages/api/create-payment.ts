@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import createPaymentLink from '../../api/create-payment.service';
-import { configureMercadoPagoSDK } from '../../api/mercadopago.service';
+import createPaymentLink from '../../lamda-services/create-payment.service';
+import { configureMercadoPagoSDK } from '../../lamda-services/mercadopago.service';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   configureMercadoPagoSDK();

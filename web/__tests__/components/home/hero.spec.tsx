@@ -4,19 +4,19 @@ import Hero from '../../../src/components/home/hero';
 
 describe('Hero component', () => {
   it('should render', () => {
-    const wrapper = shallow(<Hero />);
+    const wrapper = shallow(<Hero title="" subtitle="" image="" />);
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
   it('should contain an img', () => {
-    const wrapper = mount(<Hero />);
+    const wrapper = mount(<Hero title="" subtitle="" image="" />);
 
     expect(wrapper.find('img').exists()).toBeTruthy();
   });
 
   it('img src should be filled in', () => {
-    const wrapper = mount(<Hero />);
+    const wrapper = mount(<Hero title="" subtitle="" image="" />);
 
     expect(wrapper.find('img').prop('src')).not.toEqual('');
   });

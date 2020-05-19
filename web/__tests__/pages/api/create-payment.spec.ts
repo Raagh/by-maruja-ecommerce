@@ -1,11 +1,11 @@
 import { createRequest, createResponse } from 'node-mocks-http';
 import { mocked } from 'ts-jest/utils';
-import createPaymentLink from '../../../src/core/create-payment.service';
+import createPaymentLink from '../../../src/lamda-services/create-payment.service';
 import createPayment from '../../../src/pages/api/create-payment';
 import { mock as paymentDataRequest } from '../../../__mocks__/mercado-pago-create-payment-request.mock';
 import { mock as paymentDataReponse } from '../../../__mocks__/mercado-pago-create-payment-response.mock';
 
-jest.mock('../../../src/core/create-payment.service');
+jest.mock('../../../src/lamda-services/create-payment.service');
 
 test('createPayment api should return 200 when passed correct data', async () => {
   // Arrange

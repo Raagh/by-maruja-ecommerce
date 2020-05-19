@@ -1,11 +1,11 @@
 import { mocked } from 'ts-jest/utils';
-import createPaymentLink from '../../src/core/create-payment.service';
-import { configureMercadoPagoSDK } from '../../src/core/mercadopago.service';
-import { createPreference } from '../../src/core/mercadopago.service';
+import createPaymentLink from '../../src/lamda-services/create-payment.service';
+import { configureMercadoPagoSDK, createPreference } from '../../src/lamda-services/mercadopago.service';
+
 import { mock as paymentData } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment-response.mock';
 
-jest.mock('../../src/core/mercadopago.service');
+jest.mock('../../src/lamda-services/mercadopago.service');
 
 beforeAll(() => {
   configureMercadoPagoSDK();

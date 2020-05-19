@@ -7,4 +7,4 @@ export function configureMercadoPagoSDK() {
   });
 }
 
-export const createPreference = async (data: MercadoPagoPaymentRequest) => await preferences.create(data);
+export const createPreference = async (data: MercadoPagoPaymentRequest) => preferences.create(data);

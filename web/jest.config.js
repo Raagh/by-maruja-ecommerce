@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/'],

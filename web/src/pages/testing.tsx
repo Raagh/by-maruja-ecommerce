@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { sanity } from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import Layout from '../components/shared/layout';
-import { colors, typography } from '../config/globalstyles';
+import { colors, typography } from '../config/global-styles';
 import { Product } from '../model/product';
 
 const Container = styled.section`

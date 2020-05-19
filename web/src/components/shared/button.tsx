@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { typography, colors } from '../../config/globalstyles';
+import { typography, colors } from '../../config/global-styles';
 
 const StyledLink = styled.a`
   margin-top: 1.25rem;

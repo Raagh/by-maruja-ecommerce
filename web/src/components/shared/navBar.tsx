@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../config/globalstyles';
+import { colors } from '../../config/global-styles';
 
 const Container = styled.section`
   min-width: 100wh;

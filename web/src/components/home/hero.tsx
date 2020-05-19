@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { typography, colors } from '../../config/globalstyles';
+import { typography, colors } from '../../config/global-styles';
 import Button from '../shared/button';
 import { urlFor } from '../../../lib/sanity';
 import { HeroConfiguration } from '../../model/hero-configuration';
@@ -33,6 +33,8 @@ const SubTitle = styled.p`
 
 const Img = styled.img`
   width: 100%;
+  height: 80%;
+  margin-bottom: 1.5rem;
 `;
 
 const Hero = (props: HeroConfiguration) => {

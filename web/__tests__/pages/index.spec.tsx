@@ -7,6 +7,8 @@ const hero = {
   title: '',
   subtitle: '',
   image: null as SanityImageSource,
+  buttonText: '',
+  buttonURL: '',
 };
 
 describe('Home', () => {

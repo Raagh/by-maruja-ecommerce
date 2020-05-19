@@ -42,7 +42,7 @@ const Hero = (props: HeroConfiguration) => {
       <TextContainer>
         <Title>{props.title}</Title>
         <SubTitle>{props.subtitle}</SubTitle>
-        <Button text="Conocé más" />
+        <Button text={props.buttonText} url={props.buttonURL} />
       </TextContainer>
     </Container>
   );

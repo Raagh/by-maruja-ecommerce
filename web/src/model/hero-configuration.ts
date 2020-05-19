@@ -4,4 +4,6 @@ export type HeroConfiguration = {
   title: string;
   subtitle: string;
   image: SanityImageSource;
+  buttonText: string;
+  buttonURL: string;
 };

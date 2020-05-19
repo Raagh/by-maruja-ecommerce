@@ -25,10 +25,10 @@ const UnderLinedComponent = styled.span`
   border-radius: 9999;
 `;
 
-export default ({ text }: { text: string }) => {
+export default ({ text, url }: { text: string; url: string }) => {
   return (
     <UnderLinedComponent>
-      <Link href="/testing" passHref>
+      <Link href={url} passHref>
         <StyledLink>{text}</StyledLink>
       </Link>
     </UnderLinedComponent>

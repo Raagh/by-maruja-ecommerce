@@ -19,5 +19,15 @@ export default {
       name: "subtitle",
       type: "string",
     },
+    {
+      title: "Texto del boton",
+      name: "buttonText",
+      type: "string",
+    },
+    {
+      title: "Url del boton",
+      name: "buttonURL",
+      type: "string",
+    },
   ],
 };

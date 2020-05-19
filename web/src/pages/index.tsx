@@ -7,7 +7,7 @@ import { HeroConfiguration } from '../model/hero-configuration';
 const Home = ({ hero }: { hero: HeroConfiguration }) => {
   return (
     <Layout>
-      <Hero title={hero.title} subtitle={hero.subtitle} image={hero.image} />
+      <Hero title={hero.title} subtitle={hero.subtitle} image={hero.image} buttonText={hero.buttonText} buttonURL={hero.buttonURL} />
     </Layout>
   );
 };

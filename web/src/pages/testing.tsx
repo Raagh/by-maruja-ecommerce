@@ -5,6 +5,7 @@ import { sanity } from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import Layout from '../components/shared/layout';
 import { colors, typography } from '../config/globalstyles';
+import { Product } from '../model/product';
 
 const Container = styled.section`
   min-height: 100vh;
@@ -52,7 +53,7 @@ const SubtitleHighlight = styled.p`
   color: ${colors.ui.darkSurface};
 `;
 
-const Index = (props: any) => {
+const Index = (product: Product) => {
   const [buttonText, setButtonText] = useState('');
 
   const contactCreatePayment = () => {
@@ -69,7 +70,7 @@ const Index = (props: any) => {
           <SubtitleHighlight>This is a subtitle highlight and uses the secondary font in bold weight and secondaryColor</SubtitleHighlight>
           <br />
           <p>
-            Nombre: {props.name} - Stock: {props.stock} - Precio: {props.price}
+            Nombre: {product.name} - Stock: {product.stock} - Precio: {product.price}
           </p>
           <br />
           <button type="button" onClick={contactCreatePayment}>

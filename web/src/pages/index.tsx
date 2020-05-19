@@ -2,8 +2,9 @@ import React from 'react';
 import Layout from '../components/shared/layout';
 import Hero from '../components/home/hero';
 import { sanity } from '../../lib/sanity';
+import { HeroConfiguration } from '../model/configuration/hero';
 
-const Home = ({ hero }: any) => {
+const Home = ({ hero }: { hero: HeroConfiguration }) => {
   return (
     <Layout>
       <Hero title={hero.title} subtitle={hero.subtitle} image={hero.image} />

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { typography, colors } from '../../config/globalstyles';
 import Button from '../shared/button';
 import { urlFor } from '../../../lib/sanity';
-import { HeroConfiguration } from '../../model/configuration/hero';
+import { HeroConfiguration } from '../../model/hero-configuration';
 
 const Container = styled.article`
   text-align: center;

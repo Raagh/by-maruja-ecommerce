@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/shared/layout';
 import Hero from '../components/home/hero';
 import { sanity } from '../../lib/sanity';
-import { HeroConfiguration } from '../model/configuration/hero';
+import { HeroConfiguration } from '../model/hero-configuration';
 
 const Home = ({ hero }: { hero: HeroConfiguration }) => {
   return (

@@ -40,7 +40,7 @@ const Img = styled.img`
 const Hero = (props: HeroConfiguration) => {
   return (
     <Container>
-      <Img src={urlFor(props.image).url()} alt="hero image" />
+      <Img src={urlFor(props.image)} alt="hero image" />
       <TextContainer>
         <Title>{props.title}</Title>
         <SubTitle>{props.subtitle}</SubTitle>

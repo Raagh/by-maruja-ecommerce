@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from '../../config/global-styled-components';
 
 const ShippingInfo = () => {
-  return <div />;
+  return <Container />;
 };
 
 export default ShippingInfo;

@@ -54,3 +54,7 @@ export const StyledH6 = styled.h6`
   line-height: ${typography.titles.h6.lineHeight};
   color: ${colors.ui.darkSurface};
 `;
+
+export const Container = styled.article`
+  text-align: center;
+`;

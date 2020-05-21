@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { typography, colors } from './global-styles';
 
+export const Container = styled.article`
+  text-align: center;
+`;
+
 export const StyledH1 = styled.h1`
   font-family: ${typography.titles.h1.font};
   font-style: normal;
@@ -55,6 +59,12 @@ export const StyledH6 = styled.h6`
   color: ${colors.ui.darkSurface};
 `;
 
-export const Container = styled.article`
-  text-align: center;
+export const BodyCopySmall = styled.p`
+  font-family: ${typography.bodyCopy.font};
+  font-style: normal;
+  font-weight: normal;
+  font-size: ${typography.bodyCopy.small.fontSize};
+  line-height: ${typography.bodyCopy.small.lineHeight};
+  letter-spacing: ${typography.bodyCopy.small.letterSpacing};
+  color: ${colors.ui.darkSurface};
 `;

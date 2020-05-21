@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { typography, colors } from '../../config/global-styles';
+import { typography, colors } from './global-styles';
 
 export const StyledH1 = styled.h1`
   font-family: ${typography.titles.h1.font};

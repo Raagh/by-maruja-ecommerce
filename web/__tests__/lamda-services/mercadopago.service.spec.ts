@@ -13,7 +13,7 @@ test('configureMercadoPagoSDK should configure mercado pago with the correct con
   expect(mockedInstance).toBeCalledTimes(1);
   expect(mockedInstance).toBeCalledWith({
     sandbox: true,
-    access_token: process.env.accessToken,
+    access_token: process.env.mercadoPagoAccessToken,
   });
 });
 

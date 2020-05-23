@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BodyCopySmall } from '../../config/global-styled-components';
-import { iconAndTextConfig } from '../../model/iconAndText-configuration';
+import { IconListItemConfig } from '../../model/icon-list-item-configuration';
 
 const FlexContainer = styled.article`
   display: flex;
   flex-direction: row;
   align-content: space-between;
 
-  width: 320px;
-  height: 72px;
+  width: 100%;
   margin-top: 2.5rem;
 
   text-align: left;
@@ -21,13 +20,13 @@ const MarginLeftBodyCopySmall = styled(BodyCopySmall)`
 
 const Icon = styled.img``;
 
-const IconAndText = (props: iconAndTextConfig) => {
+const IconListItem = (props: IconListItemConfig) => {
   return (
     <FlexContainer>
-      <Icon src={props.image} alt="Warehouse Delivery icon" />
+      <Icon src={props.image} alt={props.alt} />
       <MarginLeftBodyCopySmall>{props.text}</MarginLeftBodyCopySmall>
     </FlexContainer>
   );
 };
 
-export default IconAndText;
+export default IconListItem;

@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import ShippingInfo from '../../../src/components/home/shippingInfo';
+import ShippingInfo from '../../../src/components/home/shipping-info';
 
 describe('ShippingInfo component', () => {
   it('should render', () => {
@@ -18,6 +18,6 @@ describe('ShippingInfo component', () => {
   it('should render 3 iconAndText components', () => {
     const wrapper = shallow(<ShippingInfo />);
 
-    expect(wrapper.find('IconAndText').length).toEqual(3);
+    expect(wrapper.find('IconListItem').length).toEqual(3);
   });
 });

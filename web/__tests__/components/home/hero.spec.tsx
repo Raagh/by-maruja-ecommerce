@@ -21,7 +21,7 @@ describe('Hero component', () => {
   it('title should be filled in', () => {
     const wrapper = mount(<Hero title="title" subtitle="" image="" buttonText="" buttonURL="" />);
 
-    expect(wrapper.find('h1').text()).toContain('title');
+    expect(wrapper.find('h3').text()).toContain('title');
   });
 
   it('subtitle src should be filled in', () => {

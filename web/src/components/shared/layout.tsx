@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React, { FunctionComponent } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from '../../config/global-styles';
-import NavBar from './navbar';
+import NavBar from './navBar';
 
 const GlobalStyle = createGlobalStyle`
   html,

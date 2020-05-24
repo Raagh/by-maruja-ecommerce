@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import createPaymentLink from '../../lamda-services/create-payment.service';
+import { fold } from 'fp-ts/lib/TaskEither';
+
+import { createPaymentLink } from '../../lamda-services/create-payment.service';
 import { configureMercadoPagoSDK } from '../../lamda-services/mercadopago.service';
+import { replyError, replyOk } from '../../lamda-services/http-helpers';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   configureMercadoPagoSDK();
 
-  const result = await createPaymentLink(req.body);
-  res.json(result);
+  await fold(replyError(res), replyOk(res))(createPaymentLink(req.body))();
 };

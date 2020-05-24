@@ -68,7 +68,7 @@ declare module 'mercadopago' {
       properties: PaymentRequest;
     };
     partnersHeaders: true;
-    create: (data: MercadoPagoPaymentRequest) => MercadoPagoResponse;
+    create: (data: MercadoPagoPaymentRequest) => Promise<MercadoPagoResponse>;
     save: Function;
     update: Function;
     get: Function;

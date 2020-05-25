@@ -1,15 +1,18 @@
 import React from 'react';
+import { sanity } from '../../lib/sanity';
 import Layout from '../components/shared/layout';
 import Hero from '../components/home/hero';
 import ShippingInfo from '../components/home/shipping-info';
-import { sanity } from '../../lib/sanity';
+import ProductCategories from '../components/home/product-categories';
 import { HeroConfiguration } from '../model/hero-configuration';
+import { CategoryConfiguration } from '../model/category-configuration';
 
-const Home = ({ hero }: { hero: HeroConfiguration }) => {
+const Home = ({ hero, categories }: { hero: HeroConfiguration; categories: Array<CategoryConfiguration> }) => {
   return (
     <Layout>
-      <Hero title={hero.title} subtitle={hero.subtitle} image={hero.image} buttonText={hero.buttonText} buttonURL={hero.buttonURL} />
+      <Hero {...hero} />
       <ShippingInfo />
+      <ProductCategories categories={categories} />
     </Layout>
   );
 };
@@ -17,7 +20,7 @@ const Home = ({ hero }: { hero: HeroConfiguration }) => {
 Home.getInitialProps = async () => {
   return sanity.fetch(
     `
-    *[_type == "homeSettings"][0]{hero}
+    *[_type == "homeSettings"][0]{hero, categories}
   `
   );
 };

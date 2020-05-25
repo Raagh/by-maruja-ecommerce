@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, StyledH3, BodyCopySmall } from '../../config/global-styled-components';
+import { AlignedCenterContainer, StyledH3, BodyCopySmall } from '../../config/global-styled-components';
 import Button from '../shared/button';
 import { urlFor } from '../../../lib/sanity';
 import { HeroConfiguration } from '../../model/hero-configuration';
@@ -22,14 +22,14 @@ const Img = styled.img`
 
 const Hero = (props: HeroConfiguration) => {
   return (
-    <Container>
+    <AlignedCenterContainer>
       <Img src={urlFor(props.image)} alt="hero image" />
       <TextContainer>
         <StyledH3>{props.title}</StyledH3>
         <SubTitle>{props.subtitle}</SubTitle>
         <Button text={props.buttonText} url={props.buttonURL} />
       </TextContainer>
-    </Container>
+    </AlignedCenterContainer>
   );
 };
 

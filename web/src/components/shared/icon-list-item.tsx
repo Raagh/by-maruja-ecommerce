@@ -7,15 +7,16 @@ const FlexContainer = styled.article`
   display: flex;
   flex-direction: row;
   align-content: space-between;
-
   width: 100%;
+  height: 100%;
   margin-top: 2.5rem;
-
   text-align: left;
+  overflow: hidden;
 `;
 
 const MarginLeftBodyCopySmall = styled(BodyCopySmall)`
   margin-left: 1rem;
+  height: 100%;
 `;
 
 const Icon = styled.img``;

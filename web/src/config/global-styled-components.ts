@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { typography, colors } from './global-styles';
 
-export const Container = styled.article`
+export const AlignedCenterContainer = styled.article`
   text-align: center;
 `;
 

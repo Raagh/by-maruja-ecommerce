@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, StyledH4 } from '../../config/global-styled-components';
+import { AlignedCenterContainer, StyledH4 } from '../../config/global-styled-components';
 import IconListItem from '../shared/icon-list-item';
 
-const ShippingInfoContainer = styled(Container)`
+const ShippingInfoContainer = styled(AlignedCenterContainer)`
   margin-top: 80px;
   display: flex;
   flex-direction: column;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 `;
+
 const ShippingInfo = () => {
   const image = '/assets/Warehouse-delivery.svg';
   const alt = 'Warehouse delivery icon';

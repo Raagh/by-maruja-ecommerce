@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import React, { FunctionComponent } from 'react';
-import { createGlobalStyle } from 'styled-components';
-import { fonts } from '../../config/global-styles';
+import styled, { createGlobalStyle } from 'styled-components';
+import { fonts, colors } from '../../config/global-styles';
+
 import NavBar from './navbar';
 
 const GlobalStyle = createGlobalStyle`
@@ -27,9 +28,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Main = styled.main`
+  background-color: ${colors.ui.lightBackground};
+`;
+
 const Layout: FunctionComponent = (props) => {
   return (
-    <div>
+    <Main>
       <GlobalStyle />
       <Head>
         <title>By Maruja</title>
@@ -37,7 +42,7 @@ const Layout: FunctionComponent = (props) => {
       </Head>
       <NavBar />
       {props.children}
-    </div>
+    </Main>
   );
 };
 

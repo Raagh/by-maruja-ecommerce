@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../config/global-styles';
 
 const Container = styled.section`
   min-width: 100wh;
@@ -11,8 +10,6 @@ const Container = styled.section`
 
   margin-right: 1.5rem;
   margin-left: 1.5rem;
-
-  background-color: ${colors.ui.lightBackground};
 `;
 
 const Bag = styled.img`

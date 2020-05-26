@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../config/global-styles';
+import { device } from '../../config/device';
 
 const Container = styled.section`
   min-width: 100wh;
@@ -13,6 +14,11 @@ const Container = styled.section`
   margin-left: 1.5rem;
 
   background-color: ${colors.ui.lightBackground};
+  @media (${device.large}) {
+    height: 100px;
+    margin-right: 3.75rem;
+    margin-left: 3.75rem;
+  }
 `;
 
 const Bag = styled.img`
@@ -21,10 +27,17 @@ const Bag = styled.img`
 
 const Logo = styled.img`
   margin-top: 0.5rem;
+  @media (${device.large}) {
+    height: 68px;
+    margin-top: 1.25rem;
+  }
 `;
 
 const Menu = styled.img`
   margin-top: 26px;
+  @media (${device.large}) {
+    display: none;
+  }
 `;
 
 const NavBar = () => {

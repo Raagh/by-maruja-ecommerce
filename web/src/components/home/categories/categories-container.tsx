@@ -14,8 +14,7 @@ const Container = styled.article`
     'third  fourth'
     '.      fourth';
 
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 1.5rem;
+  background: url('/assets/Background-Product-Categories.svg') no-repeat center;
 `;
 
 const FirstCategory = styled.article`
@@ -39,25 +38,33 @@ const CategoryImg = styled.img`
   border-radius: 2px;
 `;
 
+const LinkContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const LinkImg = styled.img`
+  flex-shrink: 0;
+`;
+
+const createCategoryContent = (category: CategoryConfiguration) => {
+  return (
+    <div>
+      <CategoryImg src={urlFor(category.image)} alt={category.name} />
+      <LinkContainer>
+        <StyledH5>{category.name}</StyledH5>
+        <LinkImg src="/assets/Arrow.svg" alt="arrow" />
+      </LinkContainer>
+    </div>
+  );
+};
 const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
   return (
     <Container>
-      <FirstCategory key={0}>
-        <CategoryImg src={urlFor(categories[0].image)} alt={categories[0].name} />
-        <StyledH5>{categories[0].name}</StyledH5>
-      </FirstCategory>
-      <SecondCategory key={1}>
-        <CategoryImg src={urlFor(categories[1].image)} alt={categories[1].name} />
-        <StyledH5>{categories[1].name}</StyledH5>
-      </SecondCategory>
-      <ThirdCategory key={2}>
-        <CategoryImg src={urlFor(categories[2].image)} alt={categories[2].name} />
-        <StyledH5>{categories[2].name}</StyledH5>
-      </ThirdCategory>
-      <FourthCategory key={3}>
-        <CategoryImg src={urlFor(categories[3].image)} alt={categories[3].name} />
-        <StyledH5>{categories[3].name}</StyledH5>
-      </FourthCategory>
+      <FirstCategory key={0}>{createCategoryContent(categories[0])}</FirstCategory>
+      <SecondCategory key={1}>{createCategoryContent(categories[1])}</SecondCategory>
+      <ThirdCategory key={2}>{createCategoryContent(categories[2])}</ThirdCategory>
+      <FourthCategory key={3}>{createCategoryContent(categories[3])}</FourthCategory>
     </Container>
   );
 };

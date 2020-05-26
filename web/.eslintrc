@@ -63,7 +63,9 @@
           "**/*.spec.jsx",
           "**/*.spec.ts",
           "**/*.spec.tsx",
-          "src/tests/**/*"
+          "src/tests/**/*",
+          "enzyme",
+          "enzyme-adapter-react-16"
         ]
       }
     ],

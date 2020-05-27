@@ -14,4 +14,10 @@ describe('NavBar component', () => {
 
     expect(wrapper.render().find('img').length).toEqual(3);
   });
+
+  it('should include the links to products, contact, about and the cart', () => {
+    const wrapper = shallow(<NavBar />);
+
+    expect(wrapper.render().find('a').length).toEqual(4);
+  });
 });

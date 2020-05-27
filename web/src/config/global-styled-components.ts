@@ -68,3 +68,15 @@ export const BodyCopySmall = styled.p`
   letter-spacing: ${typography.bodyCopy.small.letterSpacing};
   color: ${colors.ui.darkSurface};
 `;
+
+export const LinksSmall = styled.a`
+  font-family: ${typography.links.font.name};
+  font-style: normal;
+  font-weight: ${typography.links.font.regularWeight};
+  font-size: ${typography.links.small.fontSize};
+  line-height: ${typography.links.small.lineHeight};
+  letter-spacing: ${typography.links.small.letterSpacing};
+  color: ${colors.ui.darkSurface};
+
+  text-transform: ${typography.links.textTransform};
+`;

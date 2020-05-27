@@ -1,23 +1,25 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import CategoriesContainer from '../../../../src/components/home/categories/categories-container';
 
-describe('ShippingInfo component', () => {
+import { mock as categoriesMock } from '../../../../__mocks__/categories-configuration.mock';
+
+describe('CategoriesContainer component', () => {
   it('should render', () => {
-    const wrapper = shallow(<CategoriesContainer />);
+    const wrapper = shallow(<CategoriesContainer categories={categoriesMock} />);
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('should render an h4', () => {
-    const wrapper = shallow(<CategoriesContainer />);
+  it('should render 4 categories', () => {
+    const wrapper = shallow(<CategoriesContainer categories={categoriesMock} />);
 
-    expect(wrapper.render().find('h4').length).toEqual(1);
+    expect(wrapper.render().find('article').length).toEqual(4);
   });
 
-  it('should render 3 iconAndText components', () => {
-    const wrapper = shallow(<CategoriesContainer />);
+  it('each category shoul have two images', () => {
+    const wrapper = mount(<CategoriesContainer categories={categoriesMock} />);
 
-    expect(wrapper.find('IconListItem').length).toEqual(3);
+    expect(wrapper.render().find('img').length).toEqual(8);
   });
 });

@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import NavBar from '../../../src/components/shared/navBar';
+import NavBar from '../../../src/components/shared/navbar';
 
 describe('NavBar component', () => {
   it('should render', () => {

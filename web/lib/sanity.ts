@@ -3,10 +3,10 @@ import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 export const sanity = sanityClient({
-  projectId: 'x7biewak', // you can find this in sanity.json
-  dataset: 'maruja-dataset', // or the name you chose in step 1
+  projectId: 'x7biewak',
+  dataset: 'maruja-dataset',
   token: process.env.sanityAccessToken,
-  useCdn: true, // `false` if you want to ensure fresh data
+  useCdn: true,
 });
 
 const builder = imageUrlBuilder(sanity);

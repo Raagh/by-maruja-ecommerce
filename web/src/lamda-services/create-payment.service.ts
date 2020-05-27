@@ -7,5 +7,5 @@ import { createPreference } from './mercadopago.service';
 export const createPaymentLink = (data: MercadoPagoPaymentRequest) =>
   pipe(
     createPreference(data),
-    map((result) => (process.env.useMercadoPagoSandbox === 'true' ? result.response.init_point : result.response.sandbox_init_point))
+    map((result) => (process.env.useMercadoPagoSandbox === 'true' ? result.response.sandbox_init_point : result.response.init_point))
   );

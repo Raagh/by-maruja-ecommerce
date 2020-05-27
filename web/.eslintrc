@@ -55,6 +55,8 @@
       "error",
       {
         "devDependencies": [
+          "__mocks__/**",
+          "__tests__/**",
           "**/*.test.js",
           "**/*.test.jsx",
           "**/*.test.ts",
@@ -63,9 +65,7 @@
           "**/*.spec.jsx",
           "**/*.spec.ts",
           "**/*.spec.tsx",
-          "src/tests/**/*",
-          "enzyme",
-          "enzyme-adapter-react-16"
+          "src/tests/**/*"
         ]
       }
     ],

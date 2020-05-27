@@ -51,17 +51,17 @@ export const typography = {
     h3: {
       font: fonts.primary,
       fontSize: '40px',
-      lineHeight: '105%',
+      lineHeight: '48px',
     },
     h4: {
       font: fonts.primary,
       fontSize: '32px',
-      lineHeight: '105%',
+      lineHeight: '36px',
     },
     h5: {
       font: fonts.primary,
       fontSize: '24px',
-      lineHeight: '31px',
+      lineHeight: '28px',
     },
     h6: {
       font: fonts.primary,

@@ -15,6 +15,7 @@ const Container = styled.article`
     '.      fourth';
 
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
+  grid-gap: 1.5rem;
 `;
 
 const FirstCategory = styled.article`
@@ -34,28 +35,40 @@ const FourthCategory = styled.article`
 `;
 
 const CategoryImg = styled.img`
-  width: 100%;
   border-radius: 2px;
+  max-width: 100%;
+  object-fit: cover;
 `;
 
 const LinkContainer = styled.div`
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const LinkImg = styled.img`
   flex-shrink: 0;
+  max-width: 100%;
+  max-height: 12px;
+`;
+
+const CategoryContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
-    <div>
+    <CategoryContainer>
       <CategoryImg src={urlFor(category.image)} alt={category.name} />
       <LinkContainer>
         <StyledH5>{category.name}</StyledH5>
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />
       </LinkContainer>
-    </div>
+    </CategoryContainer>
   );
 };
 const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {

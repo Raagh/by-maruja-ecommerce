@@ -8,8 +8,8 @@ import CategoriesContainer from './categories-container';
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 0 1.5rem 0 1.5rem;
   margin-top: 80px;
+  padding: 0 1.5rem 0 1.5rem;
 `;
 
 const CategoryTitle = styled(StyledH4)`

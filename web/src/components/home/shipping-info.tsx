@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AlignedCenterContainer, StyledH4 } from '../../config/global-styled-components';
+import { AlignedCenterContainer } from '../../config/global-styled-components';
 import IconListItem from '../shared/icon-list-item';
+import { typography, colors } from '../../config/global-styles';
 
 const ShippingInfoContainer = styled(AlignedCenterContainer)`
   margin-top: 80px;
@@ -9,6 +10,18 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
   flex-direction: column;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const ShippingInfoTitle = styled.h4`
+  font-family: ${typography.titles.h4.font.name};
+  font-style: normal;
+  font-weight: ${typography.titles.h4.font.regularWeight};
+  font-size: ${typography.titles.h4.fontSize};
+  line-height: ${typography.titles.h4.lineHeight};
+  color: ${colors.ui.darkSurface};
 `;
 
 const ShippingInfo = () => {
@@ -20,9 +33,9 @@ const ShippingInfo = () => {
 
   return (
     <ShippingInfoContainer>
-      <StyledH4>
+      <ShippingInfoTitle>
         Bienvenida <br />a Maruja
-      </StyledH4>
+      </ShippingInfoTitle>
       <IconListItem image={image} text={text1} alt={alt} />
       <IconListItem image={image} text={text2} alt={alt} />
       <IconListItem image={image} text={text3} alt={alt} />

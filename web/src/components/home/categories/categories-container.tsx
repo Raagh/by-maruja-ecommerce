@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StyledH5 } from '../../../config/global-styled-components';
 import { urlFor } from '../../../../lib/sanity';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
+import { typography, colors } from '../../../config/global-styles';
 
-const Container = styled.article`
+const Container = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
@@ -27,7 +27,7 @@ const Container = styled.article`
       '.      second  .      fourth';
     background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
     background-size: 70%;
-    grid-column-gap: 4rem;
+    grid-gap: 4rem;
   }
 `;
 
@@ -73,12 +73,28 @@ const CategoryContainer = styled.div`
   justify-content: flex-end;
 `;
 
+const CategoryName = styled.h4`
+  font-family: ${typography.titles.h5.font.name};
+  font-style: normal;
+  font-weight: ${typography.titles.h5.font.regularWeight};
+  font-size: ${typography.titles.h5.fontSize};
+  line-height: ${typography.titles.h5.lineHeight};
+  color: ${colors.ui.darkSurface};
+
+  ${device.large} {
+    font-family: ${typography.titles.h4.font.name};
+    font-weight: ${typography.titles.h4.font.regularWeight};
+    font-size: ${typography.titles.h4.fontSize};
+    line-height: ${typography.titles.h4.lineHeight};
+  }
+`;
+
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
     <CategoryContainer>
       <CategoryImg src={urlFor(category.image)} alt={category.name} />
       <LinkContainer>
-        <StyledH5>{category.name}</StyledH5>
+        <CategoryName>{category.name}</CategoryName>
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />
       </LinkContainer>
     </CategoryContainer>

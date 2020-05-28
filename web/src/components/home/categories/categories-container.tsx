@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { StyledH5 } from '../../../config/global-styled-components';
 import { urlFor } from '../../../../lib/sanity';
 import { CategoryConfiguration } from '../../../model/category-configuration';
+import { device } from '../../../config/device';
 
 const Container = styled.article`
   display: grid;
@@ -16,6 +17,18 @@ const Container = styled.article`
 
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
   grid-gap: 1.5rem;
+
+  @media ${device.large} {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      'first  .       third  .     '
+      'first  second  third  fourth'
+      '.      second  .      fourth';
+    background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
+    background-size: 70%;
+    grid-column-gap: 4rem;
+  }
 `;
 
 const FirstCategory = styled.article`

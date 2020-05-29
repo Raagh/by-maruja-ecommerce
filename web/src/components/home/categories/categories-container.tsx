@@ -6,45 +6,31 @@ import { device } from '../../../config/device';
 import { typography, colors } from '../../../config/global-styles';
 
 const Container = styled.section`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas:
-    'first  . '
-    'first  second'
-    'third  second'
-    'third  fourth'
-    '.      fourth';
-
+  display: flex;
+  flex-direction: row;
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
-  grid-gap: 1.5rem;
-
   @media ${device.large} {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas:
-      'first  .       third  .     '
-      'first  second  third  fourth'
-      '.      second  .      fourth';
     background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
     background-size: 70%;
-    grid-gap: 4rem;
   }
 `;
 
-const FirstCategory = styled.article`
-  grid-area: first;
+const NormalColumn = styled.article`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-right: 1.5rem;
 `;
 
-const SecondCategory = styled.article`
-  grid-area: second;
-`;
+const LoweredColumn = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  width: 50%;
 
-const ThirdCategory = styled.article`
-  grid-area: third;
-`;
-
-const FourthCategory = styled.article`
-  grid-area: fourth;
+  @media ${device.large} {
+    padding-right: 1.5rem;
+  }
 `;
 
 const CategoryImg = styled.img`
@@ -71,6 +57,7 @@ const CategoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding-bottom: 1.5rem;
 `;
 
 const CategoryName = styled.h4`
@@ -89,6 +76,8 @@ const CategoryName = styled.h4`
   }
 `;
 
+const isMediaQueryLarge = typeof window !== 'undefined' ? window.matchMedia(device.large).matches : false;
+
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
     <CategoryContainer>
@@ -100,15 +89,29 @@ const createCategoryContent = (category: CategoryConfiguration) => {
     </CategoryContainer>
   );
 };
-const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
+
+const createDesktopResult = (categories: CategoryConfiguration[]) => (
+  <Container>
+    {categories.map((category: CategoryConfiguration, index: number) => {
+      if (index % 2 === 0) return <NormalColumn key={category.name}>{createCategoryContent(category)}</NormalColumn>;
+      return <LoweredColumn key={category.name}>{createCategoryContent(category)}</LoweredColumn>;
+    })}
+  </Container>
+);
+
+const createMobileResult = (categories: CategoryConfiguration[]) => () => {
+  const normalColumnItems = categories.slice(0, categories.length / 2);
+  const loweredColumnItems = categories.slice(categories.length / 2);
   return (
     <Container>
-      <FirstCategory key={0}>{createCategoryContent(categories[0])}</FirstCategory>
-      <SecondCategory key={1}>{createCategoryContent(categories[1])}</SecondCategory>
-      <ThirdCategory key={2}>{createCategoryContent(categories[2])}</ThirdCategory>
-      <FourthCategory key={3}>{createCategoryContent(categories[3])}</FourthCategory>
+      <NormalColumn>{normalColumnItems.map(createCategoryContent)}</NormalColumn>
+      <LoweredColumn>{loweredColumnItems.map(createCategoryContent)}</LoweredColumn>
     </Container>
   );
+};
+
+const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
+  return isMediaQueryLarge ? createDesktopResult(categories) : createMobileResult(categories)();
 };
 
 export default CategoriesContainer;

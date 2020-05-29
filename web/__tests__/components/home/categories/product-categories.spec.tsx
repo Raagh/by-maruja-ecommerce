@@ -15,7 +15,7 @@ describe('ProductCategories component', () => {
   it('should render 1 title', () => {
     const wrapper = shallow(<ProductCategories categories={categoriesMock} />);
 
-    expect(wrapper.render().find('h4').length).toEqual(1);
+    expect(wrapper.render().find('h2').length).toEqual(1);
   });
 
   it('should render one categories container', () => {

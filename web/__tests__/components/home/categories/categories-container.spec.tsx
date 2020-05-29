@@ -11,10 +11,10 @@ describe('CategoriesContainer component', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('should render 4 categories', () => {
+  it('should render 2 columns of categories', () => {
     const wrapper = shallow(<CategoriesContainer categories={categoriesMock} />);
 
-    expect(wrapper.render().find('article').length).toEqual(4);
+    expect(wrapper.render().find('article').length).toEqual(2);
   });
 
   it('each category shoul have two images', () => {

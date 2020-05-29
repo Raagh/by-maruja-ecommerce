@@ -80,7 +80,7 @@ const isMediaQueryLarge = typeof window !== 'undefined' ? window.matchMedia(devi
 
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
-    <CategoryContainer>
+    <CategoryContainer key={category.name}>
       <CategoryImg src={urlFor(category.image)} alt={category.name} />
       <LinkContainer>
         <CategoryName>{category.name}</CategoryName>
@@ -104,8 +104,8 @@ const createMobileResult = (categories: CategoryConfiguration[]) => () => {
   const loweredColumnItems = categories.slice(categories.length / 2);
   return (
     <Container>
-      <NormalColumn>{normalColumnItems.map(createCategoryContent)}</NormalColumn>
-      <LoweredColumn>{loweredColumnItems.map(createCategoryContent)}</LoweredColumn>
+      <NormalColumn key="normal-column">{normalColumnItems.map(createCategoryContent)}</NormalColumn>
+      <LoweredColumn key="lowered-column">{loweredColumnItems.map(createCategoryContent)}</LoweredColumn>
     </Container>
   );
 };

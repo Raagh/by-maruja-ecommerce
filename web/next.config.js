@@ -8,6 +8,8 @@ module.exports = (phase, { defaultConfig }) => {
         mercadoPagoPublicKey: process.env.MERCADO_PAGO_PUBLIC_KEY,
         mercadoPagoAccessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN,
         sanityAccessToken: process.env.SANITY_ACCESS_TOKEN,
+        sanityDataset: process.env.SANITY_DATASET,
+        sanityProjectId: process.env.SANITY_PROJECT_ID,
       },
     };
   }

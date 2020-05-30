@@ -3,11 +3,17 @@ import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 export const sanity = sanityClient({
-  projectId: 'x7biewak',
-  dataset: 'maruja-dataset',
-  token: process.env.sanityAccessToken,
+  projectId: process.env.sanityProjectId,
+  dataset: process.env.sanityDataset,
   useCdn: true,
 });
+
+// const sanityWriteClient = sanityClient({
+//   projectId: process.env.sanityProjectId,
+//   dataset: process.env.sanityDataset,
+//   token: process.env.sanityAccessToken,
+//   useCdn: true,
+// });
 
 const builder = imageUrlBuilder(sanity);
 

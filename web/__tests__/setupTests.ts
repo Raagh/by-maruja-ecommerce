@@ -20,6 +20,8 @@ Object.defineProperty(window, 'matchMedia', {
 // NextJS
 setConfig(nextConfig);
 process.env.useMercadoPagoSandbox = 'true';
+process.env.sanityProjectId = 'fakeproject';
+process.env.sanityDataset = 'fakedataset';
 
 // Configure Enzyme with React 16 adapter
 Enzyme.configure({ adapter: new Adapter() });

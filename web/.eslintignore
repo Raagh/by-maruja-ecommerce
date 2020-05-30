@@ -5,4 +5,6 @@ src/react-app-env.d.ts
 src/serviceWorker.ts
 node_modules
 jest.config.js
+next-env.d.ts
 __mocks__
+**/**.d.ts

@@ -17,8 +17,10 @@
     "jsx": "preserve",
     "sourceMap": true,
     "noImplicitAny": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "types": ["jest"],
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
-  "exclude": ["node_modules", "__mocks__/*"],
+  "exclude": ["node_modules", "__mocks__/**", "**/*.spec.ts", "**/*.test.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@types/*"]
 }

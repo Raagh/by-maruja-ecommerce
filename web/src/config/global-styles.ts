@@ -24,9 +24,14 @@ export const fonts = {
     regularWeight: 300,
   },
   secondary: {
-    name: 'Mr Eaves XL Mod OT',
-    regularWeight: 400,
-    boldWeight: 700,
+    regular: {
+      name: 'Proxima Nova',
+      fontWeight: 400,
+    },
+    bold: {
+      name: 'Proxima Nova Bold',
+      fontWeight: 700,
+    },
   },
 };
 
@@ -41,12 +46,12 @@ export const typography = {
     h1: {
       font: fonts.primary,
       fontSize: '64px',
-      lineHeight: '56px',
+      lineHeight: '64px',
     },
     h2: {
       font: fonts.primary,
-      fontSize: '48px',
-      lineHeight: '48px',
+      fontSize: '56px',
+      lineHeight: '62px',
     },
     h3: {
       font: fonts.primary,
@@ -55,7 +60,7 @@ export const typography = {
     },
     h4: {
       font: fonts.primary,
-      fontSize: '32px',
+      fontSize: '30px',
       lineHeight: '36px',
     },
     h5: {
@@ -64,67 +69,94 @@ export const typography = {
       lineHeight: '28px',
     },
     h6: {
-      font: fonts.primary,
-      fontSize: '20px',
-      lineHeight: '20px',
+      font: fonts.secondary.bold,
+      fontSize: '12px',
+      lineHeight: '15px',
     },
   },
   subtitle: {
-    font: fonts.secondary,
+    font: fonts.secondary.regular,
     fontSize: '14px',
     lineHeight: '24px',
     letterSpacing: '4px',
     textTransform: 'uppercase',
   },
   labels: {
-    font: fonts.secondary,
     large: {
-      fontSize: '16px',
-      lineHeight: '16px',
-      letterSpacing: '1px',
+      regular: {
+        font: fonts.secondary.regular,
+        fontSize: '16px',
+        lineHeight: '24px',
+        letterSpacing: '1px',
+      },
+      bold: {
+        font: fonts.secondary.bold,
+        fontSize: '16px',
+        lineHeight: '16px',
+        letterSpacing: '1px',
+      },
     },
     small: {
+      font: fonts.secondary.regular,
       fontSize: '14px',
-      lineHeight: '16px',
+      lineHeight: '18px',
       letterSpacing: '1px',
     },
   },
   bodyCopy: {
-    font: fonts.secondary,
-    large: {
-      fontSize: '24px',
-      lineHeight: '32px',
-      letterSpacing: '1px',
+    regular: {
+      fontWeight: fonts.secondary.regular.fontWeight,
+      font: fonts.secondary.regular,
+      large: {
+        fontSize: '20px',
+        lineHeight: '32px',
+        letterSpacing: '1px',
+      },
+      small: {
+        fontSize: '16px',
+        lineHeight: '24px',
+        letterSpacing: '1px',
+      },
     },
-    small: {
-      fontSize: '18px',
-      lineHeight: '24px',
-      letterSpacing: '1px',
+    bold: {
+      fontWeight: fonts.secondary.bold.fontWeight,
+      font: fonts.secondary.bold,
+      large: {
+        fontSize: '20px',
+        lineHeight: '28x',
+        letterSpacing: '1px',
+      },
+      small: {
+        fontSize: '16px',
+        lineHeight: '22px',
+        letterSpacing: '1px',
+      },
     },
   },
   links: {
-    font: fonts.secondary,
     textTransform: 'uppercase',
     large: {
-      fontSize: '14px',
+      font: fonts.secondary.bold,
+      fontSize: '12px',
       lineHeight: '14px',
       letterSpacing: '4px',
     },
     small: {
+      font: fonts.secondary.regular,
       fontSize: '11px',
       lineHeight: '12px',
       letterSpacing: '3px',
     },
   },
   captions: {
-    font: fonts.secondary,
+    font: fonts.secondary.regular,
     large: {
       fontSize: '14px',
-      lineHeight: '14px',
+      lineHeight: '17px',
     },
     small: {
-      fontSize: '11px',
-      lineHeight: '12px',
+      fontSize: '12px',
+      lineHeight: '15px',
       letterSpacing: '3px',
     },
   },

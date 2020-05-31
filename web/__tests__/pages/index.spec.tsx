@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Home from '../../src/pages';
@@ -6,6 +6,7 @@ import Hero from '../../src/components/home/hero';
 import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
 import ShippingInfo from '../../src/components/home/shipping-info';
 import ProductCategories from '../../src/components/home/categories/product-categories';
+import NavBar from '../../src/components/shared/navbar';
 
 const hero = {
   title: '',
@@ -17,26 +18,32 @@ const hero = {
 
 describe('Home Page', () => {
   it('should render', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} />);
+    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
 
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.exists()).toBeTruthy();
+  });
+
+  it('should render navbar', () => {
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
+
+    expect(wrapper.find(NavBar).exists()).toBeTruthy();
   });
 
   it('should render hero', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
 
-    expect(wrapper.find(Hero).exists()).toBe(true);
+    expect(wrapper.find(Hero).exists()).toBeTruthy();
   });
 
   it('should render shipping information', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
 
-    expect(wrapper.find(ShippingInfo).exists()).toBe(true);
+    expect(wrapper.find(ShippingInfo).exists()).toBeTruthy();
   });
 
   it('should render product categories', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
 
-    expect(wrapper.find(ProductCategories).exists()).toBe(true);
+    expect(wrapper.find(ProductCategories).exists()).toBeTruthy();
   });
 });

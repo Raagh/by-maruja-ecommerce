@@ -6,8 +6,8 @@ import { typography, colors } from '../../config/global-styles';
 const StyledLink = styled.a`
   margin-top: 1.25rem;
   display: inline-block;
-  font-family: ${typography.links.font.name};
-  font-weight: ${typography.links.font.boldWeight};
+  font-family: ${typography.links.large.font.name};
+  font-weight: ${typography.links.large.font.fontWeight};
   font-size: ${typography.links.large.fontSize};
   line-height: ${typography.links.large.lineHeight};
   letter-spacing: ${typography.links.large.letterSpacing};

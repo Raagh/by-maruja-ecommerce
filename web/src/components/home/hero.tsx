@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AlignedCenterContainer, BodyCopySmall } from '../../config/global-styled-components';
+import { AlignedCenterContainer, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import Button from '../shared/button';
 import { urlFor } from '../../../lib/sanity';
 import { HeroConfiguration } from '../../model/hero-configuration';
@@ -10,7 +10,7 @@ const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;
 `;
 
-const SubTitle = styled(BodyCopySmall)`
+const SubTitle = styled(BodyCopyRegularSmall)`
   margin-top: 1.25rem;
   opacity: 0.75;
 `;

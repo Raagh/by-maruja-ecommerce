@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BodyCopySmall } from '../../config/global-styled-components';
+import { BodyCopyRegularSmall } from '../../config/global-styled-components';
 import { IconListItemConfig } from '../../model/icon-list-item-configuration';
 
 const FlexContainer = styled.article`
@@ -14,7 +14,7 @@ const FlexContainer = styled.article`
   overflow: hidden;
 `;
 
-const MarginLeftBodyCopySmall = styled(BodyCopySmall)`
+const MarginLeftBodyCopySmall = styled(BodyCopyRegularSmall)`
   margin-left: 1rem;
   height: 100%;
 `;

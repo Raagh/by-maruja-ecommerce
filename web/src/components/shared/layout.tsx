@@ -17,8 +17,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: ${fonts.secondary.name};
+    font-family: ${fonts.secondary.regular.name};
     src: url('/fonts/Proxima-Nova.woff') format("woff");
+  }
+
+  @font-face {
+    font-family: ${fonts.secondary.bold.name};
+    src: url('/fonts/Proxima-Nova-Bold.woff') format("woff");
   }
 
   * {

@@ -7,19 +7,19 @@ import CategoriesContainer from '../../../../src/components/home/categories/cate
 
 describe('ProductCategories component', () => {
   it('should render', () => {
-    const wrapper = shallow(<ProductCategories categories={categoriesMock} />);
+    const wrapper = shallow(<ProductCategories categories={categoriesMock} isMobile={false} />);
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
   it('should render 1 title', () => {
-    const wrapper = shallow(<ProductCategories categories={categoriesMock} />);
+    const wrapper = shallow(<ProductCategories categories={categoriesMock} isMobile={false} />);
 
     expect(wrapper.render().find('h2').length).toEqual(1);
   });
 
   it('should render one categories container', () => {
-    const wrapper = mount(<ProductCategories categories={categoriesMock} />);
+    const wrapper = mount(<ProductCategories categories={categoriesMock} isMobile={false} />);
 
     expect(wrapper.find(CategoriesContainer).length).toEqual(1);
   });

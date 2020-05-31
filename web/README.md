@@ -1,6 +1,16 @@
 # By Maruja web application
 
-First, run the development server:
+Create an .env file in the web folder with the following format
+
+```bash
+MERCADO_PAGO_PUBLIC_KEY='MERCADOPAGO-PUBLIC-KEY'
+MERCADO_PAGO_ACCESS_TOKEN='MERCADOPAGO-ACCESS-TOKEN'
+SANITY_ACCESS_TOKEN='SANITY-ACCESS-TOKEN'
+SANITY_DATASET='SANITY-DATASET'
+SANITY_PROJECT_ID='SANITY-PROJECT-ID'
+```
+
+## Run the development server:
 
 ```bash
 npm run dev

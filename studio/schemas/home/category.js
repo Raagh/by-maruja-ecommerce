@@ -6,12 +6,12 @@ export default {
   fields: [
     {
       title: "Imagen",
-      name: "imageHero",
+      name: "image",
       type: "image",
     },
     {
-      title: "Titulo",
-      name: "heroTitle",
+      title: "Nombre",
+      name: "name",
       type: "string",
     },
   ],

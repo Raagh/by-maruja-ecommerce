@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import React, { FunctionComponent } from 'react';
-import { createGlobalStyle } from 'styled-components';
-import { fonts } from '../../config/global-styles';
-import NavBar from './navBar';
+import styled, { createGlobalStyle } from 'styled-components';
+import { fonts, colors } from '../../config/global-styles';
+
+import NavBar from './navbar';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -16,8 +17,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: ${fonts.secondary.name};
-    src: url('/fonts/Mr-Eaves-XL-Modern.woff') format("woff");
+    font-family: ${fonts.secondary.regular.name};
+    src: url('/fonts/Proxima-Nova.woff') format("woff");
+  }
+
+  @font-face {
+    font-family: ${fonts.secondary.bold.name};
+    src: url('/fonts/Proxima-Nova-Bold.woff') format("woff");
   }
 
   * {
@@ -27,9 +33,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Main = styled.main`
+  background-color: ${colors.ui.lightBackground};
+`;
+
 const Layout: FunctionComponent = (props) => {
   return (
-    <div>
+    <Main>
       <GlobalStyle />
       <Head>
         <title>By Maruja</title>
@@ -37,7 +47,7 @@ const Layout: FunctionComponent = (props) => {
       </Head>
       <NavBar />
       {props.children}
-    </div>
+    </Main>
   );
 };
 

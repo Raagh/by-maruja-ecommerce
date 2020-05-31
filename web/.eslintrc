@@ -55,6 +55,8 @@
       "error",
       {
         "devDependencies": [
+          "__mocks__/**",
+          "__tests__/**",
           "**/*.test.js",
           "**/*.test.jsx",
           "**/*.test.ts",

@@ -40,7 +40,7 @@ const Subtitle = styled.p`
   font-size: 1.5rem;
   text-align: center;
   font-family: ${typography.subtitle.font.name};
-  font-weight: ${typography.subtitle.font.regularWeight};
+  font-weight: ${typography.subtitle.font.fontWeight};
   color: ${colors.secondary.default};
 `;
 
@@ -49,7 +49,7 @@ const SubtitleHighlight = styled.p`
   font-size: 1.5rem;
   text-align: center;
   font-family: ${typography.subtitle.font.name};
-  font-weight: ${typography.subtitle.font.boldWeight};
+  font-weight: ${typography.subtitle.font.fontWeight};
   color: ${colors.ui.darkSurface};
 `;
 

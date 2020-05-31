@@ -16,7 +16,7 @@ const Container = styled.section`
   padding-left: 1.5rem;
 
   background-color: ${colors.ui.lightBackground};
-  @media (${device.large}) {
+  @media ${device.large} {
     height: 100px;
     padding: 1.25rem 3.75rem 0 3.75rem;
 
@@ -26,7 +26,7 @@ const Container = styled.section`
 
 const Logo = styled.img`
   margin-top: 0.5rem;
-  @media (${device.large}) {
+  @media ${device.large} {
     height: 68px;
     margin-right: 0.75rem;
   }
@@ -34,7 +34,7 @@ const Logo = styled.img`
 
 const Menu = styled.img`
   margin-top: 26px;
-  @media (${device.large}) {
+  @media ${device.large} {
     display: none;
   }
 `;
@@ -44,7 +44,7 @@ const Links = styled(LinksSmall)`
   margin-top: 2rem;
   text-decoration: none;
   margin-left: 2rem;
-  @media (${device.large}) {
+  @media ${device.large} {
     display: block;
   }
 `;

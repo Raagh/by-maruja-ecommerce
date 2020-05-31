@@ -13,7 +13,7 @@ describe('IconAndText component', () => {
   });
 
   it('should display the correct icon', () => {
-    const image = '/assets/Warehouse-delivery.svg';
+    const image = '/assets/Warehouse-Delivery.svg';
     const text = '';
     const alt = '';
     const wrapper = shallow(<IconListItem image={image} text={text} alt={alt} />);

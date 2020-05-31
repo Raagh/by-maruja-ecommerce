@@ -15,7 +15,7 @@ const Container = styled.section`
   }
 `;
 
-const NormalColumn = styled.article`
+const NormalColumn = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -76,8 +76,6 @@ const CategoryName = styled.h4`
   }
 `;
 
-const isMediaQueryLarge = typeof window !== 'undefined' ? window.matchMedia(device.large).matches : false;
-
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
     <CategoryContainer key={category.name}>
@@ -93,8 +91,10 @@ const createCategoryContent = (category: CategoryConfiguration) => {
 const createDesktopResult = (categories: CategoryConfiguration[]) => (
   <Container>
     {categories.map((category: CategoryConfiguration, index: number) => {
-      if (index % 2 === 0) return <NormalColumn key={category.name}>{createCategoryContent(category)}</NormalColumn>;
-      return <LoweredColumn key={category.name}>{createCategoryContent(category)}</LoweredColumn>;
+      const categoryContent = createCategoryContent(category);
+
+      if (index % 2 === 0) return <NormalColumn key={category.name}>{categoryContent}</NormalColumn>;
+      return <LoweredColumn key={category.name}>{categoryContent}</LoweredColumn>;
     })}
   </Container>
 );
@@ -110,8 +110,8 @@ const createMobileResult = (categories: CategoryConfiguration[]) => () => {
   );
 };
 
-const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
-  return isMediaQueryLarge ? createDesktopResult(categories) : createMobileResult(categories)();
+const CategoriesContainer = ({ categories, isMobile }: { categories: CategoryConfiguration[]; isMobile: boolean }) => {
+  return isMobile ? createMobileResult(categories)() : createDesktopResult(categories);
 };
 
 export default CategoriesContainer;

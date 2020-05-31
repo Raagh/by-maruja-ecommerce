@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: ${fonts.secondary.name};
-    src: url('/fonts/Mr-Eaves-XL-Modern.woff') format("woff");
+    src: url('/fonts/Proxima-Nova.woff') format("woff");
   }
 
   * {

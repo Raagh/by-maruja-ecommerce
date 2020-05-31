@@ -25,7 +25,7 @@ const ShippingInfoTitle = styled.h4`
 `;
 
 const ShippingInfo = () => {
-  const image = '/assets/Warehouse-delivery.svg';
+  const image = '/assets/Warehouse-Delivery.svg';
   const alt = 'Warehouse delivery icon';
   const text1 = 'Comprá seguro con Mercado Pago, con tarjeta de crédito, débito o el que elijas';
   const text2 = 'Mercado Envíos a toda la Argentina, gratis con compras de $500 o más';

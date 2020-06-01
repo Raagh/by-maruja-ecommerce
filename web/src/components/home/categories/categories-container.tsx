@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { urlFor } from '../../../../lib/sanity';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
-import { typography, colors } from '../../../config/global-styles';
+import { StyledH4 } from '../../../config/global-styled-components';
 
 const Container = styled.section`
   display: flex;
@@ -60,21 +60,7 @@ const CategoryContainer = styled.div`
   padding-bottom: 1.5rem;
 `;
 
-const CategoryName = styled.h4`
-  font-family: ${typography.titles.h5.font.name};
-  font-style: normal;
-  font-weight: ${typography.titles.h5.font.regularWeight};
-  font-size: ${typography.titles.h5.fontSize};
-  line-height: ${typography.titles.h5.lineHeight};
-  color: ${colors.ui.darkSurface};
-
-  ${device.large} {
-    font-family: ${typography.titles.h4.font.name};
-    font-weight: ${typography.titles.h4.font.regularWeight};
-    font-size: ${typography.titles.h4.fontSize};
-    line-height: ${typography.titles.h4.lineHeight};
-  }
-`;
+const CategoryName = styled(StyledH4)``;
 
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (

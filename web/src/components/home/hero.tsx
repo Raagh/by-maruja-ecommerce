@@ -4,34 +4,68 @@ import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH1 } from '../../co
 import Button from '../shared/button';
 import { urlFor } from '../../../lib/sanity';
 import { HeroConfiguration } from '../../model/hero-configuration';
+import { device } from '../../config/device';
+import { colors } from '../../config/global-styles';
 
 const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;
+
+  @media ${device.large} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const SubTitle = styled(BodyCopyRegularSmall)`
   margin-top: 1.25rem;
   opacity: 0.75;
+
+  @media ${device.large} {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    width: 50%;
+  }
 `;
 
 const Img = styled.img`
   width: 100%;
   height: 80%;
   margin-bottom: 1.5rem;
+
+  @media ${device.large} {
+    width: 70%;
+    height: 100%;
+    margin-bottom: 0;
+  }
 `;
 
-const HomeTitle = styled(StyledH1)``;
+const HomeTitle = styled(StyledH1)`
+  @media ${device.large} {
+    width: 70%;
+  }
+`;
+
+const HomeContainer = styled(AlignedCenterContainer)`
+  background-color: ${colors.ui.lightBackground};
+  @media ${device.large} {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+  }
+`;
 
 const Hero = (props: HeroConfiguration) => {
   return (
-    <AlignedCenterContainer>
+    <HomeContainer>
       <Img src={urlFor(props.image)} alt="hero image" />
       <TextContainer>
         <HomeTitle>{props.title}</HomeTitle>
         <SubTitle>{props.subtitle}</SubTitle>
         <Button text={props.buttonText} url={props.buttonURL} />
       </TextContainer>
-    </AlignedCenterContainer>
+    </HomeContainer>
   );
 };
 

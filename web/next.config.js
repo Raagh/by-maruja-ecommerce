@@ -17,7 +17,11 @@ module.exports = (phase, { defaultConfig }) => {
   return {
     env: {
       useMercadoPagoSandbox: false,
-      // TODO ADD PRODUCTION TOKEN AND KEY
+      mercadoPagoPublicKey: process.env.MERCADO_PAGO_PUBLIC_KEY,
+      mercadoPagoAccessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN,
+      sanityAccessToken: process.env.SANITY_ACCESS_TOKEN,
+      sanityDataset: process.env.SANITY_DATASET,
+      sanityProjectId: process.env.SANITY_PROJECT_ID,
     },
   };
 };

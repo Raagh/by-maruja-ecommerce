@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { AlignedCenterContainer } from '../../config/global-styled-components';
 import IconListItem from '../shared/icon-list-item';
 import { typography, colors } from '../../config/global-styles';
-import siConf from '../../config/shipping-info-conf.json';
+import ShippingInfoJson from '../../config/shipping-info-conf.json';
 import { device } from '../../config/device';
+import { ShippingInfoConfig } from '../../model/shipping-info-configuration';
 
 const ShippingInfoContainer = styled(AlignedCenterContainer)`
   margin-top: 80px;
@@ -15,7 +16,7 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  @media ${device.large} {
+  7rem @media ${device.large} {
     flex-direction: row;
     justify-content: center;
   }
@@ -28,20 +29,22 @@ const ShippingInfoTitle = styled.h4`
   font-size: ${typography.titles.h4.fontSize};
   line-height: ${typography.titles.h4.lineHeight};
   color: ${colors.ui.darkSurface};
+  width: 150px;
+  margin: 0 auto 0 auto;
   @media ${device.large} {
     display: none;
   }
 `;
 
+const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number) => {
+  return <IconListItem image={shippingInfo['image']} text={shippingInfo['text']} alt={shippingInfo['alt']} key={key} />;
+};
+
 const ShippingInfo = () => {
   return (
     <ShippingInfoContainer>
-      <ShippingInfoTitle>
-        Bienvenida <br />a Maruja
-      </ShippingInfoTitle>
-      <IconListItem image={siConf['image']} text={siConf['text1']} alt={siConf['alt']} />
-      <IconListItem image={siConf['image']} text={siConf['text2']} alt={siConf['alt']} />
-      <IconListItem image={siConf['image']} text={siConf['text3']} alt={siConf['alt']} />
+      <ShippingInfoTitle>{ShippingInfoJson.title}</ShippingInfoTitle>
+      {ShippingInfoJson.data.map((data, index) => createShippingInfoContent(data, index))}
     </ShippingInfoContainer>
   );
 };

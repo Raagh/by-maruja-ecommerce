@@ -11,7 +11,7 @@ const FlexContainer = styled.article`
   width: 100%;
   max-width: 320px;
   height: 100%;
-  margin-top: 2.5rem;
+  margin: 2.5rem auto 0 auto;
   text-align: left;
   overflow: hidden;
   @media ${device.large} {

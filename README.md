@@ -5,7 +5,7 @@ This project is an e-commerce built for `by maruja`.
 ## Tech Stack
 
 - Next.js
-- TypeScript
+- TypeScript with fp-ts
 - Jest
 - Enzyme
 - Sanity

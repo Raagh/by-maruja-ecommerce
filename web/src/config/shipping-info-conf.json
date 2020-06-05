@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "image": "/assets/Warehouse-Delivery.svg",
+      "alt": "Warehouse delivery icon",
+      "text": "Comprá seguro con Mercado Pago, con tarjeta de crédito, débito o el que elijas"
+    },
+    {
+      "image": "/assets/Warehouse-Delivery.svg",
+      "alt": "Warehouse delivery icon",
+      "text": "Mercado Envíos a toda la Argentina, gratis con compras de $500 o más"
+    },
+    {
+      "image": "/assets/Warehouse-Delivery.svg",
+      "alt": "Warehouse delivery icon",
+      "text": "¿Algún problema? Contactanos, nuestra atención es 100% personalizada"
+    }
+  ],
+  "title": "Bienvenida a Maruja"
+}

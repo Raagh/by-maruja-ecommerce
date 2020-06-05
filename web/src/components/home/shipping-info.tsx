@@ -16,7 +16,7 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  7rem @media ${device.large} {
+  @media ${device.large} {
     flex-direction: row;
     justify-content: center;
   }

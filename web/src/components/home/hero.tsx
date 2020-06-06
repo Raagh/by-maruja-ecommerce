@@ -33,6 +33,7 @@ const Img = styled(RemoteImage)`
   width: 100%;
   height: 80%;
   margin-bottom: 1.5rem;
+  background-color: red;
 
   @media ${device.large} {
     width: 70%;

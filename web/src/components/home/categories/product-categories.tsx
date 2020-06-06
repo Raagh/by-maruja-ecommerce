@@ -32,11 +32,11 @@ const ProductCategoriesTitle = styled(StyledH2)`
   }
 `;
 
-const ProductCategories = ({ categories, isMobile }: { categories: CategoryConfiguration[]; isMobile: boolean }) => {
+const ProductCategories = ({ categories }: { categories: CategoryConfiguration[] }) => {
   return (
     <Container>
       <ProductCategoriesTitle>Nuestros Productos</ProductCategoriesTitle>
-      <CategoriesContainer categories={categories} isMobile={isMobile} />
+      <CategoriesContainer categories={categories} />
     </Container>
   );
 };

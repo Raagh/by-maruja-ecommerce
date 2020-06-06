@@ -5,13 +5,24 @@ import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
 import RemoteImage from '../../shared/remote-image';
 
-const Container = styled.section`
+const DesktopContainer = styled.section`
+  display: none;
+
+  @media ${device.large} {
+    display: flex;
+    flex-direction: row;
+    background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
+    background-size: 70%;
+  }
+`;
+
+const MobileContainer = styled.section`
   display: flex;
   flex-direction: row;
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
+
   @media ${device.large} {
-    background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
-    background-size: 70%;
+    display: none;
   }
 `;
 
@@ -75,29 +86,34 @@ const createCategoryContent = (category: CategoryConfiguration) => {
 };
 
 const createDesktopResult = (categories: CategoryConfiguration[]) => (
-  <Container>
+  <DesktopContainer>
     {categories.map((category: CategoryConfiguration, index: number) => {
       const categoryContent = createCategoryContent(category);
 
       if (index % 2 === 0) return <NormalColumn key={category.name}>{categoryContent}</NormalColumn>;
       return <LoweredColumn key={category.name}>{categoryContent}</LoweredColumn>;
     })}
-  </Container>
+  </DesktopContainer>
 );
 
 const createMobileResult = (categories: CategoryConfiguration[]) => () => {
   const normalColumnItems = categories.slice(0, categories.length / 2);
   const loweredColumnItems = categories.slice(categories.length / 2);
   return (
-    <Container>
+    <MobileContainer>
       <NormalColumn key="normal-column">{normalColumnItems.map(createCategoryContent)}</NormalColumn>
       <LoweredColumn key="lowered-column">{loweredColumnItems.map(createCategoryContent)}</LoweredColumn>
-    </Container>
+    </MobileContainer>
   );
 };
 
-const CategoriesContainer = ({ categories, isMobile }: { categories: CategoryConfiguration[]; isMobile: boolean }) => {
-  return isMobile ? createMobileResult(categories)() : createDesktopResult(categories);
+const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
+  return (
+    <div>
+      {createDesktopResult(categories)}
+      {createMobileResult(categories)()}
+    </div>
+  );
 };
 
 export default CategoriesContainer;

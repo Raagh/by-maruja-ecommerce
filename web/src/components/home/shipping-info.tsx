@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { AlignedCenterContainer } from '../../config/global-styled-components';
 import IconListItem from '../shared/icon-list-item';
 import { typography, colors } from '../../config/global-styles';
+import ShippingInfoJson from '../../config/shipping-info-conf.json';
+import { device } from '../../config/device';
+import { ShippingInfoConfig } from '../../model/shipping-info-configuration';
 
 const ShippingInfoContainer = styled(AlignedCenterContainer)`
   margin-top: 80px;
@@ -13,6 +16,10 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
+  @media ${device.large} {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const ShippingInfoTitle = styled.h4`
@@ -22,23 +29,22 @@ const ShippingInfoTitle = styled.h4`
   font-size: ${typography.titles.h4.fontSize};
   line-height: ${typography.titles.h4.lineHeight};
   color: ${colors.ui.darkSurface};
+  width: 150px;
+  margin: 0 auto 0 auto;
+  @media ${device.large} {
+    display: none;
+  }
 `;
 
-const ShippingInfo = () => {
-  const image = '/assets/Warehouse-Delivery.svg';
-  const alt = 'Warehouse delivery icon';
-  const text1 = 'Comprá seguro con Mercado Pago, con tarjeta de crédito, débito o el que elijas';
-  const text2 = 'Mercado Envíos a toda la Argentina, gratis con compras de $500 o más';
-  const text3 = '¿Algún problema? Contactanos, nuestra atención es 100% personalizada';
+const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number) => {
+  return <IconListItem image={shippingInfo['image']} text={shippingInfo['text']} alt={shippingInfo['alt']} key={key} />;
+};
 
+const ShippingInfo = () => {
   return (
     <ShippingInfoContainer>
-      <ShippingInfoTitle>
-        Bienvenida <br />a Maruja
-      </ShippingInfoTitle>
-      <IconListItem image={image} text={text1} alt={alt} />
-      <IconListItem image={image} text={text2} alt={alt} />
-      <IconListItem image={image} text={text3} alt={alt} />
+      <ShippingInfoTitle>{ShippingInfoJson.title}</ShippingInfoTitle>
+      {ShippingInfoJson.data.map((data, index) => createShippingInfoContent(data, index))}
     </ShippingInfoContainer>
   );
 };

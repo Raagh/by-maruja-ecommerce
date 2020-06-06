@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { urlFor } from '../../../../lib/sanity';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
+import RemoteImage from '../../shared/remote-image';
 
 const Container = styled.section`
   display: flex;
@@ -33,7 +33,7 @@ const LoweredColumn = styled.article`
   }
 `;
 
-const CategoryImg = styled.img`
+const CategoryImg = styled(RemoteImage)`
   border-radius: 2px;
   max-width: 100%;
   object-fit: cover;
@@ -65,7 +65,7 @@ const CategoryName = styled(StyledH4)``;
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
     <CategoryContainer key={category.name}>
-      <CategoryImg src={urlFor(category.image)} alt={category.name} />
+      <CategoryImg image={category.image} alt={category.name} />
       <LinkContainer>
         <CategoryName>{category.name}</CategoryName>
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />

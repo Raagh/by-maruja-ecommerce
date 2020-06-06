@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH1 } from '../../config/global-styled-components';
 import Button from '../shared/button';
-import { urlFor } from '../../../lib/sanity';
 import { HeroConfiguration } from '../../model/hero-configuration';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
+import RemoteImage from '../shared/remote-image';
 
 const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;
@@ -29,7 +29,7 @@ const SubTitle = styled(BodyCopyRegularSmall)`
   }
 `;
 
-const Img = styled.img`
+const Img = styled(RemoteImage)`
   width: 100%;
   height: 80%;
   margin-bottom: 1.5rem;
@@ -59,7 +59,7 @@ const HomeContainer = styled(AlignedCenterContainer)`
 const Hero = (props: HeroConfiguration) => {
   return (
     <HomeContainer>
-      <Img src={urlFor(props.image)} alt="hero image" />
+      <Img image={props.image} alt="hero image" />
       <TextContainer>
         <HomeTitle>{props.title}</HomeTitle>
         <SubTitle>{props.subtitle}</SubTitle>

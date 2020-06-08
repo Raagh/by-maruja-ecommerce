@@ -37,7 +37,7 @@ const ShippingInfoTitle = styled.h4`
 `;
 
 const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number) => {
-  return <IconListItem image={shippingInfo['image']} text={shippingInfo['text']} alt={shippingInfo['alt']} key={key} />;
+  return <IconListItem image={shippingInfo.image} text={shippingInfo.text} alt={shippingInfo.alt} key={key} />;
 };
 
 const ShippingInfo = () => {

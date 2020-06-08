@@ -11,6 +11,8 @@ const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;
 
   @media ${device.large} {
+    height: 100%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +38,6 @@ const Img = styled(RemoteResponsiveImage)`
   object-fit: contain;
 
   @media ${device.large} {
-    width: 70%;
     height: 100%;
     margin-bottom: 0;
   }

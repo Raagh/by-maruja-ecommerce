@@ -15,7 +15,6 @@ const FlexContainer = styled.article`
   text-align: left;
   overflow: hidden;
   @media ${device.large} {
-    margin-left: 6rem;
     align-items: center;
   }
 `;
@@ -26,9 +25,8 @@ const MarginLeftBodyCopySmall = styled(BodyCopyRegularSmall)`
 `;
 
 const Icon = styled.img`
-  @media ${device.large} {
-    height: 40px;
-  }
+  height: 54px;
+  width: 54px;
 `;
 
 const IconListItem = (props: IconListItemConfig) => {

@@ -17,7 +17,7 @@ const Container = styled.section`
 
   @media ${device.large} {
     padding: 0 6.75rem 0 6.75rem;
-    margin-top: 192px;
+    margin-top: 158px;
   }
 `;
 
@@ -27,8 +27,7 @@ const ProductCategoriesTitle = styled(StyledH2)`
   text-align: center;
 
   @media ${device.large} {
-    margin-bottom: 4.5rem;
-    text-align: left;
+    display: none;
   }
 `;
 

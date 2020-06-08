@@ -1,18 +1,18 @@
 {
   "data": [
     {
-      "image": "/assets/Warehouse-Delivery.svg",
-      "alt": "Warehouse delivery icon",
+      "image": "/assets/Payments.svg",
+      "alt": "Payments icon",
       "text": "Comprá seguro con Mercado Pago, con tarjeta de crédito, débito o el que elijas"
     },
     {
-      "image": "/assets/Warehouse-Delivery.svg",
-      "alt": "Warehouse delivery icon",
+      "image": "/assets/Shippings.svg",
+      "alt": "Shipping icon",
       "text": "Mercado Envíos a toda la Argentina, gratis con compras de $500 o más"
     },
     {
-      "image": "/assets/Warehouse-Delivery.svg",
-      "alt": "Warehouse delivery icon",
+      "image": "/assets/Contact.svg",
+      "alt": "Contact icon",
       "text": "¿Algún problema? Contactanos, nuestra atención es 100% personalizada"
     }
   ],

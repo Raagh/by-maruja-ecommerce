@@ -26,7 +26,7 @@ export default {
       name: "image",
       type: "image",
       options: {
-        metadata: ["lqip", "palette"],
+        metadata: ["lqip"],
       },
     },
   ],

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
-import RemoteFixedImage from '../../shared/image-types/remote-fixed-image';
+import RemoteFixedImage from '../../shared/image-types/remote-fixed-size-image';
 
 const DesktopContainer = styled.section`
   display: none;

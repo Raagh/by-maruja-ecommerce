@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: ${fonts.secondary.bold.name};
-    src: url('/fonts/Proxima-Nova-Bold.woff') format("woff"), ;
+    src: url('/fonts/Proxima-Nova-Bold.woff') format("woff");
     font-display: swap;
   }
 

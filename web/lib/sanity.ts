@@ -1,7 +1,7 @@
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { SanityImageSource as ExtraSource } from '@sanity/asset-utils';
+import { SanityImageSource as SanityImageSourceAsset, getImageAsset } from '@sanity/asset-utils';
 
 export const sanity = sanityClient({
   projectId: process.env.sanityProjectId,
@@ -18,4 +18,6 @@ export const sanity = sanityClient({
 
 export const builder = imageUrlBuilder(sanity);
 
-export const getDefaultImage = (image: SanityImageSource | ExtraSource) => builder.image(image).auto('format');
+export const getDefaultImage = (image: SanityImageSource) => builder.image(image).auto('format');
+
+export const getImagePlaceholder = (asset: SanityImageSourceAsset) => (asset ? getImageAsset(asset).metadata.lqip : '');

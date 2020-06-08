@@ -18,10 +18,25 @@ const Home = ({ hero, categories }: { hero: HeroConfiguration; categories: Array
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const sanityResult = await sanity.fetch(
     `
-    *[_type == "homeSettings"][0]{hero, categories}
+    *[_type == "homeSettings"][0]{
+      categories[] {   	  
+        ...,
+         "asset": image.asset-> {
+            url,
+            metadata 
+         }
+      },
+       hero {
+           ...,
+         "asset": image.asset-> {
+            url,
+            metadata 
+         }
+       }
+     }
   `
   );
 

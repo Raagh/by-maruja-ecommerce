@@ -5,7 +5,8 @@ import Button from '../shared/button';
 import { HeroConfiguration } from '../../model/hero-configuration';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
-import RemoteImage from '../shared/remote-image';
+import RemoteResponsiveImage from '../shared/image-types/remote-responsive-image';
+// import RemoteFixedImage from '../shared/image-types/remote-fixed-image';
 
 const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;
@@ -29,11 +30,11 @@ const SubTitle = styled(BodyCopyRegularSmall)`
   }
 `;
 
-const Img = styled(RemoteImage)`
+const Img = styled(RemoteResponsiveImage)`
   width: 100%;
   height: 80%;
   margin-bottom: 1.5rem;
-  background-color: red;
+  object-fit: contain;
 
   @media ${device.large} {
     width: 70%;
@@ -60,7 +61,7 @@ const HomeContainer = styled(AlignedCenterContainer)`
 const Hero = (props: HeroConfiguration) => {
   return (
     <HomeContainer>
-      <Img image={props.image} alt="hero image" />
+      <Img image={props.image} asset={props.asset} alt="hero image" />
       <TextContainer>
         <HomeTitle>{props.title}</HomeTitle>
         <SubTitle>{props.subtitle}</SubTitle>

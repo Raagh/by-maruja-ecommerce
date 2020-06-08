@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
-import RemoteImage from '../../shared/remote-image';
+import RemoteFixedImage from '../../shared/image-types/remote-fixed-image';
 
 const DesktopContainer = styled.section`
   display: none;
@@ -44,7 +44,7 @@ const LoweredColumn = styled.article`
   }
 `;
 
-const CategoryImg = styled(RemoteImage)`
+const CategoryImg = styled(RemoteFixedImage)`
   border-radius: 2px;
   max-width: 100%;
   object-fit: cover;
@@ -76,7 +76,7 @@ const CategoryName = styled(StyledH4)``;
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
     <CategoryContainer key={category.name}>
-      <CategoryImg image={category.image} alt={category.name} />
+      <CategoryImg image={category.image} alt={category.name} asset={category.asset} />
       <LinkContainer>
         <CategoryName>{category.name}</CategoryName>
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />

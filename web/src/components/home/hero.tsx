@@ -6,7 +6,6 @@ import { HeroConfiguration } from '../../model/hero-configuration';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
 import RemoteResponsiveImage from '../shared/image-types/remote-responsive-image';
-// import RemoteFixedImage from '../shared/image-types/remote-fixed-image';
 
 const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;

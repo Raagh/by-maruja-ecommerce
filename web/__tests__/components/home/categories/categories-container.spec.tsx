@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import CategoriesContainer from '../../../../src/components/home/categories/categories-container';

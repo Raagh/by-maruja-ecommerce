@@ -1,6 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
 import Home from '../../src/pages';
 import Hero from '../../src/components/home/hero';
 import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
@@ -14,35 +15,36 @@ const hero = {
   image: null as SanityImageSource,
   buttonText: '',
   buttonURL: '',
+  asset: null as SanityImageSourceAsset,
 };
 
 describe('Home Page', () => {
   it('should render', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
+    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} />);
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
   it('should render navbar', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} />);
 
     expect(wrapper.find(NavBar).exists()).toBeTruthy();
   });
 
   it('should render hero', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} />);
 
     expect(wrapper.find(Hero).exists()).toBeTruthy();
   });
 
   it('should render shipping information', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} />);
 
     expect(wrapper.find(ShippingInfo).exists()).toBeTruthy();
   });
 
   it('should render product categories', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} userAgent={{ isMobile: false }} />);
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} />);
 
     expect(wrapper.find(ProductCategories).exists()).toBeTruthy();
   });

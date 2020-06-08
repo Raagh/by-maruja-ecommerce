@@ -2,15 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH1 } from '../../config/global-styled-components';
 import Button from '../shared/button';
-import { urlFor } from '../../../lib/sanity';
 import { HeroConfiguration } from '../../model/hero-configuration';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
+import RemoteResponsiveImage from '../shared/image-types/remote-responsive-image';
 
 const TextContainer = styled.div`
   padding: 0 1.5rem 0 1.5rem;
 
   @media ${device.large} {
+    height: 100%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,13 +31,13 @@ const SubTitle = styled(BodyCopyRegularSmall)`
   }
 `;
 
-const Img = styled.img`
+const Img = styled(RemoteResponsiveImage)`
   width: 100%;
   height: 80%;
   margin-bottom: 1.5rem;
+  object-fit: contain;
 
   @media ${device.large} {
-    width: 70%;
     height: 100%;
     margin-bottom: 0;
   }
@@ -59,7 +61,7 @@ const HomeContainer = styled(AlignedCenterContainer)`
 const Hero = (props: HeroConfiguration) => {
   return (
     <HomeContainer>
-      <Img src={urlFor(props.image)} alt="hero image" />
+      <Img image={props.image} asset={props.asset} alt="hero image" />
       <TextContainer>
         <HomeTitle>{props.title}</HomeTitle>
         <SubTitle>{props.subtitle}</SubTitle>

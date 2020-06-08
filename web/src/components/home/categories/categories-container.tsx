@@ -1,17 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import { urlFor } from '../../../../lib/sanity';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
+import RemoteFixedImage from '../../shared/image-types/remote-fixed-size-image';
 
-const Container = styled.section`
+const DesktopContainer = styled.section`
+  display: none;
+
+  @media ${device.large} {
+    display: flex;
+    flex-direction: row;
+    background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
+    background-size: 70%;
+  }
+`;
+
+const MobileContainer = styled.section`
   display: flex;
   flex-direction: row;
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
+
   @media ${device.large} {
-    background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
-    background-size: 70%;
+    display: none;
   }
 `;
 
@@ -33,7 +44,7 @@ const LoweredColumn = styled.article`
   }
 `;
 
-const CategoryImg = styled.img`
+const CategoryImg = styled(RemoteFixedImage)`
   border-radius: 2px;
   max-width: 100%;
   object-fit: cover;
@@ -65,7 +76,7 @@ const CategoryName = styled(StyledH4)``;
 const createCategoryContent = (category: CategoryConfiguration) => {
   return (
     <CategoryContainer key={category.name}>
-      <CategoryImg src={urlFor(category.image)} alt={category.name} />
+      <CategoryImg image={category.image} alt={category.name} asset={category.asset} />
       <LinkContainer>
         <CategoryName>{category.name}</CategoryName>
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />
@@ -75,29 +86,34 @@ const createCategoryContent = (category: CategoryConfiguration) => {
 };
 
 const createDesktopResult = (categories: CategoryConfiguration[]) => (
-  <Container>
+  <DesktopContainer>
     {categories.map((category: CategoryConfiguration, index: number) => {
       const categoryContent = createCategoryContent(category);
 
       if (index % 2 === 0) return <NormalColumn key={category.name}>{categoryContent}</NormalColumn>;
       return <LoweredColumn key={category.name}>{categoryContent}</LoweredColumn>;
     })}
-  </Container>
+  </DesktopContainer>
 );
 
 const createMobileResult = (categories: CategoryConfiguration[]) => () => {
   const normalColumnItems = categories.slice(0, categories.length / 2);
   const loweredColumnItems = categories.slice(categories.length / 2);
   return (
-    <Container>
+    <MobileContainer>
       <NormalColumn key="normal-column">{normalColumnItems.map(createCategoryContent)}</NormalColumn>
       <LoweredColumn key="lowered-column">{loweredColumnItems.map(createCategoryContent)}</LoweredColumn>
-    </Container>
+    </MobileContainer>
   );
 };
 
-const CategoriesContainer = ({ categories, isMobile }: { categories: CategoryConfiguration[]; isMobile: boolean }) => {
-  return isMobile ? createMobileResult(categories)() : createDesktopResult(categories);
+const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
+  return (
+    <div>
+      {createDesktopResult(categories)}
+      {createMobileResult(categories)()}
+    </div>
+  );
 };
 
 export default CategoriesContainer;

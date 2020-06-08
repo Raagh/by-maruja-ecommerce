@@ -17,7 +17,7 @@ const Container = styled.section`
 
   @media ${device.large} {
     padding: 0 6.75rem 0 6.75rem;
-    margin-top: 192px;
+    margin-top: 158px;
   }
 `;
 
@@ -27,16 +27,15 @@ const ProductCategoriesTitle = styled(StyledH2)`
   text-align: center;
 
   @media ${device.large} {
-    margin-bottom: 4.5rem;
-    text-align: left;
+    display: none;
   }
 `;
 
-const ProductCategories = ({ categories, isMobile }: { categories: CategoryConfiguration[]; isMobile: boolean }) => {
+const ProductCategories = ({ categories }: { categories: CategoryConfiguration[] }) => {
   return (
     <Container>
       <ProductCategoriesTitle>Nuestros Productos</ProductCategoriesTitle>
-      <CategoriesContainer categories={categories} isMobile={isMobile} />
+      <CategoriesContainer categories={categories} />
     </Container>
   );
 };

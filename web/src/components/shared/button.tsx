@@ -2,9 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { typography, colors } from '../../config/global-styles';
+import { device } from '../../config/device';
 
 const StyledLink = styled.a`
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   display: inline-block;
   font-family: ${typography.links.large.font.name};
   font-weight: ${typography.links.large.font.fontWeight};
@@ -14,6 +15,10 @@ const StyledLink = styled.a`
   text-transform: ${typography.links.textTransform};
   color: ${colors.ui.darkSurface};
   text-decoration: none;
+
+  @media ${device.large} {
+    margin-top: 3rem;
+  }
 `;
 
 const UnderLinedComponent = styled.span`

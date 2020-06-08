@@ -25,6 +25,9 @@ export default {
       title: "Imagen",
       name: "image",
       type: "image",
+      options: {
+        metadata: ["lqip"],
+      },
     },
   ],
 };

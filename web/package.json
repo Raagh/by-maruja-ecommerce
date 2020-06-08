@@ -18,15 +18,16 @@
     "isready": "npm run format && npm run lint && npm run build"
   },
   "dependencies": {
+    "@sanity/asset-utils": "^1.0.0",
     "@sanity/client": "^1.149.7",
     "@sanity/image-url": "^0.140.19",
     "axios": "^0.19.2",
     "fp-ts": "^2.6.0",
     "mercadopago": "^1.3.1",
     "next": "9.3.5",
-    "next-useragent": "^2.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-lazy-load-image-component": "^1.5.0-beta.0",
     "styled-components": "^5.1.0",
     "tslib": "^1.10.0"
   },
@@ -40,6 +41,7 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "@types/styled-components": "^5.1.0",
+    "@types/react-lazy-load-image-component": "^1.3.0",
     "@typescript-eslint/eslint-plugin": "2.33.0",
     "@typescript-eslint/parser": "2.33.0",
     "babel-eslint": "10.1.0",

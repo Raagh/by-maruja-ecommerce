@@ -30,16 +30,22 @@ export const getServerSideProps = async () => {
          }
       },
        hero {
-           ...,
+        ...,
          "asset": image.asset-> {
             url,
             metadata 
          }
+       },
+       recommended[]->{
+        ...,
+        "asset": image.asset-> {
+            url,
+            metadata 
+         }
        }
-     }
+    }
   `
   );
-
   return { props: { ...sanityResult } };
 };
 

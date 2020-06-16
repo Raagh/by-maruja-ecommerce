@@ -8,6 +8,7 @@ import { mock as categoriesMock } from '../../__mocks__/categories-configuration
 import ShippingInfo from '../../src/components/home/shipping-info';
 import ProductCategories from '../../src/components/home/categories/product-categories';
 import NavBar from '../../src/components/shared/navbar';
+import Recommended from '../../src/components/home/recommended';
 
 const hero = {
   title: '',
@@ -57,5 +58,11 @@ describe('Home Page', () => {
     const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} />);
 
     expect(wrapper.find(ProductCategories).exists()).toBeTruthy();
+  });
+
+  it('should render recommended component', () => {
+    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} />);
+
+    expect(wrapper.find(Recommended).exists()).toBeTruthy();
   });
 });

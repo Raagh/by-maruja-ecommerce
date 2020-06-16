@@ -22,6 +22,17 @@ export default {
       type: "array",
       of: [{ type: "category" }],
     },
+    {
+      title: "Recomendados",
+      name: "recommended",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "product" }],
+        },
+      ],
+    },
   ],
   initialValue: () => ({
     homePageTitle: "Configuración Home",

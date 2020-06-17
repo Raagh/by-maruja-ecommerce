@@ -19,13 +19,12 @@ const Home = ({
   categories: Array<CategoryConfiguration>;
   recommended: Array<RecommendedConfiguration>;
 }) => {
-  console.log(recommended);
   return (
     <Layout>
       <Hero {...hero} />
       <ShippingInfo />
       <ProductCategories categories={categories} />
-      <Recommended />
+      <Recommended recommended={recommended} />
     </Layout>
   );
 };

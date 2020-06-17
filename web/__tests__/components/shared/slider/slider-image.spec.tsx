@@ -16,7 +16,6 @@ describe('Slider component', () => {
 
   it('should contain a link', () => {
     const wrapper = mount(<SliderImage {...image} />);
-    console.log(wrapper.debug());
 
     expect(wrapper.find('a').length).toEqual(1);
   });

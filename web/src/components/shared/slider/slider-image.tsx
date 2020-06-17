@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Image } from '../../../model/image';
-import RemoteResponsiveImage from '../image-types/remote-responsive-image';
+import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
 
-const SlideImage = styled(RemoteResponsiveImage)``;
+const SlideImage = styled(RemoteFixedSizeImage)`
+  width: 200px;
+`;
 
 const SliderImage = (props: Image) => {
   return (

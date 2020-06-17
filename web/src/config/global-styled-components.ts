@@ -80,6 +80,18 @@ export const StyledH2 = styled.h2`
   }
 `;
 
+export const Subtitle = styled.p`
+  font-family: ${typography.subtitle.font.name};
+  font-style: normal;
+  font-weight: ${typography.subtitle.font.fontWeight};
+  font-size: ${typography.subtitle.fontSize};
+  line-height: ${typography.subtitle.lineHeight};
+  text-align: center;
+  letter-spacing: ${typography.subtitle.letterSpacing};
+  text-transform: ${typography.subtitle.textTransform};
+  color: ${colors.primary.dark};
+`;
+
 export const BodyCopyRegularSmall = styled.p`
   font-family: ${typography.bodyCopy.regular.font.name};
   font-style: normal;
@@ -130,6 +142,16 @@ export const LinksSmall = styled.a`
   color: ${colors.ui.darkSurface};
 
   text-transform: ${typography.links.textTransform};
+`;
+
+export const LabelSmall = styled.div`
+  font-family: ${typography.labels.small.font.name};
+  font-style: normal;
+  font-weight: ${typography.labels.small.font.fontWeight};
+  font-size: ${typography.labels.small.fontSize};
+  line-height: ${typography.labels.small.lineHeight};
+  letter-spacing: ${typography.labels.small.letterSpacing};
+  color: ${colors.ui.darkSurface};
 `;
 
 export const AlignedCenterContainer = styled.article`

@@ -13,6 +13,7 @@ const DesktopContainer = styled.section`
     flex-direction: row;
     background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
     background-size: 70%;
+    justify-content: center;
   }
 `;
 
@@ -20,7 +21,7 @@ const MobileContainer = styled.section`
   display: flex;
   flex-direction: row;
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
-
+  justify-content: center;
   @media ${device.large} {
     display: none;
   }
@@ -29,7 +30,7 @@ const MobileContainer = styled.section`
 const NormalColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  max-width: 50%;
   margin-right: 1.5rem;
 `;
 
@@ -37,7 +38,7 @@ const LoweredColumn = styled.article`
   display: flex;
   flex-direction: column;
   padding-top: 80px;
-  width: 50%;
+  max-width: 50%;
 
   @media ${device.large} {
     padding-right: 1.5rem;
@@ -48,6 +49,10 @@ const CategoryImg = styled(RemoteFixedImage)`
   border-radius: 2px;
   max-width: 100%;
   object-fit: cover;
+
+  &::before {
+    padding-top: calc(100% / 56%);
+  }
 `;
 
 const LinkContainer = styled.div`

@@ -8,7 +8,11 @@ const uiColors = {
   lightBackground: '#FFFCF9',
   whiteBackground: '#FFFFFF',
   darkSurface: '#513232',
-  grey5percent: '#F5F5F5',
+  grey75percent: '#7C6666',
+  grey50percent: '#A89B9B',
+  grey25percent: '#E9E6E6',
+  grey10percent: '#F2F0F0',
+  grey5percent: '#FCFAFA',
   copy: '#3E3939',
   error: '#AC4F4F',
 };

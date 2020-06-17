@@ -7,6 +7,7 @@ import product from "./product";
 import home from "./home/home";
 import hero from "./home/hero";
 import category from "./home/category";
+import userReview from "./home/user-review";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -14,5 +15,5 @@ export default createSchema({
   name: "default",
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([product, home, hero, category]),
+  types: schemaTypes.concat([product, home, hero, category, userReview]),
 });

@@ -117,7 +117,7 @@ export const typography = {
         letterSpacing: '1px',
       },
       small: {
-        fontSize: '16px',
+        fontSize: '14px',
         lineHeight: '24px',
         letterSpacing: '1px',
       },

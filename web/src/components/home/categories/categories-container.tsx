@@ -22,6 +22,8 @@ const MobileContainer = styled.section`
   flex-direction: row;
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
   justify-content: center;
+  max-width: 500px;
+  margin: auto;
   @media ${device.large} {
     display: none;
   }
@@ -30,7 +32,7 @@ const MobileContainer = styled.section`
 const NormalColumn = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  width: 100%;
   margin-right: 1.5rem;
 `;
 
@@ -38,7 +40,7 @@ const LoweredColumn = styled.article`
   display: flex;
   flex-direction: column;
   padding-top: 80px;
-  max-width: 50%;
+  width: 100%;
 
   @media ${device.large} {
     padding-right: 1.5rem;
@@ -49,10 +51,6 @@ const CategoryImg = styled(RemoteFixedImage)`
   border-radius: 2px;
   max-width: 100%;
   object-fit: cover;
-
-  &::before {
-    padding-top: calc(100% / 56%);
-  }
 `;
 
 const LinkContainer = styled.div`

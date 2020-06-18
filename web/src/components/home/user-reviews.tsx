@@ -3,16 +3,37 @@ import styled from 'styled-components';
 import { Subtitle, StyledH2, LabelSmall } from '../../config/global-styled-components';
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
 import RemoteFixedImage from '../shared/image-types/remote-fixed-size-image';
+import { colors } from '../../config/global-styles';
+import { device } from '../../config/device';
 
 const ReviewContainer = styled.article`
-  margin-top: 5rem;
+  padding-top: 5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: ${colors.ui.grey5percent};
+  justify-content: center;
+
+  @media ${device.large} {
+    padding-top: 8rem;
+    flex-direction: row-reverse;
+  }
 `;
 
-const ReviewTitle = styled(Subtitle)``;
+const ReviewTitle = styled(Subtitle)`
+  @media ${device.large} {
+    text-align: left;
+  }
+`;
 
 const ReviewText = styled(StyledH2)`
   padding: 2rem 2rem 0 2rem;
   text-align: center;
+
+  @media ${device.large} {
+    padding: 2rem 0;
+    text-align: left;
+  }
 `;
 
 const ReviewTag = styled(LabelSmall)`
@@ -20,6 +41,10 @@ const ReviewTag = styled(LabelSmall)`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  @media ${device.large} {
+    justify-content: left;
+  }
 `;
 
 const InstagramLogo = styled.img`
@@ -27,8 +52,24 @@ const InstagramLogo = styled.img`
 `;
 
 const InstagramProfileImage = styled(RemoteFixedImage)`
-  padding-top: 2rem;
-  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  max-width: 465px;
+  max-height: 465px;
+
+  @media ${device.large} {
+    margin-top: 0;
+  }
+`;
+
+const ReviewTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${device.large} {
+    align-content: flex-start;
+    padding: 4.5rem;
+    max-width: 50%;
+  }
 `;
 
 const ReviewTagText = styled(LabelSmall)``;
@@ -36,12 +77,15 @@ const ReviewTagText = styled(LabelSmall)``;
 const UserReviews = ({ text, instagramTag, image, asset }: UserReviewsConfiguration) => {
   return (
     <ReviewContainer>
-      <ReviewTitle>Historias Felices</ReviewTitle>
-      <ReviewText>{text}</ReviewText>
-      <ReviewTag>
-        <InstagramLogo src="/assets/Instagram.svg" />
-        <ReviewTagText>{instagramTag}</ReviewTagText>
-      </ReviewTag>
+      <ReviewTextContainer>
+        <ReviewTitle>Historias Felices</ReviewTitle>
+        <ReviewText>{text}</ReviewText>
+        <ReviewTag>
+          <InstagramLogo src="/assets/Instagram.svg" />
+          <ReviewTagText>{instagramTag}</ReviewTagText>
+        </ReviewTag>
+      </ReviewTextContainer>
+
       <InstagramProfileImage image={image} asset={asset} alt="instagram profile" />
     </ReviewContainer>
   );

@@ -9,10 +9,15 @@ const RecommendedContainer = styled(AlignedCenterContainer)`
   margin-top: 80px;
 `;
 
+const RecommendedTitle = styled(StyledH2)`
+  width: 150px;
+  margin: 0 auto 2.75rem auto;
+`;
+
 const Recommended = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {
   return (
     <RecommendedContainer>
-      <StyledH2>Favoritos del mes</StyledH2>
+      <RecommendedTitle>Favoritos del mes</RecommendedTitle>
       <Slider recommended={recommended} />
     </RecommendedContainer>
   );

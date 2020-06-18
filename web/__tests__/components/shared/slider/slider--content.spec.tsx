@@ -6,7 +6,7 @@ import SliderImage from '../../../../src/components/shared/slider/slider-image';
 import { mock as recommendedMock } from '../../../../__mocks__/recommended-configuration.mock';
 
 describe('SliderContent component', () => {
-  const styles = { transition: 100, translateValue: 100, width: 100 };
+  const styles = { translateValue: 100, width: 100 };
 
   it('should render', () => {
     const wrapper = shallow(<SliderContent values={styles} images={recommendedMock} />);
@@ -18,12 +18,6 @@ describe('SliderContent component', () => {
     const wrapper = mount(<SliderContent values={styles} images={recommendedMock} />);
 
     expect(wrapper.find('article')).toHaveStyleRule('transform', `translateX(${styles.translateValue}px)`);
-  });
-
-  it('transition style should come from props', () => {
-    const wrapper = mount(<SliderContent values={styles} images={recommendedMock} />);
-
-    expect(wrapper.find('article')).toHaveStyleRule('transition', `transform ease-out ${styles.transition}s`);
   });
 
   it('width style should come from props', () => {

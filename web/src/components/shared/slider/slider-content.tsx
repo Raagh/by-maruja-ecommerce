@@ -6,20 +6,19 @@ import { RecommendedConfiguration } from '../../../model/recommended-configurati
 
 const SliderContentContainer = styled.article<SliderContentConfiguration>`
   transform: translateX(${(props) => props.translateValue}px);
-  transition: transform ease-out ${(props) => props.transition}s;
   height: 90%;
   width: ${(props) => props.width}px;
   display: flex;
 `;
 
-const createImages = (image: RecommendedConfiguration, index: number) => {
-  return <SliderImage image={image.image} asset={image.asset} alt={image.name} key={index} />;
+const createImages = (image: RecommendedConfiguration, index: number, width: number) => {
+  return <SliderImage remoteImage={image} width={width} key={index} />;
 };
 
 const SliderContent = ({ values, images }: { values: SliderContentConfiguration; images: Array<RecommendedConfiguration> }) => {
   return (
-    <SliderContentContainer translateValue={values.translateValue} transition={values.transition} width={values.width * images.length}>
-      {images.map((image, index) => createImages(image, index))}
+    <SliderContentContainer translateValue={values.translateValue} width={images && values.width * images.length}>
+      {images && images.map((image, index) => createImages(image, index, values.width))}
     </SliderContentContainer>
   );
 };

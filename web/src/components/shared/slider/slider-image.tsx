@@ -1,17 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Image } from '../../../model/image';
-import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
+import { RecommendedConfiguration } from '../../../model/recommended-configuration';
+import RemoteResponsiveImage from '../image-types/remote-responsive-image';
 
-const SlideImage = styled(RemoteFixedSizeImage)`
-  width: 200px;
+type SlideRemoteResponsiveImage = {
+  width: number;
+};
+
+const SlideImage = styled(RemoteResponsiveImage)<SlideRemoteResponsiveImage>`
+  width: ${(props) => -props.width}px;
+  height: 360px;
+
+  object-fit: cover;
 `;
 
-const SliderImage = (props: Image) => {
+const SlideLink = styled.article`
+  margin: 0 1rem 0 1rem;
+`;
+
+const SliderImage = ({ remoteImage, width }: { remoteImage: RecommendedConfiguration; width: number }) => {
   return (
-    <a href="/">
-      <SlideImage image={props.image} asset={props.asset} alt={props.alt} />
-    </a>
+    <SlideLink>
+      <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} width={width} />
+    </SlideLink>
   );
 };
 

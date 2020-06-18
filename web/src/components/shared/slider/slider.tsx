@@ -45,7 +45,6 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       }
 
       const nextTranslateValue = styles.translateValue - (dragRef.current.lastMouseX - e.clientX);
-      console.log(nextTranslateValue);
       if (nextTranslateValue < 0 && nextTranslateValue > getWidth() * (recommended.length - 1)) {
         useStyles({
           translateValue: nextTranslateValue,

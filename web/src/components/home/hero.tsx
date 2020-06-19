@@ -33,12 +33,13 @@ const SubTitle = styled(BodyCopyRegularSmall)`
 
 const Img = styled(RemoteResponsiveImage)`
   width: 100%;
-  height: 80%;
+  height: 100%;
   margin-bottom: 1.5rem;
   object-fit: contain;
 
   @media ${device.large} {
-    height: 100%;
+    width: 70%;
+
     margin-bottom: 0;
   }
 `;
@@ -50,8 +51,8 @@ const HomeTitle = styled(StyledH1)`
 `;
 
 const HomeContainer = styled(AlignedCenterContainer)`
-  background-color: ${colors.ui.lightBackground};
   @media ${device.large} {
+    background-color: ${colors.ui.lightBackground};
     display: flex;
     flex-direction: row-reverse;
     height: 100%;

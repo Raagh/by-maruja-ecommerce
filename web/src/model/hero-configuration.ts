@@ -1,11 +1,8 @@
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
+import { ImageConfiguration } from './image-configuration';
 
-export type HeroConfiguration = {
+export type HeroConfiguration = ImageConfiguration & {
   title: string;
   subtitle: string;
-  image: SanityImageSource;
-  asset: SanityImageSourceAsset;
   buttonText: string;
   buttonURL: string;
 };

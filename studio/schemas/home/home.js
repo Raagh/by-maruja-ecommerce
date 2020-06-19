@@ -22,6 +22,11 @@ export default {
       type: "array",
       of: [{ type: "category" }],
     },
+    {
+      title: "Historias Felices",
+      name: "userReviews",
+      type: "userReviews",
+    },
   ],
   initialValue: () => ({
     homePageTitle: "Configuración Home",

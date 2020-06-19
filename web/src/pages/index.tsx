@@ -7,13 +7,24 @@ import ShippingInfo from '../components/home/shipping-info';
 import ProductCategories from '../components/home/categories/product-categories';
 import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
+import UserReviews from '../components/home/user-reviews';
+import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
 
-const Home = ({ hero, categories }: { hero: HeroConfiguration; categories: Array<CategoryConfiguration> }) => {
+const Home = ({
+  hero,
+  categories,
+  userReviews,
+}: {
+  hero: HeroConfiguration;
+  categories: Array<CategoryConfiguration>;
+  userReviews: UserReviewsConfiguration;
+}) => {
   return (
     <Layout>
       <Hero {...hero} />
       <ShippingInfo />
       <ProductCategories categories={categories} />
+      <UserReviews {...userReviews} />
     </Layout>
   );
 };
@@ -35,7 +46,14 @@ export const getServerSideProps = async () => {
             url,
             metadata 
          }
-       }
+       },
+       userReviews {
+        ...,
+        "asset": image.asset-> {
+          url,
+          metadata 
+        }
+      },
      }
   `
   );

@@ -17,6 +17,8 @@ export default () =>
       // List out the rest of the document types, but filter out the config type
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["homeSettings", "hero", "category"].includes(listItem.getId())
+          !["homeSettings", "hero", "category", "userReviews"].includes(
+            listItem.getId()
+          )
       ),
     ]);

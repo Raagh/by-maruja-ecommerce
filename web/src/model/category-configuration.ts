@@ -1,8 +1,5 @@
-import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { ImageConfiguration } from './image-configuration';
 
-export type CategoryConfiguration = {
+export type CategoryConfiguration = ImageConfiguration & {
   name: string;
-  image: SanityImageSource;
-  asset: SanityImageSourceAsset;
 };

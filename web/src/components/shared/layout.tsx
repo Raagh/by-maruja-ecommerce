@@ -4,7 +4,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { fonts, colors } from '../../config/global-styles';
 
 import NavBar from './navbar';
-import { device } from '../../config/device';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -38,11 +37,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Main = styled.main`
-  background-color: ${colors.ui.lightBackground};
-
-  @media ${device.large} {
-    background-color: ${colors.ui.whiteBackground};
-  }
+  background-color: ${colors.ui.whiteBackground};
 `;
 
 const Layout: FunctionComponent = (props) => {

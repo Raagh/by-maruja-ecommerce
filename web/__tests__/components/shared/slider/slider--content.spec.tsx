@@ -17,13 +17,13 @@ describe('SliderContent component', () => {
   it('transform style should come from props', () => {
     const wrapper = mount(<SliderContent values={styles} images={recommendedMock} />);
 
-    expect(wrapper.find('article')).toHaveStyleRule('transform', `translateX(${styles.translateValue}px)`);
+    expect(wrapper.find('article').first()).toHaveStyleRule('transform', `translateX(${styles.translateValue}px)`);
   });
 
   it('width style should come from props', () => {
     const wrapper = mount(<SliderContent values={styles} images={recommendedMock} />);
 
-    expect(wrapper.find('article')).toHaveStyleRule('width', `${styles.width * recommendedMock.length}px`);
+    expect(wrapper.find('article').first()).toHaveStyleRule('width', `${styles.width * recommendedMock.length}px`);
   });
 
   it('should render as many SliderImages as images are in the recommended props array', () => {

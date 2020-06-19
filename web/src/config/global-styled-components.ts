@@ -135,3 +135,23 @@ export const LinksSmall = styled.a`
 export const AlignedCenterContainer = styled.article`
   text-align: center;
 `;
+
+export const LabelLarge = styled.p`
+  font-family: ${typography.labels.large.regular.font.name};
+  font-style: normal;
+  font-weight: ${typography.labels.large.regular.font.fontWeight};
+  font-size: ${typography.labels.large.regular.fontSize};
+  line-height: ${typography.labels.large.regular.lineHeight};
+  letter-spacing: ${typography.labels.large.regular.letterSpacing};
+  color: ${colors.ui.darkSurface};
+`;
+
+export const LabelLargeBold = styled.p`
+  font-family: ${typography.labels.large.bold.font.name};
+  font-style: normal;
+  font-weight: ${typography.labels.large.bold.font.fontWeight};
+  font-size: ${typography.labels.large.bold.fontSize};
+  line-height: ${typography.labels.large.bold.lineHeight};
+  letter-spacing: ${typography.labels.large.bold.letterSpacing};
+  color: ${colors.ui.darkSurface};
+`;

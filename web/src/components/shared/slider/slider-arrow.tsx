@@ -7,8 +7,8 @@ const Arrow = styled.img<SliderArrowConfig>`
   position: absolute;
   top: 50%;
   ${(props) => (props.direction === 'right' ? 'right: 25px;' : 'left: 25px;')}
-  height: 50px;
-  width: 50px;
+  height: 20px;
+  width: 78px;
   ${(props) => props.direction === 'left' && 'transform: scaleX(-1)'}
 `;
 

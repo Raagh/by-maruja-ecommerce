@@ -7,6 +7,8 @@ import { RecommendedConfiguration } from '../../../model/recommended-configurati
 const SliderContainer = styled.article`
   width: 100vw;
   overflow: hidden;
+  padding: 0 4.5rem 0 4.5rem;
+  position: relative;
 `;
 
 const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {
@@ -45,7 +47,8 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       }
 
       const nextTranslateValue = styles.translateValue - (dragRef.current.lastMouseX - e.clientX);
-      if (nextTranslateValue < 0 && nextTranslateValue > getWidth() * (recommended.length - 1)) {
+
+      if (nextTranslateValue < 0 && nextTranslateValue > getWidth() * (recommended.length - 1) - 80) {
         useStyles({
           translateValue: nextTranslateValue,
           width: styles.width,
@@ -62,9 +65,9 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       onMouseLeave={handleMouseLeave}
       onMouseMove={(e: React.MouseEvent) => handleMouseMove(e)}
     >
-      <SliderContent values={styles} images={recommended} />$
-      {recommended && styles.translateValue < -getWidth() * recommended.length && <SliderArrow direction="right" />}$
-      {styles.translateValue > -getWidth() && <SliderArrow direction="left" />}
+      <SliderContent values={styles} images={recommended} />
+      {recommended && styles.translateValue > getWidth() * (recommended.length - 1) && <SliderArrow direction="right" />}
+      {styles.translateValue < -80 && <SliderArrow direction="left" />}
     </SliderContainer>
   );
 };

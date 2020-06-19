@@ -25,16 +25,28 @@ describe('Slider component', () => {
     expect(wrapper.find(SliderArrow).props().direction).toEqual('right');
   });
 
-  it('should change the translate values when the mouse is dragged', () => {
+  it('should correctly change the translate values when the mouse is dragged', () => {
     const wrapper = mount(<Slider recommended={recommendedMock} />);
     const translateBeforeDrag = wrapper.find(SliderContent).props().values.translateValue;
 
     wrapper.find(SliderContent).simulate('mousedown');
     wrapper.find(SliderContent).simulate('mousemove', { clientX: 100 });
-    wrapper.find(SliderContent).simulate('mousemove', { clientX: 101 });
+    wrapper.find(SliderContent).simulate('mousemove', { clientX: 99 });
 
     expect(typeof wrapper.find(SliderContent).props().values.translateValue).toEqual('number');
     expect(wrapper.find(SliderContent).props().values.translateValue).not.toEqual(NaN);
     expect(wrapper.find(SliderContent).props().values.translateValue).not.toEqual(translateBeforeDrag);
+  });
+
+  it('should render a single left arrow if mouse is dragged to the other end of the Slider', () => {
+    const wrapper = mount(<Slider recommended={recommendedMock} />);
+    const widthValue = wrapper.find(SliderContent).props().values.width;
+
+    wrapper.find(SliderContent).simulate('mousedown');
+    wrapper.find(SliderContent).simulate('mousemove', { clientX: 0 });
+    wrapper.find(SliderContent).simulate('mousemove', { clientX: widthValue * (recommendedMock.length - 1) });
+
+    expect(wrapper.find(SliderArrow).length).toEqual(1);
+    expect(wrapper.find(SliderArrow).props().direction).toEqual('left');
   });
 });

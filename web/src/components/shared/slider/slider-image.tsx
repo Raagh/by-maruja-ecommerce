@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
 import RemoteResponsiveImage from '../image-types/remote-responsive-image';
+import NameAndPrice from '../name-and-price';
 
 type SlideRemoteResponsiveImage = {
   width: number;
@@ -22,6 +23,7 @@ const SliderImage = ({ remoteImage, width }: { remoteImage: RecommendedConfigura
   return (
     <SlideLink>
       <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} width={width} />
+      <NameAndPrice name={remoteImage.name} price={remoteImage.price} />
     </SlideLink>
   );
 };

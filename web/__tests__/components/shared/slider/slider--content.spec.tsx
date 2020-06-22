@@ -6,7 +6,7 @@ import SliderImage from '../../../../src/components/shared/slider/slider-image';
 import { mock as recommendedMock } from '../../../../__mocks__/recommended-configuration.mock';
 
 describe('SliderContent component', () => {
-  const styles = { translateValue: 100, width: 100 };
+  const styles = { translateValue: 100, width: 100, imageMargin: 10 };
 
   it('should render', () => {
     const wrapper = shallow(<SliderContent values={styles} images={recommendedMock} />);
@@ -17,13 +17,7 @@ describe('SliderContent component', () => {
   it('transform style should come from props', () => {
     const wrapper = mount(<SliderContent values={styles} images={recommendedMock} />);
 
-    expect(wrapper.find('article').first()).toHaveStyleRule('transform', `translateX(${styles.translateValue}px)`);
-  });
-
-  it('width style should come from props', () => {
-    const wrapper = mount(<SliderContent values={styles} images={recommendedMock} />);
-
-    expect(wrapper.find('article').first()).toHaveStyleRule('width', `${styles.width * recommendedMock.length}px`);
+    expect(wrapper.find('article').first()).toHaveStyleRule('transform', `translateX(${-styles.translateValue}px)`);
   });
 
   it('should render as many SliderImages as images are in the recommended props array', () => {

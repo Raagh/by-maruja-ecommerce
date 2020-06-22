@@ -9,19 +9,19 @@ type SlideRemoteResponsiveImage = {
 };
 
 const SlideImage = styled(RemoteResponsiveImage)<SlideRemoteResponsiveImage>`
-  width: ${(props) => -props.width}px;
+  width: ${(props) => props.width}px;
   height: 360px;
 
   object-fit: cover;
 `;
 
-const SlideLink = styled.article`
-  margin: 0 1rem 0 1rem;
+const SlideLink = styled.article<{ marginValue: number }>`
+  margin: 0 ${(props) => props.marginValue}rem 0 ${(props) => props.marginValue}rem;
 `;
 
-const SliderImage = ({ remoteImage, width }: { remoteImage: RecommendedConfiguration; width: number }) => {
+const SliderImage = ({ remoteImage, width, margin }: { remoteImage: RecommendedConfiguration; width: number; margin: number }) => {
   return (
-    <SlideLink>
+    <SlideLink marginValue={margin}>
       <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} width={width} />
       <NameAndPrice name={remoteImage.name} price={remoteImage.price} />
     </SlideLink>

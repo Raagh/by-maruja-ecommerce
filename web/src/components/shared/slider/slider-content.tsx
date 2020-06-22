@@ -4,21 +4,21 @@ import { SliderContentConfiguration } from '../../../model/slider-content-config
 import SliderImage from './slider-image';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
 
-const SliderContentContainer = styled.article<SliderContentConfiguration>`
-  transform: translateX(${(props) => props.translateValue}px);
+const SliderContentContainer = styled.article<{ translateValue: number }>`
+  transform: translateX(${(props) => -props.translateValue}px);
   height: 90%;
-  width: ${(props) => props.width}px;
   display: flex;
+  width: 100%;
 `;
 
-const createImages = (image: RecommendedConfiguration, index: number, width: number) => {
-  return <SliderImage remoteImage={image} width={width} key={index} />;
+const createImages = (image: RecommendedConfiguration, index: number, width: number, margin: number) => {
+  return <SliderImage remoteImage={image} width={width} key={index} margin={margin} />;
 };
 
 const SliderContent = ({ values, images }: { values: SliderContentConfiguration; images: Array<RecommendedConfiguration> }) => {
   return (
-    <SliderContentContainer translateValue={values.translateValue} width={images && values.width * images.length}>
-      {images && images.map((image, index) => createImages(image, index, values.width))}
+    <SliderContentContainer translateValue={values.translateValue}>
+      {images && images.map((image, index) => createImages(image, index, values.width, values.imageMargin))}
     </SliderContentContainer>
   );
 };

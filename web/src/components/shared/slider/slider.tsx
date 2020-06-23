@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SliderContent from './slider-content';
 import SliderArrow from './slider-arrow';
+import SliderSteppers from './slider-steppers';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
 
 const SliderContainer = styled.article<{ padding: number }>`
@@ -21,14 +22,14 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
     translateValue: 0,
     width: 240,
     imageMargin: 1,
+    sliderContainerPadding: 4.5,
   });
-  const sliderContainerPadding = 4.5;
 
   const dragRef = useRef({
     dragging: false,
     initialDrag: true,
     lastMouseX: 0,
-    sliderTotalWidth: (styles.width + styles.imageMargin * 16) * recommended.length + sliderContainerPadding * 32,
+    sliderTotalWidth: (styles.width + styles.imageMargin * 16) * recommended.length + styles.sliderContainerPadding * 32,
   });
 
   const handleMouseDown = () => {
@@ -68,18 +69,21 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
           translateValue: 0,
           width: styles.width,
           imageMargin: styles.imageMargin,
+          sliderContainerPadding: styles.sliderContainerPadding,
         });
       } else if (beyondRightBoundry) {
         useStyles({
           translateValue: dragRef.current.sliderTotalWidth - windowWidth,
           width: styles.width,
           imageMargin: styles.imageMargin,
+          sliderContainerPadding: styles.sliderContainerPadding,
         });
       } else {
         useStyles({
           translateValue: nextTranslateValue,
           width: styles.width,
           imageMargin: styles.imageMargin,
+          sliderContainerPadding: styles.sliderContainerPadding,
         });
       }
       dragRef.current.lastMouseX = xCoordinate;
@@ -94,11 +98,12 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       onTouchMove={(e: React.TouchEvent) => handleTouchMove(e)}
       onTouchStart={handleMouseDown}
       onTouchEnd={handleMouseLeave}
-      padding={sliderContainerPadding}
+      padding={styles.sliderContainerPadding}
     >
       <SliderContent values={styles} images={recommended} />
       {recommended && styles.translateValue < dragRef.current.sliderTotalWidth - windowWidth - 1 && <SliderArrow direction="right" />}
       {styles.translateValue > 1 && <SliderArrow direction="left" />}
+      <SliderSteppers images={recommended} values={styles} />
     </SliderContainer>
   );
 };

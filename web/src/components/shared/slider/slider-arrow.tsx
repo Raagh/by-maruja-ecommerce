@@ -5,7 +5,7 @@ import { SliderArrowConfig } from '../../../model/slider-arrow-configuration';
 const Arrow = styled.img<SliderArrowConfig>`
   display: flex;
   position: absolute;
-  top: 50%;
+  top: 180px;
   ${(props) => (props.direction === 'right' ? 'right: 25px;' : 'left: 25px;')}
   height: 20px;
   width: 78px;

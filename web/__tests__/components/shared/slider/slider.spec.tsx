@@ -3,6 +3,7 @@ import React from 'react';
 import Slider from '../../../../src/components/shared/slider/slider';
 import SliderContent from '../../../../src/components/shared/slider/slider-content';
 import SliderArrow from '../../../../src/components/shared/slider/slider-arrow';
+import SliderSteppers from '../../../../src/components/shared/slider/slider-steppers';
 import { mock as recommendedMock } from '../../../../__mocks__/recommended-configuration.mock';
 
 describe('Slider component', () => {
@@ -86,5 +87,11 @@ describe('Slider component', () => {
 
     expect(wrapper.find(SliderArrow).length).toEqual(1);
     expect(wrapper.find(SliderArrow).props().direction).toEqual('left');
+  });
+
+  it('should render Steppers', () => {
+    const wrapper = mount(<Slider recommended={recommendedMock} />);
+
+    expect(wrapper.find(SliderSteppers).length).toEqual(1);
   });
 });

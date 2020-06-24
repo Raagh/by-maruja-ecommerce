@@ -5,7 +5,7 @@ import { SliderContentConfiguration } from '../../../model/slider-content-config
 import SliderIndividualStepper from './slider-individual-stepper';
 
 const SteppersContainer = styled.article`
-  margin-top: 3.75rem;
+  margin: 3.75rem 0 3.75rem 0;
 `;
 
 const createStepper = (key: string, index: number, styles: SliderContentConfiguration) => {

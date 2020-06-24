@@ -10,6 +10,9 @@ const SliderContainer = styled.article<{ padding: number }>`
   overflow: hidden;
   padding: 0 ${(props) => props.padding}rem 0 ${(props) => props.padding}rem;
   position: relative;
+  background-image: url('/assets/Background-Slider.svg'), url('/assets/Background-Slider-2.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom, 0% 30%;
 `;
 
 const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {

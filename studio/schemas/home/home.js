@@ -33,6 +33,11 @@ export default {
         },
       ],
     },
+    {
+      title: "Historias Felices",
+      name: "userReviews",
+      type: "userReviews",
+    },
   ],
   initialValue: () => ({
     homePageTitle: "Configuración Home",

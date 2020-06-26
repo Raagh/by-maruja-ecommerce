@@ -5,7 +5,7 @@ type LazyImageProps = {
   src: string;
   alt: string;
   className: string;
-  placeHolder: string;
+  placeholderSrc: string;
   srcSet?: string;
   sizes?: string;
 };
@@ -20,7 +20,7 @@ const StyledImg = styled.img<ImgProps>`
   background-image: ${(props: ImgProps) => `url(${props.placeHolder})`};
 `;
 
-const Image = ({ src, alt, className, placeHolder, srcSet, sizes }: LazyImageProps) => {
+const Image = ({ src, alt, className, placeholderSrc, srcSet, sizes }: LazyImageProps) => {
   const [image, setImage] = React.useState(null);
   const container = React.useRef();
 
@@ -53,7 +53,7 @@ const Image = ({ src, alt, className, placeHolder, srcSet, sizes }: LazyImagePro
 
   return (
     <StyledImg
-      placeHolder={placeHolder}
+      placeHolder={placeholderSrc}
       className={className}
       ref={container}
       srcSet={srcSet || ''}
@@ -61,7 +61,7 @@ const Image = ({ src, alt, className, placeHolder, srcSet, sizes }: LazyImagePro
       height="100%"
       width="100%"
       alt={alt}
-      src={image ? src : placeHolder}
+      src={image ? src : placeholderSrc}
     />
   );
 };

@@ -13,6 +13,7 @@ const DesktopContainer = styled.section`
     flex-direction: row;
     background: url('/assets/Background-Product-Categories-Desktop.svg') no-repeat center;
     background-size: 70%;
+    justify-content: center;
   }
 `;
 
@@ -20,7 +21,9 @@ const MobileContainer = styled.section`
   display: flex;
   flex-direction: row;
   background: url('/assets/Background-Product-Categories.svg') no-repeat center;
-
+  justify-content: center;
+  max-width: 500px;
+  margin: auto;
   @media ${device.large} {
     display: none;
   }
@@ -29,7 +32,7 @@ const MobileContainer = styled.section`
 const NormalColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin-right: 1.5rem;
 `;
 
@@ -37,7 +40,7 @@ const LoweredColumn = styled.article`
   display: flex;
   flex-direction: column;
   padding-top: 80px;
-  width: 50%;
+  width: 100%;
 
   @media ${device.large} {
     padding-right: 1.5rem;

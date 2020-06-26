@@ -21,3 +21,5 @@ export const builder = imageUrlBuilder(sanity);
 export const getDefaultImage = (image: SanityImageSource) => builder.image(image).auto('format');
 
 export const getImagePlaceholder = (asset: SanityImageSourceAsset) => (asset ? getImageAsset(asset).metadata.lqip : '');
+
+export const getImageMetadata = (asset: SanityImageSourceAsset) => (asset ? getImageAsset(asset).metadata : null);

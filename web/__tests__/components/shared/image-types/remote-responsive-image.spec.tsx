@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import RemoteResponsiveImage from '../../../../src/components/shared/image-types/remote-responsive-image';
+import LazyLoadImage from '../../../../src/components/shared/image-types/lazy-image';
 
 const image = {
   image: '',

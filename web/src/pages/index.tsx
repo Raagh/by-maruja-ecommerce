@@ -9,15 +9,19 @@ import ProductCategories from '../components/home/categories/product-categories'
 import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
+import UserReviews from '../components/home/user-reviews';
+import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
 
 const Home = ({
   hero,
   categories,
   recommended,
+  userReviews,
 }: {
   hero: HeroConfiguration;
   categories: Array<CategoryConfiguration>;
   recommended: Array<RecommendedConfiguration>;
+  userReviews: UserReviewsConfiguration;
 }) => {
   return (
     <Layout>
@@ -25,6 +29,7 @@ const Home = ({
       <ShippingInfo />
       <ProductCategories categories={categories} />
       <Recommended recommended={recommended} />
+      <UserReviews {...userReviews} />
     </Layout>
   );
 };
@@ -53,8 +58,15 @@ export const getServerSideProps = async () => {
             url,
             metadata 
          }
-       }
-    }
+       },
+       userReviews {
+        ...,
+        "asset": image.asset-> {
+          url,
+          metadata 
+        }
+      },
+     }
   `
   );
   return { props: { ...sanityResult } };

@@ -1,7 +1,8 @@
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { getDefaultImage, getImagePlaceholder } from '../../../../lib/sanity';
 import { RemoteImageProps } from './remote-image-props';
+import LazyLoadImage from './lazy-image';
 
 export default ({ className, image, alt, asset }: RemoteImageProps) => {
   return (
@@ -10,8 +11,6 @@ export default ({ className, image, alt, asset }: RemoteImageProps) => {
       alt={alt}
       src={getDefaultImage(image)?.url()}
       placeholderSrc={getImagePlaceholder(asset)}
-      draggable="false"
-      effect="blur"
       sizes=""
       srcSet={`
       ${getDefaultImage(image)?.width(600)} 600w,

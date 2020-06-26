@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LazyLoadImage from './lazy-image';
 import { RemoteImageProps } from './remote-image-props';
-import { getDefaultImage, getImagePlaceholder } from '../../../../lib/sanity';
+import { getDefaultImage, getImageMetadata } from '../../../../lib/sanity';
 
 export default ({ className, asset, alt, image }: RemoteImageProps) => {
-  return (
-    <LazyLoadImage className={className} alt={alt} src={getDefaultImage(image)?.url()} effect="blur" placeholderSrc={getImagePlaceholder(asset)} />
-  );
+  const metadata = getImageMetadata(asset);
+  return <LazyLoadImage className={className} alt={alt} src={getDefaultImage(image)?.url()} placeholderSrc={metadata?.lqip} />;
 };

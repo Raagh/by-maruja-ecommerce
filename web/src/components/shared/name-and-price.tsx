@@ -8,6 +8,7 @@ const NameAndPriceContainer = styled.article`
   margin-top: 1rem;
   justify-content: space-between;
   padding: 0 0.5rem 0 0.5rem;
+  user-select: none;
 `;
 
 const LabelLargeBoldAligned = styled(LabelLargeBold)`

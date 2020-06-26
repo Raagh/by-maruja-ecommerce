@@ -4,6 +4,7 @@ import SliderContent from './slider-content';
 import SliderArrow from './slider-arrow';
 import SliderSteppers from './slider-steppers';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
+import { device } from '../../../config/device';
 
 const SliderContainer = styled.article<{ padding: number }>`
   width: 100vw;
@@ -13,14 +14,24 @@ const SliderContainer = styled.article<{ padding: number }>`
   background-image: url('/assets/Background-Slider.svg'), url('/assets/Background-Slider-2.svg');
   background-repeat: no-repeat, no-repeat;
   background-position: bottom, 0% 30%;
+
+  @media ${device.large} {
+    background-image: url('/assets/Background-Slider-Desktop.svg'), url('/assets/Background-Slider-Desktop-2.svg');
+    background-repeat: repeat-x, no-repeat;
+    background-position: left bottom, 0% 38%;
+    background-size: auto, 100%;
+    padding: 0 ${(props) => props.padding}rem 12rem ${(props) => props.padding}rem;
+  }
 `;
 
 const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {
   const [windowWidth, useWindowWidth] = useState(0);
+  const desktopWidth = parseInt(device.large.match(/\d+/)[0]);
   useEffect(() => {
     useWindowWidth(window.innerWidth);
     window.addEventListener('resize', () => useWindowWidth(window.innerWidth));
   }, []);
+
   const [styles, useStyles] = useState({
     translateValue: 0,
     width: 240,
@@ -35,8 +46,20 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
     sliderTotalWidth: (styles.width + styles.imageMargin * 16) * recommended.length + styles.sliderContainerPadding * 32,
   });
 
+  const properWidth = windowWidth >= desktopWidth ? 330 : 240;
+
+  if (styles.width != properWidth) {
+    useStyles({
+      translateValue: styles.translateValue,
+      width: properWidth,
+      imageMargin: styles.imageMargin,
+      sliderContainerPadding: styles.sliderContainerPadding,
+    });
+    dragRef.current.sliderTotalWidth = (properWidth + styles.imageMargin * 16) * recommended.length + styles.sliderContainerPadding * 32;
+  }
+
   const handleMouseDown = () => {
-    dragRef.current.dragging = true;
+    if (windowWidth < dragRef.current.sliderTotalWidth) dragRef.current.dragging = true;
   };
 
   const handleMouseUp = () => {

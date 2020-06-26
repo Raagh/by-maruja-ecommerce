@@ -10,6 +10,7 @@ export default ({ className, image, alt, asset }: RemoteImageProps) => {
       alt={alt}
       src={getDefaultImage(image)?.url()}
       placeholderSrc={getImagePlaceholder(asset)}
+      draggable="false"
       effect="blur"
       sizes=""
       srcSet={`

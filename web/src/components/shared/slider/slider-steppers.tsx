@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
 import { SliderContentConfiguration } from '../../../model/slider-content-configuration';
 import SliderIndividualStepper from './slider-individual-stepper';
+import { device } from '../../../config/device';
 
 const SteppersContainer = styled.article`
   margin: 3.75rem 0 3.75rem 0;
+
+  @media ${device.large} {
+    display: none;
+  }
 `;
 
 const createStepper = (key: string, index: number, styles: SliderContentConfiguration) => {

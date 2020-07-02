@@ -23,6 +23,17 @@ export default {
       of: [{ type: "category" }],
     },
     {
+      title: "Recomendados",
+      name: "recommended",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "product" }],
+        },
+      ],
+    },
+    {
       title: "Historias Felices",
       name: "userReviews",
       type: "userReviews",

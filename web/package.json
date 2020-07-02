@@ -61,6 +61,7 @@
     "eslint-plugin-react": "7.20.0",
     "eslint-plugin-react-hooks": "4.0.2",
     "jest": "^25.4.0",
+    "jest-styled-components": "^7.0.2",
     "node-mocks-http": "^1.8.1",
     "prettier": "2.0.5",
     "prettier-eslint": "9.0.1",

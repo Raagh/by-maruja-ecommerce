@@ -7,13 +7,13 @@ import { mock as stylesMock } from '../../../../__mocks__/styles-configuration.m
 
 describe('SliderSteppers component', () => {
   it('should render', () => {
-    const wrapper = shallow(<SliderSteppers images={recommendedMock} values={stylesMock} />);
+    const wrapper = shallow(<SliderSteppers images={recommendedMock} values={stylesMock} windowWidth={1000} />);
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
   it('should render as many SliderIndividualStepper components as quantity received by props', () => {
-    const wrapper = mount(<SliderSteppers images={recommendedMock} values={stylesMock} />);
+    const wrapper = mount(<SliderSteppers images={recommendedMock} values={stylesMock} windowWidth={1000} />);
 
     expect(wrapper.find(SliderIndividualStepper).length).toEqual(recommendedMock.length);
   });

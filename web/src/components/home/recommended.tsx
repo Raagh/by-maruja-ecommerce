@@ -15,7 +15,7 @@ const RecommendedTitle = styled(StyledH2)`
   margin: 0 auto 2.75rem auto;
   @media ${device.large} {
     width: 100%;
-    padding-left: 6rem;
+    padding-left: 5vw;
     text-align: left;
   }
 `;

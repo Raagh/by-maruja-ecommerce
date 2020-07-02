@@ -9,18 +9,15 @@ import { device } from '../../../config/device';
 const SliderContainer = styled.article<{ padding: number }>`
   width: 100vw;
   overflow: hidden;
-  padding: 0 ${(props) => props.padding}rem 0 ${(props) => props.padding}rem;
+  padding: 0 ${(props) => props.padding}vw 0 ${(props) => props.padding}vw;
   position: relative;
-  background-image: url('/assets/Background-Slider.svg'), url('/assets/Background-Slider-2.svg');
-  background-repeat: no-repeat, no-repeat;
-  background-position: bottom, 0% 30%;
-
-  @media ${device.large} {
-    background-image: url('/assets/Background-Slider-Desktop.svg'), url('/assets/Background-Slider-Desktop-2.svg');
-    background-repeat: repeat-x, no-repeat;
-    background-position: left bottom, 0% 38%;
-    background-size: auto, 100%;
-    padding: 0 ${(props) => props.padding}rem 12rem ${(props) => props.padding}rem;
+  background-image: url('/assets/Background-Slider.svg');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100%;
+  @media ${device.medium} {
+    background-image: url('/assets/Background-Slider-Desktop.svg');
+    padding: 0 6rem 6.5rem 6rem;
   }
 `;
 
@@ -36,14 +33,14 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
     translateValue: 0,
     width: 240,
     imageMargin: 1,
-    sliderContainerPadding: 4.5,
+    sliderContainerPadding: 15,
   });
 
   const dragRef = useRef({
     dragging: false,
     initialDrag: true,
     lastMouseX: 0,
-    sliderTotalWidth: (styles.width + styles.imageMargin * 16) * recommended.length + styles.sliderContainerPadding * 32,
+    sliderTotalWidth: (styles.width + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * styles.sliderContainerPadding,
   });
 
   const properWidth = windowWidth >= desktopWidth ? 330 : 240;
@@ -53,12 +50,15 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       translateValue: styles.translateValue,
       width: properWidth,
       imageMargin: styles.imageMargin,
-      sliderContainerPadding: styles.sliderContainerPadding,
+      sliderContainerPadding: 5,
     });
-    dragRef.current.sliderTotalWidth = (properWidth + styles.imageMargin * 16) * recommended.length + styles.sliderContainerPadding * 32;
+    dragRef.current.sliderTotalWidth = (properWidth + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * 5;
   }
 
   const handleMouseDown = () => {
+    dragRef.current.sliderTotalWidth =
+      (styles.width + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * styles.sliderContainerPadding;
+
     if (windowWidth < dragRef.current.sliderTotalWidth) dragRef.current.dragging = true;
   };
 
@@ -86,18 +86,18 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
         dragRef.current.lastMouseX = xCoordinate;
         dragRef.current.initialDrag = false;
       }
-      const nextTranslateValue = styles.translateValue + (dragRef.current.lastMouseX - xCoordinate);
-      const beyondLeftBoundry = nextTranslateValue < 0;
-      const beyondRightBoundry = nextTranslateValue > dragRef.current.sliderTotalWidth - windowWidth;
+      const nextTranslateValue = styles.translateValue + ((dragRef.current.lastMouseX - xCoordinate) / 100) * 150;
+      const beyondLeftBoundary = nextTranslateValue < 0;
+      const beyondRightBoundary = nextTranslateValue > dragRef.current.sliderTotalWidth - windowWidth;
 
-      if (beyondLeftBoundry) {
+      if (beyondLeftBoundary) {
         useStyles({
           translateValue: 0,
           width: styles.width,
           imageMargin: styles.imageMargin,
           sliderContainerPadding: styles.sliderContainerPadding,
         });
-      } else if (beyondRightBoundry) {
+      } else if (beyondRightBoundary) {
         useStyles({
           translateValue: dragRef.current.sliderTotalWidth - windowWidth,
           width: styles.width,
@@ -115,6 +115,7 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       dragRef.current.lastMouseX = xCoordinate;
     }
   };
+
   return (
     <SliderContainer
       onMouseDown={handleMouseDown}
@@ -127,9 +128,9 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       padding={styles.sliderContainerPadding}
     >
       <SliderContent values={styles} images={recommended} />
-      {recommended && styles.translateValue < dragRef.current.sliderTotalWidth - windowWidth - 1 && <SliderArrow direction="right" />}
-      {styles.translateValue > 1 && <SliderArrow direction="left" />}
-      <SliderSteppers images={recommended} values={styles} />
+      {styles.translateValue < dragRef.current.sliderTotalWidth - windowWidth - 1 && <SliderArrow direction="right" />}
+      {styles.translateValue > styles.width / 2 && <SliderArrow direction="left" />}
+      <SliderSteppers windowWidth={windowWidth} images={recommended} values={styles} />
     </SliderContainer>
   );
 };

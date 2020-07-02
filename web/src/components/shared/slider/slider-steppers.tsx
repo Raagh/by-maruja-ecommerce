@@ -13,9 +13,9 @@ const SteppersContainer = styled.article`
   }
 `;
 
-const createStepper = (key: string, index: number, styles: SliderContentConfiguration) => {
+const createStepper = (key: string, index: number, styles: SliderContentConfiguration, windowWidth: number) => {
   let productSelected = false;
-  const lowerLimit = (styles.sliderContainerPadding + styles.imageMargin) * 16 + styles.width / 2;
+  const lowerLimit = (windowWidth / 100) * styles.sliderContainerPadding + styles.imageMargin * 16 + styles.width / 2;
   const imageAndMarginWidth = styles.width + styles.imageMargin * 16;
   const minTranslatePositionForVisibleProduct = lowerLimit + (index - 1) * imageAndMarginWidth;
   const productIsMostVisible =
@@ -26,8 +26,16 @@ const createStepper = (key: string, index: number, styles: SliderContentConfigur
   return <SliderIndividualStepper chosen={productSelected} key={key + index} />;
 };
 
-const SliderSteppers = ({ values, images }: { values: SliderContentConfiguration; images: Array<RecommendedConfiguration> }) => {
-  return <SteppersContainer>{images && images.map((image, index) => createStepper(image.name, index, values))}</SteppersContainer>;
+const SliderSteppers = ({
+  windowWidth,
+  values,
+  images,
+}: {
+  windowWidth: number;
+  values: SliderContentConfiguration;
+  images: Array<RecommendedConfiguration>;
+}) => {
+  return <SteppersContainer>{images && images.map((image, index) => createStepper(image.name, index, values, windowWidth))}</SteppersContainer>;
 };
 
 export default SliderSteppers;

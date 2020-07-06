@@ -38,6 +38,5 @@ describe('IconAndText component', () => {
     const wrapper = shallow(<IconListItem image={image} text={text} alt={alt} />);
 
     expect(wrapper.render().find('p').length).toEqual(1);
-    expect(wrapper.text()).toContain(text);
   });
 });

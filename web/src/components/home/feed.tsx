@@ -82,9 +82,9 @@ const Feed = () => {
 
       {items.length !== 0 && (
         <ImagesContainer>
-          <Image alt="first" src={items[0]} />
-          <Image alt="second" src={items[1]} />
-          <Image alt="third" src={items[2]} />
+          {items.map((x) => (
+            <Image key={x} src={x} />
+          ))}
         </ImagesContainer>
       )}
     </FeedContainer>

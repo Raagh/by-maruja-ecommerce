@@ -10,6 +10,8 @@ module.exports = (phase, { defaultConfig }) => {
         sanityAccessToken: process.env.SANITY_ACCESS_TOKEN,
         sanityDataset: process.env.SANITY_DATASET,
         sanityProjectId: process.env.SANITY_PROJECT_ID,
+        instagramUser: process.env.INSTAGRAM_USER,
+        instagramPassword: process.env.INSTAGRAM_PASSWORD,
       },
     };
   }
@@ -22,6 +24,8 @@ module.exports = (phase, { defaultConfig }) => {
       sanityAccessToken: process.env.SANITY_ACCESS_TOKEN,
       sanityDataset: process.env.SANITY_DATASET,
       sanityProjectId: process.env.SANITY_PROJECT_ID,
+      instagramUser: process.env.INSTAGRAM_USER,
+      instagramPassword: process.env.INSTAGRAM_PASSWORD,
     },
   };
 };

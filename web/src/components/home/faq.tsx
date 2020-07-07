@@ -11,8 +11,7 @@ const FaqContainer = styled(AlignedCenterContainer)`
 `;
 
 const createAccordionContent = (question: string, answer: string, index: number) => {
-  console.log(question, answer);
-  return <Accordion key={index} />;
+  return <Accordion question={question} answer={answer} key={index} />;
 };
 
 const Faq = () => {

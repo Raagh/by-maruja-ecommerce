@@ -5,9 +5,8 @@ import { pipe } from 'fp-ts/lib/pipeable';
 
 const ig = new IgApiClient();
 
-const mapFeedItemsToCandidates = (feedItems: UserFeedResponseItemsItem[]) => {
-  return feedItems.flatMap((x) => x.image_versions2?.candidates.filter((y) => y.width === 360)).filter((_, index) => index < 3);
-};
+const mapFeedItemsToUrls = (feedItems: UserFeedResponseItemsItem[]) =>
+  feedItems.flatMap((x) => x.image_versions2?.candidates.filter((y) => y.width === 360).map((y) => y.url)).filter((_, index) => index < 3);
 
 export const getInstagramFeed = async () => {
   ig.state.generateDevice(process.env.instagramUser);
@@ -15,5 +14,5 @@ export const getInstagramFeed = async () => {
   const loggedInUser = await ig.account.login(process.env.instagramUser, process.env.instagramPassword);
   const userFeed = ig.feed.user(loggedInUser.pk);
 
-  return pipe(map(mapFeedItemsToCandidates)(tryCatch(() => userFeed.items(), toError)));
+  return pipe(map(mapFeedItemsToUrls)(tryCatch(() => userFeed.items(), toError)));
 };

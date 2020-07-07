@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { UserFeedResponseCandidatesItem } from 'instagram-private-api';
 import { BodyCopyRegularSmall } from '../../config/global-styled-components';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
 import LazyLoadImage from '../shared/image-types/lazy-image';
 
 const FeedContainer = styled.section`
-  margin: 0 auto 0 auto;
   padding: 2rem;
   text-align: center;
   background-color: ${colors.ui.grey5percent};
@@ -18,7 +16,6 @@ const FeedContainer = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    min-width: 1600px;
   }
 `;
 
@@ -46,6 +43,7 @@ const ImagesContainer = styled.article`
   margin-top: 2rem;
   display: flex;
   flex-direction: row;
+  height: 155px;
 
   img:nth-child(3) {
     display: none;
@@ -62,15 +60,29 @@ const ImagesContainer = styled.article`
 
 const Image = styled(LazyLoadImage)`
   max-width: 50%;
+  object-fit: cover;
   padding: 0.5rem;
+
+  @media ${device.large} {
+    width: 350px;
+  }
 `;
 
 const Feed = () => {
-  const [items, setItems] = useState([]);
+  const placeholder =
+    'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAJAA4DASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAlEAABAgQEBwAAAAAAAAAAAAABAgMABAYRBRIhMRM0NXGBkbL/xAAVAQEBAAAAAAAAAAAAAAAAAAABA//EABoRAAICAwAAAAAAAAAAAAAAAAECABIDERP/2gAMAwEAAhEDEQA/AAaWpluWZM5OKYmV3HACX0hYJ1JIzaWNt/Rg+qMQcUzKsmWQXGhYvFGVat9DY7RHhvTF90fKoFq7nfAh57axkmKrjqBP/9k=';
+  const [items, setItems] = useState([placeholder, placeholder, placeholder]);
+  const [areItemsLoaded, setItemsLoaded] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/instagram-feed').then((result) => setItems(result.data.map((x: UserFeedResponseCandidatesItem) => x.url)));
-  }, []);
+    if (!areItemsLoaded) {
+      setItemsLoaded(true);
+      axios.get('/api/instagram-feed').then((result) => {
+        setItems([]);
+        setItems(result.data);
+      });
+    }
+  }, [areItemsLoaded]);
 
   return (
     <FeedContainer>
@@ -83,8 +95,8 @@ const Feed = () => {
 
       {items.length !== 0 && (
         <ImagesContainer>
-          {items.map((x) => (
-            <Image alt="feed-image" key={x} src={x} placeholderSrc="/assets/lqip.png" />
+          {items.map((x, index) => (
+            <Image alt="feed-image" key={index} src={x} placeholderSrc={placeholder} />
           ))}
         </ImagesContainer>
       )}

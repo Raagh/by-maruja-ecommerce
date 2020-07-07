@@ -5,6 +5,7 @@ import { UserFeedResponseCandidatesItem } from 'instagram-private-api';
 import { BodyCopyRegularSmall } from '../../config/global-styled-components';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
+import LazyLoadImage from '../shared/image-types/lazy-image';
 
 const FeedContainer = styled.section`
   margin: 0 auto 0 auto;
@@ -59,7 +60,7 @@ const ImagesContainer = styled.article`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(LazyLoadImage)`
   max-width: 50%;
   padding: 0.5rem;
 `;
@@ -83,7 +84,7 @@ const Feed = () => {
       {items.length !== 0 && (
         <ImagesContainer>
           {items.map((x) => (
-            <Image key={x} src={x} />
+            <Image alt="feed-image" key={x} src={x} placeholderSrc="/assets/lqip.png" />
           ))}
         </ImagesContainer>
       )}

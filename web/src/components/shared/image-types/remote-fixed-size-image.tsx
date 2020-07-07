@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LazyLoadImage from './lazy-image';
 import { RemoteImageProps } from './remote-image-props';
 import { getDefaultImage, getImageMetadata } from '../../../../lib/sanity';

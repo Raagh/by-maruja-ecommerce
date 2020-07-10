@@ -11,6 +11,7 @@ import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import UserReviews from '../components/home/user-reviews';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
+import Faq from '../components/home/faq';
 
 const Home = ({
   hero,
@@ -30,6 +31,7 @@ const Home = ({
       <ProductCategories categories={categories} />
       <Recommended recommended={recommended} />
       <UserReviews {...userReviews} />
+      <Faq />
     </Layout>
   );
 };

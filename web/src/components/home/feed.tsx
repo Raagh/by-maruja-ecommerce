@@ -43,15 +43,12 @@ const ImagesContainer = styled.article`
   margin-top: 2rem;
   display: flex;
   flex-direction: row;
-  height: 155px;
 
   img:nth-child(3) {
     display: none;
   }
 
   @media ${device.large} {
-    height: 350px;
-
     img {
       display: block !important;
     }

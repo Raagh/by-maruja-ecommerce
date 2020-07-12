@@ -1,27 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 
 type LazyImageProps = {
   src: string;
   alt: string;
-  className: string;
+  className?: string;
   placeholderSrc: string;
   srcSet?: string;
   sizes?: string;
 };
 
-type ImgProps = {
-  placeHolder: string;
-};
-
-const StyledImg = styled.img<ImgProps>`
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: ${(props: ImgProps) => `url(${props.placeHolder})`};
-`;
-
-const Image = ({ src, alt, className, placeholderSrc, srcSet, sizes }: LazyImageProps) => {
-  const [image, setImage] = React.useState(null);
+const LazyImage = ({ src, alt, className, placeholderSrc, srcSet, sizes }: LazyImageProps) => {
+  const [image, setImage] = React.useState(placeholderSrc);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [usableSrcSet, setSrcSet] = React.useState('');
   const container = React.useRef();
 
   React.useEffect(() => {
@@ -36,34 +27,48 @@ const Image = ({ src, alt, className, placeholderSrc, srcSet, sizes }: LazyImage
         (intersections) => {
           const isShowing = intersections[0]?.isIntersecting;
 
-          if (isShowing) {
-            setImage(src);
+          if (isShowing && !isLoading) {
+            const fullImage = new Image();
+
+            if (srcSet) {
+              fullImage.srcset = srcSet;
+            } else {
+              fullImage.src = src;
+            }
+
+            setIsLoading(true);
+
+            fullImage.onload = () => {
+              if (srcSet) {
+                setSrcSet(srcSet);
+              } else {
+                setImage(src);
+              }
+            };
           }
         },
         { rootMargin: '45px' }
       );
 
       observer.observe(container.current);
-    } else {
-      setImage('');
     }
 
     return () => observer?.disconnect();
-  }, [src]);
+  }, [src, isLoading, image, setImage, usableSrcSet, setSrcSet, srcSet]);
 
   return (
-    <StyledImg
-      placeHolder={placeholderSrc}
+    <img
+      placeholder="lazy-loaded-image"
       className={className}
       ref={container}
-      srcSet={srcSet || ''}
+      srcSet={usableSrcSet}
       sizes={sizes || ''}
       height="100%"
       width="100%"
       alt={alt}
-      src={image ? src : placeholderSrc}
+      src={image}
     />
   );
 };
 
-export default Image;
+export default LazyImage;

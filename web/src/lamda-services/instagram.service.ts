@@ -6,7 +6,9 @@ import { pipe } from 'fp-ts/lib/pipeable';
 const ig = new IgApiClient();
 
 const mapFeedItemsToUrls = (feedItems: UserFeedResponseItemsItem[]) =>
-  feedItems.flatMap((x) => x.image_versions2?.candidates.filter((y) => y.width === 360).map((y) => y.url)).filter((_, index) => index < 3);
+  feedItems
+    .flatMap((x) => x.image_versions2?.candidates.filter((y) => y.width === 360).map((y) => y.url))
+    .filter((_, index) => index < 3);
 
 export const getInstagramFeed = async () => {
   ig.state.generateDevice(process.env.instagramUser);

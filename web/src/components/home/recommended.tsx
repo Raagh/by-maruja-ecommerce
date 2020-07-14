@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from '../shared/slider/slider';
 import { RecommendedConfiguration } from '../../model/recommended-configuration';
-import { AlignedCenterContainer } from '../../config/global-styled-components';
-import { StyledH2 } from '../../config/global-styled-components';
+import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import { device } from '../../config/device';
 
 const RecommendedContainer = styled(AlignedCenterContainer)`

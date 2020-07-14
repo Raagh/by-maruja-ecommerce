@@ -6,10 +6,12 @@ import Hero from '../components/home/hero';
 import ShippingInfo from '../components/home/shipping-info';
 import Recommended from '../components/home/recommended';
 import ProductCategories from '../components/home/categories/product-categories';
+import Feed from '../components/home/feed';
+import UserReviews from '../components/home/user-reviews';
+
 import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
-import UserReviews from '../components/home/user-reviews';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
 import Faq from '../components/home/faq';
 
@@ -31,6 +33,7 @@ const Home = ({
       <ProductCategories categories={categories} />
       <Recommended recommended={recommended} />
       <UserReviews {...userReviews} />
+      <Feed />
       <Faq />
     </Layout>
   );

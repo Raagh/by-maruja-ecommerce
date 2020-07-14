@@ -8,5 +8,5 @@ import { replyError, replyOk } from '../../lamda-services/http-helpers';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   configureMercadoPagoSDK();
 
-  await fold(replyError(res), replyOk(res))(createPaymentLink(req.body))();
+  await fold(replyError(res), replyOk<string>(res))(createPaymentLink(req.body))();
 };

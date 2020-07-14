@@ -26,13 +26,19 @@ it('should render the title', () => {
 it('should render a button', () => {
   const wrapper = render(<Index {...product} />);
 
-  expect(wrapper.find('button').length).toEqual(1);
+  expect(wrapper.find('button').length).toEqual(2);
 });
 
 it('button should say "Call MercadoPago"', () => {
   const wrapper = render(<Index {...product} />);
 
-  expect(wrapper.find('button').text()).toEqual('Call MercadoPago');
+  expect(wrapper.find('button').text()).toContain('Call MercadoPago');
+});
+
+it('button should say "Call Instagram Feed"', () => {
+  const wrapper = render(<Index {...product} />);
+
+  expect(wrapper.find('button').text()).toContain('Call Instagram Feed');
 });
 
 it('when button is clicked the api request should have the correct values', () => {
@@ -40,7 +46,7 @@ it('when button is clicked the api request should have the correct values', () =
   const mockedPost = mocked(axios.post);
   mockedPost.mockResolvedValue(paymentDataReponse.response.init_point);
 
-  wrapper.find('button').simulate('click');
+  wrapper.find('button').first().simulate('click');
 
   expect(axios.post).toBeCalledTimes(1);
   expect(axios.post).toBeCalledWith('/api/create-payment', paymentDataRequest);

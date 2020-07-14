@@ -60,6 +60,10 @@ const Index = (product: Product) => {
     axios.post('/api/create-payment', paymentDataRequest).then((result) => setButtonText(result.data));
   };
 
+  const contactInstagramFeed = () => {
+    axios.get('/api/instagram-feed').then(console.log);
+  };
+
   return (
     <Layout>
       <Container>
@@ -75,6 +79,9 @@ const Index = (product: Product) => {
           <br />
           <button type="button" onClick={contactCreatePayment}>
             Call MercadoPago
+          </button>
+          <button type="button" onClick={contactInstagramFeed}>
+            Call Instagram Feed
           </button>
           <br />
           <p id="buttonText">{buttonText}</p>

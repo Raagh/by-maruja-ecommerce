@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
-import RemoteResponsiveImage from '../image-types/remote-responsive-image';
 import NameAndPrice from '../name-and-price';
 import { device } from '../../../config/device';
+import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
 
 type SlideRemoteResponsiveImage = {
   width: number;
 };
 
-const SlideImage = styled(RemoteResponsiveImage)<SlideRemoteResponsiveImage>`
+const SlideImage = styled(RemoteFixedSizeImage)<SlideRemoteResponsiveImage>`
   width: ${(props) => props.width}px;
   height: 360px;
   user-select: none;

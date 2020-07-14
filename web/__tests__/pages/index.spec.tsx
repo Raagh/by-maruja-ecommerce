@@ -35,49 +35,65 @@ const recommended = [
 
 describe('Home Page', () => {
   it('should render', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = shallow(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
   it('should render navbar', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(NavBar).exists()).toBeTruthy();
   });
 
   it('should render hero', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(Hero).exists()).toBeTruthy();
   });
 
   it('should render shipping information', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(ShippingInfo).exists()).toBeTruthy();
   });
 
   it('should render product categories', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(ProductCategories).exists()).toBeTruthy();
   });
 
   it('should render recommended component', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(Recommended).exists()).toBeTruthy();
   });
 
   it('should render user reviews', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(UserReviews).exists()).toBeTruthy();
   });
 
   it('should render faq', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />);
+    const wrapper = mount(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.find(Faq).exists()).toBeTruthy();
   });

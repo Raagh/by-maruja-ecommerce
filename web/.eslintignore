@@ -8,3 +8,4 @@ jest.config.js
 next-env.d.ts
 __mocks__
 **/**.d.ts
+__tests__

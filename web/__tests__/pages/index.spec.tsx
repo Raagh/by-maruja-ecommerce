@@ -10,8 +10,22 @@ import ShippingInfo from '../../src/components/home/shipping-info';
 import ProductCategories from '../../src/components/home/categories/product-categories';
 import NavBar from '../../src/components/shared/navbar';
 import Recommended from '../../src/components/home/recommended';
-import { HeroConfiguration } from '../../src/model/hero-configuration';
 import UserReviews from '../../src/components/home/user-reviews';
+import { HeroConfiguration } from '../../src/model/hero-configuration';
+import { mocked } from 'ts-jest/utils';
+import axios from 'axios';
+import { act } from 'react-dom/test-utils';
+import Feed from '../../src/components/home/feed';
+
+jest.mock('axios');
+
+const mockSetState = jest.fn();
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: (initial: any) => [initial, mockSetState],
+}));
+
+const feedMock = ['url1', 'url2'];
 
 const hero: HeroConfiguration = {
   title: '',
@@ -34,44 +48,30 @@ const recommended = [
 
 describe('Home Page', () => {
   it('should render', () => {
-    const wrapper = shallow(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
+    const wrapper = shallow(
+      <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+    );
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('should render navbar', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
+  it('should render all components', () => {
+    const mockedGet = mocked(axios.get);
+    mockedGet.mockResolvedValue(feedMock);
+
+    let wrapper = {} as any;
+    act(() => {
+      wrapper = mount(
+        <Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview} />
+      );
+    });
 
     expect(wrapper.find(NavBar).exists()).toBeTruthy();
-  });
-
-  it('should render hero', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
-
     expect(wrapper.find(Hero).exists()).toBeTruthy();
-  });
-
-  it('should render shipping information', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
-
     expect(wrapper.find(ShippingInfo).exists()).toBeTruthy();
-  });
-
-  it('should render product categories', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
-
     expect(wrapper.find(ProductCategories).exists()).toBeTruthy();
-  });
-
-  it('should render recommended component', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
-
     expect(wrapper.find(Recommended).exists()).toBeTruthy();
-  });
-
-  it('should render user reviews', () => {
-    const wrapper = mount(<Home hero={hero} categories={categoriesMock} recommended={recommended} userReviews={userReview}/>);
-
     expect(wrapper.find(UserReviews).exists()).toBeTruthy();
+    expect(wrapper.find(Feed).exists()).toBeTruthy();
   });
 });

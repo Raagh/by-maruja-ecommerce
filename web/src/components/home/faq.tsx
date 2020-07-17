@@ -10,14 +10,18 @@ const FaqContainer = styled(AlignedCenterContainer)`
   margin-top: 80px;
 `;
 
+const FaqTitle = styled(StyledH2)`
+  margin-bottom: 2.5rem;
+`;
+
 const createAccordionContent = (question: string, answer: string, index: number) => {
-  return <Accordion question={question} answer={answer} key={index} />;
+  return <Accordion question={question} answer={answer} key={index} index={index} />;
 };
 
 const Faq = () => {
   return (
     <FaqContainer>
-      <StyledH2>Preguntas frecuentes</StyledH2>
+      <FaqTitle>Preguntas frecuentes</FaqTitle>
       {FaqJson.data.map((question, index) => createAccordionContent(question.question, question.answer, index))}
       <Button text={'LEER MÁS'} url={'/'} />
     </FaqContainer>

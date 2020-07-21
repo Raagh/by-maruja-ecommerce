@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BodyCopyBoldSmall } from '../../../config/global-styled-components';
+import { device } from '../../../config/device';
 
 const AccordionQuestionContainer = styled.div`
   display: flex;
-
+  justify-content: space-between;
   margin-top: 1.5rem;
-  max-width: 490px;
+  @media ${device.large} {
+    margin-top: 0;
+  }
 `;
 
 const AccordionQuestionText = styled(BodyCopyBoldSmall)`

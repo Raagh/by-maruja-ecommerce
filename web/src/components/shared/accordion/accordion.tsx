@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BodyCopyRegularSmall } from '../../../config/global-styled-components';
-import { colors } from '../../../config/global-styles';
 import AccordionQuestion from './accordion-question';
 import { device } from '../../../config/device';
 
 const AccordionContainer = styled.article<{ index: number }>`
-  border-bottom: 1px solid ${colors.ui.darkSurface};
   border-bottom: 1px solid rgba(81, 50, 50, 0.1);
 
   margin: 0 2rem 0 2rem;

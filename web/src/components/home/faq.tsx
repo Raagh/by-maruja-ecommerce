@@ -8,11 +8,13 @@ import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';
 
 const FaqContainer = styled(AlignedCenterContainer)`
-  margin-top: 5rem;
+  padding-top: 5rem;
+  max-width: 1600px;
+  margin: auto;
   @media ${device.large} {
     text-align: left;
 
-    margin: 15rem 8rem 0 8rem;
+    padding: 15rem 8rem 0 8rem;
   }
 `;
 

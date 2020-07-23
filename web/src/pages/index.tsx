@@ -8,6 +8,7 @@ import Recommended from '../components/home/recommended';
 import ProductCategories from '../components/home/categories/product-categories';
 import Feed from '../components/home/feed';
 import UserReviews from '../components/home/user-reviews';
+import About from '../components/home/about';
 
 import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
@@ -33,6 +34,7 @@ const Home = ({
       <Recommended recommended={recommended} />
       <UserReviews {...userReviews} />
       <Feed />
+      <About />
     </Layout>
   );
 };

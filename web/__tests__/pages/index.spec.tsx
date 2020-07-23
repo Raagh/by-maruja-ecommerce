@@ -11,6 +11,7 @@ import ProductCategories from '../../src/components/home/categories/product-cate
 import NavBar from '../../src/components/shared/navbar';
 import Recommended from '../../src/components/home/recommended';
 import UserReviews from '../../src/components/home/user-reviews';
+import Faq from '../../src/components/home/faq';
 import { HeroConfiguration } from '../../src/model/hero-configuration';
 import { mocked } from 'ts-jest/utils';
 import axios from 'axios';
@@ -73,5 +74,6 @@ describe('Home Page', () => {
     expect(wrapper.find(Recommended).exists()).toBeTruthy();
     expect(wrapper.find(UserReviews).exists()).toBeTruthy();
     expect(wrapper.find(Feed).exists()).toBeTruthy();
+    expect(wrapper.find(Faq).exists()).toBeTruthy();
   });
 });

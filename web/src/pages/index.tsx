@@ -14,6 +14,7 @@ import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
+import Faq from '../components/home/faq';
 
 const Home = ({
   hero,
@@ -35,6 +36,7 @@ const Home = ({
       <UserReviews {...userReviews} />
       <Feed />
       <About />
+      <Faq />
     </Layout>
   );
 };

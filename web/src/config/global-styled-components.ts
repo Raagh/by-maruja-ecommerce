@@ -80,6 +80,14 @@ export const StyledH2 = styled.h2`
   }
 `;
 
+export const StyledH3 = styled.h3`
+  ${H4Styles}
+
+  @media ${device.large} {
+    ${H3Styles}
+  }
+`;
+
 export const Subtitle = styled.p`
   font-family: ${typography.subtitle.font.name};
   font-style: normal;

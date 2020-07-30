@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { BodyCopyRegularSmall } from '../../config/global-styled-components';
-import { device } from '../../config/device';
+import { device, reusablePlaceholder } from '../../config/device';
 import { colors } from '../../config/global-styles';
 import LazyLoadImage from '../shared/image-types/lazy-image';
 
@@ -66,9 +66,7 @@ const Image = styled(LazyLoadImage)`
 `;
 
 const Feed = () => {
-  const placeholder =
-    'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAJAA4DASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAlEAABAgQEBwAAAAAAAAAAAAABAgMABAYRBRIhMRM0NXGBkbL/xAAVAQEBAAAAAAAAAAAAAAAAAAABA//EABoRAAICAwAAAAAAAAAAAAAAAAECABIDERP/2gAMAwEAAhEDEQA/AAaWpluWZM5OKYmV3HACX0hYJ1JIzaWNt/Rg+qMQcUzKsmWQXGhYvFGVat9DY7RHhvTF90fKoFq7nfAh57axkmKrjqBP/9k=';
-  const [items, setItems] = useState([placeholder, placeholder, placeholder]);
+  const [items, setItems] = useState([reusablePlaceholder, reusablePlaceholder, reusablePlaceholder]);
   const [areItemsLoaded, setItemsLoaded] = useState(false);
 
   useEffect(() => {
@@ -93,7 +91,7 @@ const Feed = () => {
       {items.length !== 0 && (
         <ImagesContainer>
           {items.map((x, index) => (
-            <Image alt="feed-image" key={index} src={x} placeholderSrc={placeholder} />
+            <Image alt="feed-image" key={index} src={x} placeholderSrc={reusablePlaceholder} />
           ))}
         </ImagesContainer>
       )}

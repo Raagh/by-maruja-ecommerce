@@ -1,22 +1,25 @@
-import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
+import { shallow, mount } from 'enzyme';
+
+import { mocked } from 'ts-jest/utils';
+import axios from 'axios';
+import { act } from 'react-dom/test-utils';
+
 import Home from '../../src/pages';
 import Hero from '../../src/components/home/hero';
-import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
-import { mock as userReview } from '../../__mocks__/user-reviews-configuration.mock';
 import ShippingInfo from '../../src/components/home/shipping-info';
 import ProductCategories from '../../src/components/home/categories/product-categories';
 import NavBar from '../../src/components/shared/navbar';
 import Recommended from '../../src/components/home/recommended';
 import UserReviews from '../../src/components/home/user-reviews';
 import Faq from '../../src/components/home/faq';
-import { HeroConfiguration } from '../../src/model/hero-configuration';
-import { mocked } from 'ts-jest/utils';
-import axios from 'axios';
-import { act } from 'react-dom/test-utils';
 import Feed from '../../src/components/home/feed';
+import About from '../../src/components/home/about';
+import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
+import { mock as userReview } from '../../__mocks__/user-reviews-configuration.mock';
+import { HeroConfiguration } from '../../src/model/hero-configuration';
 
 jest.mock('axios');
 
@@ -75,5 +78,6 @@ describe('Home Page', () => {
     expect(wrapper.find(UserReviews).exists()).toBeTruthy();
     expect(wrapper.find(Feed).exists()).toBeTruthy();
     expect(wrapper.find(Faq).exists()).toBeTruthy();
+    expect(wrapper.find(About).exists()).toBeTruthy();
   });
 });

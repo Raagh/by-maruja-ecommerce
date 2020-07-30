@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Subtitle, StyledH2, LabelSmall } from '../../config/global-styled-components';
+import { Subtitle, StyledH3, LabelSmall } from '../../config/global-styled-components';
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
 import RemoteFixedImage from '../shared/image-types/remote-fixed-size-image';
 import { colors } from '../../config/global-styles';
@@ -16,6 +16,8 @@ const ReviewContainer = styled.article`
 
   @media ${device.large} {
     padding-top: 8rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
     flex-direction: row-reverse;
   }
 `;
@@ -26,7 +28,7 @@ const ReviewTitle = styled(Subtitle)`
   }
 `;
 
-const ReviewText = styled(StyledH2)`
+const ReviewText = styled(StyledH3)`
   padding: 2rem 2rem 0 2rem;
   text-align: center;
 

@@ -35,8 +35,8 @@ const Home = ({
       <Recommended recommended={recommended} />
       <UserReviews {...userReviews} />
       <Feed />
-      <About />
       <Faq />
+      <About />
     </Layout>
   );
 };

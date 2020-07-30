@@ -22,6 +22,7 @@ const TextContainer = styled.div`
 
 const SubTitle = styled(BodyCopyRegularSmall)`
   margin-top: 1.25rem;
+  margin-bottom: 2rem;
   opacity: 0.75;
 
   @media ${device.large} {

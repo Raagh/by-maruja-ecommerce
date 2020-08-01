@@ -14,7 +14,7 @@ import ProductCategories from '../../src/components/home/categories/product-cate
 import NavBar from '../../src/components/shared/navbar';
 import Recommended from '../../src/components/home/recommended';
 import UserReviews from '../../src/components/home/user-reviews';
-import Faq from '../../src/components/home/faq';
+import Faq from '../../src/components/shared/faq';
 import Feed from '../../src/components/home/feed';
 import About from '../../src/components/home/about';
 import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';

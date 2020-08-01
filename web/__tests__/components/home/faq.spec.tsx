@@ -1,6 +1,6 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import Faq from '../../../src/components/home/faq';
+import Faq from '../../../src/components/shared/faq';
 import Button from '../../../src/components/shared/button';
 import Accordion from '../../../src/components/shared/accordion/accordion';
 import FaqJson from '../../../src/config/faq-conf.json';

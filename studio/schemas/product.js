@@ -29,5 +29,18 @@ export default {
         metadata: ["lqip"],
       },
     },
+    {
+      title: "Categoria",
+      name: "category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Aros", value: "aros" },
+          { title: "Anillos", value: "anillos" },
+          { title: "Collares", value: "collares" },
+          { title: "Para el pelo", value: "pelo" },
+        ],
+      },
+    },
   ],
 };

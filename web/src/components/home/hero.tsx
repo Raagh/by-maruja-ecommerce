@@ -53,7 +53,7 @@ const HomeTitle = styled(StyledH1)`
 
 const HomeContainer = styled(AlignedCenterContainer)`
   @media ${device.large} {
-    background-color: ${colors.ui.lightBackground};
+    background-color: ${colors.ui.grey5percent};
     display: flex;
     flex-direction: row-reverse;
     height: 100%;

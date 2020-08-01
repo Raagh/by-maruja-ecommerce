@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../shared/button';
-import Accordion from '../shared/accordion/accordion';
+import Button from './button';
+import Accordion from './accordion/accordion';
 import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';

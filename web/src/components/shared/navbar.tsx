@@ -15,7 +15,7 @@ const Container = styled.section`
   padding-right: 1.5rem;
   padding-left: 1.5rem;
 
-  background-color: ${colors.ui.lightBackground};
+  background-color: ${colors.ui.grey5percent};
   @media ${device.large} {
     height: 100px;
     padding: 1.25rem 3.75rem 0 3.75rem;

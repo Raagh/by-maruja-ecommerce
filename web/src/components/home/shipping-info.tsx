@@ -8,7 +8,7 @@ import { device } from '../../config/device';
 import { ShippingInfoConfig } from '../../model/shipping-info-configuration';
 
 const ShippingInfoContainer = styled(AlignedCenterContainer)`
-  margin-top: 80px;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   padding-left: 1.5rem;
@@ -16,6 +16,8 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 5rem;
+
   @media ${device.large} {
     flex-direction: row;
     justify-content: center;

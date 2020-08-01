@@ -26,8 +26,8 @@ const FaqTitle = styled(StyledH2)`
   margin-bottom: 2.5rem;
 `;
 
-const createAccordionContent = (question: string, answer: string, index: number) => {
-  return <Accordion question={question} answer={answer} key={index} index={index} />;
+const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
+  return <Accordion question={question} answer={answer} key={index} index={index} initialHiddenStatus={isHidden} />;
 };
 
 const AccordionsContainer = styled.div`
@@ -43,7 +43,9 @@ const Faq = () => {
     <FaqContainer>
       <FaqTitle>Preguntas frecuentes</FaqTitle>
       <AccordionsContainer>
-        {FaqJson.data.map((question, index) => createAccordionContent(question.question, question.answer, index))}
+        {FaqJson.data.map((question, index) =>
+          createAccordionContent(question.question, question.answer, index, question.isHidden)
+        )}
       </AccordionsContainer>
       <FaqButtonContainer>
         <Button text="LEER MÁS" url="/" />

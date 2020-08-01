@@ -24,13 +24,25 @@ const AccordionContent = styled(BodyCopyRegularSmall)<{ hidden: boolean }>`
 
   margin: 0.75rem 0 0 0;
   text-align: left;
+
   @media ${device.large} {
     margin: 1rem 1rem 0 0;
+    display: block;
   }
 `;
 
-const Accordion = ({ question, answer, index }: { question: string; answer: string; index: number }) => {
-  let [hidden, useHidden] = useState(false);
+const Accordion = ({
+  question,
+  answer,
+  index,
+  initialHiddenStatus = false,
+}: {
+  question: string;
+  answer: string;
+  index: number;
+  initialHiddenStatus?: boolean;
+}) => {
+  const [hidden, useHidden] = useState(initialHiddenStatus);
   return (
     <AccordionContainer index={index}>
       <AccordionQuestion handleClick={useHidden} question={question} open={!hidden} />

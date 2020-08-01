@@ -14,6 +14,7 @@ const AccordionQuestionContainer = styled.div`
 
 const AccordionQuestionText = styled(BodyCopyBoldSmall)`
   text-align: left;
+  width: 80%;
 `;
 
 const ChevronIcon = styled.img<{ open: boolean }>`

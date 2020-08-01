@@ -18,7 +18,7 @@ const AccordionQuestionText = styled(BodyCopyBoldSmall)`
 `;
 
 const ChevronIcon = styled.img<{ open: boolean }>`
-  ${(props) => (props.open ? '' : 'transform: scaleY(-1);')};
+  ${(props) => (props.open ? 'transform: scaleY(-1);' : '')};
 `;
 
 const AccordionQuestion = ({

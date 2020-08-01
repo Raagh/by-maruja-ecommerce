@@ -2,20 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../shared/button';
 import Accordion from '../shared/accordion/accordion';
-import { AlignedCenterContainer } from '../../config/global-styled-components';
-import { StyledH2 } from '../../config/global-styled-components';
+import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';
 
 const FaqContainer = styled(AlignedCenterContainer)`
   padding-top: 5rem;
+  padding-bottom: 4rem;
   max-width: 1600px;
   margin: auto;
+
   @media ${device.large} {
     text-align: left;
-
-    padding: 15rem 8rem 0 8rem;
+    padding: 6rem 9rem 7rem 9rem;
   }
+`;
+
+const FaqButtonContainer = styled(AlignedCenterContainer)`
+  margin-top: 6rem;
 `;
 
 const FaqTitle = styled(StyledH2)`
@@ -41,9 +45,9 @@ const Faq = () => {
       <AccordionsContainer>
         {FaqJson.data.map((question, index) => createAccordionContent(question.question, question.answer, index))}
       </AccordionsContainer>
-      <AlignedCenterContainer>
-        <Button text={'LEER MÁS'} url={'/'} />
-      </AlignedCenterContainer>
+      <FaqButtonContainer>
+        <Button text="LEER MÁS" url="/" />
+      </FaqButtonContainer>
     </FaqContainer>
   );
 };

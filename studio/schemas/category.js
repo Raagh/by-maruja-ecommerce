@@ -19,5 +19,10 @@ export default {
       name: "name",
       type: "string",
     },
+    {
+      title: "Nombre de busqueda",
+      name: "searchName",
+      type: "string",
+    },
   ],
 };

@@ -45,12 +45,14 @@ export const getServerSideProps = async () => {
   const sanityResult = await sanity.fetch(
     `
     *[_type == "homeSettings"][0]{
-      categories[] {   	  
-        ...,
-         "asset": image.asset-> {
-            url,
-            metadata 
-         }
+      "categories": categories[]->{
+        searchName,
+        name,
+        image,
+        "asset": image.asset-> {
+          url,
+          metadata 
+       }
       },
        hero {
         ...,

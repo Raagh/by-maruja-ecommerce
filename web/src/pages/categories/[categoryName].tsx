@@ -31,7 +31,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
   const lowerCaseCategoryName = (categoryName as string).toLowerCase();
 
   const extraQuery =
-    lowerCaseCategoryName === 'productos' ? '' : `&& category[0]->name == "${capitalize(lowerCaseCategoryName)}"`;
+    lowerCaseCategoryName === 'productos' ? '' : `&& category[0]->searchName == "${lowerCaseCategoryName}"`;
 
   const sanityResult = await sanity.fetch(
     `

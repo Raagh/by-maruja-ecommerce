@@ -14,10 +14,15 @@ const CategoryHeader = styled(StyledH3)`
   background-color: ${colors.ui.grey5percent};
 `;
 
+const HeaderSeparation = styled.div`
+  height: 4px;
+`;
+
 const ProductList = ({ categoryName, products }: { categoryName: string; products: Product[] }) => {
   return (
     <div>
       <CategoryHeader>{categoryName}</CategoryHeader>
+      <HeaderSeparation />
       <ProductFilter />
       {products.map((product: Product) => (
         <ProductListItem key={product.name} product={product} />

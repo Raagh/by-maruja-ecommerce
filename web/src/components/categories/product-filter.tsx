@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { colors } from '../../config/global-styles';
 import { LabelSmall } from '../../config/global-styled-components';
+import Chevron from '../shared/chevron';
 
 const FilterContainer = styled.section`
   display: flex;
@@ -11,10 +12,6 @@ const FilterContainer = styled.section`
   justify-content: space-between;
   padding: 1rem 4.5rem 1rem 4.5rem;
   background-color: ${colors.ui.grey5percent};
-`;
-
-const ChevronIcon = styled.img<{ open: boolean }>`
-  ${(props) => (props.open ? 'transform: scaleY(-1);' : '')};
 `;
 
 const Dropdown = styled.article`
@@ -27,11 +24,11 @@ const ProductFilter = () => {
     <FilterContainer>
       <Dropdown>
         <LabelSmall>filtrar</LabelSmall>
-        <ChevronIcon src="/assets/Chevron.svg" open={false} />
+        <Chevron isOpen={false} />
       </Dropdown>
       <Dropdown>
         <LabelSmall>ordernar por</LabelSmall>
-        <ChevronIcon src="/assets/Chevron.svg" open={false} />
+        <Chevron isOpen={false} />
       </Dropdown>
     </FilterContainer>
   );

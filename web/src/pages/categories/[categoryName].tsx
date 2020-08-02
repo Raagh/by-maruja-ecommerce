@@ -9,12 +9,15 @@ import { Product } from '../../model/product';
 import ProductList from '../../components/categories/product-list';
 import Faq from '../../components/shared/faq';
 
+const toLowerCase = (text: string | string[]) => (text as string).toLowerCase();
+const capitalize = (text: string | string[]) => (text as string).charAt(0).toUpperCase() + text.slice(1);
+
 const CategoryDisplay = ({ products }: { products: Product[] }) => {
   const router = useRouter();
-  const lowerCaseCategoryName = (router.query.categoryName as string).toLowerCase();
+  const lowerCaseCategoryName = toLowerCase(router.query.categoryName);
 
-  const formatedCategoryName =
-    (lowerCaseCategoryName as string).charAt(0).toUpperCase() + lowerCaseCategoryName.slice(1);
+  const formatedCategoryName = capitalize(lowerCaseCategoryName);
+
   return (
     <Layout>
       <ProductList categoryName={formatedCategoryName} products={products} />
@@ -25,10 +28,14 @@ const CategoryDisplay = ({ products }: { products: Product[] }) => {
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const { categoryName } = context.query;
+  const lowerCaseCategoryName = (categoryName as string).toLowerCase();
+
+  const extraQuery =
+    lowerCaseCategoryName === 'productos' ? '' : `&& category[0]->name == "${capitalize(lowerCaseCategoryName)}"`;
 
   const sanityResult = await sanity.fetch(
     `
-    *[_type == "product" && category == "${(categoryName as string).toLowerCase()}"]{
+    *[_type == "product" ${extraQuery}]{
       ...,
         "asset": image.asset-> {
           url,

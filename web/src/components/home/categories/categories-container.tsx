@@ -74,14 +74,24 @@ const CategoryContainer = styled.div`
   padding-bottom: 1.5rem;
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const CategoryName = styled(StyledH4)``;
 
 const createCategoryContent = (category: CategoryConfiguration) => {
+  const link = `categories/${category.searchName}`;
   return (
     <CategoryContainer key={category.name}>
-      <CategoryImg image={category.image} alt={category.name} asset={category.asset} />
+      <StyledLink href={link}>
+        <CategoryImg image={category.image} alt={category.name} asset={category.asset} />
+      </StyledLink>
+
       <LinkContainer>
-        <CategoryName>{category.name}</CategoryName>
+        <StyledLink href={link}>
+          <CategoryName>{category.name}</CategoryName>
+        </StyledLink>
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />
       </LinkContainer>
     </CategoryContainer>

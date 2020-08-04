@@ -8,4 +8,10 @@ describe('NavBar component', () => {
 
     expect(wrapper.exists()).toBe(true);
   });
+
+  it('should render MercadoPago logo', () => {
+    const wrapper = shallow(<Footer />);
+
+    expect(wrapper.find('img').length).toBe(1);
+  });
 });

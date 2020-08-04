@@ -9,9 +9,21 @@ describe('NavBar component', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('should render MercadoPago logo', () => {
+  it('should render MercadoPago logo, the payment options and the instagram logo', () => {
     const wrapper = shallow(<Footer />);
 
-    expect(wrapper.find('img').length).toBe(1);
+    expect(wrapper.find('img').length).toBe(3);
+  });
+
+  it('should render links to Contacto, FAQ e instagram', () => {
+    const wrapper = shallow(<Footer />);
+
+    expect(wrapper.find('a').length).toBe(3);
+  });
+
+  it('should render legal disclaimer', () => {
+    const wrapper = shallow(<Footer />);
+
+    expect(wrapper.text()).toContain('© 2020 MARUJA');
   });
 });

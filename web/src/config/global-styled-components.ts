@@ -185,3 +185,13 @@ export const LabelLargeBold = styled.p`
   letter-spacing: ${typography.labels.large.bold.letterSpacing};
   color: ${colors.ui.darkSurface};
 `;
+
+export const CaptionsSmall = styled.p`
+  font-family: ${typography.captions.font.name};
+  font-style: normal;
+  font-weight: ${typography.captions.font.fontWeight};
+  font-size: ${typography.captions.small.fontSize};
+  line-height: ${typography.captions.small.lineHeight};
+  letter-spacing: ${typography.captions.small.letterSpacing};
+  color: ${colors.ui.grey50percent};
+`;

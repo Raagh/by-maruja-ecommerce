@@ -12,13 +12,13 @@ describe('NavBar component', () => {
   it('should render MercadoPago logo, the payment options and the instagram logo', () => {
     const wrapper = shallow(<Footer />);
 
-    expect(wrapper.find('img').length).toBe(3);
+    expect(wrapper.render().find('img').length).toBe(3);
   });
 
   it('should render links to Contacto, FAQ e instagram', () => {
     const wrapper = shallow(<Footer />);
 
-    expect(wrapper.find('a').length).toBe(3);
+    expect(wrapper.render().find('a').length).toBe(3);
   });
 
   it('should render legal disclaimer', () => {

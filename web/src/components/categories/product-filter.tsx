@@ -14,21 +14,44 @@ const FilterContainer = styled.section`
   background-color: ${colors.ui.grey5percent};
 `;
 
-const Dropdown = styled.article`
+const Dropdown = styled.article``;
+
+const DropdownHeader = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const DropdownListItem = styled.li``;
+
+const DropdownList = styled.ul`
+  list-style-type: none;
 `;
 
 const ProductFilter = () => {
   return (
     <FilterContainer>
       <Dropdown>
-        <LabelSmall>filtrar</LabelSmall>
-        <Chevron isOpen={false} />
+        <DropdownHeader>
+          <LabelSmall>filtrar</LabelSmall>
+          <Chevron isOpen={false} />
+        </DropdownHeader>
+        <DropdownList>
+          <DropdownListItem>acero quirurgico</DropdownListItem>
+          <DropdownListItem>nuevos</DropdownListItem>
+          <DropdownListItem>en descuento</DropdownListItem>
+          <DropdownListItem>favoritos</DropdownListItem>
+          <DropdownListItem>todos</DropdownListItem>
+        </DropdownList>
       </Dropdown>
       <Dropdown>
-        <LabelSmall>ordernar por</LabelSmall>
-        <Chevron isOpen={false} />
+        <DropdownHeader>
+          <LabelSmall>ordernar por</LabelSmall>
+          <Chevron isOpen={false} />
+        </DropdownHeader>
+        <DropdownList>
+          <DropdownListItem>precio</DropdownListItem>
+          <DropdownListItem>todos</DropdownListItem>
+        </DropdownList>
       </Dropdown>
     </FilterContainer>
   );

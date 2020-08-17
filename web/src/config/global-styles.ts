@@ -161,7 +161,7 @@ export const typography = {
     small: {
       fontSize: '12px',
       lineHeight: '15px',
-      letterSpacing: '3px',
+      letterSpacing: '1px',
     },
   },
 };

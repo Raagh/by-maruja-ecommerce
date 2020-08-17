@@ -12,22 +12,22 @@ const ListContainer = styled.article``;
 
 const HeaderContainer = styled.article`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem 4.5rem 1rem 4.5rem;
-  background-color: ${colors.ui.grey5percent};
 `;
 
-const Dropdown = styled.article``;
-
-const DropdownHeader = styled.div`
+const Dropdown = styled.article`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem 1rem 2rem;
+  ${(props: { isOpen: boolean }) =>
+    props.isOpen ? `background-color:${colors.ui.grey10percent};` : `background-color:${colors.ui.grey5percent};`}
 `;
 
 const DropdownListItem = styled(BodyCopyRegularSmall)`
   padding: 1rem 2rem 1rem 2rem;
-  background-color: ${colors.ui.grey5percent};
+  background-color: ${colors.ui.grey10percent};
 
   &:hover {
     background-color: ${colors.ui.grey25percent};
@@ -48,27 +48,25 @@ const ProductFilter = () => {
   return (
     <FilterContainer>
       <HeaderContainer>
-        <Dropdown>
-          <DropdownHeader
-            onClick={() => {
-              setIsFiltersOpen(!isFiltersOpen);
-              if (!isFiltersOpen && isOrderOpen) setIsOrderOpen(false);
-            }}
-          >
-            <LabelSmall>filtrar</LabelSmall>
-            <Chevron isOpen={isFiltersOpen} />
-          </DropdownHeader>
+        <Dropdown
+          isOpen={isFiltersOpen}
+          onClick={() => {
+            setIsFiltersOpen(!isFiltersOpen);
+            if (!isFiltersOpen && isOrderOpen) setIsOrderOpen(false);
+          }}
+        >
+          <LabelSmall>filtrar</LabelSmall>
+          <Chevron isOpen={isFiltersOpen} />
         </Dropdown>
-        <Dropdown>
-          <DropdownHeader
-            onClick={() => {
-              setIsOrderOpen(!isOrderOpen);
-              if (!isOrderOpen && isFiltersOpen) setIsFiltersOpen(false);
-            }}
-          >
-            <LabelSmall>ordernar por</LabelSmall>
-            <Chevron isOpen={isOrderOpen} />
-          </DropdownHeader>
+        <Dropdown
+          isOpen={isOrderOpen}
+          onClick={() => {
+            setIsOrderOpen(!isOrderOpen);
+            if (!isOrderOpen && isFiltersOpen) setIsFiltersOpen(false);
+          }}
+        >
+          <LabelSmall>ordernar por</LabelSmall>
+          <Chevron isOpen={isOrderOpen} />
         </Dropdown>
       </HeaderContainer>
       <ListContainer>
@@ -77,8 +75,7 @@ const ProductFilter = () => {
           <DropdownListItem>todos</DropdownListItem>
         </DropdownList>
         <DropdownList shouldDisplayDropdown={isFiltersOpen}>
-          <DropdownListItem>acero quirurgico</DropdownListItem>
-          <DropdownListItem>nuevos</DropdownListItem>
+          <DropdownListItem>acero quirúrgico</DropdownListItem>
           <DropdownListItem>en descuento</DropdownListItem>
           <DropdownListItem>favoritos</DropdownListItem>
           <DropdownListItem>todos</DropdownListItem>

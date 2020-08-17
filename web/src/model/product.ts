@@ -8,4 +8,5 @@ export type Product = {
   description: string;
   image: SanityImageSource;
   asset: SanityImageSourceAsset;
+  tag: string;
 };

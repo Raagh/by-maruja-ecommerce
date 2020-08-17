@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import { Product } from '../../model/product';
 import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image';
-import { LabelLarge, LabelLargeBold } from '../../config/global-styled-components';
+import { LabelLarge, LabelLargeBold, CaptionSmall } from '../../config/global-styled-components';
+import { colors } from '../../config/global-styles';
 
 const ProductListItemContainer = styled.section`
   display: flex;
@@ -29,10 +30,37 @@ const ProductItemName = styled(LabelLarge)``;
 
 const ProductItemPrice = styled(LabelLargeBold)``;
 
+const ProductItemImageContainer = styled.div`
+  position: relative;
+`;
+
+const Badge = styled(CaptionSmall)`
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border-radius: 100px;
+`;
+
+const NoStockBadge = styled(Badge)`
+  background: ${colors.ui.grey50percent};
+`;
+
+const StockBadge = styled(Badge)`
+  background: ${colors.primary.dark};
+`;
+
 const ProductListItem = ({ product }: { product: Product }) => {
   return (
     <ProductListItemContainer>
-      <ProductItemImage image={product.image} alt={product.name} asset={product.asset} />
+      <ProductItemImageContainer>
+        {product.stock === 0 && <NoStockBadge>Sin stock</NoStockBadge>}
+        {product.stock > 0 && <StockBadge>{product.tag}</StockBadge>}
+        <ProductItemImage image={product.image} alt={product.name} asset={product.asset} />
+      </ProductItemImageContainer>
       <ProductItemTextContainer>
         <ProductItemName>{product.name}</ProductItemName>
         <ProductItemPrice>${product.price}</ProductItemPrice>

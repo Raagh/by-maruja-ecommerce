@@ -6,5 +6,12 @@ import { getDefaultImage, getImageMetadata } from '../../../../lib/sanity';
 
 export default ({ className, asset, alt, image }: RemoteImageProps) => {
   const metadata = getImageMetadata(asset);
-  return <LazyLoadImage className={className} alt={alt} src={getDefaultImage(image)?.url()} placeholderSrc={metadata?.lqip} />;
+  return (
+    <LazyLoadImage
+      className={className}
+      alt={alt}
+      src={getDefaultImage(image)?.url()}
+      placeholderSrc={metadata?.lqip}
+    />
+  );
 };

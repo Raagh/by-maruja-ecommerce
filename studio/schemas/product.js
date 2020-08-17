@@ -41,5 +41,18 @@ export default {
         },
       ],
     },
+    {
+      title: "Tag",
+      name: "tag",
+      type: "string",
+      options: {
+        list: [
+          { title: "Favorito", value: "Favorito" },
+          { title: "Acero quirúrgico", value: "Acero quirúrgico" },
+          { title: "Descuento", value: "Descuento" },
+        ],
+        layout: "radio",
+      },
+    },
   ],
 };

@@ -34,6 +34,10 @@ const DropdownListItem = styled(BodyCopyRegularSmall)`
   }
 `;
 
+const FilterTitle = styled(LabelSmall)`
+  ${(props: { isOpen: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+`;
+
 const DropdownList = styled.ul`
   list-style-type: none;
   text-align: center;
@@ -55,7 +59,7 @@ const ProductFilter = () => {
             if (!isFiltersOpen && isOrderOpen) setIsOrderOpen(false);
           }}
         >
-          <LabelSmall>filtrar</LabelSmall>
+          <FilterTitle isOpen={isFiltersOpen}>filtrar</FilterTitle>
           <Chevron isOpen={isFiltersOpen} />
         </Dropdown>
         <Dropdown
@@ -65,7 +69,7 @@ const ProductFilter = () => {
             if (!isOrderOpen && isFiltersOpen) setIsFiltersOpen(false);
           }}
         >
-          <LabelSmall>ordernar por</LabelSmall>
+          <FilterTitle isOpen={isOrderOpen}>ordernar por</FilterTitle>
           <Chevron isOpen={isOrderOpen} />
         </Dropdown>
       </HeaderContainer>

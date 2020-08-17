@@ -152,6 +152,18 @@ export const LinksSmall = styled.a`
   text-transform: ${typography.links.textTransform};
 `;
 
+export const LinksLarge = styled.a`
+  font-family: ${typography.links.large.font.name};
+  font-style: normal;
+  font-weight: ${typography.links.large.font.fontWeight};
+  font-size: ${typography.links.large.fontSize};
+  line-height: ${typography.links.large.lineHeight};
+  letter-spacing: ${typography.links.large.letterSpacing};
+  color: ${colors.ui.darkSurface};
+
+  text-transform: ${typography.links.textTransform};
+`;
+
 export const LabelSmall = styled.div`
   font-family: ${typography.labels.small.font.name};
   font-style: normal;

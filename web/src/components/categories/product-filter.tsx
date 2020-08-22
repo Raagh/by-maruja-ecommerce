@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { colors } from '../../config/global-styles';
 import { LabelSmall, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import Chevron from '../shared/chevron';
+import { Tags } from '../../model/filters/tags';
+import { Order } from '../../model/filters/order';
 
 const FilterContainer = styled.section``;
 
@@ -46,9 +48,26 @@ const DropdownList = styled.ul`
   ${(props: { shouldDisplayDropdown: boolean }) => (props.shouldDisplayDropdown ? 'display:block' : 'display:none')};
 `;
 
-const ProductFilter = () => {
+const ProductFilter = ({
+  filterProducts,
+  orderProducts,
+}: {
+  filterProducts: (tag: Tags) => void;
+  orderProducts: (tag: Order) => void;
+}) => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isOrderOpen, setIsOrderOpen] = useState(false);
+
+  const filterAndClose = (tag: Tags) => {
+    filterProducts(tag);
+    setIsFiltersOpen(false);
+  };
+
+  const orderAndClose = (order: Order) => {
+    orderProducts(order);
+    setIsOrderOpen(false);
+  };
+
   return (
     <FilterContainer>
       <HeaderContainer>
@@ -75,14 +94,14 @@ const ProductFilter = () => {
       </HeaderContainer>
       <ListContainer>
         <DropdownList shouldDisplayDropdown={isOrderOpen}>
-          <DropdownListItem>precio</DropdownListItem>
-          <DropdownListItem>todos</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>precio ascendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>precio descendente</DropdownListItem>
         </DropdownList>
         <DropdownList shouldDisplayDropdown={isFiltersOpen}>
-          <DropdownListItem>acero quirúrgico</DropdownListItem>
-          <DropdownListItem>en descuento</DropdownListItem>
-          <DropdownListItem>favoritos</DropdownListItem>
-          <DropdownListItem>todos</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Steel)}>acero quirúrgico</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Discount)}>en descuento</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Favorite)}>favoritos</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.All)}>todos</DropdownListItem>
         </DropdownList>
       </ListContainer>
     </FilterContainer>

@@ -50,6 +50,7 @@ export default {
           { title: "Favorito", value: "Favorito" },
           { title: "Acero quirúrgico", value: "Acero quirúrgico" },
           { title: "Descuento", value: "Descuento" },
+          { title: "Normal", value: "Normal" },
         ],
         layout: "radio",
       },

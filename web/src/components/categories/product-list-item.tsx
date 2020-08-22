@@ -6,6 +6,7 @@ import { Product } from '../../model/product';
 import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image';
 import { LabelLarge, LabelLargeBold, CaptionSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
+import { Tags } from '../../model/filters/tags';
 
 const ProductListItemContainer = styled.section`
   display: flex;
@@ -49,7 +50,11 @@ const NoStockBadge = styled(Badge)`
   background: ${colors.ui.grey50percent};
 `;
 
-const StockBadge = styled(Badge)`
+const SteelBadge = styled(Badge)`
+  background: ${colors.primary.default};
+`;
+
+const DiscountFavoriteBadge = styled(Badge)`
   background: ${colors.primary.dark};
 `;
 
@@ -58,7 +63,10 @@ const ProductListItem = ({ product }: { product: Product }) => {
     <ProductListItemContainer>
       <ProductItemImageContainer>
         {product.stock === 0 && <NoStockBadge>Sin stock</NoStockBadge>}
-        {product.stock > 0 && <StockBadge>{product.tag}</StockBadge>}
+        {product.stock > 0 && (product.tag === Tags.Discount || product.tag === Tags.Favorite) && (
+          <DiscountFavoriteBadge>{product.tag}</DiscountFavoriteBadge>
+        )}
+        {product.stock > 0 && product.tag === Tags.Steel && <SteelBadge>{product.tag}</SteelBadge>}
         <ProductItemImage image={product.image} alt={product.name} asset={product.asset} />
       </ProductItemImageContainer>
       <ProductItemTextContainer>

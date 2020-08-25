@@ -2,14 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { device } from '../../../config/device';
-import { colors } from '../../../config/global-styles';
 
 const FooterPaymentContainer = styled.article`
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
   @media ${device.large} {
-    border-bottom: 1px solid ${colors.ui.grey10percent};
     flex-direction: row;
     padding-bottom: 60px;
   }

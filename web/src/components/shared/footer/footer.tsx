@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { device } from '../../../config/device';
+import { colors } from '../../../config/global-styles';
 
 import FooterPayment from './footer-payment';
 import FooterDesktopLinks from './footer-desktop-links';
@@ -21,10 +22,25 @@ const FooterContainer = styled.article`
   }
 `;
 
+const FooterLine = styled.hr`
+  display: none;
+  border-bottom: none;
+  border-top: 1px solid ${colors.ui.grey10percent};
+
+  position: absolute;
+  left: 0;
+
+  width: 100vw;
+  @media ${device.large} {
+    display: block;
+  }
+`;
+
 const Footer = () => {
   return (
     <FooterContainer>
       <FooterPayment />
+      <FooterLine />
       <FooterDesktopLinks />
       <FooterMobileDesktopLinks />
       <FooterDisclaimer />

@@ -1,6 +1,8 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Layout from '../../../src/components/shared/layout';
+import NavBar from '../../../src/components/shared/navbar';
+import Footer from '../../../src/components/shared/footer/footer';
 
 describe('Layout component', () => {
   it('should render', () => {
@@ -21,5 +23,17 @@ describe('Layout component', () => {
       </Layout>
     );
     expect(wrapper.find(Child)).toHaveLength(1);
+  });
+
+  it('should render NavBar component', () => {
+    const wrapper = mount(<Layout />);
+
+    expect(wrapper.find(NavBar).length).toBe(1);
+  });
+
+  it('should render NavBar component', () => {
+    const wrapper = mount(<Layout />);
+
+    expect(wrapper.find(Footer).length).toBe(1);
   });
 });

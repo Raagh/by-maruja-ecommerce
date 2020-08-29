@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { fonts, colors } from '../../config/global-styles';
 
 import NavBar from './navbar';
+import Footer from './footer/footer';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -50,6 +51,7 @@ const Layout: FunctionComponent = (props) => {
       </Head>
       <NavBar />
       {props.children}
+      <Footer />
     </Main>
   );
 };

@@ -152,6 +152,18 @@ export const LinksSmall = styled.a`
   text-transform: ${typography.links.textTransform};
 `;
 
+export const LinksLarge = styled.a`
+  font-family: ${typography.links.large.font.name};
+  font-style: normal;
+  font-weight: ${typography.links.large.font.fontWeight};
+  font-size: ${typography.links.large.fontSize};
+  line-height: ${typography.links.large.lineHeight};
+  letter-spacing: ${typography.links.large.letterSpacing};
+  color: ${colors.ui.darkSurface};
+
+  text-transform: ${typography.links.textTransform};
+`;
+
 export const LabelSmall = styled.div`
   font-family: ${typography.labels.small.font.name};
   font-style: normal;
@@ -188,6 +200,7 @@ export const LabelLargeBold = styled.p`
 
 export const CaptionSmall = styled.div`
   font-family: ${typography.captions.font.name};
+  font-style: normal;
   font-weight: ${typography.captions.font.fontWeight};
   font-size: ${typography.captions.small.fontSize};
   line-height: ${typography.captions.small.lineHeight};
@@ -202,4 +215,5 @@ export const CaptionLarge = styled.div`
   line-height: ${typography.captions.large.lineHeight};
   letter-spacing: ${typography.captions.large.letterSpacing};
   color: ${colors.ui.darkSurface};
+  color: ${colors.ui.grey50percent};
 `;

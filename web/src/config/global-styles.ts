@@ -143,7 +143,7 @@ export const typography = {
       font: fonts.secondary.bold,
       fontSize: '12px',
       lineHeight: '14px',
-      letterSpacing: '4px',
+      letterSpacing: '2px',
     },
     small: {
       font: fonts.secondary.regular,

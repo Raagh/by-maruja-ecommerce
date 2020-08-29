@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
-import { StyledH3, CaptionLarge } from '../../config/global-styled-components';
+import { StyledH3Title, CaptionLarge } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { Product } from '../../model/product';
 import ProductFilter from './product-filter';
@@ -12,7 +12,7 @@ import { Order } from '../../model/filters/order';
 import ProductFilterDesktop from './product-filter-desktop';
 import { device } from '../../config/device';
 
-const CategoryHeader = styled(StyledH3)`
+const CategoryHeader = styled(StyledH3Title)`
   text-align: center;
   padding: 4rem 1.5rem 4rem 1.5rem;
   background-color: ${colors.ui.grey5percent};
@@ -24,7 +24,7 @@ const HeaderSeparation = styled.div`
 
 const ProductListContainerDesktop = styled.div`
   display: none;
-  padding: 0 3rem 0 3rem;
+  padding: 0 3rem 4rem 3rem;
   max-width: 1600px;
   margin: auto;
 

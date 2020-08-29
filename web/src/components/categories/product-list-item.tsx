@@ -29,7 +29,7 @@ const ProductItemTextContainer = styled.article`
 
 const ProductItemImage = styled(RemoteFixedSizeImage)`
   border-radius: 2px;
-  max-height: 360px;
+  height: 360px;
   object-fit: cover;
 `;
 

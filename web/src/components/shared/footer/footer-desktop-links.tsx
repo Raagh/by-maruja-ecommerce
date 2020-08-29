@@ -55,7 +55,7 @@ const CornerLinkText = styled.p`
 
 const createLink = (legend: string, link: string, key: number) => {
   return (
-    <FooterLink href={link} key={key}>
+    <FooterLink href={`/categories${link}`} key={key}>
       {legend}
     </FooterLink>
   );

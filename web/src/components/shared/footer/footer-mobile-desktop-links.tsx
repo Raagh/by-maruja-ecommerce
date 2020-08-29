@@ -24,7 +24,6 @@ const FooterLink = styled.a`
 const FooterLabel = styled(LabelSmall)`
   @media ${device.large} {
     display: block;
-    margin-right: 2rem;
     font-size: ${typography.links.small.fontSize};
     line-height: ${typography.links.small.lineHeight};
     letter-spacing: ${typography.links.small.letterSpacing};

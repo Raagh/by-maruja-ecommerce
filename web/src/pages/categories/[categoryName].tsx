@@ -8,7 +8,6 @@ import Layout from '../../components/shared/layout';
 import { Product } from '../../model/product';
 import ProductList from '../../components/categories/product-list';
 import Faq from '../../components/shared/faq';
-import Footer from '../../components/shared/footer';
 
 const toLowerCase = (text: string | string[]) => (text as string).toLowerCase();
 const capitalize = (text: string | string[]) => (text as string).charAt(0).toUpperCase() + text.slice(1);
@@ -22,8 +21,7 @@ const CategoryDisplay = ({ products }: { products: Product[] }) => {
   return (
     <Layout>
       <ProductList categoryName={formatedCategoryName} products={products} />
-      <Faq />
-      <Footer />
+      <Faq isDarkBackgroundColor={true} />
     </Layout>
   );
 };

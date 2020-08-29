@@ -5,12 +5,17 @@ import Accordion from './accordion/accordion';
 import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';
+import { colors } from '../../config/global-styles';
+
+const BackgroundContainer = styled.section`
+  ${(props: { isDark: boolean }) => (props.isDark ? `background-color:${colors.ui.grey5percent};` : '')};
+`;
 
 const FaqContainer = styled(AlignedCenterContainer)`
   padding-bottom: 4rem;
   max-width: 1600px;
   margin: auto;
-  padding: 0 2rem 4rem 2rem;
+  padding: 4rem 2rem 4rem 2rem;
 
   @media ${device.large} {
     text-align: left;
@@ -23,7 +28,6 @@ const FaqButtonContainer = styled(AlignedCenterContainer)`
 `;
 
 const FaqTitle = styled(StyledH2)`
-  margin-top: 5rem;
   margin-bottom: 2.5rem;
 
   @media ${device.large} {
@@ -54,19 +58,21 @@ const AccordionsContainer = styled.div`
   }
 `;
 
-const Faq = () => {
+const Faq = ({ isDarkBackgroundColor }: { isDarkBackgroundColor?: boolean }) => {
   return (
-    <FaqContainer>
-      <FaqTitle>Preguntas frecuentes</FaqTitle>
-      <AccordionsContainer>
-        {FaqJson.data.map((question, index) =>
-          createAccordionContent(question.question, question.answer, index, question.isHidden)
-        )}
-      </AccordionsContainer>
-      <FaqButtonContainer>
-        <Button text="LEER MÁS" url="/" />
-      </FaqButtonContainer>
-    </FaqContainer>
+    <BackgroundContainer isDark={isDarkBackgroundColor}>
+      <FaqContainer>
+        <FaqTitle>Preguntas frecuentes</FaqTitle>
+        <AccordionsContainer>
+          {FaqJson.data.map((question, index) =>
+            createAccordionContent(question.question, question.answer, index, question.isHidden)
+          )}
+        </AccordionsContainer>
+        <FaqButtonContainer>
+          <Button text="LEER MÁS" url="/" />
+        </FaqButtonContainer>
+      </FaqContainer>
+    </BackgroundContainer>
   );
 };
 

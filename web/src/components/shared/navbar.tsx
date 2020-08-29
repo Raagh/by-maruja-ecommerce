@@ -53,8 +53,11 @@ const NavBar = () => {
   return (
     <Container>
       <Menu src="/assets/Menu.svg" alt="Menu icon" />
-      <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
-      <Links href="/">productos</Links>
+      <a href="/">
+        <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
+      </a>
+
+      <Links href="/categories/productos">productos</Links>
       <Links href="/">contacto y ayuda</Links>
       <Links href="/">sobre Maruja</Links>
       <CartButton />

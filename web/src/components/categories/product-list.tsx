@@ -38,6 +38,7 @@ const ProductListContainerDesktop = styled.div`
 
 const ProductListContainer = styled.div`
   display: block;
+  padding-bottom: 4rem;
 
   @media ${device.large} {
     display: none;

@@ -7,11 +7,17 @@ import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image'
 import { LabelLarge, LabelLargeBold, CaptionSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
+import { device } from '../../config/device';
 
 const ProductListItemContainer = styled.section`
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem 2rem 1.5rem;
+  flex: 1 0 21%;
+
+  @media ${device.large} {
+    max-width: 25%;
+  }
 `;
 
 const ProductItemTextContainer = styled.article`

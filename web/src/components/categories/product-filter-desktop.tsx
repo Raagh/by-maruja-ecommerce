@@ -10,10 +10,10 @@ import { Order } from '../../model/filters/order';
 import { device } from '../../config/device';
 
 const FilterContainer = styled.section`
-  display: block;
-
+  display: none;
+  background-color: ${colors.ui.grey5percent};
   @media ${device.large} {
-    display: none;
+    display: block;
   }
 `;
 
@@ -21,6 +21,10 @@ const ListContainer = styled.article``;
 
 const HeaderContainer = styled.article`
   display: flex;
+  justify-content: space-between;
+  padding: 0 4.5rem 0 4.5rem;
+  max-width: 1600px;
+  margin: auto;
 `;
 
 const Dropdown = styled.article`
@@ -28,8 +32,7 @@ const Dropdown = styled.article`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 1rem 0 1rem 2rem;
   ${(props: { isOpen: boolean }) =>
     props.isOpen ? `background-color:${colors.ui.grey10percent};` : `background-color:${colors.ui.grey5percent};`}
 `;
@@ -43,31 +46,36 @@ const DropdownListItem = styled(BodyCopyRegularSmall)`
   }
 `;
 
-const FilterTitle = styled(LabelSmall)`
+const OrderTitle = styled(LabelSmall)`
   ${(props: { isOpen: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+`;
+
+const FilterTitle = styled(LabelSmall)`
+  padding-right: 2rem;
+`;
+
+const Filters = styled.div`
+  display: flex;
+  align-items: center;
+  width: 50%;
 `;
 
 const DropdownList = styled.ul`
   list-style-type: none;
   text-align: center;
+  transition: ease 2.5;
 
   ${(props: { shouldDisplayDropdown: boolean }) => (props.shouldDisplayDropdown ? 'display:block' : 'display:none')};
 `;
 
-const ProductFilter = ({
+const ProductFilterDesktop = ({
   filterProducts,
   orderProducts,
 }: {
   filterProducts: (tag: Tags) => void;
   orderProducts: (tag: Order) => void;
 }) => {
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isOrderOpen, setIsOrderOpen] = useState(false);
-
-  const filterAndClose = (tag: Tags) => {
-    filterProducts(tag);
-    setIsFiltersOpen(false);
-  };
 
   const orderAndClose = (order: Order) => {
     orderProducts(order);
@@ -77,24 +85,19 @@ const ProductFilter = ({
   return (
     <FilterContainer>
       <HeaderContainer>
-        <Dropdown
-          isOpen={isFiltersOpen}
-          onClick={() => {
-            setIsFiltersOpen(!isFiltersOpen);
-            if (!isFiltersOpen && isOrderOpen) setIsOrderOpen(false);
-          }}
-        >
-          <FilterTitle isOpen={isFiltersOpen}>filtrar</FilterTitle>
-          <Chevron isOpen={isFiltersOpen} />
-        </Dropdown>
+        <Filters>
+          <FilterTitle onClick={() => filterProducts(Tags.All)}>todos</FilterTitle>
+          <FilterTitle onClick={() => filterProducts(Tags.Steel)}>acero quirúrgico</FilterTitle>
+          <FilterTitle onClick={() => filterProducts(Tags.Discount)}>en descuento</FilterTitle>
+          <FilterTitle onClick={() => filterProducts(Tags.Favorite)}>favoritos</FilterTitle>
+        </Filters>
         <Dropdown
           isOpen={isOrderOpen}
           onClick={() => {
             setIsOrderOpen(!isOrderOpen);
-            if (!isOrderOpen && isFiltersOpen) setIsFiltersOpen(false);
           }}
         >
-          <FilterTitle isOpen={isOrderOpen}>ordernar por</FilterTitle>
+          <OrderTitle isOpen={isOrderOpen}>ordernar por</OrderTitle>
           <Chevron isOpen={isOrderOpen} />
         </Dropdown>
       </HeaderContainer>
@@ -103,15 +106,9 @@ const ProductFilter = ({
           <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>precio ascendente</DropdownListItem>
           <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>precio descendente</DropdownListItem>
         </DropdownList>
-        <DropdownList shouldDisplayDropdown={isFiltersOpen}>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Steel)}>acero quirúrgico</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Discount)}>en descuento</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Favorite)}>favoritos</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.All)}>todos</DropdownListItem>
-        </DropdownList>
       </ListContainer>
     </FilterContainer>
   );
 };
 
-export default ProductFilter;
+export default ProductFilterDesktop;

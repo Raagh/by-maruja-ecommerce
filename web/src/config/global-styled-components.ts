@@ -194,3 +194,12 @@ export const CaptionSmall = styled.div`
   letter-spacing: ${typography.captions.small.letterSpacing};
   color: ${colors.ui.lightBackground};
 `;
+
+export const CaptionLarge = styled.div`
+  font-family: ${typography.captions.font.name};
+  font-weight: ${typography.captions.font.fontWeight};
+  font-size: ${typography.captions.large.fontSize};
+  line-height: ${typography.captions.large.lineHeight};
+  letter-spacing: ${typography.captions.large.letterSpacing};
+  color: ${colors.ui.darkSurface};
+`;

@@ -157,6 +157,7 @@ export const typography = {
     large: {
       fontSize: '14px',
       lineHeight: '17px',
+      letterSpacing: '1px',
     },
     small: {
       fontSize: '12px',

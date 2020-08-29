@@ -27,14 +27,17 @@ const HeaderContainer = styled.article`
   margin: auto;
 `;
 
+const DropdownContainer = styled.article`
+  ${(props: { isOpen: boolean }) =>
+    props.isOpen ? `background-color:${colors.ui.grey10percent};` : `background-color:${colors.ui.grey5percent};`}
+`;
+
 const Dropdown = styled.article`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0 1rem 2rem;
-  ${(props: { isOpen: boolean }) =>
-    props.isOpen ? `background-color:${colors.ui.grey10percent};` : `background-color:${colors.ui.grey5percent};`}
+  padding: 1rem 2rem 1rem 2rem;
 `;
 
 const DropdownListItem = styled(BodyCopyRegularSmall)`
@@ -91,15 +94,16 @@ const ProductFilterDesktop = ({
           <FilterTitle onClick={() => filterProducts(Tags.Discount)}>en descuento</FilterTitle>
           <FilterTitle onClick={() => filterProducts(Tags.Favorite)}>favoritos</FilterTitle>
         </Filters>
-        <Dropdown
-          isOpen={isOrderOpen}
-          onClick={() => {
-            setIsOrderOpen(!isOrderOpen);
-          }}
-        >
-          <OrderTitle isOpen={isOrderOpen}>ordernar por</OrderTitle>
-          <Chevron isOpen={isOrderOpen} />
-        </Dropdown>
+        <DropdownContainer isOpen={isOrderOpen}>
+          <Dropdown
+            onClick={() => {
+              setIsOrderOpen(!isOrderOpen);
+            }}
+          >
+            <OrderTitle isOpen={isOrderOpen}>ordernar por</OrderTitle>
+            <Chevron isOpen={isOrderOpen} />
+          </Dropdown>
+        </DropdownContainer>
       </HeaderContainer>
       <ListContainer>
         <DropdownList shouldDisplayDropdown={isOrderOpen}>

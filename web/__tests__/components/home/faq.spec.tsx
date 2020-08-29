@@ -18,10 +18,10 @@ describe('Faq component', () => {
     expect(wrapper.render().find('h2').length).toEqual(1);
   });
 
-  it('should render an equal number of Accordions as questions/answers are in faq-conf.json file', () => {
+  it('should render an equal number of Accordions as questions/answers are in faq-conf.json file both for mobile and desktop', () => {
     const wrapper = mount(<Faq />);
 
-    expect(wrapper.find(Accordion).length).toEqual(FaqJson.data.length);
+    expect(wrapper.find(Accordion).length).toEqual(FaqJson.data.length * 2);
   });
 
   it('should render Button component', () => {

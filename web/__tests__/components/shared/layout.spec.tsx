@@ -2,7 +2,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Layout from '../../../src/components/shared/layout';
 import NavBar from '../../../src/components/shared/navbar';
-import Footer from '../../../src/components/shared/footer';
+import Footer from '../../../src/components/shared/footer/footer';
 
 describe('Layout component', () => {
   it('should render', () => {

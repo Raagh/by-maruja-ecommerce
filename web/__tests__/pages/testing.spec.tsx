@@ -17,6 +17,7 @@ const product = {
   image: null as SanityImageSource,
   asset: null as SanityImageSourceAsset,
   description: '',
+  tag: 'tag',
 };
 
 it('should render the title', () => {

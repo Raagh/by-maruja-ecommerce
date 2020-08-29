@@ -21,7 +21,7 @@ const AccordionContainer = styled.article<{ index: number }>`
 `;
 
 const AccordionContent = styled(BodyCopyRegularSmall)<{ hidden: boolean }>`
-  display: ${(props) => (props.hidden ? 'none' : '')};
+  display: ${(props) => (props.hidden ? 'none' : 'block')};
   width: 90%;
 
   margin: 0.75rem 0 0 0;
@@ -29,7 +29,6 @@ const AccordionContent = styled(BodyCopyRegularSmall)<{ hidden: boolean }>`
 
   @media ${device.large} {
     margin: 1rem 1rem 0 0;
-    display: block;
   }
 `;
 

@@ -1,6 +1,6 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import Footer from '../../../../src/components/shared/footer';
+import Footer from '../../../../src/components/shared/footer/footer';
 import FooterDesktopLinks from '../../../../src/components/shared/footer/footer-desktop-links';
 import FooterPayment from '../../../../src/components/shared/footer/footer-payment';
 import FooterMobileDesktopLinks from '../../../../src/components/shared/footer/footer-mobile-desktop-links';

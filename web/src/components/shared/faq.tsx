@@ -52,6 +52,13 @@ const createAccordionContent = (question: string, answer: string, index: number,
 
 const AccordionsContainer = styled.div`
   @media ${device.large} {
+    display: none;
+  }
+`;
+
+const AccordionsDesktopContainer = styled.div`
+  display: none;
+  @media ${device.large} {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -68,6 +75,11 @@ const Faq = ({ isDarkBackgroundColor }: { isDarkBackgroundColor?: boolean }) => 
             createAccordionContent(question.question, question.answer, index, question.isHidden)
           )}
         </AccordionsContainer>
+        <AccordionsDesktopContainer>
+          {FaqJson.data.map((question, index) =>
+            createAccordionContent(question.question, question.answer, index, false)
+          )}
+        </AccordionsDesktopContainer>
         <FaqButtonContainer>
           <Button text="LEER MÁS" url="/" />
         </FaqButtonContainer>

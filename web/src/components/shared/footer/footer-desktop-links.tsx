@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Link from 'next/link';
 import { typography, colors } from '../../../config/global-styles';
 import { LinksLarge } from '../../../config/global-styled-components';
 import { device } from '../../../config/device';
@@ -55,9 +56,9 @@ const CornerLinkText = styled.p`
 
 const createLink = (legend: string, link: string, key: number) => {
   return (
-    <FooterLink href={`/categories${link}`} key={key}>
-      {legend}
-    </FooterLink>
+    <Link href={`/categories${link}`} key={key} passHref>
+      <FooterLink>{legend}</FooterLink>
+    </Link>
   );
 };
 

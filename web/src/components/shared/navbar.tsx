@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
@@ -39,7 +40,7 @@ const Menu = styled.img`
   }
 `;
 
-const Links = styled(LinksSmall)`
+const StyledLink = styled(LinksSmall)`
   display: none;
   margin-top: 2rem;
   text-decoration: none;
@@ -57,9 +58,15 @@ const NavBar = () => {
         <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
       </a>
 
-      <Links href="/categories/productos">productos</Links>
-      <Links href="/">contacto y ayuda</Links>
-      <Links href="/">sobre Maruja</Links>
+      <Link href="/categories/productos" passHref>
+        <StyledLink>productos</StyledLink>
+      </Link>
+      <Link href="/" passHref>
+        <StyledLink>contacto y ayuda</StyledLink>
+      </Link>
+      <Link href="/" passHref>
+        <StyledLink>sobre Maruja</StyledLink>
+      </Link>
       <CartButton />
     </Container>
   );

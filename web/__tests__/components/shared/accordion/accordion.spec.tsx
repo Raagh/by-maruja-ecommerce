@@ -25,13 +25,21 @@ describe('Accordion component', () => {
     expect(wrapper.text()).toContain(data.answer);
   });
 
-  it('should not display content by default', () => {
-    const wrapper = mount(<Accordion question={data.question} answer={data.answer} index={data.index} />);
+  it('should not display content', () => {
+    const wrapper = mount(
+      <Accordion question={data.question} answer={data.answer} index={data.index} initialHiddenStatus={true} />
+    );
 
-    expect(wrapper.find('p').last()).toHaveStyleRule('display', undefined);
+    expect(wrapper.find('p').last()).toHaveStyleRule('display', 'none');
   });
 
-  it('should display content after clicking on the question', () => {
+  it('should display content by default', () => {
+    const wrapper = mount(<Accordion question={data.question} answer={data.answer} index={data.index} />);
+
+    expect(wrapper.find('p').last()).toHaveStyleRule('display', 'block');
+  });
+
+  it('should not display content after clicking on the question', () => {
     const wrapper = mount(<Accordion question={data.question} answer={data.answer} index={data.index} />);
 
     wrapper.find('div').first().simulate('click');

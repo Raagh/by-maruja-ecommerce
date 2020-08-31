@@ -15,19 +15,19 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: ${fonts.primary.name};
     src: url('/fonts/Ortica-Light.woff') format("woff");
-    font-display: swap;
+    font-display: block;
   }
 
   @font-face {
     font-family: ${fonts.secondary.regular.name};
     src: url('/fonts/Proxima-Nova.woff') format("woff");
-    font-display: swap;
+    font-display: block;
   }
 
   @font-face {
     font-family: ${fonts.secondary.bold.name};
     src: url('/fonts/Proxima-Nova-Bold.woff') format("woff");
-    font-display: swap;
+    font-display: block;
   }
 
   * {

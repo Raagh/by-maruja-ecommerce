@@ -20,7 +20,12 @@ export default {
       title: "Categorias",
       name: "categories",
       type: "array",
-      of: [{ type: "category" }],
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "category" }],
+        },
+      ],
     },
     {
       title: "Recomendados",

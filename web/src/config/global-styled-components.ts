@@ -88,6 +88,14 @@ export const StyledH3 = styled.h3`
   }
 `;
 
+export const StyledH3Title = styled.h3`
+  ${H4Styles}
+
+  @media ${device.large} {
+    ${H2Styles}
+  }
+`;
+
 export const Subtitle = styled.p`
   font-family: ${typography.subtitle.font.name};
   font-style: normal;
@@ -198,12 +206,22 @@ export const LabelLargeBold = styled.p`
   color: ${colors.ui.darkSurface};
 `;
 
-export const CaptionsSmall = styled.p`
+export const CaptionSmall = styled.div`
   font-family: ${typography.captions.font.name};
   font-style: normal;
   font-weight: ${typography.captions.font.fontWeight};
   font-size: ${typography.captions.small.fontSize};
   line-height: ${typography.captions.small.lineHeight};
   letter-spacing: ${typography.captions.small.letterSpacing};
+  color: ${colors.ui.lightBackground};
+`;
+
+export const CaptionLarge = styled.div`
+  font-family: ${typography.captions.font.name};
+  font-weight: ${typography.captions.font.fontWeight};
+  font-size: ${typography.captions.large.fontSize};
+  line-height: ${typography.captions.large.lineHeight};
+  letter-spacing: ${typography.captions.large.letterSpacing};
+  color: ${colors.ui.darkSurface};
   color: ${colors.ui.grey50percent};
 `;

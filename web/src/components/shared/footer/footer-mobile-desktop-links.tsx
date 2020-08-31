@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 import { LabelSmall } from '../../../config/global-styled-components';
 import { typography } from '../../../config/global-styles';
@@ -24,7 +25,6 @@ const FooterLink = styled.a`
 const FooterLabel = styled(LabelSmall)`
   @media ${device.large} {
     display: block;
-    margin-right: 2rem;
     font-size: ${typography.links.small.fontSize};
     line-height: ${typography.links.small.lineHeight};
     letter-spacing: ${typography.links.small.letterSpacing};
@@ -51,15 +51,22 @@ const SmallOnlyLink = styled.a`
 const FooterMobileDesktopLinks = () => {
   return (
     <FooterMobileDesktopLinksContainer>
-      <LargeOnlyLink href="/">
-        <FooterLabel>SOBRE MARUJA</FooterLabel>
-      </LargeOnlyLink>
-      <FooterLink href="/">
-        <FooterLabel>CONTACTO</FooterLabel>
-      </FooterLink>
-      <FooterLink href="/">
-        <FooterLabel>PREGUNTAS FRECUENTES</FooterLabel>
-      </FooterLink>
+      <Link href="/" passHref>
+        <LargeOnlyLink>
+          <FooterLabel>SOBRE MARUJA</FooterLabel>
+        </LargeOnlyLink>
+      </Link>
+      <Link href="/" passHref>
+        <FooterLink>
+          <FooterLabel>CONTACTO</FooterLabel>
+        </FooterLink>
+      </Link>
+      <Link href="/" passHref>
+        <FooterLink>
+          <FooterLabel>PREGUNTAS FRECUENTES</FooterLabel>
+        </FooterLink>
+      </Link>
+
       <SmallOnlyLink href="/">
         <img src="/assets/Instagram.svg" alt="Instagram Logo" />
       </SmallOnlyLink>

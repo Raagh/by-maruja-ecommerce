@@ -6,16 +6,21 @@ import { device, reusablePlaceholder } from '../../config/device';
 import { colors } from '../../config/global-styles';
 import LazyLoadImage from '../shared/image-types/lazy-image';
 
+const BackgroundContainer = styled.section`
+  background-color: ${colors.ui.grey5percent};
+`;
+
 const FeedContainer = styled.section`
   padding: 2rem;
   text-align: center;
-  background-color: ${colors.ui.grey5percent};
 
   @media ${device.large} {
     padding: 8rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: auto;
+    max-width: 1600px;
   }
 `;
 
@@ -72,30 +77,35 @@ const Feed = () => {
   useEffect(() => {
     if (!areItemsLoaded) {
       setItemsLoaded(true);
-      axios.get('/api/instagram-feed').then((result) => {
-        setItems([]);
-        setItems(result.data);
-      });
+      axios
+        .get('/api/instagram-feed')
+        .then((result) => {
+          setItems([]);
+          setItems(result.data);
+        })
+        .catch(() => {});
     }
   }, [areItemsLoaded]);
 
   return (
-    <FeedContainer>
-      <TextContainer>
-        <FeedSubtitle>Que se dice de Maruja?</FeedSubtitle>
-        <FeedDescription>
-          Lee mas comentarios y seguinos en <strong>@bymaruja</strong>
-        </FeedDescription>
-      </TextContainer>
+    <BackgroundContainer>
+      <FeedContainer>
+        <TextContainer>
+          <FeedSubtitle>Que se dice de Maruja?</FeedSubtitle>
+          <FeedDescription>
+            Lee mas comentarios y seguinos en <strong>@bymaruja</strong>
+          </FeedDescription>
+        </TextContainer>
 
-      {items.length !== 0 && (
-        <ImagesContainer>
-          {items.map((x, index) => (
-            <Image alt="feed-image" key={index} src={x} placeholderSrc={reusablePlaceholder} />
-          ))}
-        </ImagesContainer>
-      )}
-    </FeedContainer>
+        {items.length !== 0 && (
+          <ImagesContainer>
+            {items.map((x, index) => (
+              <Image alt="feed-image" key={index} src={x} placeholderSrc={reusablePlaceholder} />
+            ))}
+          </ImagesContainer>
+        )}
+      </FeedContainer>
+    </BackgroundContainer>
   );
 };
 

@@ -6,6 +6,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Index from '../../src/pages/testing';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
 import { mock as paymentDataReponse } from '../../__mocks__/mercado-pago-create-payment-response.mock';
+import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
 
 jest.mock('axios');
 
@@ -14,7 +15,9 @@ const product = {
   price: 0,
   stock: 0,
   image: null as SanityImageSource,
+  asset: null as SanityImageSourceAsset,
   description: '',
+  tag: 'tag',
 };
 
 it('should render the title', () => {

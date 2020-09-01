@@ -29,5 +29,31 @@ export default {
         metadata: ["lqip"],
       },
     },
+    {
+      title: "Categoria",
+      name: "category",
+      type: "array",
+      _ref: "category",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "category" }],
+        },
+      ],
+    },
+    {
+      title: "Tag",
+      name: "tag",
+      type: "string",
+      options: {
+        list: [
+          { title: "Favorito", value: "Favorito" },
+          { title: "Acero quirúrgico", value: "Acero quirúrgico" },
+          { title: "Descuento", value: "Descuento" },
+          { title: "Normal", value: "Normal" },
+        ],
+        layout: "radio",
+      },
+    },
   ],
 };

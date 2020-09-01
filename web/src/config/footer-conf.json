@@ -1,0 +1,22 @@
+{
+  "data": {
+    "desktop": [
+      {
+        "link": "/aros",
+        "legend": "AROS"
+      },
+      {
+        "link": "/anillos",
+        "legend": "ANILLOS"
+      },
+      {
+        "link": "/collares",
+        "legend": "COLLARES"
+      },
+      {
+        "link": "/pelo",
+        "legend": "PARA EL PELO"
+      }
+    ]
+  }
+}

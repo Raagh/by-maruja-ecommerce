@@ -57,6 +57,8 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
 
   @media ${device.large} {
     max-width: 30%;

@@ -1,0 +1,13 @@
+import React from 'react';
+
+import styled from 'styled-components';
+
+const ChevronIcon = styled.img<{ isOpen: boolean }>`
+  ${(props) => (props.isOpen ? 'transform: scaleY(-1);' : '')};
+`;
+
+const Chevron = ({ isOpen }: { isOpen: boolean }) => {
+  return <ChevronIcon src="/assets/Chevron.svg" isOpen={isOpen} />;
+};
+
+export default Chevron;

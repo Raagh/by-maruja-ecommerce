@@ -88,6 +88,14 @@ export const StyledH3 = styled.h3`
   }
 `;
 
+export const StyledH3Title = styled.h3`
+  ${H4Styles}
+
+  @media ${device.large} {
+    ${H2Styles}
+  }
+`;
+
 export const Subtitle = styled.p`
   font-family: ${typography.subtitle.font.name};
   font-style: normal;
@@ -152,6 +160,18 @@ export const LinksSmall = styled.a`
   text-transform: ${typography.links.textTransform};
 `;
 
+export const LinksLarge = styled.a`
+  font-family: ${typography.links.large.font.name};
+  font-style: normal;
+  font-weight: ${typography.links.large.font.fontWeight};
+  font-size: ${typography.links.large.fontSize};
+  line-height: ${typography.links.large.lineHeight};
+  letter-spacing: ${typography.links.large.letterSpacing};
+  color: ${colors.ui.darkSurface};
+
+  text-transform: ${typography.links.textTransform};
+`;
+
 export const LabelSmall = styled.div`
   font-family: ${typography.labels.small.font.name};
   font-style: normal;
@@ -184,4 +204,24 @@ export const LabelLargeBold = styled.p`
   line-height: ${typography.labels.large.bold.lineHeight};
   letter-spacing: ${typography.labels.large.bold.letterSpacing};
   color: ${colors.ui.darkSurface};
+`;
+
+export const CaptionSmall = styled.div`
+  font-family: ${typography.captions.font.name};
+  font-style: normal;
+  font-weight: ${typography.captions.font.fontWeight};
+  font-size: ${typography.captions.small.fontSize};
+  line-height: ${typography.captions.small.lineHeight};
+  letter-spacing: ${typography.captions.small.letterSpacing};
+  color: ${colors.ui.lightBackground};
+`;
+
+export const CaptionLarge = styled.div`
+  font-family: ${typography.captions.font.name};
+  font-weight: ${typography.captions.font.fontWeight};
+  font-size: ${typography.captions.large.fontSize};
+  line-height: ${typography.captions.large.lineHeight};
+  letter-spacing: ${typography.captions.large.letterSpacing};
+  color: ${colors.ui.darkSurface};
+  color: ${colors.ui.grey50percent};
 `;

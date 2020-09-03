@@ -7,7 +7,7 @@ const ChevronIcon = styled.img<{ isOpen: boolean }>`
 `;
 
 const Chevron = ({ isOpen }: { isOpen: boolean }) => {
-  return <ChevronIcon src="/assets/Chevron.svg" isOpen={isOpen} />;
+  return <ChevronIcon alt="chevron-icon" src="/assets/Chevron.svg" isOpen={isOpen} />;
 };
 
 export default Chevron;

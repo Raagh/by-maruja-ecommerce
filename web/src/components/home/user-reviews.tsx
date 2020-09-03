@@ -89,7 +89,7 @@ const UserReviews = ({ text, instagramTag, image, asset }: UserReviewsConfigurat
           <ReviewTitle>Historias Felices</ReviewTitle>
           <ReviewText>{text}</ReviewText>
           <ReviewTag>
-            <InstagramLogo src="/assets/Instagram.svg" />
+            <InstagramLogo alt="instagram-logo" src="/assets/Instagram.svg" />
             <ReviewTagText>{instagramTag}</ReviewTagText>
           </ReviewTag>
         </ReviewTextContainer>

@@ -1,6 +1,7 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import NavBar from '../../../src/components/shared/navbar';
+import Menu from '../../../src/components/shared/menu/menu';
 
 describe('NavBar component', () => {
   it('should render', () => {
@@ -19,5 +20,11 @@ describe('NavBar component', () => {
     const wrapper = shallow(<NavBar />);
 
     expect(wrapper.render().find('a').length).toEqual(4);
+  });
+
+  it('should render Menu component', () => {
+    const wrapper = mount(<NavBar />);
+
+    expect(wrapper.find(Menu).length).toEqual(1);
   });
 });

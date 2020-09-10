@@ -4,6 +4,7 @@ import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 import CartButton from './cart-button';
+import Menu from './menu/menu';
 
 const Container = styled.section`
   min-width: 100wh;
@@ -32,7 +33,7 @@ const Logo = styled.img`
   }
 `;
 
-const Menu = styled.img`
+const MenuBotton = styled.img`
   margin-top: 26px;
   @media ${device.large} {
     display: none;
@@ -52,7 +53,8 @@ const Links = styled(LinksSmall)`
 const NavBar = () => {
   return (
     <Container>
-      <Menu src="/assets/Menu.svg" alt="Menu icon" />
+      <MenuBotton src="/assets/Menu.svg" alt="Menu icon" />
+      <Menu isOpen={true} />
       <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
       <Links href="/">productos</Links>
       <Links href="/">contacto y ayuda</Links>

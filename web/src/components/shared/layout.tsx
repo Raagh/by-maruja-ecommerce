@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import React, { FunctionComponent } from 'react';
+import { NextSeo } from 'next-seo';
 import styled, { createGlobalStyle } from 'styled-components';
-import { fonts, colors } from '../../config/global-styles';
 
 import NavBar from './navbar';
 import Footer from './footer/footer';
+import { fonts, colors } from '../../config/global-styles';
+import SEO from '../../../next-seo.config';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -44,6 +46,7 @@ const Main = styled.main`
 const Layout: FunctionComponent = (props) => {
   return (
     <Main>
+      <NextSeo title={SEO.title} description={SEO.description} openGraph={SEO.openGraph} twitter={SEO.twitter} />
       <GlobalStyle />
       <Head>
         <title>By Maruja</title>

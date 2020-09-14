@@ -5,10 +5,10 @@ export default {
     type: 'website',
     locale: 'en_IE',
     url: '/maruja-pink.jpg',
-    site_name: 'SiteName',
+    site_name: 'Maruja Accesorios',
   },
   twitter: {
-    handle: '@handle',
+    handle: '@bymaruja',
     site: 'https://by-maruja.now.sh',
     cardType: 'summary_large_image',
   },

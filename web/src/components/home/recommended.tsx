@@ -5,8 +5,30 @@ import { RecommendedConfiguration } from '../../model/recommended-configuration'
 import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import { device } from '../../config/device';
 
-const RecommendedContainer = styled(AlignedCenterContainer)`
-  margin-top: 80px;
+const BackgroundContainer = styled(AlignedCenterContainer)`
+  margin-top: 10rem;
+  background-image: url('/assets/Background-Slider.svg');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100%;
+
+  @media ${device.small} {
+    margin-top: 5rem;
+  }
+
+  @media ${device.medium} {
+    background-image: url('/assets/Background-Slider-Desktop.svg');
+  }
+
+  @media ${device.large} {
+    padding: 0 0 6.5rem 0;
+    background-image: url('/assets/Background-Slider-Desktop.svg');
+  }
+`;
+
+const RecommendedContainer = styled.article`
+  margin: auto;
+  max-width: 1600px;
 `;
 
 const RecommendedTitle = styled(StyledH2)`
@@ -21,10 +43,12 @@ const RecommendedTitle = styled(StyledH2)`
 
 const Recommended = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {
   return (
-    <RecommendedContainer>
-      <RecommendedTitle>Favoritos del mes</RecommendedTitle>
-      <Slider recommended={recommended} />
-    </RecommendedContainer>
+    <BackgroundContainer>
+      <RecommendedContainer>
+        <RecommendedTitle>Favoritos del mes</RecommendedTitle>
+        <Slider recommended={recommended} />
+      </RecommendedContainer>
+    </BackgroundContainer>
   );
 };
 

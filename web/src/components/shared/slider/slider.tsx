@@ -7,18 +7,9 @@ import { RecommendedConfiguration } from '../../../model/recommended-configurati
 import { device } from '../../../config/device';
 
 const SliderContainer = styled.article<{ padding: number }>`
-  width: 100vw;
   overflow: hidden;
   padding: 0 ${(props) => props.padding}vw 0 ${(props) => props.padding}vw;
   position: relative;
-  background-image: url('/assets/Background-Slider.svg');
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: 100%;
-  @media ${device.medium} {
-    background-image: url('/assets/Background-Slider-Desktop.svg');
-    padding: 0 6rem 6.5rem 6rem;
-  }
 `;
 
 const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {
@@ -40,7 +31,9 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
     dragging: false,
     initialDrag: true,
     lastMouseX: 0,
-    sliderTotalWidth: (styles.width + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * styles.sliderContainerPadding,
+    sliderTotalWidth:
+      (styles.width + styles.imageMargin * 16) * recommended.length +
+      (windowWidth / 50) * styles.sliderContainerPadding,
   });
 
   const properWidth = windowWidth >= desktopWidth ? 330 : 240;
@@ -52,12 +45,14 @@ const Slider = ({ recommended }: { recommended: Array<RecommendedConfiguration> 
       imageMargin: styles.imageMargin,
       sliderContainerPadding: 5,
     });
-    dragRef.current.sliderTotalWidth = (properWidth + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * 5;
+    dragRef.current.sliderTotalWidth =
+      (properWidth + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * 5;
   }
 
   const handleMouseDown = () => {
     dragRef.current.sliderTotalWidth =
-      (styles.width + styles.imageMargin * 16) * recommended.length + (windowWidth / 50) * styles.sliderContainerPadding;
+      (styles.width + styles.imageMargin * 16) * recommended.length +
+      (windowWidth / 50) * styles.sliderContainerPadding;
 
     if (windowWidth < dragRef.current.sliderTotalWidth) dragRef.current.dragging = true;
   };

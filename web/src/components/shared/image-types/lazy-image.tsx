@@ -58,6 +58,7 @@ const LazyImage = ({ src, alt, className, placeholderSrc, srcSet, sizes }: LazyI
 
   return (
     <img
+      draggable="false"
       placeholder="lazy-loaded-image"
       className={className}
       ref={container}

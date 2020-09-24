@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { sanity } from '../../lib/sanity';
 import { mock as paymentDataRequest } from '../../__mocks__/mercado-pago-create-payment-request.mock';
+import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
 import Layout from '../components/shared/layout';
 import { colors, typography } from '../config/global-styles';
 import { Product } from '../model/product';
@@ -65,13 +66,18 @@ const Index = (product: Product) => {
   };
 
   return (
-    <Layout>
+    <Layout categories={categoriesMock}>
       <Container>
         <Main>
-          <Title>This is a title and uses the primary font in regular weight and with primary color (there is no primary font bold)</Title>
+          <Title>
+            This is a title and uses the primary font in regular weight and with primary color (there is no primary font
+            bold)
+          </Title>
           <Subtitle>This is a description and uses the secondary font in regular weight and secondary color</Subtitle>
 
-          <SubtitleHighlight>This is a subtitle highlight and uses the secondary font in bold weight and secondaryColor</SubtitleHighlight>
+          <SubtitleHighlight>
+            This is a subtitle highlight and uses the secondary font in bold weight and secondaryColor
+          </SubtitleHighlight>
           <br />
           <p>
             Nombre: {product.name} - Stock: {product.stock} - Precio: {product.price}

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
+import { CategoryConfiguration } from '../../model/category-configuration';
 import CartButton from './cart-button';
 import Menu from './menu/menu';
 
@@ -27,6 +28,7 @@ const Container = styled.section`
 
 const Logo = styled.img`
   margin-top: 0.5rem;
+  z-index: 1;
   @media ${device.large} {
     height: 68px;
     margin-right: 0.75rem;
@@ -35,7 +37,7 @@ const Logo = styled.img`
 
 const MenuBotton = styled.img`
   margin-top: 26px;
-  z-index: 100;
+  z-index: 10;
   @media ${device.large} {
     display: none;
   }
@@ -51,7 +53,7 @@ const Links = styled(LinksSmall)`
   }
 `;
 
-const NavBar = () => {
+const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -60,8 +62,8 @@ const NavBar = () => {
 
   return (
     <Container>
-      <MenuBotton onClick={handleClick} src="/assets/Menu.svg" alt="Menu icon" />
-      <Menu isOpen={isOpen} />
+      <MenuBotton onClick={handleClick} src={isOpen ? 'assets/Menu-Close.svg' : '/assets/Menu.svg'} alt="Menu icon" />
+      <Menu isOpen={isOpen} categories={categories} />
       <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
       <Links href="/">productos</Links>
       <Links href="/">contacto y ayuda</Links>

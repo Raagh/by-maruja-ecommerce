@@ -28,7 +28,7 @@ const Home = ({
   userReviews: UserReviewsConfiguration;
 }) => {
   return (
-    <Layout>
+    <Layout categories={categories}>
       <Hero {...hero} />
       <ShippingInfo />
       <ProductCategories categories={categories} />

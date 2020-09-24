@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
@@ -35,6 +35,7 @@ const Logo = styled.img`
 
 const MenuBotton = styled.img`
   margin-top: 26px;
+  z-index: 100;
   @media ${device.large} {
     display: none;
   }
@@ -51,10 +52,16 @@ const Links = styled(LinksSmall)`
 `;
 
 const NavBar = () => {
+  const [isOpen, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(!isOpen);
+  };
+
   return (
     <Container>
-      <MenuBotton src="/assets/Menu.svg" alt="Menu icon" />
-      <Menu isOpen={true} />
+      <MenuBotton onClick={handleClick} src="/assets/Menu.svg" alt="Menu icon" />
+      <Menu isOpen={isOpen} />
       <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
       <Links href="/">productos</Links>
       <Links href="/">contacto y ayuda</Links>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { LinksSmall } from '../../config/global-styled-components';
@@ -29,11 +29,14 @@ const Container = styled.section`
 
 const Logo = styled.img`
   margin-top: 0.5rem;
-  z-index: 1;
   @media ${device.large} {
     height: 68px;
     margin-right: 0.75rem;
   }
+`;
+
+const LogoLink = styled.a`
+  z-index: 10;
 `;
 
 const MenuBotton = styled.img`
@@ -61,13 +64,21 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
     setOpen(!isOpen);
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   return (
     <Container>
       <MenuBotton onClick={handleClick} src={isOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'} alt="Menu icon" />
       <Menu isOpen={isOpen} categories={categories} />
-      <a href="/">
+      <LogoLink href="/">
         <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
-      </a>
+      </LogoLink>
 
       <Link href="/categories/productos" passHref>
         <StyledLink>productos</StyledLink>

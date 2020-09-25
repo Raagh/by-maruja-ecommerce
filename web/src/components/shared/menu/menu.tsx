@@ -8,13 +8,13 @@ import FooterMobileDesktopLinks from '../footer/footer-mobile-desktop-links';
 import Link from 'next/link';
 
 const MenuContainer = styled.div<{ isOpen: boolean }>`
-  height: 100%;
-  width: ${(props) => (props.isOpen ? '100' : '0')}%;
+  height: 100vh;
+  width: 100vw;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
-  background-color: ${colors.ui.lightBackground};
+  left: ${(props) => (props.isOpen ? '0' : '-100%')};
+  background-color: ${colors.ui.grey5percent};
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
@@ -42,6 +42,11 @@ const LinkContainer = styled.div`
 
 const CategoryName = styled(StyledH1)``;
 
+const Line = styled.div`
+  border-bottom: 1px solid #f8e9e7;
+  width: 100%;
+`;
+
 const Menu = ({ isOpen, categories }: { isOpen: boolean; categories: CategoryConfiguration[] }) => {
   return (
     <MenuContainer isOpen={isOpen}>
@@ -55,6 +60,7 @@ const Menu = ({ isOpen, categories }: { isOpen: boolean; categories: CategoryCon
             </LinkContainer>
           ))}
       </CategoriesContainer>
+      <Line />
       <FooterMobileDesktopLinks isFooter={false} />
     </MenuContainer>
   );

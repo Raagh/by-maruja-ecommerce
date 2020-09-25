@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 import { LabelSmall } from '../../../config/global-styled-components';
 import { typography } from '../../../config/global-styles';
@@ -53,15 +54,22 @@ const SmallOnlyLink = styled.a`
 const FooterMobileDesktopLinks = ({ isFooter }: { isFooter: boolean }) => {
   return (
     <FooterMobileDesktopLinksContainer isFooter={isFooter}>
-      <LargeOnlyLink isFooter={isFooter} href="/">
-        <FooterLabel>SOBRE MARUJA</FooterLabel>
-      </LargeOnlyLink>
-      <FooterLink href="/">
-        <FooterLabel>CONTACTO</FooterLabel>
-      </FooterLink>
-      <FooterLink href="/">
-        <FooterLabel>PREGUNTAS FRECUENTES</FooterLabel>
-      </FooterLink>
+      <Link href="/" passHref>
+        <LargeOnlyLink isFooter={isFooter}>
+          <FooterLabel>SOBRE MARUJA</FooterLabel>
+        </LargeOnlyLink>
+      </Link>
+      <Link href="/" passHref>
+        <FooterLink>
+          <FooterLabel>CONTACTO</FooterLabel>
+        </FooterLink>
+      </Link>
+      <Link href="/" passHref>
+        <FooterLink>
+          <FooterLabel>PREGUNTAS FRECUENTES</FooterLabel>
+        </FooterLink>
+      </Link>
+
       <SmallOnlyLink href="/">
         <img src="/assets/Instagram.svg" alt="Instagram Logo" />
       </SmallOnlyLink>

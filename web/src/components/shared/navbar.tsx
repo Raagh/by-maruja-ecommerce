@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
@@ -17,7 +18,7 @@ const Container = styled.section`
   padding-right: 1.5rem;
   padding-left: 1.5rem;
 
-  background-color: ${colors.ui.lightBackground};
+  background-color: ${colors.ui.grey5percent};
   @media ${device.large} {
     height: 100px;
     padding: 1.25rem 3.75rem 0 3.75rem;
@@ -43,7 +44,7 @@ const MenuBotton = styled.img`
   }
 `;
 
-const Links = styled(LinksSmall)`
+const StyledLink = styled(LinksSmall)`
   display: none;
   margin-top: 2rem;
   text-decoration: none;
@@ -62,12 +63,21 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
 
   return (
     <Container>
-      <MenuBotton onClick={handleClick} src={isOpen ? 'assets/Menu-Close.svg' : '/assets/Menu.svg'} alt="Menu icon" />
+      <MenuBotton onClick={handleClick} src={isOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'} alt="Menu icon" />
       <Menu isOpen={isOpen} categories={categories} />
-      <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
-      <Links href="/">productos</Links>
-      <Links href="/">contacto y ayuda</Links>
-      <Links href="/">sobre Maruja</Links>
+      <a href="/">
+        <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
+      </a>
+
+      <Link href="/categories/productos" passHref>
+        <StyledLink>productos</StyledLink>
+      </Link>
+      <Link href="/" passHref>
+        <StyledLink>contacto y ayuda</StyledLink>
+      </Link>
+      <Link href="/" passHref>
+        <StyledLink>sobre Maruja</StyledLink>
+      </Link>
       <CartButton />
     </Container>
   );

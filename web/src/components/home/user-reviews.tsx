@@ -6,12 +6,15 @@ import RemoteFixedImage from '../shared/image-types/remote-fixed-size-image';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 
+const BackgroundContainer = styled.section`
+  background-color: ${colors.ui.grey5percent};
+`;
+
 const ReviewContainer = styled.article`
   padding-top: 5rem;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: ${colors.ui.grey5percent};
   justify-content: center;
 
   @media ${device.large} {
@@ -19,6 +22,8 @@ const ReviewContainer = styled.article`
     padding-left: 8rem;
     padding-right: 8rem;
     flex-direction: row-reverse;
+    margin: auto;
+    max-width: 1600px;
   }
 `;
 
@@ -78,18 +83,20 @@ const ReviewTagText = styled(LabelSmall)``;
 
 const UserReviews = ({ text, instagramTag, image, asset }: UserReviewsConfiguration) => {
   return (
-    <ReviewContainer>
-      <ReviewTextContainer>
-        <ReviewTitle>Historias Felices</ReviewTitle>
-        <ReviewText>{text}</ReviewText>
-        <ReviewTag>
-          <InstagramLogo src="/assets/Instagram.svg" />
-          <ReviewTagText>{instagramTag}</ReviewTagText>
-        </ReviewTag>
-      </ReviewTextContainer>
+    <BackgroundContainer>
+      <ReviewContainer>
+        <ReviewTextContainer>
+          <ReviewTitle>Historias Felices</ReviewTitle>
+          <ReviewText>{text}</ReviewText>
+          <ReviewTag>
+            <InstagramLogo alt="instagram-logo" src="/assets/Instagram.svg" />
+            <ReviewTagText>{instagramTag}</ReviewTagText>
+          </ReviewTag>
+        </ReviewTextContainer>
 
-      <InstagramProfileImage image={image} asset={asset} alt="instagram profile" />
-    </ReviewContainer>
+        <InstagramProfileImage image={image} asset={asset} alt="instagram profile" />
+      </ReviewContainer>
+    </BackgroundContainer>
   );
 };
 

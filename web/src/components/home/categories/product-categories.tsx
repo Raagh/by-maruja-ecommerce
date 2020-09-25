@@ -9,7 +9,7 @@ import { StyledH2 } from '../../../config/global-styled-components';
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 5rem;
   padding: 0 1.5rem 0 1.5rem;
   max-width: 1600px;
   margin-left: auto;

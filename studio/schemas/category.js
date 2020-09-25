@@ -1,8 +1,10 @@
+import { BsArchive } from "react-icons/bs";
+
 export default {
   name: "category",
+  icon: BsArchive,
   type: "document",
   title: "Categoria",
-  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
   fields: [
     {
       title: "Imagen",
@@ -15,6 +17,11 @@ export default {
     {
       title: "Nombre",
       name: "name",
+      type: "string",
+    },
+    {
+      title: "Nombre de busqueda",
+      name: "searchName",
       type: "string",
     },
   ],

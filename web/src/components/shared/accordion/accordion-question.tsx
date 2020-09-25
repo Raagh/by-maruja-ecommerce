@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BodyCopyBoldSmall } from '../../../config/global-styled-components';
 import { device } from '../../../config/device';
+import Chevron from '../chevron';
 
 const AccordionQuestionContainer = styled.div`
   display: flex;
@@ -14,10 +15,7 @@ const AccordionQuestionContainer = styled.div`
 
 const AccordionQuestionText = styled(BodyCopyBoldSmall)`
   text-align: left;
-`;
-
-const ChevronIcon = styled.img<{ open: boolean }>`
-  ${(props) => (props.open ? '' : 'transform: scaleY(-1);')};
+  width: 80%;
 `;
 
 const AccordionQuestion = ({
@@ -32,7 +30,7 @@ const AccordionQuestion = ({
   return (
     <AccordionQuestionContainer onClick={() => handleClick(open)}>
       <AccordionQuestionText>{question}</AccordionQuestionText>
-      <ChevronIcon src="/assets/Chevron.svg" open={open} />
+      <Chevron isOpen={open} />
     </AccordionQuestionContainer>
   );
 };

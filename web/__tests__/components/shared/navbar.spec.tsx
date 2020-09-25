@@ -14,8 +14,8 @@ describe('NavBar component', () => {
     expect(wrapper.render().find('img').length).toEqual(4);
   });
 
-  it('should include the links to products, contact, about and the cart two times (Once in the Menu and once in the footer)', () => {
-    expect(wrapper.render().find('a').length).toEqual(8);
+  it('should include the links to products, contact, about and the cart two times (Once in the Menu and once in the footer) and the logo', () => {
+    expect(wrapper.render().find('a').length).toEqual(9);
   });
 
   it('should render Menu component', () => {

@@ -9,12 +9,12 @@ import ProductCategories from '../components/home/categories/product-categories'
 import Feed from '../components/home/feed';
 import UserReviews from '../components/home/user-reviews';
 import About from '../components/home/about';
+import Faq from '../components/shared/faq';
 
 import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
-import Faq from '../components/home/faq';
 
 const Home = ({
   hero,
@@ -45,12 +45,14 @@ export const getServerSideProps = async () => {
   const sanityResult = await sanity.fetch(
     `
     *[_type == "homeSettings"][0]{
-      categories[] {   	  
-        ...,
-         "asset": image.asset-> {
-            url,
-            metadata 
-         }
+      "categories": categories[]->{
+        searchName,
+        name,
+        image,
+        "asset": image.asset-> {
+          url,
+          metadata 
+       }
       },
        hero {
         ...,

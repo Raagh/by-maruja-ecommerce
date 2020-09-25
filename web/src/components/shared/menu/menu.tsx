@@ -5,6 +5,7 @@ import { colors } from '../../../config/global-styles';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { StyledH1 } from '../../../config/global-styled-components';
 import FooterMobileDesktopLinks from '../footer/footer-mobile-desktop-links';
+import Link from 'next/link';
 
 const MenuContainer = styled.div<{ isOpen: boolean }>`
   height: 100%;
@@ -35,7 +36,7 @@ const CategoriesContainer = styled.div`
 const LinkContainer = styled.div`
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -45,11 +46,14 @@ const Menu = ({ isOpen, categories }: { isOpen: boolean; categories: CategoryCon
   return (
     <MenuContainer isOpen={isOpen}>
       <CategoriesContainer>
-        {categories.map((category, key) => (
-          <LinkContainer key={key}>
-            <CategoryName>{category.name}</CategoryName>
-          </LinkContainer>
-        ))}
+        {categories.length &&
+          categories.map((category, key) => (
+            <LinkContainer key={key}>
+              <Link href={`/categories/${category.searchName}`} passHref>
+                <CategoryName>{category.name}</CategoryName>
+              </Link>
+            </LinkContainer>
+          ))}
       </CategoriesContainer>
       <FooterMobileDesktopLinks isFooter={false} />
     </MenuContainer>

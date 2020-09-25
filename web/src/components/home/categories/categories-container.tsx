@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
@@ -74,14 +75,29 @@ const CategoryContainer = styled.div`
   padding-bottom: 1.5rem;
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const CategoryName = styled(StyledH4)``;
 
 const createCategoryContent = (category: CategoryConfiguration) => {
+  const link = `categories/${category.searchName}`;
   return (
     <CategoryContainer key={category.name}>
-      <CategoryImg image={category.image} alt={category.name} asset={category.asset} />
+      <Link href={link} passHref>
+        <StyledLink>
+          <CategoryImg image={category.image} alt={category.name} asset={category.asset} />
+        </StyledLink>
+      </Link>
+
       <LinkContainer>
-        <CategoryName>{category.name}</CategoryName>
+        <Link href={link} passHref>
+          <StyledLink>
+            <CategoryName>{category.name}</CategoryName>
+          </StyledLink>
+        </Link>
+
         <LinkImg src="/assets/Arrow.svg" alt="arrow" />
       </LinkContainer>
     </CategoryContainer>

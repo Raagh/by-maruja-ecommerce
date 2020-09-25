@@ -57,6 +57,8 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
 
   @media ${device.large} {
     max-width: 30%;
@@ -98,7 +100,7 @@ const About = () => {
         <ContentContainer>
           <Image alt="feed-image" key="maruja" src="/assets/Maruja-About.jpg" placeholderSrc={reusablePlaceholder} />
           <TextContainer>
-            <MobileHeartIcon src="/assets/Heart.svg" />
+            <MobileHeartIcon alt="heart-icon" src="/assets/Heart.svg" />
             <MobileAboutTitle>Sobre Maruja</MobileAboutTitle>
             <AboutDescription>
               Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong> María Mahia de Ares</strong>.

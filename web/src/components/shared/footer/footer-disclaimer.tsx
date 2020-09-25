@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CaptionsSmall } from '../../../config/global-styled-components';
+import { CaptionSmall } from '../../../config/global-styled-components';
 
 import { device } from '../../../config/device';
 
@@ -13,7 +13,7 @@ const DisclaimerContainer = styled.div`
   }
 `;
 
-const FooterDisclaimerText = styled(CaptionsSmall)`
+const FooterDisclaimerText = styled(CaptionSmall)`
   letter-spacing: 1px;
   margin-right: 5px;
 `;

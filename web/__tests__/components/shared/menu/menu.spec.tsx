@@ -16,14 +16,14 @@ describe('Menu component', () => {
     expect(wrapper.find('h1').length).toBe(categoriesMock.length);
   });
 
-  it('should have a width of 100 when isOpen is true', () => {
+  it('should have a left attribute of 0 when isOpen is true', () => {
     const wrapper = mount(<Menu isOpen={isOpen} categories={categoriesMock} />);
-    expect(wrapper.find('div').first()).toHaveStyleRule('width', '100%');
+    expect(wrapper.find('div').first()).toHaveStyleRule('left', '0');
   });
 
-  it('should have a width of 0 when isOpen is false', () => {
+  it('should have a left attribute of 100% when isOpen is false', () => {
     isOpen = false;
     const wrapper = mount(<Menu isOpen={isOpen} categories={categoriesMock} />);
-    expect(wrapper.find('div').first()).toHaveStyleRule('width', '0%');
+    expect(wrapper.find('div').first()).toHaveStyleRule('left', '-100%');
   });
 });

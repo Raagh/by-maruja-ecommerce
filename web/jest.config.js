@@ -4,7 +4,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/'],
   preset: 'ts-jest',
-  setupFilesAfterEnv: ['<rootDir>/__tests__/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/__tests__/setupTests.ts', 'jest-localstorage-mock'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

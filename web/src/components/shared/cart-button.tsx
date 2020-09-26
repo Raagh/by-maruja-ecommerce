@@ -7,6 +7,7 @@ const Container = styled.section`
   margin-top: 1.5rem;
   display: flex;
   flex-direction: row;
+  z-index: 1;
   @media ${device.large} {
     margin-left: auto;
     margin-right: 0.25rem;

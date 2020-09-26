@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { typography, colors } from '../../../config/global-styles';
 import { LinksLarge } from '../../../config/global-styled-components';
 import { device } from '../../../config/device';
-
 import footerJson from '../../../config/footer-conf.json';
 
 const FooterDesktopLinksContainer = styled.div`

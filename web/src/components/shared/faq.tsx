@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from './button';
+import Button from './secondary-button';
 import Accordion from './accordion/accordion';
 import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
@@ -46,7 +46,9 @@ const StyledAccordion = styled(Accordion)`
 
 const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
   return (
-    <StyledAccordion question={question} answer={answer} key={index} index={index} initialHiddenStatus={isHidden} />
+    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden}>
+      {answer}
+    </StyledAccordion>
   );
 };
 

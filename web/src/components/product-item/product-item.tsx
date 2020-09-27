@@ -1,17 +1,22 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import {
   BodyCopyRegularSmall,
   CaptionSmall,
   LabelLargeBold,
+  LabelSmall,
   StyledH3Title,
 } from '../../config/global-styled-components';
-import { colors } from '../../config/global-styles';
+import { colors, fonts } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 
 import { Product } from '../../model/product';
+import Accordion from '../shared/accordion/accordion';
+
+import Chevron from '../shared/chevron';
+import PrimaryButton from '../shared/primary-button';
 import ProductItemCarousel from './product-item-carousel';
 
 const ProductItemContainer = styled.section`
@@ -74,7 +79,68 @@ const TransparentBadge = styled(CaptionSmall)`
   border: 1px solid ${colors.ui.grey50percent};
 `;
 
+const ItemExtraQualities = styled.p`
+  font-family: ${fonts.primary};
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 1px;
+  color: ${colors.ui.grey50percent};
+  text-transform: uppercase;
+`;
+
+const ItemExtraQualityRow = styled.div`
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const FakeSelect = styled.div`
+  background: ${colors.ui.grey10percent};
+  border-radius: 8px;
+  width: 168px;
+  height: 42px;
+  border: ${colors.ui.grey10percent};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem 0.8rem 1rem;
+`;
+
+const SizeTable = styled(LabelSmall)`
+  color: ${colors.ui.grey75percent};
+  text-decoration: underline;
+`;
+
+const StyledButton = styled.button`
+  border: none;
+`;
+
+const SizesTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const PaddedPrimaryButton = styled.div`
+  margin-top: 1rem;
+`;
+
+const ExtraPaddedPrimaryButton = styled.div`
+  margin-top: 2rem;
+`;
+
+const DeliveryInformationContainer = styled.div`
+  margin-top: 1rem;
+`;
+
 const ProductItemDisplay = ({ product }: { product: Product }) => {
+  const [quantity, setQuanity] = useState(0);
+  const [selectedSize, setSelectedSize] = useState('XS');
+
   return (
     <ProductItemContainer>
       <Link href="/categories/productos" passHref>
@@ -95,6 +161,45 @@ const ProductItemDisplay = ({ product }: { product: Product }) => {
         {product.tag !== Tags.Discount && <ProductItemPrice>${product.price}</ProductItemPrice>}
       </PriceDisplay>
       <ProductItemDescription>{product.description}</ProductItemDescription>
+      <ItemExtraQualityRow>
+        <ItemExtraQualities>Cantidad</ItemExtraQualities>
+        <FakeSelect>
+          <StyledButton onClick={() => setQuanity(quantity - 1)}>-</StyledButton>
+          <LabelSmall>{quantity}</LabelSmall>
+          <StyledButton onClick={() => setQuanity(quantity + 1)}>+</StyledButton>
+        </FakeSelect>
+      </ItemExtraQualityRow>
+      {product.hasSizes && (
+        <ItemExtraQualityRow>
+          <SizesTextContainer>
+            <ItemExtraQualities>Talle</ItemExtraQualities>
+            <Link href="adonde?" passHref>
+              <SizeTable>Ver tabla de talles</SizeTable>
+            </Link>
+          </SizesTextContainer>
+
+          <FakeSelect>
+            <LabelSmall>{selectedSize}</LabelSmall>
+            <StyledButton type="button" onClick={() => setSelectedSize('M')}>
+              <Chevron isOpen={false} />
+            </StyledButton>
+          </FakeSelect>
+        </ItemExtraQualityRow>
+      )}
+      <ExtraPaddedPrimaryButton>
+        <PrimaryButton text="Comprar Ahora" url="mercadolink" />
+      </ExtraPaddedPrimaryButton>
+      <PaddedPrimaryButton>
+        <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
+      </PaddedPrimaryButton>
+      <DeliveryInformationContainer>
+        <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus>
+          <div>CONTENIDO EXTRA</div>
+        </Accordion>
+        <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus>
+          <p>ESA INFO</p>
+        </Accordion>
+      </DeliveryInformationContainer>
     </ProductItemContainer>
   );
 };

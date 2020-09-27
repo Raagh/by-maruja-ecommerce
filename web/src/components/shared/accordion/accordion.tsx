@@ -34,23 +34,23 @@ const AccordionContent = styled(BodyCopyRegularSmall)<{ hidden: boolean }>`
 
 const Accordion = ({
   className,
-  question,
-  answer,
+  title,
   index,
   initialHiddenStatus = false,
+  children,
 }: {
   className?: string;
-  question: string;
-  answer: string;
+  title: string;
   index: number;
   initialHiddenStatus?: boolean;
+  children?: any;
 }) => {
   const [hidden, useHidden] = useState(initialHiddenStatus);
   return (
     <PassInContainer className={className}>
       <AccordionContainer index={index}>
-        <AccordionQuestion handleClick={useHidden} question={question} open={!hidden} />
-        <AccordionContent hidden={hidden}>{answer}</AccordionContent>
+        <AccordionQuestion handleClick={useHidden} question={title} open={!hidden} />
+        <AccordionContent hidden={hidden}>{children}</AccordionContent>
       </AccordionContainer>
     </PassInContainer>
   );

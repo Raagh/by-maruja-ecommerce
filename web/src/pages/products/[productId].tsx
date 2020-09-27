@@ -28,8 +28,8 @@ const ProductItem = ({
   return (
     <Layout categories={categories}>
       <ProductItemDisplay product={product} />
-      <Recommended recommended={recommended} />
       <UserReviews {...userReviews} />
+      <Recommended recommended={recommended} />
       <Faq isDarkBackgroundColor={true} />
     </Layout>
   );

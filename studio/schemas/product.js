@@ -31,7 +31,11 @@ export default {
       name: "stock",
       type: "number",
     },
-
+    {
+      title: "Tiene talles?",
+      name: "hasSizes",
+      type: "boolean",
+    },
     {
       title: "Imagenes",
       name: "images",

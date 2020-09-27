@@ -7,6 +7,7 @@ export type Product = {
   price: number;
   discountPrice: number;
   stock: number;
+  hasSizes: boolean;
   description: string;
   images: [
     {

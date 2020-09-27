@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import Link from 'next/link';
 import React from 'react';
-import Button from '../../../src/components/shared/button';
+import Button from '../../../src/components/shared/secondary-button';
 
 describe('Button component', () => {
   it('should render', () => {

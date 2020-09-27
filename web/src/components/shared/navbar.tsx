@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
+import { CategoryConfiguration } from '../../model/category-configuration';
 import CartButton from './cart-button';
+import Menu from './menu/menu';
 
 const Container = styled.section`
   min-width: 100wh;
@@ -33,8 +35,13 @@ const Logo = styled.img`
   }
 `;
 
-const Menu = styled.img`
+const LogoLink = styled.a`
+  z-index: 10;
+`;
+
+const MenuBotton = styled.img`
   margin-top: 26px;
+  z-index: 10;
   @media ${device.large} {
     display: none;
   }
@@ -50,13 +57,28 @@ const StyledLink = styled(LinksSmall)`
   }
 `;
 
-const NavBar = () => {
+const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
+  const [isOpen, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   return (
     <Container>
-      <Menu src="/assets/Menu.svg" alt="Menu icon" />
-      <a href="/">
+      <MenuBotton onClick={handleClick} src={isOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'} alt="Menu icon" />
+      <Menu isOpen={isOpen} categories={categories} />
+      <LogoLink href="/">
         <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
-      </a>
+      </LogoLink>
 
       <Link href="/categories/productos" passHref>
         <StyledLink>productos</StyledLink>

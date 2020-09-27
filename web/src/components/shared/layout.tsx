@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import NavBar from './navbar';
 import Footer from './footer/footer';
+import { CategoryConfiguration } from '../../model/category-configuration';
 import { fonts, colors } from '../../config/global-styles';
 import SEO from '../../../next-seo.config';
 
@@ -43,7 +44,11 @@ const Main = styled.main`
   background-color: ${colors.ui.whiteBackground};
 `;
 
-const Layout: FunctionComponent = (props) => {
+type LayoutProps = {
+  categories: CategoryConfiguration[];
+};
+
+const Layout: FunctionComponent<LayoutProps> = (props) => {
   return (
     <Main>
       <NextSeo title={SEO.title} description={SEO.description} openGraph={SEO.openGraph} twitter={SEO.twitter} />
@@ -52,7 +57,7 @@ const Layout: FunctionComponent = (props) => {
         <title>By Maruja</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
+      <NavBar categories={props.categories} />
       {props.children}
       <Footer />
     </Main>

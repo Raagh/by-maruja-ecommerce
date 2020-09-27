@@ -42,7 +42,7 @@ const Footer = () => {
       <FooterPayment />
       <FooterLine />
       <FooterDesktopLinks />
-      <FooterMobileDesktopLinks />
+      <FooterMobileDesktopLinks isFooter={true} />
       <FooterDisclaimer />
     </FooterContainer>
   );

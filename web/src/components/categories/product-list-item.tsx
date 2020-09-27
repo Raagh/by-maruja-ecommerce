@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import Link from 'next/link';
 import { Product } from '../../model/product';
 import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image';
 import { LabelLarge, LabelLargeBold, CaptionSmall } from '../../config/global-styled-components';
@@ -64,7 +65,12 @@ const DiscountFavoriteBadge = styled(Badge)`
   background: ${colors.primary.dark};
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const ProductListItem = ({ product }: { product: Product }) => {
+  const link = `/products/${product._id}`;
   return (
     <ProductListItemContainer>
       <ProductItemImageContainer>
@@ -73,7 +79,11 @@ const ProductListItem = ({ product }: { product: Product }) => {
           <DiscountFavoriteBadge>{product.tag}</DiscountFavoriteBadge>
         )}
         {product.stock > 0 && product.tag === Tags.Steel && <SteelBadge>{product.tag}</SteelBadge>}
-        <ProductItemImage image={product.image} alt={product.name} asset={product.asset} />
+        <Link href={link} passHref>
+          <StyledLink>
+            <ProductItemImage image={product.image} alt={product.name} asset={product.asset} />
+          </StyledLink>
+        </Link>
       </ProductItemImageContainer>
       <ProductItemTextContainer>
         <ProductItemName>{product.name}</ProductItemName>

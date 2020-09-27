@@ -5,9 +5,14 @@ export type Product = {
   _id: string;
   name: string;
   price: number;
+  discountPrice: number;
   stock: number;
   description: string;
-  image: SanityImageSource;
-  asset: SanityImageSourceAsset;
+  images: [
+    {
+      image: SanityImageSource;
+      asset: SanityImageSourceAsset;
+    }
+  ];
   tag: string;
 };

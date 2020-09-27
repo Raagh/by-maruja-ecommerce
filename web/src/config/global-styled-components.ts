@@ -225,3 +225,26 @@ export const CaptionLarge = styled.div`
   color: ${colors.ui.darkSurface};
   color: ${colors.ui.grey50percent};
 `;
+
+const Badge = styled(CaptionSmall)`
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border-radius: 100px;
+`;
+
+export const NoStockBadge = styled(Badge)`
+  background: ${colors.ui.grey50percent};
+`;
+
+export const SteelBadge = styled(Badge)`
+  background: ${colors.primary.default};
+`;
+
+export const DiscountFavoriteBadge = styled(Badge)`
+  background: ${colors.primary.dark};
+`;

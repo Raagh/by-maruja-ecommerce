@@ -7,24 +7,26 @@ import Layout from '../../components/shared/layout';
 import Faq from '../../components/shared/faq';
 import Recommended from '../../components/home/recommended';
 import UserReviews from '../../components/home/user-reviews';
+import { Product } from '../../model/product';
 import ProductItemDisplay from '../../components/product-item/product-item';
 
 import { RecommendedConfiguration } from '../../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
-
-import { Product } from '../../model/product';
+import { CategoryConfiguration } from '../../model/category-configuration';
 
 const ProductItem = ({
   product,
   recommended,
   userReviews,
+  categories,
 }: {
   product: Product;
   recommended: Array<RecommendedConfiguration>;
   userReviews: UserReviewsConfiguration;
+  categories: Array<CategoryConfiguration>;
 }) => {
   return (
-    <Layout>
+    <Layout categories={categories}>
       <ProductItemDisplay product={product} />
       <Recommended recommended={recommended} />
       <UserReviews {...userReviews} />
@@ -40,10 +42,12 @@ export const getServerSideProps = async (context: NextPageContext) => {
     `
     *[_type == "product" && _id == "${productId}"][0]{
       ...,
-        "asset": image.asset-> {
-          url,
-          metadata 
-        }
+      "images": images[]{
+        "image": {
+          ...,
+         	"asset": { "url": asset->url, "metadata": asset->metadata }
+        },
+      }	
      } 
   `
   );
@@ -51,12 +55,22 @@ export const getServerSideProps = async (context: NextPageContext) => {
   const homeSettingsResult = await sanity.fetch(
     `
     *[_type == "homeSettings"][0]{
+      "categories": categories[]->{
+        searchName,
+        name,
+        image,
+        "asset": image.asset-> {
+          url,
+          metadata 
+       }
+      },
       recommended[]->{
        ...,
-       "asset": image.asset-> {
-           url,
-           metadata 
-        }
+       "image": images[0],
+       "asset": images[0].asset-> {
+          url,
+          metadata 
+       }
       },
       userReviews {
        ...,
@@ -74,6 +88,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
       product: productResult,
       recommended: homeSettingsResult.recommended,
       userReviews: homeSettingsResult.userReviews,
+      categories: homeSettingsResult.categories,
     },
   };
 };

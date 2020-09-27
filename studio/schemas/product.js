@@ -17,17 +17,33 @@ export default {
       type: "number",
     },
     {
+      title: "Descripcion",
+      name: "description",
+      type: "string",
+    },
+    {
+      title: "Precio Descuento",
+      name: "discountPrice",
+      type: "number",
+    },
+    {
       title: "Stock",
       name: "stock",
       type: "number",
     },
+
     {
-      title: "Imagen",
-      name: "image",
-      type: "image",
-      options: {
-        metadata: ["lqip"],
-      },
+      title: "Imagenes",
+      name: "images",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            metadata: ["lqip"],
+          },
+        },
+      ],
     },
     {
       title: "Categoria",

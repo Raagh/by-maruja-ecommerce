@@ -226,7 +226,7 @@ export const CaptionLarge = styled.div`
   color: ${colors.ui.grey50percent};
 `;
 
-const Badge = styled(CaptionSmall)`
+export const Badge = styled(CaptionSmall)`
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;

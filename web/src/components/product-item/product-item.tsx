@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import React, { CSSProperties } from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import React from 'react';
 import styled from 'styled-components';
 
 import {
@@ -13,23 +12,11 @@ import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 
 import { Product } from '../../model/product';
-import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image';
-import { displayCorrectBadge } from '../shared/utilities';
+import ProductItemCarousel from './product-item-carousel';
 
 const ProductItemContainer = styled.section`
   display: block;
   padding: 1.5rem;
-`;
-
-const ProductItemImage = styled(RemoteFixedSizeImage)`
-  border-radius: 2px;
-  height: 360px;
-  object-fit: cover;
-`;
-
-const PaddedImageContainer = styled.div`
-  padding: 0 0.7rem 0 0;
-  background-color: ${colors.ui.whiteBackground};
 `;
 
 const BackButton = styled.div`
@@ -58,6 +45,7 @@ const PriceDisplay = styled.div`
   padding-top: 1rem;
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 const ProductItemPrice = styled(LabelLargeBold)``;
@@ -75,41 +63,16 @@ const ProductItemDescription = styled(BodyCopyRegularSmall)`
   padding-top: 1rem;
 `;
 
-const customIndicators = (onClickHandler: any, isSelected: any, index: any, label: any) => {
-  const indicatorStyles: CSSProperties = {
-    background: '#E4C2BE',
-    border: '1px solid #E4C2BE',
-    boxSizing: 'border-box',
-    width: 8,
-    height: 8,
-    display: 'inline-block',
-    margin: '0 8px 1rem 0',
-    borderRadius: 9999,
-  };
+const TransparentBadge = styled(CaptionSmall)`
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  color: ${colors.ui.grey75percent};
 
-  if (isSelected) {
-    return (
-      <li
-        style={{ ...indicatorStyles, width: 45 }}
-        aria-label={`Selected: ${label} ${index + 1}`}
-        title={`Selected: ${label} ${index + 1}`}
-      />
-    );
-  }
-  return (
-    <li
-      style={indicatorStyles}
-      onClick={onClickHandler}
-      onKeyDown={onClickHandler}
-      value={index}
-      key={index}
-      role="button"
-      tabIndex={0}
-      title={`${label} ${index + 1}`}
-      aria-label={`${label} ${index + 1}`}
-    />
-  );
-};
+  border-radius: 100px;
+  border: 1px solid ${colors.ui.grey50percent};
+`;
 
 const ProductItemDisplay = ({ product }: { product: Product }) => {
   return (
@@ -121,28 +84,15 @@ const ProductItemDisplay = ({ product }: { product: Product }) => {
         </BackButton>
       </Link>
 
-      <Carousel
-        showThumbs={false}
-        showStatus={false}
-        showIndicators
-        swipeable
-        centerMode
-        centerSlidePercentage={95}
-        renderIndicator={customIndicators}
-      >
-        {product.images.map((image) => {
-          return (
-            <PaddedImageContainer key={product.name}>
-              {displayCorrectBadge(product)}
-              <ProductItemImage image={image.image} alt={product.name} asset={image.asset} />
-            </PaddedImageContainer>
-          );
-        })}
-      </Carousel>
+      <ProductItemCarousel product={product} />
       <ProductItemTitle>{product.name}</ProductItemTitle>
       <PriceDisplay>
-        <ProductItemPrice>${product.price}</ProductItemPrice>
+        {product.tag === Tags.Discount && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
         {product.tag === Tags.Discount && <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>}
+        {product.tag === Tags.Discount && (
+          <TransparentBadge>{100 - (product.discountPrice * 100) / product.price} % off</TransparentBadge>
+        )}
+        {product.tag !== Tags.Discount && <ProductItemPrice>${product.price}</ProductItemPrice>}
       </PriceDisplay>
       <ProductItemDescription>{product.description}</ProductItemDescription>
     </ProductItemContainer>

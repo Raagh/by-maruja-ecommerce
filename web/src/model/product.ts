@@ -12,11 +12,9 @@ export type Product = {
     stock: number;
   }[];
   description: string;
-  images: [
-    {
-      image: SanityImageSource;
-      asset: SanityImageSourceAsset;
-    }
-  ];
+  images: {
+    image: SanityImageSource;
+    asset: SanityImageSourceAsset;
+  }[];
   tag: string;
 };

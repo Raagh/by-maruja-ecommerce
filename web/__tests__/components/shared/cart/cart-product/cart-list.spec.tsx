@@ -2,7 +2,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
 import CartList from '../../../../../src/components/shared/cart/cart-product/cart-list';
-import CartMock from '../../../../../__mocks__/cart-products-mock';
+import CartMock from '../../../../../__mocks__/cart-products.mock';
 import SingleItem from '../../../../../src/components/shared/cart/cart-product/cart-single-item';
 
 describe('CartList component', () => {

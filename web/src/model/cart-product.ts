@@ -1,13 +1,5 @@
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
+import { Product } from './product';
 
-export type CartProduct = {
-  name: string;
-  price: number;
-  stock: number;
-  description: string;
-  image?: SanityImageSource;
-  asset?: SanityImageSourceAsset;
-  tag: string;
+export type CartProduct = Product & {
   quantity: number;
 };

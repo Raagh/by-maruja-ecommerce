@@ -17,7 +17,7 @@ export const addToCart = (product: CartProduct) => {
 export const clearFromCart = (product: CartProduct) => {
   let cartContent: CartProduct[] = JSON.parse(localStorage.getItem('cart'));
   cartContent = cartContent.filter((cartProd) => {
-    return cartProd.name !== product.name;
+    return cartProd._id !== product._id;
   });
 
   localStorage.setItem('cart', JSON.stringify(cartContent));
@@ -46,6 +46,6 @@ export const removeOneFromCart = (product: CartProduct) => {
 const findProductIndex = (cart: CartProduct[], product: CartProduct) => {
   if (cart === null) return null;
   return cart.reduce<number>((cartProductIndex, cartProduct, index) => {
-    return cartProduct.name === product.name ? index : cartProductIndex;
+    return cartProduct._id === product._id ? index : cartProductIndex;
   }, null);
 };

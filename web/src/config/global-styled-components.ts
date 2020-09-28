@@ -47,14 +47,14 @@ const H5Styles = css`
   color: ${colors.ui.darkSurface};
 `;
 
-// const H6Styles = css`
-//   font-family: ${typography.titles.h6.font.name};
-//   font-style: normal;
-//   font-weight: ${typography.titles.h6.font.fontWeight};
-//   font-size: ${typography.titles.h6.fontSize};
-//   line-height: ${typography.titles.h6.lineHeight};
-//   color: ${colors.ui.darkSurface};
-// `;
+const H6Styles = css`
+  font-family: ${typography.titles.h6.font.name};
+  font-style: normal;
+  font-weight: ${typography.titles.h6.font.fontWeight};
+  font-size: ${typography.titles.h6.fontSize};
+  line-height: ${typography.titles.h6.lineHeight};
+  color: ${colors.ui.darkSurface};
+`;
 
 export const StyledH1 = styled.h1`
   ${H3Styles}
@@ -98,6 +98,10 @@ export const StyledH3Title = styled.h3`
 
 export const StyledH5Title = styled.h5`
   ${H5Styles}
+`;
+
+export const StyledH6Title = styled.h6`
+  ${H6Styles}
 `;
 
 export const Subtitle = styled.p`

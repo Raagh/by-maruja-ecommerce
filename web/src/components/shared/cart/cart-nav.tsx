@@ -34,7 +34,7 @@ const InvDiv = styled.div`
 const CartNav = ({ clickHandler }: { clickHandler: () => void }) => {
   return (
     <CartNavContainer>
-      <BackButton onClick={clickHandler} src="/assets/arrow_back.svg" alt="Back button" />
+      <BackButton onClick={clickHandler} src="/assets/Arrow-Back.svg" alt="Back button" />
       <BodyCopyBoldLarge>Mi Carrito</BodyCopyBoldLarge>
       <InvDiv />
     </CartNavContainer>

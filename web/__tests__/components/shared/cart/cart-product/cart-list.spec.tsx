@@ -4,6 +4,7 @@ import 'jest-styled-components';
 import CartList from '../../../../../src/components/shared/cart/cart-product/cart-list';
 import CartMock from '../../../../../__mocks__/cart-products.mock';
 import SingleItem from '../../../../../src/components/shared/cart/cart-product/cart-single-item';
+import PurchaseSummary from '../../../../../src/components/shared/cart/cart-product/cart-purchase-summary';
 
 describe('CartList component', () => {
   it('should render', () => {
@@ -28,5 +29,11 @@ describe('CartList component', () => {
     const wrapper = mount(<CartList cart={CartMock} />);
 
     expect(wrapper.find(SingleItem).length).toBe(CartMock.length);
+  });
+
+  it('should render Purchase Summary component', () => {
+    const wrapper = mount(<CartList cart={CartMock} />);
+
+    expect(wrapper.find(PurchaseSummary).length).toBe(1);
   });
 });

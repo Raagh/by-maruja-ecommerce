@@ -32,9 +32,9 @@ const Links = styled(LinksSmall)`
   }
 `;
 
-const CartButton = () => {
+const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
   return (
-    <Container>
+    <Container onClick={clickHandler}>
       <Links href="/">carrito</Links>
       <Bag src="/assets/Bag.svg" alt="Bag icon" />
     </Container>

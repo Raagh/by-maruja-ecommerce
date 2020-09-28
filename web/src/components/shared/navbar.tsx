@@ -6,10 +6,11 @@ import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 import { CategoryConfiguration } from '../../model/category-configuration';
 import CartButton from './cart-button';
+import Cart from './cart/cart';
 import Menu from './menu/menu';
 
 const Container = styled.section`
-  min-width: 100wh;
+  min-width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -58,24 +59,25 @@ const StyledLink = styled(LinksSmall)`
 `;
 
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
-  const [isOpen, setOpen] = useState(false);
-
-  const handleClick = () => {
-    setOpen(!isOpen);
-  };
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isCartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [isOpen]);
+  }, [isMenuOpen]);
 
   return (
     <Container>
-      <MenuBotton onClick={handleClick} src={isOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'} alt="Menu icon" />
-      <Menu isOpen={isOpen} categories={categories} />
+      <MenuBotton
+        onClick={() => setMenuOpen(!isMenuOpen)}
+        src={isMenuOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'}
+        alt="Menu icon"
+      />
+      <Menu isOpen={isMenuOpen} categories={categories} />
       <LogoLink href="/">
         <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
       </LogoLink>
@@ -89,7 +91,8 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
       <Link href="/" passHref>
         <StyledLink>sobre Maruja</StyledLink>
       </Link>
-      <CartButton />
+      <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
+      <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
     </Container>
   );
 };

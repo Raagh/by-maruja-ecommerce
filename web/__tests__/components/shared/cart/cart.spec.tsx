@@ -3,6 +3,7 @@ import React from 'react';
 import 'jest-styled-components';
 import Cart from '../../../../src/components/shared/cart/cart';
 import CartNav from '../../../../src/components/shared/cart/cart-nav';
+import CartProduct from '../../../../src/components/shared/cart/cart-product/cart-product';
 
 describe('Cart component', () => {
   let isOpen = true;
@@ -17,6 +18,12 @@ describe('Cart component', () => {
     const wrapper = mount(<Cart isOpen={isOpen} clickHandler={mockfn} />);
 
     expect(wrapper.find(CartNav).length).toBe(1);
+  });
+
+  it('should render the component CartProduct', () => {
+    const wrapper = mount(<Cart isOpen={isOpen} clickHandler={mockfn} />);
+
+    expect(wrapper.find(CartProduct).length).toBe(1);
   });
 
   it('should have a right attribute of 0 when isOpen is true', () => {

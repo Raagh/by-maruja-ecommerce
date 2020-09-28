@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
 import CartNav from './cart-nav';
+import CartProduct from './cart-product/cart-product';
 
 const CartContainer = styled.div<{ isOpen: boolean }>`
   height: 100vh;
@@ -15,7 +16,6 @@ const CartContainer = styled.div<{ isOpen: boolean }>`
   overflow-x: hidden;
   transition: 0.5s;
   display: flex;
-  justify-content: space-between;
   flex-flow: column;
   align-items: center;
   @media ${device.large} {
@@ -27,6 +27,7 @@ const Cart = ({ isOpen, clickHandler }: { isOpen: boolean; clickHandler: () => v
   return (
     <CartContainer isOpen={isOpen}>
       <CartNav clickHandler={clickHandler} />
+      <CartProduct isOpen={isOpen} />
     </CartContainer>
   );
 };

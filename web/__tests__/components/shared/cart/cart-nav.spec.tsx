@@ -17,4 +17,10 @@ describe('CartNav component', () => {
 
     expect(wrapper.render().find('img').length).toBe(1);
   });
+
+  it('should render the title', () => {
+    const wrapper = shallow(<CartNav clickHandler={mockfn} />);
+
+    expect(wrapper.render().find('p').length).toBe(1);
+  });
 });

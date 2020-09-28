@@ -5,14 +5,14 @@ export default {
   __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
   fields: [
     {
-      title: "TituloPagina",
+      title: "Título de la página",
       name: "homePageTitle",
       type: "string",
       readOnly: true,
       hidden: true,
     },
     {
-      title: "Hero",
+      title: "Foto descatada",
       name: "hero",
       type: "hero",
     },
@@ -28,7 +28,7 @@ export default {
       ],
     },
     {
-      title: "Recomendados",
+      title: "Favoritos del mes",
       name: "recommended",
       type: "array",
       of: [

@@ -7,12 +7,10 @@ export type Product = {
   price: number;
   discountPrice: number;
   stock: number;
-  sizeChart: [
-    {
-      size: string;
-      stock: number;
-    }
-  ];
+  sizeChart: {
+    size: string;
+    stock: number;
+  }[];
   description: string;
   images: [
     {

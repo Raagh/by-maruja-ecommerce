@@ -5,7 +5,7 @@ import Accordion from '../../../../src/components/shared/accordion/accordion';
 import AccordionQuestion from '../../../../src/components/shared/accordion/accordion-question';
 
 describe('Accordion component', () => {
-  const data = { question: 'Is this testing correctly?', answer: 'Yes, it is.', index: 1 };
+  const data = { question: 'Is this testing correctly?', answer: '<AccordionQuestion />Yes, it is.', index: 1 };
 
   it('should render', () => {
     const wrapper = shallow(<Accordion title={data.question} index={data.index} />);
@@ -20,7 +20,11 @@ describe('Accordion component', () => {
   });
 
   it('should render the answer passed to props', () => {
-    const wrapper = shallow(<Accordion title={data.question} index={data.index} />);
+    const wrapper = shallow(
+      <Accordion title={data.question} index={data.index}>
+        <p>Yes, it is.</p>
+      </Accordion>
+    );
 
     expect(wrapper.text()).toContain(data.answer);
   });

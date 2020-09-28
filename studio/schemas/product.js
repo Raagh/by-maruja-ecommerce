@@ -12,31 +12,31 @@ export default {
       type: "string",
     },
     {
-      title: "Precio",
-      name: "price",
-      type: "number",
-    },
-    {
       title: "Descripcion",
       name: "description",
       type: "string",
     },
     {
-      title: "Precio Descuento",
+      title: "Precio",
+      name: "price",
+      type: "number",
+    },
+    {
+      title: "Precio descuento",
       name: "discountPrice",
       type: "number",
     },
     {
-      title: "Stock sin talles",
+      title: "Stock talle único",
       description:
-        "En caso de ser un producto que no tiene talles, usar este campo para espificar el stock",
+        "En caso de ser un producto que tiene talle único, usar este campo para espificar el stock",
       name: "stock",
       type: "number",
     },
     {
       title: "Stock por talle",
       description:
-        "En caso de ser un producto que tiene talles, usar esta tabla para especificar el stock por cada talle",
+        "En caso de ser un producto que tiene varios talles, usar esta tabla para especificar el stock por cada talle",
       name: "sizeChart",
       type: "array",
       of: [
@@ -52,7 +52,7 @@ export default {
       ],
     },
     {
-      title: "Imagenes",
+      title: "Fotos",
       name: "images",
       type: "array",
       of: [
@@ -65,7 +65,7 @@ export default {
       ],
     },
     {
-      title: "Categoria",
+      title: "Categoría",
       name: "category",
       type: "array",
       _ref: "category",
@@ -89,6 +89,11 @@ export default {
         ],
         layout: "radio",
       },
+    },
+    {
+      title: "Reseña",
+      name: "userReviews",
+      type: "userReviews",
     },
   ],
 };

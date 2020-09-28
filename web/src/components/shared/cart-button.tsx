@@ -11,6 +11,9 @@ const Container = styled.section`
   @media ${device.large} {
     margin-left: auto;
     margin-right: 0.25rem;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -35,7 +38,7 @@ const Links = styled(LinksSmall)`
 const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
   return (
     <Container onClick={clickHandler}>
-      <Links href="/">carrito</Links>
+      <Links>carrito</Links>
       <Bag src="/assets/Bag.svg" alt="Bag icon" />
     </Container>
   );

@@ -58,17 +58,33 @@ const StyledLink = styled(LinksSmall)`
   }
 `;
 
+const GreyScreen = styled.div<{ isCartOpen: boolean }>`
+  display: none;
+  @media ${device.large} {
+    display: block;
+    background-color: ${colors.ui.grey25percent};
+    opacity: ${(props) => (props.isCartOpen ? '0.8' : '0')};
+    z-index: ${(props) => (props.isCartOpen ? '5' : '-1')};
+    top: 100px;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+`;
+
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen || isCartOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isCartOpen]);
 
   return (
     <Container>
@@ -92,6 +108,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
         <StyledLink>sobre Maruja</StyledLink>
       </Link>
       <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
+      <GreyScreen isCartOpen={isCartOpen} />
       <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
     </Container>
   );

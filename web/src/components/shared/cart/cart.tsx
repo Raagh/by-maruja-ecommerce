@@ -19,7 +19,10 @@ const CartContainer = styled.div<{ isOpen: boolean }>`
   flex-flow: column;
   align-items: center;
   @media ${device.large} {
-    display: none;
+    top: 102px;
+    padding-bottom: 102px;
+    width: 408px;
+    overflow-y: hidden;
   }
 `;
 

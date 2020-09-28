@@ -12,10 +12,10 @@ describe('CartNav component', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('should render the back-arrow image', () => {
+  it('should render an invisible div and a back-arrow image', () => {
     const wrapper = shallow(<CartNav clickHandler={mockfn} />);
 
-    expect(wrapper.render().find('img').length).toBe(1);
+    expect(wrapper.render().find('div').length).toBe(2);
   });
 
   it('should render the title', () => {

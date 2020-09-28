@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CartProduct as CP } from '../../../../model/cart-product';
 import SingleItem from './cart-single-item';
 import PurchaseSummary from './cart-purchase-summary';
+import { device } from '../../../../config/device';
 import { BodyCopyRegularSmall } from '../../../../config/global-styled-components';
 
 const CartListContainer = styled.div<{ cart: CP[] }>`
@@ -15,6 +16,9 @@ const MoreInfo = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  @media ${device.large} {
+    display: none;
+  }
 `;
 
 const CartList = ({ cart }: { cart: CP[] }) => {

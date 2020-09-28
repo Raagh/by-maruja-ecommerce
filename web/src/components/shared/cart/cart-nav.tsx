@@ -16,14 +16,18 @@ const CartNavContainer = styled.section`
 
   background-color: ${colors.ui.whiteBackground};
   @media ${device.large} {
-    display: none;
+    max-width: 408px;
+    min-width: 408px;
   }
 `;
 
-const BackButton = styled.img`
+const BackButton = styled.div`
   z-index: 10;
+  background-image: url('/assets/Arrow-Back.svg');
+  width: 14px;
+  height: 14px;
   @media ${device.large} {
-    display: none;
+    background-image: url('/assets/Menu-Close.svg');
   }
 `;
 
@@ -34,7 +38,7 @@ const InvDiv = styled.div`
 const CartNav = ({ clickHandler }: { clickHandler: () => void }) => {
   return (
     <CartNavContainer>
-      <BackButton onClick={clickHandler} src="/assets/Arrow-Back.svg" alt="Back button" />
+      <BackButton onClick={clickHandler} />
       <BodyCopyBoldLarge>Mi Carrito</BodyCopyBoldLarge>
       <InvDiv />
     </CartNavContainer>

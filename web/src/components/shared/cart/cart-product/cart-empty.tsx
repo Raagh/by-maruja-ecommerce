@@ -23,6 +23,11 @@ const Line = styled.div`
   margin-top: 0.5rem;
 `;
 
+const LinkPointer = styled(LinksLarge)`
+  :hover {
+    cursor: pointer;
+  }
+`;
 const CartEmpty = ({ cart }: { cart: CP[] }) => {
   return (
     <EmptyContainer cart={cart}>
@@ -31,7 +36,7 @@ const CartEmpty = ({ cart }: { cart: CP[] }) => {
         <br /> está vacío.
       </EmptyCartTitle>
       <Link href="/categories/productos">
-        <LinksLarge>DESCUBRIR PRODUCTOS</LinksLarge>
+        <LinkPointer>DESCUBRIR PRODUCTOS</LinkPointer>
       </Link>
       <Line />
     </EmptyContainer>

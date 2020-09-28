@@ -4,8 +4,13 @@ import { Tags } from '../../model/filters/tags';
 import { Product } from '../../model/product';
 
 export const displayCorrectBadge = (product: Product) => {
-  if (product.stock === 0) return <NoStockBadge>Sin stock</NoStockBadge>;
-  if (product.stock > 0 && (product.tag === Tags.Discount || product.tag === Tags.Favorite))
+  const realStock = calculateProductStock(product);
+
+  if (realStock === 0) return <NoStockBadge>Sin stock</NoStockBadge>;
+  if (realStock > 0 && (product.tag === Tags.Discount || product.tag === Tags.Favorite))
     return <DiscountFavoriteBadge>{product.tag}</DiscountFavoriteBadge>;
-  if (product.stock > 0 && product.tag === Tags.Steel) return <SteelBadge>{product.tag}</SteelBadge>;
+  if (realStock > 0 && product.tag === Tags.Steel) return <SteelBadge>{product.tag}</SteelBadge>;
 };
+
+export const calculateProductStock = (product: Product) =>
+  product.sizeChart !== undefined ? product.sizeChart.reduce((_, curr, accu) => accu + curr.stock, 0) : product.stock;

@@ -17,6 +17,7 @@ import Accordion from '../shared/accordion/accordion';
 
 import Chevron from '../shared/chevron';
 import PrimaryButton from '../shared/primary-button';
+import { calculateProductStock } from '../shared/utilities';
 import ProductItemCarousel from './product-item-carousel';
 
 const ProductItemContainer = styled.section`
@@ -169,7 +170,7 @@ const ProductItemDisplay = ({ product }: { product: Product }) => {
           <StyledButton onClick={() => setQuanity(quantity + 1)}>+</StyledButton>
         </FakeSelect>
       </ItemExtraQualityRow>
-      {product.hasSizes && (
+      {calculateProductStock(product) > 0 && (
         <ItemExtraQualityRow>
           <SizesTextContainer>
             <ItemExtraQualities>Talle</ItemExtraQualities>

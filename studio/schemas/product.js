@@ -27,14 +27,29 @@ export default {
       type: "number",
     },
     {
-      title: "Stock",
+      title: "Stock sin talles",
+      description:
+        "En caso de ser un producto que no tiene talles, usar este campo para espificar el stock",
       name: "stock",
       type: "number",
     },
     {
-      title: "Tiene talles?",
-      name: "hasSizes",
-      type: "boolean",
+      title: "Stock por talle",
+      description:
+        "En caso de ser un producto que tiene talles, usar esta tabla para especificar el stock por cada talle",
+      name: "sizeChart",
+      type: "array",
+      of: [
+        {
+          title: "Producto con Talle y Stock",
+          name: "sizeChartRow",
+          type: "object",
+          fields: [
+            { name: "size", type: "string", title: "Talle" },
+            { name: "stock", type: "number", title: "Stock" },
+          ],
+        },
+      ],
     },
     {
       title: "Imagenes",

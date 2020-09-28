@@ -39,13 +39,8 @@ export const getServerSideProps = async (context: NextPageContext) => {
         "categories": categories[]->{
           searchName,
           name,
-          image,
-          "asset": image.asset-> {
-            url,
-            metadata 
-          }
         },
-       }  
+      }  
     `
   );
 
@@ -53,10 +48,12 @@ export const getServerSideProps = async (context: NextPageContext) => {
     `
     *[_type == "product" ${extraQuery}]{
       ...,
-        "asset": image.asset-> {
-          url,
-          metadata 
+      "images": images[0]{
+        "0": {
+          "image": {...},
+          "asset": { "url": asset->url, "metadata": asset->metadata }
         }
+      }	
      }
   `
   );

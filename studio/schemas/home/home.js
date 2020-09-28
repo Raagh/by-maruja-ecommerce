@@ -35,6 +35,10 @@ export default {
         {
           type: "reference",
           to: [{ type: "product" }],
+          options: {
+            filter: "tag == $tag && stock > 0",
+            filterParams: { tag: "Favorito" },
+          },
         },
       ],
     },

@@ -1,31 +1,14 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
 import ProductListItem from '../../../src/components/categories/product-list-item';
 import { Tags } from '../../../src/model/filters/tags';
-
-const product = {
-  name: 'name',
-  price: -1,
-  stock: 0,
-  description: 'string',
-  image: null as SanityImageSource,
-  asset: null as SanityImageSourceAsset,
-  tag: 'string',
-};
+import { mock as product } from '../../../__mocks__/product.mock';
 
 describe('ProductListItem component', () => {
   it('should render', () => {
     const wrapper = shallow(<ProductListItem product={product} />);
 
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it('should display no stock badge', () => {
-    const wrapper = shallow(<ProductListItem product={product} />);
-
-    expect(wrapper.render().find('div').children().toArray()[0].children[0].data).toContain('Sin stock');
   });
 
   it('should display discount badge', () => {

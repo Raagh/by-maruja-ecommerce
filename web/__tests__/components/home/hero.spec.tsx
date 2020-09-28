@@ -1,7 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Hero from '../../../src/components/home/hero';
-import Button from '../../../src/components/shared/button';
+import Button from '../../../src/components/shared/secondary-button';
 
 jest.mock('../../../lib/sanity');
 

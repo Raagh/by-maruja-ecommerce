@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LazyLoadImage from '../shared/image-types/lazy-image';
 import { reusablePlaceholder, device } from '../../config/device';
 import { StyledH2, BodyCopyRegularSmall } from '../../config/global-styled-components';
-import Button from '../shared/button';
+import Button from '../shared/secondary-button';
 import { colors } from '../../config/global-styles';
 
 const BackgroundContainer = styled.section`

@@ -6,6 +6,8 @@ import { RecommendedConfiguration } from '../../../model/recommended-configurati
 
 const SliderContentContainer = styled.article<{ translateValue: number }>`
   transform: translateX(${(props) => -props.translateValue}px);
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in;
   height: 90%;
   display: flex;
   width: 100%;
@@ -15,7 +17,13 @@ const createImages = (image: RecommendedConfiguration, index: number, width: num
   return <SliderImage remoteImage={image} width={width} key={index} margin={margin} />;
 };
 
-const SliderContent = ({ values, images }: { values: SliderContentConfiguration; images: Array<RecommendedConfiguration> }) => {
+const SliderContent = ({
+  values,
+  images,
+}: {
+  values: SliderContentConfiguration;
+  images: Array<RecommendedConfiguration>;
+}) => {
   return (
     <SliderContentContainer translateValue={values.translateValue}>
       {images && images.map((image, index) => createImages(image, index, values.width, values.imageMargin))}

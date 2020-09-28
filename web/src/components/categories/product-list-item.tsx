@@ -1,13 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 
 import styled from 'styled-components';
 
+import { LabelLarge, LabelLargeBold } from '../../config/global-styled-components';
 import { Product } from '../../model/product';
 import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image';
-import { LabelLarge, LabelLargeBold, CaptionSmall } from '../../config/global-styled-components';
-import { colors } from '../../config/global-styles';
-import { Tags } from '../../model/filters/tags';
 import { device } from '../../config/device';
+import { displayCorrectBadge } from '../shared/utilities';
 
 const ProductListItemContainer = styled.section`
   display: flex;
@@ -41,39 +41,21 @@ const ProductItemImageContainer = styled.div`
   position: relative;
 `;
 
-const Badge = styled(CaptionSmall)`
-  display: flex;
-  flex-direction: row;
-  padding: 0.5rem 1rem;
-
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  border-radius: 100px;
-`;
-
-const NoStockBadge = styled(Badge)`
-  background: ${colors.ui.grey50percent};
-`;
-
-const SteelBadge = styled(Badge)`
-  background: ${colors.primary.default};
-`;
-
-const DiscountFavoriteBadge = styled(Badge)`
-  background: ${colors.primary.dark};
+const StyledLink = styled.a`
+  text-decoration: none;
 `;
 
 const ProductListItem = ({ product }: { product: Product }) => {
+  const link = `/products/${product._id}`;
   return (
     <ProductListItemContainer>
       <ProductItemImageContainer>
-        {product.stock === 0 && <NoStockBadge>Sin stock</NoStockBadge>}
-        {product.stock > 0 && (product.tag === Tags.Discount || product.tag === Tags.Favorite) && (
-          <DiscountFavoriteBadge>{product.tag}</DiscountFavoriteBadge>
-        )}
-        {product.stock > 0 && product.tag === Tags.Steel && <SteelBadge>{product.tag}</SteelBadge>}
-        <ProductItemImage image={product.image} alt={product.name} asset={product.asset} />
+        {displayCorrectBadge(product)}
+        <Link href={link} passHref>
+          <StyledLink>
+            <ProductItemImage image={product.images[0].image} alt={product.name} asset={product.images[0].asset} />
+          </StyledLink>
+        </Link>
       </ProductItemImageContainer>
       <ProductItemTextContainer>
         <ProductItemName>{product.name}</ProductItemName>

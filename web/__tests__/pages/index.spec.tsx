@@ -20,6 +20,7 @@ import About from '../../src/components/home/about';
 import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
 import { mock as userReview } from '../../__mocks__/user-reviews-configuration.mock';
 import { HeroConfiguration } from '../../src/model/hero-configuration';
+import { RecommendedConfiguration } from '../../src/model/recommended-configuration';
 
 jest.mock('axios');
 
@@ -47,7 +48,7 @@ const recommended = [
     image: null as SanityImageSource,
     asset: null as SanityImageSourceAsset,
     stock: 1,
-  },
+  } as RecommendedConfiguration,
 ];
 
 describe('Home Page', () => {

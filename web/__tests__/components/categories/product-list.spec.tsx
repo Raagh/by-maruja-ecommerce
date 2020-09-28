@@ -1,21 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import ProductList from '../../../src/components/categories/product-list';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { SanityImageSource as SanityImageSourceAsset } from '@sanity/asset-utils';
+import { mock as product } from '../../../__mocks__/product.mock';
 import ProductListItem from '../../../src/components/categories/product-list-item';
 
-const products = [
-  {
-    name: 'string',
-    price: 0,
-    stock: 0,
-    description: 'string',
-    image: null as SanityImageSource,
-    asset: null as SanityImageSourceAsset,
-    tag: 'string',
-  },
-];
+const products = [product];
 
 describe('ProductList component', () => {
   it('should render', () => {

@@ -29,6 +29,7 @@
     "next-seo": "^4.7.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-responsive-carousel": "^3.2.10",
     "styled-components": "^5.1.0",
     "tslib": "^1.10.0"
   },

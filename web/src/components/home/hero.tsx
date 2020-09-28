@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH1 } from '../../config/global-styled-components';
-import Button from '../shared/button';
+import Button from '../shared/secondary-button';
 import { HeroConfiguration } from '../../model/hero-configuration';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';

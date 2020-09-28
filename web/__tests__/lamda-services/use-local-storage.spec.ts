@@ -1,4 +1,4 @@
-import CartProductsMock from '../../__mocks__/cart-products-mock';
+import CartProductsMock from '../../__mocks__/cart-products.mock';
 import {
   addToCart,
   clearFromCart,

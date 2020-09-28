@@ -63,10 +63,11 @@ export const getServerSideProps = async () => {
        },
        recommended[]->{
         ...,
-        "asset": image.asset-> {
-            url,
-            metadata 
-         }
+        "image": images[0],
+        "asset": images[0].asset-> {
+           url,
+           metadata 
+        }
        },
        userReviews {
         ...,

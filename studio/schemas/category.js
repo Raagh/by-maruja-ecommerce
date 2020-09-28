@@ -20,7 +20,7 @@ export default {
       type: "string",
     },
     {
-      title: "Nombre de busqueda",
+      title: "URL",
       name: "searchName",
       type: "string",
     },

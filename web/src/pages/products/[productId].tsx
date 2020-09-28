@@ -5,23 +5,19 @@ import { sanity } from '../../../lib/sanity';
 
 import Layout from '../../components/shared/layout';
 import Faq from '../../components/shared/faq';
-import Recommended from '../../components/home/recommended';
 import UserReviews from '../../components/home/user-reviews';
 import { Product } from '../../model/product';
 import ProductItemDisplay from '../../components/product-item/product-item';
 
-import { RecommendedConfiguration } from '../../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
 import { CategoryConfiguration } from '../../model/category-configuration';
 
 const ProductItem = ({
   product,
-  recommended,
   userReviews,
   categories,
 }: {
   product: Product;
-  recommended: Array<RecommendedConfiguration>;
   userReviews: UserReviewsConfiguration;
   categories: Array<CategoryConfiguration>;
 }) => {
@@ -29,7 +25,6 @@ const ProductItem = ({
     <Layout categories={categories}>
       <ProductItemDisplay product={product} />
       <UserReviews {...userReviews} />
-      <Recommended recommended={recommended} />
       <Faq isDarkBackgroundColor={true} />
     </Layout>
   );
@@ -64,14 +59,6 @@ export const getServerSideProps = async (context: NextPageContext) => {
           metadata 
        }
       },
-      recommended[]->{
-       ...,
-       "image": images[0],
-       "asset": images[0].asset-> {
-          url,
-          metadata 
-       }
-      },
       userReviews {
        ...,
        "asset": image.asset-> {
@@ -86,7 +73,6 @@ export const getServerSideProps = async (context: NextPageContext) => {
   return {
     props: {
       product: productResult,
-      recommended: homeSettingsResult.recommended,
       userReviews: homeSettingsResult.userReviews,
       categories: homeSettingsResult.categories,
     },

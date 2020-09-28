@@ -18,7 +18,7 @@ const CartProduct = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <CartProductContainer>
       <CartEmpty cart={cart} />
-      <CartList />
+      <CartList cart={cart} />
       <Faq />
     </CartProductContainer>
   );

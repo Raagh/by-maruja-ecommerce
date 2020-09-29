@@ -1,10 +1,10 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
-import CartList from '../../../../../src/components/shared/cart/cart/cart-list';
+import CartList from '../../../../../src/components/shared/cart/cart-list';
 import CartMock from '../../../../../__mocks__/cart-products.mock';
-import SingleItem from '../../../../../src/components/shared/cart/cart/cart-single-item';
-import PurchaseSummary from '../../../../../src/components/shared/cart/cart/cart-purchase-summary';
+import SingleItem from '../../../../../src/components/shared/cart/cart-single-item';
+import PurchaseSummary from '../../../../../src/components/shared/cart/cart-purchase-summary';
 
 describe('CartList component', () => {
   it('should render', () => {

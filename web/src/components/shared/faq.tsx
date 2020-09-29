@@ -46,7 +46,7 @@ const StyledAccordion = styled(Accordion)`
 
 const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
   return (
-    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden}>
+    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden} isBold={true}>
       {answer}
     </StyledAccordion>
   );

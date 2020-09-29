@@ -1,8 +1,8 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import CartProduct from '../../../../../src/components/shared/cart/cart/cart';
-import CartEmpty from '../../../../../src/components/shared/cart/cart/cart-empty';
-import CartList from '../../../../../src/components/shared/cart/cart/cart-list';
+import CartProduct from '../../../../../src/components/shared/cart/cart';
+import CartEmpty from '../../../../../src/components/shared/cart/cart-empty';
+import CartList from '../../../../../src/components/shared/cart/cart-list';
 import Faq from '../../../../../src/components/shared/faq';
 
 describe('CartProduct component', () => {

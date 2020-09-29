@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CartProduct as CP } from '../../../../model/cart-product';
+import { CartProduct as CP } from '../../../model/cart-product';
 import SingleItem from './cart-single-item';
 import PurchaseSummary from './cart-purchase-summary';
-import { device } from '../../../../config/device';
-import { BodyCopyRegularSmall } from '../../../../config/global-styled-components';
+import { device } from '../../../config/device';
+import { BodyCopyRegularSmall } from '../../../config/global-styled-components';
 
 const CartListContainer = styled.div<{ cart: CP[] }>`
   ${(props) => (props.cart.length ? '' : 'display: none;')}

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CartProduct as CP } from '../../../../model/cart-product';
-import RemoteFixedSizeImage from '../../image-types/remote-fixed-size-image';
-import { LabelLarge, LabelLargeBold, StyledH6Title, LabelSmall } from '../../../../config/global-styled-components';
-import { colors } from '../../../../config/global-styles';
+import { CartProduct as CP } from '../../../model/cart-product';
+import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
+import { LabelLarge, LabelLargeBold, StyledH6Title, LabelSmall } from '../../../config/global-styled-components';
+import { colors } from '../../../config/global-styles';
 
 const SingleItemContainer = styled.div`
   display: flex;

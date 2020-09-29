@@ -1,36 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
-import SidebarNav from './sidebar-nav';
+import SidebarInternal from './sidebar-internal';
 
-const SidebarContainer = styled.div<{ isOpen: boolean }>`
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  z-index: 11;
-  top: 0;
-  right: ${(props) => (props.isOpen ? '0' : '-100%')};
-  background-color: ${colors.ui.whiteBackground};
-  overflow-x: hidden;
-  transition: 0.5s;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+const GreyScreen = styled.div<{ isOpen: boolean }>`
+  display: none;
   @media ${device.large} {
-    top: 102px;
-    padding-bottom: 102px;
-    width: 408px;
-    overflow-y: hidden;
+    display: block;
+    background-color: ${colors.ui.grey25percent};
+    opacity: ${(props) => (props.isOpen ? '0.8' : '0')};
+    z-index: ${(props) => (props.isOpen ? '5' : '-1')};
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    transition: 0.5s;
   }
 `;
 
-const Sidebar = ({ isOpen, clickHandler, children }: { isOpen: boolean; clickHandler: () => void; children: any }) => {
+const Sidebar = ({
+  isOpen,
+  clickHandler,
+  sidebarTitle,
+  children,
+}: {
+  isOpen: boolean;
+  clickHandler: () => void;
+  sidebarTitle: string;
+  children: any;
+}) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
   return (
-    <SidebarContainer isOpen={isOpen}>
-      <SidebarNav clickHandler={clickHandler} sidebarTitle="Mi Carrito" />
-      {children}
-    </SidebarContainer>
+    <article>
+      <GreyScreen isOpen={isOpen} />
+      <SidebarInternal isOpen={isOpen} clickHandler={clickHandler} sidebarTitle={sidebarTitle}>
+        {children}
+      </SidebarInternal>
+    </article>
   );
 };
 

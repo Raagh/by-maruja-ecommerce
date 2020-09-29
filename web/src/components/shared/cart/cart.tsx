@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { device } from '../../../../config/device';
+import { device } from '../../../config/device';
 // import { getCart } from '../../../../lamda-services/use-local-storage';
 import CartEmpty from './cart-empty';
-import Faq from '../../faq';
+import Faq from '../faq';
 import CartList from './cart-list';
 
 const CartProductContainer = styled.div`

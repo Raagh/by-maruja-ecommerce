@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BodyCopyBoldSmall } from '../../../config/global-styled-components';
+import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../../config/global-styled-components';
 import { device } from '../../../config/device';
 import Chevron from '../chevron';
 
@@ -13,7 +13,12 @@ const AccordionQuestionContainer = styled.div`
   }
 `;
 
-const AccordionQuestionText = styled(BodyCopyBoldSmall)`
+const AccordionQuestionBoldText = styled(BodyCopyBoldSmall)`
+  text-align: left;
+  width: 80%;
+`;
+
+const AccordionQuestionRegularText = styled(BodyCopyRegularSmall)`
   text-align: left;
   width: 80%;
 `;
@@ -21,15 +26,18 @@ const AccordionQuestionText = styled(BodyCopyBoldSmall)`
 const AccordionQuestion = ({
   question,
   open,
+  isBold,
   handleClick,
 }: {
   question: string;
+  isBold: boolean;
   open: boolean;
   handleClick: Function;
 }) => {
   return (
     <AccordionQuestionContainer onClick={() => handleClick(open)}>
-      <AccordionQuestionText>{question}</AccordionQuestionText>
+      {isBold && <AccordionQuestionBoldText>{question}</AccordionQuestionBoldText>}
+      {!isBold && <AccordionQuestionRegularText>{question}</AccordionQuestionRegularText>}
       <Chevron isOpen={open} />
     </AccordionQuestionContainer>
   );

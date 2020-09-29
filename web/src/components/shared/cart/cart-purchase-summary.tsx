@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../../config/global-styled-components';
-import { colors } from '../../../../config/global-styles';
-import { CartProduct as CP } from '../../../../model/cart-product';
-import PrimaryButton from '../../primary-button';
+import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../config/global-styled-components';
+import { colors } from '../../../config/global-styles';
+import { CartProduct as CP } from '../../../model/cart-product';
+import PrimaryButton from '../primary-button';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;

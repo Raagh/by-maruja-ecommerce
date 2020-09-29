@@ -6,8 +6,8 @@ import { BodyCopyRegularSmall, LabelSmall } from '../../config/global-styled-com
 import { colors, fonts } from '../../config/global-styles';
 import { Product } from '../../model/product';
 import Chevron from '../shared/chevron';
-import Sidebar from '../shared/sidebar/sidebar';
 import { calculateProductStock } from '../shared/utilities';
+import ProductItemSizeChart from './product-item-sizechart';
 
 const ItemExtraQualities = styled.p`
   font-family: ${fonts.primary};
@@ -40,11 +40,6 @@ const FakeSelect = styled.div`
   padding: 0.8rem 1rem 0.8rem 1rem;
 `;
 
-const SizeTable = styled(LabelSmall)`
-  color: ${colors.ui.grey75percent};
-  text-decoration: underline;
-`;
-
 const StyledButton = styled.button`
   border: none;
 `;
@@ -62,24 +57,9 @@ const ProductItemDescription = styled(BodyCopyRegularSmall)`
   padding-top: 1rem;
 `;
 
-const LinkedButton = styled.button`
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-`;
-
-const SizesExplanation = styled(BodyCopyRegularSmall)`
-  margin: 2rem;
-`;
-
 const ProductItemSelectors = ({ product }: { product: Product }) => {
   const [quantity, setQuanity] = useState(0);
   const [selectedSize, setSelectedSize] = useState('XS');
-  const [isSizeChartOpen, setSizeChartOpen] = useState(false);
 
   return (
     <article>
@@ -96,21 +76,7 @@ const ProductItemSelectors = ({ product }: { product: Product }) => {
         <ItemExtraQualityRow>
           <SizesTextContainer>
             <ItemExtraQualities>Talle</ItemExtraQualities>
-            <LinkedButton type="button" onClick={() => setSizeChartOpen(true)}>
-              <SizeTable>Ver tabla de talles</SizeTable>
-            </LinkedButton>
-
-            <Sidebar
-              isOpen={isSizeChartOpen}
-              clickHandler={() => setSizeChartOpen(!isSizeChartOpen)}
-              sidebarTitle="Talles"
-            >
-              <SizesExplanation>
-                Medí el diámetro de un anillo que te guste y compará el tamaño en la tabla. El número dentro del anilo
-                es tu talle.
-              </SizesExplanation>
-              <img src="/assets/Sizes.png" alt="sizeChart" />
-            </Sidebar>
+            <ProductItemSizeChart />
           </SizesTextContainer>
 
           <FakeSelect>

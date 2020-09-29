@@ -24,7 +24,7 @@ const ProductItem = ({
   return (
     <Layout categories={categories}>
       <ProductItemDisplay product={product} />
-      <UserReviews {...userReviews} />
+      {userReviews !== null && <UserReviews {...userReviews} />}
       <Faq isDarkBackgroundColor={true} />
     </Layout>
   );
@@ -59,13 +59,6 @@ export const getServerSideProps = async (context: NextPageContext) => {
           metadata 
        }
       },
-      userReviews {
-       ...,
-       "asset": image.asset-> {
-         url,
-         metadata 
-       }
-     },
     }
     `
   );
@@ -73,7 +66,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
   return {
     props: {
       product: productResult,
-      userReviews: homeSettingsResult.userReviews,
+      userReviews: productResult?.userReviews ?? null,
       categories: homeSettingsResult.categories,
     },
   };

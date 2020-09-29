@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { device } from '../../../../config/device';
-//import { getCart } from '../../../../lamda-services/use-local-storage';
+// import { getCart } from '../../../../lamda-services/use-local-storage';
 import CartEmpty from './cart-empty';
 import Faq from '../../faq';
 import CartList from './cart-list';
@@ -16,7 +16,7 @@ const FaqWrapper = styled.div`
   }
 `;
 
-const CartProduct = ({ isOpen }: { isOpen: boolean }) => {
+const Cart = ({ isOpen }: { isOpen: boolean }) => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -94,4 +94,4 @@ const CartProduct = ({ isOpen }: { isOpen: boolean }) => {
   );
 };
 
-export default CartProduct;
+export default Cart;

@@ -6,8 +6,9 @@ import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 import { CategoryConfiguration } from '../../model/category-configuration';
 import CartButton from './cart-button';
-import Cart from './cart/cart';
 import Menu from './menu/menu';
+import Sidebar from './sidebar/sidebar';
+import Cart from './cart/cart/cart';
 
 const Container = styled.section`
   min-width: 100vw;
@@ -109,7 +110,10 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
       </Link>
       <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
       <GreyScreen isCartOpen={isCartOpen} />
-      <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
+
+      <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)}>
+        <Cart isOpen={isCartOpen} />
+      </Sidebar>
     </Container>
   );
 };

@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
-import CartNav from './cart-nav';
-import CartProduct from './cart-product/cart-product';
+import SidebarNav from './sidebar-nav';
 
-const CartContainer = styled.div<{ isOpen: boolean }>`
+const SidebarContainer = styled.div<{ isOpen: boolean }>`
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -26,13 +25,13 @@ const CartContainer = styled.div<{ isOpen: boolean }>`
   }
 `;
 
-const Cart = ({ isOpen, clickHandler }: { isOpen: boolean; clickHandler: () => void }) => {
+const Sidebar = ({ isOpen, clickHandler, children }: { isOpen: boolean; clickHandler: () => void; children: any }) => {
   return (
-    <CartContainer isOpen={isOpen}>
-      <CartNav clickHandler={clickHandler} />
-      <CartProduct isOpen={isOpen} />
-    </CartContainer>
+    <SidebarContainer isOpen={isOpen}>
+      <SidebarNav clickHandler={clickHandler} sidebarTitle="Mi Carrito" />
+      {children}
+    </SidebarContainer>
   );
 };
 
-export default Cart;
+export default Sidebar;

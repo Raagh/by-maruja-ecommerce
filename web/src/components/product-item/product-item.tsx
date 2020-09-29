@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
+import { device } from '../../config/device';
 
-import { CaptionSmall, LabelLargeBold, StyledH3Title } from '../../config/global-styled-components';
+import {
+  BodyCopyRegularSmall,
+  CaptionSmall,
+  LabelLargeBold,
+  StyledH3Title,
+} from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 
@@ -79,6 +85,15 @@ const DeliveryInformationContainer = styled.div`
   margin-top: 1rem;
 `;
 
+const MoreInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  @media ${device.large} {
+    display: none;
+  }
+`;
+
 const ProductItemDisplay = ({ product }: { product: Product }) => {
   return (
     <ProductItemContainer>
@@ -101,12 +116,20 @@ const ProductItemDisplay = ({ product }: { product: Product }) => {
       </PriceDisplay>
       <ProductItemSelectors product={product} />
       <ExtraPaddedPrimaryButton>
-        <PrimaryButton text="Comprar Ahora" url="mercadolink" />
+        <PrimaryButton text="Comprar con mercado pago" url="mercadolink" />
       </ExtraPaddedPrimaryButton>
       <PaddedPrimaryButton>
         <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
       </PaddedPrimaryButton>
       <DeliveryInformationContainer>
+        <MoreInfo>
+          <BodyCopyRegularSmall>Información sobre el pago</BodyCopyRegularSmall>
+          <img src="/assets/Add.svg" alt="Plus sign" />
+        </MoreInfo>
+        <MoreInfo>
+          <BodyCopyRegularSmall>Información sobre envíos y entregas</BodyCopyRegularSmall>
+          <img src="/assets/Add.svg" alt="Plus sign" />
+        </MoreInfo>
         <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus>
           <div>CONTENIDO EXTRA</div>
         </Accordion>

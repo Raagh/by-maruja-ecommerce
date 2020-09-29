@@ -2,7 +2,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import NavBar from '../../../src/components/shared/navbar';
 import Menu from '../../../src/components/shared/menu/menu';
-import Cart from '../../../src/components/shared/cart/cart';
+import Cart from '../../../src/components/shared/sidebar/sidebar';
 import { mock as categoriesMock } from '../../../__mocks__/categories-configuration.mock';
 
 describe('NavBar component', () => {

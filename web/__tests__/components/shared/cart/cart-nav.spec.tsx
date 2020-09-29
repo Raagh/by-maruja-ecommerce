@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
-import CartNav from '../../../../src/components/shared/cart/cart-nav';
+import CartNav from '../../../../src/components/shared/sidebar/sidebar-nav';
 
 describe('CartNav component', () => {
   let mockfn = jest.fn();

@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
+
 import { CartProduct as CP } from '../../../../model/cart-product';
 import { StyledH2, LinksLarge } from '../../../../config/global-styled-components';
 import { colors } from '../../../../config/global-styles';
-import Link from 'next/link';
 
 const EmptyContainer = styled.div<{ cart: CP[] }>`
   ${(props) => (props.cart.length ? 'display: none;' : '')}

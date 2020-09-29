@@ -1,7 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
-import CartEmpty from '../../../../../src/components/shared/cart/cart-product/cart-empty';
+import CartEmpty from '../../../../../src/components/shared/cart/cart/cart-empty';
 import CartMock from '../../../../../__mocks__/cart-products.mock';
 
 describe('CartEmpty component', () => {

@@ -1,9 +1,9 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
-import Cart from '../../../../src/components/shared/cart/cart';
-import CartNav from '../../../../src/components/shared/cart/cart-nav';
-import CartProduct from '../../../../src/components/shared/cart/cart-product/cart-product';
+import Cart from '../../../../src/components/shared/sidebar/sidebar';
+import CartNav from '../../../../src/components/shared/sidebar/sidebar-nav';
+import CartProduct from '../../../../src/components/shared/cart/cart/cart';
 
 describe('Cart component', () => {
   let isOpen = true;

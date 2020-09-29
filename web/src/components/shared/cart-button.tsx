@@ -8,9 +8,10 @@ const Container = styled.section`
   display: flex;
   flex-direction: row;
   z-index: 1;
+
   @media ${device.large} {
-    margin-left: auto;
     margin-right: 0.25rem;
+    margin-left: auto;
     :hover {
       cursor: pointer;
     }

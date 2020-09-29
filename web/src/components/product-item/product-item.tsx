@@ -2,15 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { CaptionSmall, LabelLargeBold, StyledH3Title } from '../../config/global-styled-components';
+import { CaptionLarge, CaptionSmall, LabelLargeBold, StyledH3Title } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
-
 import { Product } from '../../model/product';
 import Accordion from '../shared/accordion/accordion';
-
 import PrimaryButton from '../shared/primary-button';
-
 import ProductItemCarousel from './product-item-carousel';
 import ProductItemSelectors from './product-item-selectors';
 
@@ -79,7 +76,11 @@ const DeliveryInformationContainer = styled.div`
   margin-top: 1rem;
 `;
 
-const ProductItemDisplay = ({ product }: { product: Product }) => {
+const NoStockMessage = styled(CaptionLarge)`
+  margin-top: 0.8rem;
+`;
+
+const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock: boolean }) => {
   return (
     <ProductItemContainer>
       <Link href="/categories/productos" passHref>
@@ -99,21 +100,26 @@ const ProductItemDisplay = ({ product }: { product: Product }) => {
         )}
         {product.tag !== Tags.Discount && <ProductItemPrice>${product.price}</ProductItemPrice>}
       </PriceDisplay>
-      <ProductItemSelectors product={product} />
-      <ExtraPaddedPrimaryButton>
-        <PrimaryButton text="Comprar con mercado pago" url="mercadolink" />
-      </ExtraPaddedPrimaryButton>
-      <PaddedPrimaryButton>
-        <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
-      </PaddedPrimaryButton>
-      <DeliveryInformationContainer>
-        <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus isBold={false}>
-          <div>CONTENIDO EXTRA</div>
-        </Accordion>
-        <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus isBold={false}>
-          <p>ESA INFO</p>
-        </Accordion>
-      </DeliveryInformationContainer>
+      {hasStock && (
+        <article>
+          <ProductItemSelectors product={product} />
+          <ExtraPaddedPrimaryButton>
+            <PrimaryButton text="Comprar con mercado pago" url="mercadolink" />
+          </ExtraPaddedPrimaryButton>
+          <PaddedPrimaryButton>
+            <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
+          </PaddedPrimaryButton>
+          <DeliveryInformationContainer>
+            <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus isBold={false}>
+              <div>CONTENIDO EXTRA</div>
+            </Accordion>
+            <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus isBold={false}>
+              <p>ESA INFO</p>
+            </Accordion>
+          </DeliveryInformationContainer>
+        </article>
+      )}
+      {!hasStock && <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>}
     </ProductItemContainer>
   );
 };

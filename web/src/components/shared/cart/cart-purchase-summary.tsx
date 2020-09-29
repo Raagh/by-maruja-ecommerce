@@ -8,6 +8,8 @@ import PrimaryButton from '../primary-button';
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
   background: ${colors.ui.grey5percent};
+  box-shadow: 0px 2px 2px rgba(81, 50, 50, 0.05);
+  border-radius: 8px;
 `;
 
 const InfoContainer = styled.div`

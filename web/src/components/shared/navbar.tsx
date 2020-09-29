@@ -38,7 +38,11 @@ const Logo = styled.img`
 `;
 
 const LogoLink = styled.a`
-  z-index: 10;
+  margin: auto;
+
+  @media${device.large}{
+    margin: 0;
+  }
 `;
 
 const MenuBotton = styled.img`
@@ -92,11 +96,10 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
       <Link href="/" passHref>
         <StyledLink>sobre Maruja</StyledLink>
       </Link>
-      <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
-
       <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">
         <Cart isOpen={isCartOpen} />
       </Sidebar>
+      <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
     </Container>
   );
 };

@@ -11,6 +11,7 @@ import ProductItemDisplay from '../../components/product-item/product-item';
 
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
 import { CategoryConfiguration } from '../../model/category-configuration';
+import { calculateProductStock } from '../../components/shared/utilities';
 
 const ProductItem = ({
   product,
@@ -21,10 +22,12 @@ const ProductItem = ({
   userReviews: UserReviewsConfiguration;
   categories: Array<CategoryConfiguration>;
 }) => {
+  const hasStock = calculateProductStock(product) > 0;
+
   return (
     <Layout categories={categories}>
-      <ProductItemDisplay product={product} />
-      {userReviews !== null && <UserReviews {...userReviews} />}
+      <ProductItemDisplay product={product} hasStock={hasStock} />
+      {userReviews !== null && hasStock && <UserReviews {...userReviews} />}
       <Faq isDarkBackgroundColor={true} />
     </Layout>
   );

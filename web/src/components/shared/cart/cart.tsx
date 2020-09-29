@@ -84,13 +84,15 @@ const Cart = ({ isOpen }: { isOpen: boolean }) => {
   }, [isOpen]);
 
   return (
-    <CartProductContainer>
-      <CartEmpty cart={cart} />
-      <CartList cart={cart} />
+    <section>
+      <CartProductContainer>
+        <CartEmpty cart={cart} />
+        <CartList cart={cart} />
+      </CartProductContainer>
       <FaqWrapper>
         <Faq />
       </FaqWrapper>
-    </CartProductContainer>
+    </section>
   );
 };
 

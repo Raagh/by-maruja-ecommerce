@@ -10,6 +10,7 @@ const SingleItemContainer = styled.div`
   margin-bottom: 0.5rem;
   box-shadow: 0px 2px 2px rgba(81, 50, 50, 0.05);
   border-radius: 4px;
+  height: 133px;
 `;
 
 const SingleItemImage = styled(RemoteFixedSizeImage)`
@@ -26,6 +27,8 @@ const NameAndPrice = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
 `;
 
 const Quantity = styled.div`

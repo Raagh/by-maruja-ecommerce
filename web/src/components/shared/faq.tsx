@@ -15,7 +15,7 @@ const FaqContainer = styled(AlignedCenterContainer)`
   padding-bottom: 4rem;
   max-width: 1600px;
   margin: auto;
-  padding: 4rem 2rem 4rem 2rem;
+  padding: 4rem 1.5rem 4rem 1.5rem;
 
   @media ${device.large} {
     text-align: left;

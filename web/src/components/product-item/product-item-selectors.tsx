@@ -6,7 +6,7 @@ import { BodyCopyRegularSmall, LabelSmall } from '../../config/global-styled-com
 import { colors, fonts } from '../../config/global-styles';
 import { Product } from '../../model/product';
 import Chevron from '../shared/chevron';
-import { calculateProductStock } from '../shared/utilities';
+
 import ProductItemSizeChart from './product-item-sizechart';
 
 const ItemExtraQualities = styled.p`
@@ -59,7 +59,9 @@ const ProductItemDescription = styled(BodyCopyRegularSmall)`
 
 const ProductItemSelectors = ({ product }: { product: Product }) => {
   const [quantity, setQuanity] = useState(0);
-  const [selectedSize, setSelectedSize] = useState('XS');
+  const [selectedSize, setSelectedSize] = useState(product.sizeChart ? product.sizeChart[0].size : '');
+
+  const hasSizes = product.sizeChart !== undefined;
 
   return (
     <article>
@@ -72,7 +74,7 @@ const ProductItemSelectors = ({ product }: { product: Product }) => {
           <StyledButton onClick={() => setQuanity(quantity + 1)}>+</StyledButton>
         </FakeSelect>
       </ItemExtraQualityRow>
-      {calculateProductStock(product) > 0 && (
+      {hasSizes && (
         <ItemExtraQualityRow>
           <SizesTextContainer>
             <ItemExtraQualities>Talle</ItemExtraQualities>
@@ -81,9 +83,16 @@ const ProductItemSelectors = ({ product }: { product: Product }) => {
 
           <FakeSelect>
             <LabelSmall>{selectedSize}</LabelSmall>
-            <StyledButton type="button" onClick={() => setSelectedSize('M')}>
+            <StyledButton type="button">
               <Chevron isOpen={false} />
             </StyledButton>
+            <ul>
+              {product.sizeChart?.map((x) => (
+                <li onClick={() => setSelectedSize(x.size)} key={x.size}>
+                  {x.size}
+                </li>
+              ))}
+            </ul>
           </FakeSelect>
         </ItemExtraQualityRow>
       )}

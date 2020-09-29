@@ -13,7 +13,7 @@ const PurchaseSummaryContainer = styled.div`
 const InfoContainer = styled.div`
   display: flex;
   padding-top: 1.5rem;
-  border-bottom: 1px solid #e9e6e6;
+  border-bottom: 1px solid ${colors.ui.grey25percent};
   padding-bottom: 1.5rem;
 `;
 

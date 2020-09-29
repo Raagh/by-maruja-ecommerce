@@ -66,10 +66,10 @@ const GreyScreen = styled.div<{ isCartOpen: boolean }>`
     opacity: ${(props) => (props.isCartOpen ? '0.8' : '0')};
     z-index: ${(props) => (props.isCartOpen ? '5' : '-1')};
     top: 100px;
+    left: 0;
     height: 100vh;
     width: 100vw;
     position: fixed;
-    overflow-x: hidden;
     transition: 0.5s;
   }
 `;

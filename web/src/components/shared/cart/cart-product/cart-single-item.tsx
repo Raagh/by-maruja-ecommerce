@@ -47,7 +47,7 @@ const DeleteImg = styled.img`
 const SingleItem = ({ product }: { product: CP }) => {
   return (
     <SingleItemContainer>
-      <SingleItemImage image={product.images[0].image} asset={product.images[0].asset} alt={product.name} />
+      <SingleItemImage image={product.image} asset={product.asset} alt={product.name} />
       <InfoContainer>
         <NameAndPrice>
           <LabelLarge>{product.name}</LabelLarge>

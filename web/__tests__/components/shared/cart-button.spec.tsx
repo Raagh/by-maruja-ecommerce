@@ -10,12 +10,6 @@ describe('CartButton component', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('should display the bag', () => {
-    const wrapper = shallow(<CartButton clickHandler={clickHandler} />);
-
-    expect(wrapper.render().find('img').length).toEqual(1);
-  });
-
   it('should include a link', () => {
     const wrapper = shallow(<CartButton clickHandler={clickHandler} />);
 

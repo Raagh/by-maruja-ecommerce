@@ -1,29 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { LinksSmall } from '../../config/global-styled-components';
+import { LinksSmall, StyledH6Title } from '../../config/global-styled-components';
+import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
-import { getCart } from '../../lamda-services/use-local-storage';
+import { store } from '../../context/store';
 
 const Container = styled.section`
   margin-top: 1.5rem;
   display: flex;
   flex-direction: row;
-  z-index: 1;
+  align-items: center;
+
   @media ${device.large} {
-    margin-left: auto;
     margin-right: 0.25rem;
+    margin-left: auto;
     :hover {
       cursor: pointer;
     }
   }
 `;
 
-const Bag = styled.img`
+const Bag = styled.div`
+  background-image: url('/assets/Bag.svg');
+  width: 14px;
+  height: 17px;
   @media ${device.large} {
-    margin-top: 0.4rem;
-    width: 14px;
-    height: 17px;
+    margin-top: 0.3rem;
   }
+`;
+
+const Ellipse = styled.div<{ quantity: number }>`
+  top: 7px;
+  left: 6px;
+  background-color: ${colors.primary.dark};
+  width: ${(props) => `${Math.ceil(props.quantity / 10) * 16}px`};
+  height: ${(props) => `${Math.ceil(props.quantity / 10) * 16}px`};
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  max-width: 48px;
+  max-height: 48px;
+`;
+
+const EllipseText = styled(StyledH6Title)`
+  color: #fff;
+  margin: auto;
 `;
 
 const Links = styled(LinksSmall)`
@@ -37,25 +58,20 @@ const Links = styled(LinksSmall)`
 `;
 
 const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
-  const [cartItemNumber, setCartItemNumber] = useState(0);
-
-  const updateCart = () => {
-    let cart = getCart();
-    console.log('storage updated');
-    setCartItemNumber(cart ? cart.length : 0);
-  };
-  useEffect(() => {
-    window.addEventListener('storage', updateCart);
-    console.log(cartItemNumber);
-    return function cleanup() {
-      window.removeEventListener('storage', updateCart);
-    };
-  }, [cartItemNumber]);
+  let { state } = useContext(store);
 
   return (
     <Container onClick={clickHandler}>
       <Links>carrito</Links>
-      <Bag src="/assets/Bag.svg" alt="Bag icon" />
+      <Bag>
+        {state && state.cart && state.cart.length ? (
+          <Ellipse quantity={state.cart.length}>
+            <EllipseText>{state.cart.length}</EllipseText>
+          </Ellipse>
+        ) : (
+          ''
+        )}
+      </Bag>
     </Container>
   );
 };

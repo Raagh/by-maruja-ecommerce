@@ -1,24 +1,15 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import {
-  BodyCopyRegularSmall,
-  CaptionSmall,
-  LabelLargeBold,
-  LabelSmall,
-  StyledH3Title,
-} from '../../config/global-styled-components';
-import { colors, fonts } from '../../config/global-styles';
+import { CaptionLarge, CaptionSmall, LabelLargeBold, StyledH3Title } from '../../config/global-styled-components';
+import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
-
 import { Product } from '../../model/product';
 import Accordion from '../shared/accordion/accordion';
-
-import Chevron from '../shared/chevron';
 import PrimaryButton from '../shared/primary-button';
-import { calculateProductStock } from '../shared/utilities';
 import ProductItemCarousel from './product-item-carousel';
+import ProductItemSelectors from './product-item-selectors';
 
 const ProductItemContainer = styled.section`
   display: block;
@@ -34,6 +25,10 @@ const BackCaption = styled(CaptionSmall)`
   padding: 0.8rem 0 0.8rem 0;
   color: ${colors.ui.darkSurface};
   padding-left: 4px;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const LinkImg = styled.img`
@@ -62,13 +57,6 @@ const ProductItemDiscountPrice = styled(LabelLargeBold)`
   text-decoration-line: line-through;
 `;
 
-const ProductItemDescription = styled(BodyCopyRegularSmall)`
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 1px;
-  padding-top: 1rem;
-`;
-
 const TransparentBadge = styled(CaptionSmall)`
   display: flex;
   flex-direction: row;
@@ -78,52 +66,6 @@ const TransparentBadge = styled(CaptionSmall)`
 
   border-radius: 100px;
   border: 1px solid ${colors.ui.grey50percent};
-`;
-
-const ItemExtraQualities = styled.p`
-  font-family: ${fonts.primary};
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: 1px;
-  color: ${colors.ui.grey50percent};
-  text-transform: uppercase;
-`;
-
-const ItemExtraQualityRow = styled.div`
-  padding-top: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const FakeSelect = styled.div`
-  background: ${colors.ui.grey10percent};
-  border-radius: 8px;
-  width: 168px;
-  height: 42px;
-  border: ${colors.ui.grey10percent};
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem 1rem 0.8rem 1rem;
-`;
-
-const SizeTable = styled(LabelSmall)`
-  color: ${colors.ui.grey75percent};
-  text-decoration: underline;
-`;
-
-const StyledButton = styled.button`
-  border: none;
-`;
-
-const SizesTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 `;
 
 const PaddedPrimaryButton = styled.div`
@@ -138,10 +80,11 @@ const DeliveryInformationContainer = styled.div`
   margin-top: 1rem;
 `;
 
-const ProductItemDisplay = ({ product }: { product: Product }) => {
-  const [quantity, setQuanity] = useState(0);
-  const [selectedSize, setSelectedSize] = useState('XS');
+const NoStockMessage = styled(CaptionLarge)`
+  margin-top: 0.8rem;
+`;
 
+const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock: boolean }) => {
   return (
     <ProductItemContainer>
       <Link href="/categories/productos" passHref>
@@ -161,46 +104,26 @@ const ProductItemDisplay = ({ product }: { product: Product }) => {
         )}
         {product.tag !== Tags.Discount && <ProductItemPrice>${product.price}</ProductItemPrice>}
       </PriceDisplay>
-      <ProductItemDescription>{product.description}</ProductItemDescription>
-      <ItemExtraQualityRow>
-        <ItemExtraQualities>Cantidad</ItemExtraQualities>
-        <FakeSelect>
-          <StyledButton onClick={() => setQuanity(quantity - 1)}>-</StyledButton>
-          <LabelSmall>{quantity}</LabelSmall>
-          <StyledButton onClick={() => setQuanity(quantity + 1)}>+</StyledButton>
-        </FakeSelect>
-      </ItemExtraQualityRow>
-      {calculateProductStock(product) > 0 && (
-        <ItemExtraQualityRow>
-          <SizesTextContainer>
-            <ItemExtraQualities>Talle</ItemExtraQualities>
-            <Link href="adonde?" passHref>
-              <SizeTable>Ver tabla de talles</SizeTable>
-            </Link>
-          </SizesTextContainer>
-
-          <FakeSelect>
-            <LabelSmall>{selectedSize}</LabelSmall>
-            <StyledButton type="button" onClick={() => setSelectedSize('M')}>
-              <Chevron isOpen={false} />
-            </StyledButton>
-          </FakeSelect>
-        </ItemExtraQualityRow>
+      {hasStock && (
+        <article>
+          <ProductItemSelectors product={product} />
+          <ExtraPaddedPrimaryButton>
+            <PrimaryButton text="Comprar con mercado pago" url="mercadolink" />
+          </ExtraPaddedPrimaryButton>
+          <PaddedPrimaryButton>
+            <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
+          </PaddedPrimaryButton>
+          <DeliveryInformationContainer>
+            <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus isBold={false}>
+              <div>CONTENIDO EXTRA</div>
+            </Accordion>
+            <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus isBold={false}>
+              <p>ESA INFO</p>
+            </Accordion>
+          </DeliveryInformationContainer>
+        </article>
       )}
-      <ExtraPaddedPrimaryButton>
-        <PrimaryButton text="Comprar Ahora" url="mercadolink" />
-      </ExtraPaddedPrimaryButton>
-      <PaddedPrimaryButton>
-        <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
-      </PaddedPrimaryButton>
-      <DeliveryInformationContainer>
-        <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus>
-          <div>CONTENIDO EXTRA</div>
-        </Accordion>
-        <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus>
-          <p>ESA INFO</p>
-        </Accordion>
-      </DeliveryInformationContainer>
+      {!hasStock && <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>}
     </ProductItemContainer>
   );
 };

@@ -15,7 +15,7 @@ const FaqContainer = styled(AlignedCenterContainer)`
   padding-bottom: 4rem;
   max-width: 1600px;
   margin: auto;
-  padding: 4rem 2rem 4rem 2rem;
+  padding: 4rem 1.5rem 4rem 1.5rem;
 
   @media ${device.large} {
     text-align: left;
@@ -46,7 +46,7 @@ const StyledAccordion = styled(Accordion)`
 
 const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
   return (
-    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden}>
+    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden} isBold={true}>
       {answer}
     </StyledAccordion>
   );

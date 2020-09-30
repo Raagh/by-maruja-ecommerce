@@ -25,6 +25,15 @@ const PrimaryButtonContainer = styled.div<{ inverted: boolean }>`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+
+  :hover,
+  :focus,
+  :active {
+    background: ${colors.primary.dark};
+    box-shadow: 0px 4px 8px rgba(81, 50, 50, 0.25);
+    border-radius: 4px;
+    border: 2px solid ${colors.primary.dark};
+  }
 `;
 
 const PrimaryButton = ({ text, url, inverted }: { text: string; url: string; inverted?: boolean }) => {

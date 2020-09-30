@@ -29,7 +29,7 @@ const Sidebar = ({
   isOpen: boolean;
   clickHandler: () => void;
   sidebarTitle: string;
-  children: any;
+  children?: any;
 }) => {
   useEffect(() => {
     if (isOpen) {

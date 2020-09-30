@@ -30,7 +30,7 @@ const AccordionQuestion = ({
   handleClick,
 }: {
   question: string;
-  isBold: boolean;
+  isBold?: boolean;
   open: boolean;
   handleClick: Function;
 }) => {

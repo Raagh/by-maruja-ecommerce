@@ -44,7 +44,7 @@ const Accordion = ({
   title: string;
   index: number;
   initialHiddenStatus?: boolean;
-  isBold: boolean;
+  isBold?: boolean;
   children?: any;
 }) => {
   const [hidden, useHidden] = useState(initialHiddenStatus);

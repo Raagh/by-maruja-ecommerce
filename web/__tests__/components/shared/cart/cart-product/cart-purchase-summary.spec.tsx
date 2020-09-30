@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import CartMock from '../../../../../__mocks__/cart-products.mock';
-import PurchaseSummary from '../../../../../src/components/shared/cart/cart-product/cart-purchase-summary';
+import PurchaseSummary from '../../../../../src/components/shared/cart/cart-purchase-summary';
 
 describe('PurchaseSummary component', () => {
   it('should render', () => {

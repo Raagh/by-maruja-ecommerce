@@ -11,6 +11,7 @@ import ProductItemDisplay from '../../components/product-item/product-item';
 
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
 import { CategoryConfiguration } from '../../model/category-configuration';
+import { calculateProductStock } from '../../components/shared/utilities';
 
 const ProductItem = ({
   product,
@@ -21,10 +22,12 @@ const ProductItem = ({
   userReviews: UserReviewsConfiguration;
   categories: Array<CategoryConfiguration>;
 }) => {
+  const hasStock = calculateProductStock(product) > 0;
+
   return (
     <Layout categories={categories}>
-      <ProductItemDisplay product={product} />
-      <UserReviews {...userReviews} />
+      <ProductItemDisplay product={product} hasStock={hasStock} />
+      {userReviews !== null && hasStock && <UserReviews {...userReviews} />}
       <Faq isDarkBackgroundColor={true} />
     </Layout>
   );
@@ -59,13 +62,6 @@ export const getServerSideProps = async (context: NextPageContext) => {
           metadata 
        }
       },
-      userReviews {
-       ...,
-       "asset": image.asset-> {
-         url,
-         metadata 
-       }
-     },
     }
     `
   );
@@ -73,7 +69,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
   return {
     props: {
       product: productResult,
-      userReviews: homeSettingsResult.userReviews,
+      userReviews: productResult?.userReviews ?? null,
       categories: homeSettingsResult.categories,
     },
   };

@@ -4,7 +4,7 @@ import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
 import { BodyCopyBoldLarge } from '../../../config/global-styled-components';
 
-const CartNavContainer = styled.section`
+const SidebarNavContainer = styled.section`
   min-width: 100vw;
   display: flex;
   flex-direction: row;
@@ -35,14 +35,14 @@ const InvDiv = styled.div`
   width: 24px;
 `;
 
-const CartNav = ({ clickHandler }: { clickHandler: () => void }) => {
+const SidebarNav = ({ clickHandler, sidebarTitle }: { clickHandler: () => void; sidebarTitle: string }) => {
   return (
-    <CartNavContainer>
+    <SidebarNavContainer>
       <BackButton onClick={clickHandler} />
-      <BodyCopyBoldLarge>Mi Carrito</BodyCopyBoldLarge>
+      <BodyCopyBoldLarge>{sidebarTitle}</BodyCopyBoldLarge>
       <InvDiv />
-    </CartNavContainer>
+    </SidebarNavContainer>
   );
 };
 
-export default CartNav;
+export default SidebarNav;

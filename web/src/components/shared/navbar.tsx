@@ -6,8 +6,9 @@ import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 import { CategoryConfiguration } from '../../model/category-configuration';
 import CartButton from './cart-button';
-import Cart from './cart/cart';
 import Menu from './menu/menu';
+import Sidebar from './sidebar/sidebar';
+import Cart from './cart/cart';
 
 const Container = styled.section`
   min-width: 100vw;
@@ -37,7 +38,11 @@ const Logo = styled.img`
 `;
 
 const LogoLink = styled.a`
-  z-index: 10;
+  margin: auto;
+
+  @media ${device.large} {
+    margin: 0;
+  }
 `;
 
 const MenuBotton = styled.img`
@@ -58,33 +63,17 @@ const StyledLink = styled(LinksSmall)`
   }
 `;
 
-const GreyScreen = styled.div<{ isCartOpen: boolean }>`
-  display: none;
-  @media ${device.large} {
-    display: block;
-    background-color: ${colors.ui.grey25percent};
-    opacity: ${(props) => (props.isCartOpen ? '0.8' : '0')};
-    z-index: ${(props) => (props.isCartOpen ? '5' : '-1')};
-    top: 100px;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    transition: 0.5s;
-  }
-`;
-
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
-    if (isMenuOpen || isCartOpen) {
+    if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [isMenuOpen, isCartOpen]);
+  }, [isMenuOpen]);
 
   return (
     <Container>
@@ -107,9 +96,10 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
       <Link href="/" passHref>
         <StyledLink>sobre Maruja</StyledLink>
       </Link>
+      <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">
+        <Cart isOpen={isCartOpen} />
+      </Sidebar>
       <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
-      <GreyScreen isCartOpen={isCartOpen} />
-      <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
     </Container>
   );
 };

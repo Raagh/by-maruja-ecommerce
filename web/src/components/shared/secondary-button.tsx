@@ -13,6 +13,12 @@ const StyledLink = styled.a`
   text-transform: ${typography.links.textTransform};
   color: ${colors.ui.darkSurface};
   text-decoration: none;
+
+  :hover,
+  :focus,
+  :active {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const UnderLinedComponent = styled.span`
@@ -22,6 +28,12 @@ const UnderLinedComponent = styled.span`
   padding-right: 5px;
   padding-left: 5px;
   border-radius: 9999;
+
+  :hover,
+  :focus,
+  :active {
+    border-bottom: 2px solid ${colors.primary.dark};
+  }
 `;
 
 export default ({ text, url }: { text: string; url: string }) => {

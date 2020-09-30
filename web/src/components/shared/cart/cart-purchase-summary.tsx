@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../../config/global-styled-components';
-import { colors } from '../../../../config/global-styles';
-import { CartProduct as CP } from '../../../../model/cart-product';
-import PrimaryButton from '../../primary-button';
+import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../config/global-styled-components';
+import { colors } from '../../../config/global-styles';
+import { CartProduct as CP } from '../../../model/cart-product';
+import PrimaryButton from '../primary-button';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
   background: ${colors.ui.grey5percent};
+  box-shadow: 0px 2px 2px rgba(81, 50, 50, 0.05);
+  border-radius: 8px;
 `;
 
 const InfoContainer = styled.div`
@@ -59,7 +61,7 @@ const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
             ${cart.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0).toFixed(2)}
           </BodyCopyBoldLarge>
         </Total>
-        <PrimaryButton text={'COMPRAR CON MERCADO PAGO'} url={'/'}></PrimaryButton>
+        <PrimaryButton text="COMPRAR CON MERCADO PAGO" url="/" />
       </PurchasePanel>
     </PurchaseSummaryContainer>
   );

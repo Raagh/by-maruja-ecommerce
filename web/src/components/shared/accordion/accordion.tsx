@@ -38,18 +38,20 @@ const Accordion = ({
   index,
   initialHiddenStatus = false,
   children,
+  isBold = false,
 }: {
   className?: string;
   title: string;
   index: number;
   initialHiddenStatus?: boolean;
+  isBold?: boolean;
   children?: any;
 }) => {
   const [hidden, useHidden] = useState(initialHiddenStatus);
   return (
     <PassInContainer className={className}>
       <AccordionContainer index={index}>
-        <AccordionQuestion handleClick={useHidden} question={title} open={!hidden} />
+        <AccordionQuestion handleClick={useHidden} question={title} open={!hidden} isBold={isBold} />
         <AccordionContent hidden={hidden}>{children}</AccordionContent>
       </AccordionContainer>
     </PassInContainer>

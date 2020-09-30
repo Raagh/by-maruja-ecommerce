@@ -7,7 +7,7 @@ const Container = styled.section`
   margin-top: 1.5rem;
   display: flex;
   flex-direction: row;
-  z-index: 1;
+  align-items: center;
 
   @media ${device.large} {
     margin-right: 0.25rem;
@@ -20,7 +20,7 @@ const Container = styled.section`
 
 const Bag = styled.img`
   @media ${device.large} {
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
     width: 14px;
     height: 17px;
   }

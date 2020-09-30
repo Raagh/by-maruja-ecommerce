@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { BodyCopyRegularSmall, LabelSmall } from '../../config/global-styled-components';
 import { colors, fonts } from '../../config/global-styles';
 import { Product } from '../../model/product';
-import Chevron from '../shared/chevron';
 
 import ProductItemSizeChart from './product-item-sizechart';
+import ProductItemSizesSelect from './product-item-sizes-select';
 
 const ItemExtraQualities = styled.p`
   font-family: ${fonts.primary};
@@ -59,7 +59,6 @@ const ProductItemDescription = styled(BodyCopyRegularSmall)`
 
 const ProductItemSelectors = ({ product }: { product: Product }) => {
   const [quantity, setQuanity] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(product.sizeChart ? product.sizeChart[0].size : '');
 
   const hasSizes = product.sizeChart !== undefined;
 
@@ -81,19 +80,7 @@ const ProductItemSelectors = ({ product }: { product: Product }) => {
             <ProductItemSizeChart />
           </SizesTextContainer>
 
-          <FakeSelect>
-            <LabelSmall>{selectedSize}</LabelSmall>
-            <StyledButton type="button">
-              <Chevron isOpen={false} />
-            </StyledButton>
-            <ul>
-              {product.sizeChart?.map((x) => (
-                <li onClick={() => setSelectedSize(x.size)} key={x.size}>
-                  {x.size}
-                </li>
-              ))}
-            </ul>
-          </FakeSelect>
+          <ProductItemSizesSelect product={product} />
         </ItemExtraQualityRow>
       )}
     </article>

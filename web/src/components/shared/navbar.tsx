@@ -40,7 +40,7 @@ const Logo = styled.img`
 const LogoLink = styled.a`
   margin: auto;
 
-  @media${device.large}{
+  @media ${device.large} {
     margin: 0;
   }
 `;

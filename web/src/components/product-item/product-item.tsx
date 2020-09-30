@@ -25,6 +25,10 @@ const BackCaption = styled(CaptionSmall)`
   padding: 0.8rem 0 0.8rem 0;
   color: ${colors.ui.darkSurface};
   padding-left: 4px;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const LinkImg = styled.img`

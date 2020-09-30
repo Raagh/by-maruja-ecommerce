@@ -118,7 +118,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
         <Link href="/" passHref>
           <StyledLink>sobre Maruja</StyledLink>
         </Link>
-        <CartButton isCartOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
+        <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
         <GreyScreen isCartOpen={isCartOpen} />
         <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
       </Container>

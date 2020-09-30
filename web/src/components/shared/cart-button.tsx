@@ -36,13 +36,21 @@ const Links = styled(LinksSmall)`
   }
 `;
 
-const CartButton = ({ clickHandler, isCartOpen }: { clickHandler: () => void; isCartOpen: boolean }) => {
+const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
   const [cartItemNumber, setCartItemNumber] = useState(0);
-  console.log(cartItemNumber);
-  useEffect(() => {
+
+  const updateCart = () => {
     let cart = getCart();
+    console.log('storage updated');
     setCartItemNumber(cart ? cart.length : 0);
-  }, [isCartOpen]);
+  };
+  useEffect(() => {
+    window.addEventListener('storage', updateCart);
+    console.log(cartItemNumber);
+    return function cleanup() {
+      window.removeEventListener('storage', updateCart);
+    };
+  }, [cartItemNumber]);
 
   return (
     <Container onClick={clickHandler}>

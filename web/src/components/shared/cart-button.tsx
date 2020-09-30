@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { LinksSmall } from '../../config/global-styled-components';
 import { device } from '../../config/device';
+import { getCart } from '../../lamda-services/use-local-storage';
 
 const Container = styled.section`
   margin-top: 1.5rem;
@@ -35,7 +36,14 @@ const Links = styled(LinksSmall)`
   }
 `;
 
-const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
+const CartButton = ({ clickHandler, isCartOpen }: { clickHandler: () => void; isCartOpen: boolean }) => {
+  const [cartItemNumber, setCartItemNumber] = useState(0);
+  console.log(cartItemNumber);
+  useEffect(() => {
+    let cart = getCart();
+    setCartItemNumber(cart ? cart.length : 0);
+  }, [isCartOpen]);
+
   return (
     <Container onClick={clickHandler}>
       <Links>carrito</Links>

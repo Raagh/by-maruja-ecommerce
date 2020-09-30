@@ -21,6 +21,7 @@
     "@sanity/asset-utils": "^1.0.0",
     "@sanity/client": "^1.149.7",
     "@sanity/image-url": "^0.140.19",
+    "@types/react-headroom": "^2.2.1",
     "axios": "^0.19.2",
     "fp-ts": "^2.6.0",
     "instagram-private-api": "^1.40.1",
@@ -29,6 +30,7 @@
     "next-seo": "^4.7.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-headroom": "^3.0.0",
     "react-responsive-carousel": "^3.2.10",
     "styled-components": "^5.1.0",
     "tslib": "^1.10.0"

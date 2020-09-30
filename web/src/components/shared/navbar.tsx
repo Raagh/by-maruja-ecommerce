@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Headroom from 'react-headroom';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
@@ -74,6 +75,15 @@ const GreyScreen = styled.div<{ isCartOpen: boolean }>`
   }
 `;
 
+const HeadroomContainer = styled(Headroom)`
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto !important;
+  .headroom--unfixed {
+    position: fixed !important;
+  }
+`;
+
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
@@ -87,30 +97,32 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   }, [isMenuOpen, isCartOpen]);
 
   return (
-    <Container>
-      <MenuBotton
-        onClick={() => setMenuOpen(!isMenuOpen)}
-        src={isMenuOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'}
-        alt="Menu icon"
-      />
-      <Menu isOpen={isMenuOpen} categories={categories} />
-      <LogoLink href="/">
-        <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
-      </LogoLink>
+    <HeadroomContainer>
+      <Container>
+        <MenuBotton
+          onClick={() => setMenuOpen(!isMenuOpen)}
+          src={isMenuOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'}
+          alt="Menu icon"
+        />
+        <Menu isOpen={isMenuOpen} categories={categories} />
+        <LogoLink href="/">
+          <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
+        </LogoLink>
 
-      <Link href="/categories/productos" passHref>
-        <StyledLink>productos</StyledLink>
-      </Link>
-      <Link href="/" passHref>
-        <StyledLink>contacto y ayuda</StyledLink>
-      </Link>
-      <Link href="/" passHref>
-        <StyledLink>sobre Maruja</StyledLink>
-      </Link>
-      <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
-      <GreyScreen isCartOpen={isCartOpen} />
-      <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
-    </Container>
+        <Link href="/categories/productos" passHref>
+          <StyledLink>productos</StyledLink>
+        </Link>
+        <Link href="/" passHref>
+          <StyledLink>contacto y ayuda</StyledLink>
+        </Link>
+        <Link href="/" passHref>
+          <StyledLink>sobre Maruja</StyledLink>
+        </Link>
+        <CartButton isCartOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
+        <GreyScreen isCartOpen={isCartOpen} />
+        <Cart isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} />
+      </Container>
+    </HeadroomContainer>
   );
 };
 

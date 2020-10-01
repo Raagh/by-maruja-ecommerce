@@ -6,9 +6,10 @@ import { CaptionLarge, CaptionSmall, LabelLargeBold, StyledH3Title } from '../..
 import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 import { Product } from '../../model/product';
-import Accordion from '../shared/accordion/accordion';
+
 import ProductItemForm from './product-item-form';
 import ProductItemCarousel from './product-item-carousel';
+import PaymentDescription from '../shared/payment-description';
 
 const ProductItemContainer = styled.section`
   display: block;
@@ -70,10 +71,6 @@ const TransparentBadge = styled(CaptionSmall)`
   border: 1px solid ${colors.ui.grey50percent};
 `;
 
-const DeliveryInformationContainer = styled.div`
-  margin-top: 1rem;
-`;
-
 const NoStockMessage = styled(CaptionLarge)`
   margin-top: 0.8rem;
 `;
@@ -101,14 +98,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
       {hasStock && (
         <article>
           <ProductItemForm product={product} />
-          <DeliveryInformationContainer>
-            <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus isBold={false}>
-              <div>CONTENIDO EXTRA</div>
-            </Accordion>
-            <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus isBold={false}>
-              <p>ESA INFO</p>
-            </Accordion>
-          </DeliveryInformationContainer>
+          <PaymentDescription />
         </article>
       )}
       {!hasStock && <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>}

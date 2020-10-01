@@ -7,13 +7,15 @@ import { colors } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 import { Product } from '../../model/product';
 import Accordion from '../shared/accordion/accordion';
-import PrimaryButton from '../shared/primary-button';
+import ProductItemForm from './product-item-form';
 import ProductItemCarousel from './product-item-carousel';
-import ProductItemSelectors from './product-item-selectors';
 
 const ProductItemContainer = styled.section`
   display: block;
   padding: 1.5rem;
+
+  margin: auto;
+  max-width: 1600px;
 `;
 
 const BackButton = styled.div`
@@ -68,14 +70,6 @@ const TransparentBadge = styled(CaptionSmall)`
   border: 1px solid ${colors.ui.grey50percent};
 `;
 
-const PaddedPrimaryButton = styled.div`
-  margin-top: 1rem;
-`;
-
-const ExtraPaddedPrimaryButton = styled.div`
-  margin-top: 2rem;
-`;
-
 const DeliveryInformationContainer = styled.div`
   margin-top: 1rem;
 `;
@@ -106,13 +100,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
       </PriceDisplay>
       {hasStock && (
         <article>
-          <ProductItemSelectors product={product} />
-          <ExtraPaddedPrimaryButton>
-            <PrimaryButton text="Comprar con mercado pago" url="mercadolink" />
-          </ExtraPaddedPrimaryButton>
-          <PaddedPrimaryButton>
-            <PrimaryButton inverted text="Agregar al Carrito" url="mercadolink" />
-          </PaddedPrimaryButton>
+          <ProductItemForm product={product} />
           <DeliveryInformationContainer>
             <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus isBold={false}>
               <div>CONTENIDO EXTRA</div>

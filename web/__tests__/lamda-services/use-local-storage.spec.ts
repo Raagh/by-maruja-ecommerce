@@ -1,11 +1,5 @@
 import CartProductsMock from '../../__mocks__/cart-products.mock';
-import {
-  addToCart,
-  clearFromCart,
-  emptyCart,
-  getCart,
-  removeOneFromCart,
-} from '../../src/lamda-services/use-local-storage';
+import { addToCart, clearFromCart, emptyCart, getCart, removeOneFromCart } from '../../src/config/use-local-storage';
 
 describe('AddToCart', () => {
   beforeEach(() => {

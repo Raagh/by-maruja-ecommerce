@@ -106,7 +106,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
           <StyledLink>sobre Maruja</StyledLink>
         </Link>
         <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">
-          <Cart isOpen={isCartOpen} />
+          <Cart />
         </Sidebar>
         <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
       </Container>

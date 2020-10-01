@@ -1,39 +1,40 @@
 import React, { createContext, useReducer } from 'react';
-import { addToCart, clearFromCart, emptyCart, getCart, removeOneFromCart } from '../lamda-services/use-local-storage';
+import { addToCart, clearFromCart, emptyCart, getCart, removeOneFromCart } from '../config/use-local-storage';
+import { actionTypes } from '../model/action-types';
 
 type initialState = any;
-
-const initialState: initialState = { cart: [{}, {}] };
+type reducerAction = { type: actionTypes; payload?: any };
+const initialState: initialState = { cart: getCart() };
 
 const store = createContext(initialState);
 const { Provider } = store;
 
 const StateProvider = ({ children }: { children: any }) => {
-  const [state, dispatch] = useReducer((state: initialState, action: any) => {
+  const [state, dispatch] = useReducer((state: initialState, action: reducerAction) => {
     let newState;
     switch (action.type) {
-      case 'ADD_TO_CART':
+      case actionTypes.Add:
         addToCart(action.payload);
         newState = {
           ...state,
           cart: getCart(),
         };
         return newState;
-      case 'CLEAR_FROM_CART':
+      case actionTypes.Clear:
         clearFromCart(action.payload);
         newState = {
           ...state,
           cart: getCart(),
         };
         return newState;
-      case 'EMPTY_CART':
+      case actionTypes.Empty:
         emptyCart();
         newState = {
           ...state,
           cart: getCart(),
         };
         return newState;
-      case 'REMOVE_ONE_FROM_CART':
+      case actionTypes.Remove:
         removeOneFromCart(action.payload);
         newState = {
           ...state,
@@ -41,7 +42,7 @@ const StateProvider = ({ children }: { children: any }) => {
         };
         return newState;
       default:
-        throw new Error();
+        throw new Error('Wrong Action Type');
     }
   }, initialState);
 

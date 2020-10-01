@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Headroom from 'react-headroom';
 import { LinksSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 import { CategoryConfiguration } from '../../model/category-configuration';
 import CartButton from './cart-button';
+import Cart from './cart/cart';
 import Menu from './menu/menu';
 import Sidebar from './sidebar/sidebar';
-import Cart from './cart/cart';
 
 const Container = styled.section`
   min-width: 100vw;
@@ -63,6 +64,13 @@ const StyledLink = styled(LinksSmall)`
   }
 `;
 
+const HeadroomContainer = styled(Headroom)`
+  .headroom--unfixed {
+    position: fixed !important;
+    transition: all 0.2s ease-in-out 0s !important;
+  }
+`;
+
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
@@ -76,31 +84,33 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   }, [isMenuOpen]);
 
   return (
-    <Container>
-      <MenuBotton
-        onClick={() => setMenuOpen(!isMenuOpen)}
-        src={isMenuOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'}
-        alt="Menu icon"
-      />
-      <Menu isOpen={isMenuOpen} categories={categories} />
-      <LogoLink href="/">
-        <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
-      </LogoLink>
+    <HeadroomContainer pinStart={-1}>
+      <Container>
+        <MenuBotton
+          onClick={() => setMenuOpen(!isMenuOpen)}
+          src={isMenuOpen ? '/assets/Menu-Close.svg' : '/assets/Menu.svg'}
+          alt="Menu icon"
+        />
+        <Menu isOpen={isMenuOpen} categories={categories} />
+        <LogoLink href="/">
+          <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
+        </LogoLink>
 
-      <Link href="/categories/productos" passHref>
-        <StyledLink>productos</StyledLink>
-      </Link>
-      <Link href="/" passHref>
-        <StyledLink>contacto y ayuda</StyledLink>
-      </Link>
-      <Link href="/" passHref>
-        <StyledLink>sobre Maruja</StyledLink>
-      </Link>
-      <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">
-        <Cart isOpen={isCartOpen} />
-      </Sidebar>
-      <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
-    </Container>
+        <Link href="/categories/productos" passHref>
+          <StyledLink>productos</StyledLink>
+        </Link>
+        <Link href="/" passHref>
+          <StyledLink>contacto y ayuda</StyledLink>
+        </Link>
+        <Link href="/" passHref>
+          <StyledLink>sobre Maruja</StyledLink>
+        </Link>
+        <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">
+          <Cart />
+        </Sidebar>
+        <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
+      </Container>
+    </HeadroomContainer>
   );
 };
 

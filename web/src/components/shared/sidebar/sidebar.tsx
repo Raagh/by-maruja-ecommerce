@@ -7,7 +7,7 @@ import SidebarInternal from './sidebar-internal';
 const GreyScreen = styled.div<{ isOpen: boolean }>`
   display: none;
   @media ${device.large} {
-    display: block;
+    display: ${(props) => (props.isOpen ? 'block' : 'none')};
     background-color: ${colors.ui.grey25percent};
     opacity: ${(props) => (props.isOpen ? '0.8' : '0')};
     z-index: ${(props) => (props.isOpen ? '5' : '-1')};
@@ -20,6 +20,10 @@ const GreyScreen = styled.div<{ isOpen: boolean }>`
   }
 `;
 
+const SideBarContainer = styled.article`
+  position: fixed;
+  z-index: 10;
+`;
 const Sidebar = ({
   isOpen,
   clickHandler,
@@ -39,12 +43,12 @@ const Sidebar = ({
     }
   }, [isOpen]);
   return (
-    <article>
+    <SideBarContainer>
       <GreyScreen isOpen={isOpen} />
       <SidebarInternal isOpen={isOpen} clickHandler={clickHandler} sidebarTitle={sidebarTitle}>
         {children}
       </SidebarInternal>
-    </article>
+    </SideBarContainer>
   );
 };
 

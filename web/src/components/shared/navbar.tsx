@@ -65,11 +65,9 @@ const StyledLink = styled(LinksSmall)`
 `;
 
 const HeadroomContainer = styled(Headroom)`
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: auto !important;
   .headroom--unfixed {
     position: fixed !important;
+    transition: all 0.2s ease-in-out 0s !important;
   }
 `;
 
@@ -86,7 +84,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   }, [isMenuOpen]);
 
   return (
-    <HeadroomContainer>
+    <HeadroomContainer pinStart={-1}>
       <Container>
         <MenuBotton
           onClick={() => setMenuOpen(!isMenuOpen)}

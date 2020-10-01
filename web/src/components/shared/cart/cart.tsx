@@ -19,7 +19,7 @@ const FaqWrapper = styled.div`
 
 const Cart = () => {
   let { state } = useContext(store);
-  let cart = state.cart;
+  let cart = state ? state.cart : [];
 
   return (
     <section>

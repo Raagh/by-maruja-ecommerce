@@ -32,13 +32,13 @@ describe('Accordion component', () => {
   it('should not display content', () => {
     const wrapper = mount(<Accordion title={data.question} index={data.index} initialHiddenStatus={true} />);
 
-    expect(wrapper.find('p').last()).toHaveStyleRule('display', 'none');
+    expect(wrapper.find('div').last()).toHaveStyleRule('display', 'none');
   });
 
   it('should display content by default', () => {
     const wrapper = mount(<Accordion title={data.question} index={data.index} />);
 
-    expect(wrapper.find('p').last()).toHaveStyleRule('display', 'block');
+    expect(wrapper.find('div').last()).toHaveStyleRule('display', 'block');
   });
 
   it('should not display content after clicking on the question', () => {
@@ -46,6 +46,6 @@ describe('Accordion component', () => {
 
     wrapper.find('div').first().simulate('click');
 
-    expect(wrapper.find('p').last()).toHaveStyleRule('display', `none`);
+    expect(wrapper.find('div').last()).toHaveStyleRule('display', `none`);
   });
 });

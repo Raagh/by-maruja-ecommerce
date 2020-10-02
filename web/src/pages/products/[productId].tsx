@@ -43,8 +43,8 @@ export const getServerSideProps = async (context: NextPageContext) => {
       "images": images[]{
         "image": {
           ...,
-         	"asset": { "url": asset->url, "metadata": asset->metadata }
         },
+       "asset": { "url": asset->url, "metadata": asset->metadata }
       }	
      } 
   `
@@ -57,10 +57,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
         searchName,
         name,
         image,
-        "asset": image.asset-> {
-          url,
-          metadata 
-       }
+
       },
     }
     `

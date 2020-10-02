@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BodyCopyRegularSmall } from '../../../config/global-styled-components';
+
 import AccordionQuestion from './accordion-question';
 import { device } from '../../../config/device';
 
@@ -20,7 +20,7 @@ const AccordionContainer = styled.article<{ index: number }>`
   }
 `;
 
-const AccordionContent = styled(BodyCopyRegularSmall)<{ hidden: boolean }>`
+const AccordionContent = styled.div<{ hidden: boolean }>`
   display: ${(props) => (props.hidden ? 'none' : 'block')};
   width: 90%;
 

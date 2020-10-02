@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './secondary-button';
 import Accordion from './accordion/accordion';
-import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
+import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH2 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
@@ -47,7 +47,7 @@ const StyledAccordion = styled(Accordion)`
 const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
   return (
     <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden} isBold={true}>
-      {answer}
+      <BodyCopyRegularSmall>{answer}</BodyCopyRegularSmall>
     </StyledAccordion>
   );
 };

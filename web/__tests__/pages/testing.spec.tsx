@@ -20,7 +20,7 @@ it('should render the title', () => {
 it('should render a button', () => {
   const wrapper = render(<Index {...product} />);
 
-  expect(wrapper.find('button').length).toEqual(2);
+  expect(wrapper.find('button').length).toEqual(3);
 });
 
 it('button should say "Call MercadoPago"', () => {

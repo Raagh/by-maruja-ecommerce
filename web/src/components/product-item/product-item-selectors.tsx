@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
 
@@ -6,7 +6,6 @@ import { BodyCopyRegularSmall, LabelSmall } from '../../config/global-styled-com
 import { colors, fonts } from '../../config/global-styles';
 import { Product } from '../../model/product';
 
-import ProductItemSizeChart from './product-item-sizechart';
 import ProductItemSizesSelect from './product-item-sizes-select';
 
 const ItemExtraQualities = styled.p`
@@ -44,12 +43,6 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-const SizesTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 const ProductItemDescription = styled(BodyCopyRegularSmall)`
   font-size: 16px;
   line-height: 24px;
@@ -57,33 +50,40 @@ const ProductItemDescription = styled(BodyCopyRegularSmall)`
   padding-top: 1rem;
 `;
 
-const ProductItemSelectors = ({ product }: { product: Product }) => {
-  const [quantity, setQuanity] = useState(0);
-
+const ProductItemSelectors = ({
+  product,
+  quantity,
+  size,
+  setQuantity,
+  setSize,
+}: {
+  product: Product;
+  quantity: number;
+  size: string;
+  setQuantity: (quantity: number) => void;
+  setSize: (size: string) => void;
+}) => {
   const hasSizes = product.sizeChart !== undefined;
 
   return (
-    <article>
+    <section>
       <ProductItemDescription>{product.description}</ProductItemDescription>
       <ItemExtraQualityRow>
         <ItemExtraQualities>Cantidad</ItemExtraQualities>
         <FakeSelect>
-          <StyledButton onClick={() => setQuanity(quantity - 1)}>-</StyledButton>
+          <StyledButton onClick={() => setQuantity(quantity - 1)}>-</StyledButton>
           <LabelSmall>{quantity}</LabelSmall>
-          <StyledButton onClick={() => setQuanity(quantity + 1)}>+</StyledButton>
+          <StyledButton onClick={() => setQuantity(quantity + 1)}>+</StyledButton>
         </FakeSelect>
       </ItemExtraQualityRow>
       {hasSizes && (
-        <ItemExtraQualityRow>
-          <SizesTextContainer>
-            <ItemExtraQualities>Talle</ItemExtraQualities>
-            <ProductItemSizeChart />
-          </SizesTextContainer>
-
-          <ProductItemSizesSelect product={product} />
-        </ItemExtraQualityRow>
+        <ProductItemSizesSelect
+          selectedSize={size}
+          setSelectedSize={(internalSize: string) => setSize(internalSize)}
+          product={product}
+        />
       )}
-    </article>
+    </section>
   );
 };
 

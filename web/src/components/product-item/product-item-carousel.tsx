@@ -54,9 +54,10 @@ const customIndicators = (onClickHandler: any, isSelected: any, index: any, labe
   );
 };
 
-const ProductItemCarousel = ({ product }: { product: Product }) => {
+const ProductItemCarousel = ({ product, className }: { product: Product; className?: any }) => {
   return (
     <Carousel
+      className={className}
       showThumbs={false}
       showStatus={false}
       showIndicators

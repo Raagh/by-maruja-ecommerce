@@ -7,10 +7,13 @@ import { typography } from '../../../config/global-styles';
 import { device } from '../../../config/device';
 
 const FooterMobileDesktopLinksContainer = styled.div<{ isFooter: boolean }>`
-    ${(props) => (props.isFooter ? '' : 'display:flex; flex-flow:column; align-items: center;')}
+  ${(props) => (props.isFooter ? '' : 'display:flex; flex-flow:column; align-items: center;')}
+  margin-bottom: 2rem;
+
   @media ${device.large} {
     display: flex;
     margin-left: 11rem;
+    margin-bottom: 0;
   }
 `;
 

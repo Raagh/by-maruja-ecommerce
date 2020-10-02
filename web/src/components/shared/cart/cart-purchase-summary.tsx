@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../config/global-styled-components';
+import Router from 'next/router';
+import { MercadoPagoPaymentRequest } from 'mercadopago';
+import {
+  BodyCopyBoldSmall,
+  BodyCopyBoldLarge,
+  LabelSmall,
+  ErrorMessage,
+} from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
 import { CartProduct as CP } from '../../../model/cart-product';
 import PrimaryButton from '../primary-button';
+import { ErrorMessages } from '../../../config/error-messages';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
@@ -43,19 +51,27 @@ const Total = styled.div`
 `;
 
 const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
+  const [Error, setError] = useState('');
   const clickHandler = () => {
-    const paymentDataRequest = cart.map((item) => {
-      return {
-        title: item.name,
-        description: item.name,
-        quantity: item.quantity,
-        currency_id: 'ARS',
-        unit_price: item.price,
-      };
-    });
-    axios.post('/api/create-payment', paymentDataRequest).then((result) => console.log(result.data));
+    const paymentDataRequest = {
+      items: cart.map((item) => {
+        return {
+          title: item.name,
+          description: item.name,
+          quantity: item.quantity,
+          currency_id: 'ARS',
+          unit_price: item.price,
+        };
+      }),
+    } as MercadoPagoPaymentRequest;
+    axios
+      .post('/api/create-payment', paymentDataRequest)
+      .then((result) => {
+        let url = result.data.replace(/https?:/, '');
+        return Router.push(url);
+      })
+      .catch(() => setError(ErrorMessages.purchase));
   };
-  console.log(clickHandler);
 
   return (
     <PurchaseSummaryContainer>
@@ -72,11 +88,10 @@ const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
       <PurchasePanel>
         <Total>
           <BodyCopyBoldSmall>TOTAL</BodyCopyBoldSmall>
-          <BodyCopyBoldLarge>
-            ${cart.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0).toFixed(2)}
-          </BodyCopyBoldLarge>
+          <BodyCopyBoldLarge>${cart.reduce((accum, prod) => (accum += prod.price), 0).toFixed(2)}</BodyCopyBoldLarge>
         </Total>
-        <PrimaryButton text="COMPRAR CON MERCADO PAGO" url="/" /*onClick={clickHandler} */ />
+        <ErrorMessage>{Error}</ErrorMessage>
+        <PrimaryButton text="COMPRAR CON MERCADO PAGO" onClick={clickHandler} />
       </PurchasePanel>
     </PurchaseSummaryContainer>
   );

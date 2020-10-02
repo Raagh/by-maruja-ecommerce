@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
+
 import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
 import { CategoryConfiguration } from '../../../model/category-configuration';
 import { StyledH1 } from '../../../config/global-styled-components';
 import FooterMobileDesktopLinks from '../footer/footer-mobile-desktop-links';
-import Link from 'next/link';
 
 const MenuContainer = styled.div<{ isOpen: boolean }>`
   height: 100vh;
@@ -26,6 +27,7 @@ const MenuContainer = styled.div<{ isOpen: boolean }>`
     display: none;
   }
 `;
+
 const CategoriesContainer = styled.div`
   display: flex;
   justify-content: space-between;

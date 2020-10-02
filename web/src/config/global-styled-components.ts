@@ -256,3 +256,7 @@ export const SteelBadge = styled(Badge)`
 export const DiscountFavoriteBadge = styled(Badge)`
   background: ${colors.primary.dark};
 `;
+
+export const ErrorMessage = styled(BodyCopyBoldSmall)`
+  color: ${colors.ui.error};
+`;

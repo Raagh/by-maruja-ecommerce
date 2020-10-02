@@ -31,7 +31,7 @@ const SidebarInternal = ({
   isOpen: boolean;
   clickHandler: () => void;
   sidebarTitle: string;
-  children: any;
+  children?: any;
 }) => {
   return (
     <SidebarContainer isOpen={isOpen}>

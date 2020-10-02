@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
 import { CartProduct as CP } from '../../../model/cart-product';
@@ -42,6 +43,20 @@ const Total = styled.div`
 `;
 
 const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
+  const clickHandler = () => {
+    const paymentDataRequest = cart.map((item) => {
+      return {
+        title: item.name,
+        description: item.name,
+        quantity: item.quantity,
+        currency_id: 'ARS',
+        unit_price: item.price,
+      };
+    });
+    axios.post('/api/create-payment', paymentDataRequest).then((result) => console.log(result.data));
+  };
+  console.log(clickHandler);
+
   return (
     <PurchaseSummaryContainer>
       <InfoContainer>
@@ -61,7 +76,7 @@ const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
             ${cart.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0).toFixed(2)}
           </BodyCopyBoldLarge>
         </Total>
-        <PrimaryButton text="COMPRAR CON MERCADO PAGO" url="/" />
+        <PrimaryButton text="COMPRAR CON MERCADO PAGO" url="/" /*onClick={clickHandler} */ />
       </PurchasePanel>
     </PurchaseSummaryContainer>
   );

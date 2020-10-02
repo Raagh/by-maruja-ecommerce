@@ -199,12 +199,14 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
       <ProductInformation>
         <ProductItemTitle>{product.name}</ProductItemTitle>
         <PriceDisplay>
-          {product.tag === Tags.Discount && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
-          {product.tag === Tags.Discount && <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>}
-          {product.tag === Tags.Discount && (
+          {product.tag === Tags.Discount && hasStock && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
+          {product.tag === Tags.Discount && hasStock && (
+            <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>
+          )}
+          {product.tag === Tags.Discount && hasStock && (
             <TransparentBadge>{100 - (product.discountPrice * 100) / product.price} % off</TransparentBadge>
           )}
-          {product.tag !== Tags.Discount && <ProductItemPrice>${product.price}</ProductItemPrice>}
+          {(product.tag !== Tags.Discount || !hasStock) && <ProductItemPrice>${product.price}</ProductItemPrice>}
         </PriceDisplay>
         {hasStock && (
           <article>

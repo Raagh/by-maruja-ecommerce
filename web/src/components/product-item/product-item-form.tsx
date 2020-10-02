@@ -21,12 +21,14 @@ const ProductItemForm = ({ product }: { product: Product }) => {
   const [selectedSize, setSelectedSize] = useState(product.sizeChart ? product.sizeChart[0].size : '');
 
   const addToCart = () => {
+    const finalPrice = product.discountPrice === 0 ? product.price : product.discountPrice;
+
     const newProduct: CartProduct = {
       _id: product._id,
       name: product.name,
       size: selectedSize,
       quantity,
-      price: quantity * product.price,
+      price: quantity * finalPrice,
       image: product.images[0].image,
       asset: product.images[0].asset,
     };

@@ -16,9 +16,11 @@ export const addToCart = (product: CartProduct) => {
 
 export const clearFromCart = (product: CartProduct) => {
   let cartContent: CartProduct[] = JSON.parse(localStorage.getItem('cart'));
-  cartContent = cartContent.filter((cartProd) => {
-    return cartProd._id !== product._id;
-  });
+  cartContent = cartContent
+    ? cartContent.filter((cartProd) => {
+        return cartProd._id !== product._id;
+      })
+    : [];
 
   localStorage.setItem('cart', JSON.stringify(cartContent));
 };

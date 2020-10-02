@@ -24,6 +24,7 @@ const SideBarContainer = styled.article`
   position: fixed;
   z-index: 10;
 `;
+
 const Sidebar = ({
   isOpen,
   clickHandler,

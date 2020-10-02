@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { CaptionLarge, CaptionSmall, LabelLargeBold, StyledH3Title } from '../../config/global-styled-components';
-import { colors } from '../../config/global-styles';
+import { colors, typography } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 import { Product } from '../../model/product';
 
@@ -74,6 +74,43 @@ const TransparentBadge = styled(CaptionSmall)`
 const NoStockMessage = styled(CaptionLarge)`
   margin-top: 0.8rem;
 `;
+const EmailInputContainer = styled.div`
+  border: 1px solid #513232;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+  margin-top: 1rem;
+`;
+
+const EmailInput = styled.input`
+  width: 100%;
+  font-family: ${typography.bodyCopy.regular.font.name};
+  font-style: normal;
+  font-weight: ${typography.bodyCopy.regular.fontWeight};
+  font-size: ${typography.bodyCopy.regular.small.fontSize};
+  line-height: ${typography.bodyCopy.regular.small.lineHeight};
+  letter-spacing: ${typography.bodyCopy.regular.small.letterSpacing};
+  color: ${colors.ui.darkSurface};
+  padding: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: inherit;
+`;
+
+const SendEmailButton = styled.button`
+  width: 60px;
+  background: none;
+  color: inherit;
+  border: none;
+  border-left: 1px solid #513232;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+`;
 
 const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock: boolean }) => {
   return (
@@ -101,7 +138,17 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
           <PaymentDescription />
         </article>
       )}
-      {!hasStock && <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>}
+      {!hasStock && (
+        <article>
+          <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>
+          <EmailInputContainer>
+            <EmailInput type="text" placeholder="Tu email" />
+            <SendEmailButton type="button">
+              <img src="/assets/Send-Email.svg" alt="send-email" />
+            </SendEmailButton>
+          </EmailInputContainer>
+        </article>
+      )}
     </ProductItemContainer>
   );
 };

@@ -1,3 +1,3 @@
 export enum ErrorMessages {
-  purchase = 'There was a problem with your purchase. Please, try again in a few minutes.',
+  purchase = 'Hubo un problema con tu compra. Por favor, intente de nuevo en unos minutos.',
 }

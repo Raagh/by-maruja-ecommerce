@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import Router from 'next/router';
-import { MercadoPagoPaymentRequest } from 'mercadopago';
 import {
   BodyCopyBoldSmall,
   BodyCopyBoldLarge,
@@ -12,7 +9,7 @@ import {
 import { colors } from '../../../config/global-styles';
 import { CartProduct as CP } from '../../../model/cart-product';
 import PrimaryButton from '../primary-button';
-import { ErrorMessages } from '../../../config/error-messages';
+import { confirmPurchase } from '../../../config/mercado-pago';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
@@ -52,25 +49,11 @@ const Total = styled.div`
 
 const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
   const [Error, setError] = useState('');
+
   const clickHandler = () => {
-    const paymentDataRequest = {
-      items: cart.map((item) => {
-        return {
-          title: item.name,
-          description: item.name,
-          quantity: item.quantity,
-          currency_id: 'ARS',
-          unit_price: item.price,
-        };
-      }),
-    } as MercadoPagoPaymentRequest;
-    axios
-      .post('/api/create-payment', paymentDataRequest)
-      .then((result) => {
-        let url = result.data.replace(/https?:/, '');
-        return Router.push(url);
-      })
-      .catch(() => setError(ErrorMessages.purchase));
+    confirmPurchase(cart).catch((err) => {
+      setError(err.message);
+    });
   };
 
   return (

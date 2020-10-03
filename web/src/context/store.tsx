@@ -11,6 +11,10 @@ const initialState: initialState = {
       image: {
         key: '1e1017634afe',
         type: 'image',
+        asset: {
+          _ref: 'image-70eef7174d55ae65f2e5ccc3f66829262cd79ff7-500x500-webp',
+          _type: 'reference',
+        },
       },
       asset: {
         metadata: {

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { CartProduct as CP } from '../../../model/cart-product';
 import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
 import { LabelLarge, LabelLargeBold, StyledH6Title, LabelSmall } from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
+import { store } from '../../../context/store';
+import { actionTypes } from '../../../model/action-types';
 
 const SingleItemContainer = styled.div`
   display: flex;
@@ -45,9 +47,13 @@ const QuantityTitle = styled(StyledH6Title)`
 
 const DeleteImg = styled.img`
   margin: auto 1rem 1.25rem auto;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const SingleItem = ({ product }: { product: CP }) => {
+  const { dispatch } = useContext(store);
   return (
     <SingleItemContainer>
       <SingleItemImage image={product.image} asset={product.asset} alt={product.name} />
@@ -62,7 +68,11 @@ const SingleItem = ({ product }: { product: CP }) => {
             {product.quantity} {product.quantity > 1 ? 'unidades' : 'unidad'}
           </LabelSmall>
         </Quantity>
-        <DeleteImg src="/assets/delete.svg" alt="Delete" />
+        <DeleteImg
+          src="/assets/delete.svg"
+          alt="Delete"
+          onClick={() => dispatch({ type: actionTypes.Clear, payload: product })}
+        />
       </InfoContainer>
     </SingleItemContainer>
   );

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../config/global-styled-components';
+import {
+  BodyCopyBoldSmall,
+  BodyCopyBoldLarge,
+  LabelSmall,
+  ErrorMessage,
+} from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
 import { CartProduct as CP } from '../../../model/cart-product';
 import PrimaryButton from '../primary-button';
+import MP from '../../../config/mercado-pago';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
@@ -42,6 +48,14 @@ const Total = styled.div`
 `;
 
 const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
+  const [Error, setError] = useState('');
+
+  const clickHandler = () => {
+    MP.confirmPurchase(cart).catch((err) => {
+      setError(err.message);
+    });
+  };
+
   return (
     <PurchaseSummaryContainer>
       <InfoContainer>
@@ -59,7 +73,8 @@ const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
           <BodyCopyBoldSmall>TOTAL</BodyCopyBoldSmall>
           <BodyCopyBoldLarge>${cart.reduce((accum, prod) => (accum += prod.price), 0).toFixed(2)}</BodyCopyBoldLarge>
         </Total>
-        <PrimaryButton text="COMPRAR CON MERCADO PAGO" onClick={() => {}} />
+        <ErrorMessage>{Error}</ErrorMessage>
+        <PrimaryButton text="COMPRAR CON MERCADO PAGO" onClick={clickHandler} />
       </PurchasePanel>
     </PurchaseSummaryContainer>
   );

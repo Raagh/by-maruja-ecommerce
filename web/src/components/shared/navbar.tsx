@@ -74,6 +74,7 @@ const HeadroomContainer = styled(Headroom)`
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
+  const [isNavbarUnpinned, setNavbarUnpinned] = useState(true);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -84,7 +85,12 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   }, [isMenuOpen]);
 
   return (
-    <HeadroomContainer pinStart={-1}>
+    <HeadroomContainer
+      pinStart={-1}
+      onUnpin={() => setNavbarUnpinned(true)}
+      onPin={() => setNavbarUnpinned(false)}
+      disable={isNavbarUnpinned && (isCartOpen || isMenuOpen)}
+    >
       <Container>
         <MenuBotton
           onClick={() => setMenuOpen(!isMenuOpen)}

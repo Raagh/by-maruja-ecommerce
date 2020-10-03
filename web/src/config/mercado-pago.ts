@@ -3,17 +3,19 @@ import Router from 'next/router';
 import { MercadoPagoPaymentRequest } from 'mercadopago';
 import { CartProduct as CP } from '../model/cart-product';
 import { ErrorMessages } from './error-messages';
+import { getDefaultImage } from '../../lib/sanity';
 
-export const confirmPurchase = async (cart: CP[]) => {
+const confirmPurchase = async (cart: CP[]) => {
   const paymentDataRequest = {
     items: cart.map((item) => {
+      const imageUrl = getDefaultImage(item.image).url();
       return {
         title: item.name,
         description: item.name,
         quantity: item.quantity,
         currency_id: 'ARS',
         unit_price: item.price,
-        picture_url: Object.values(item.asset)[1],
+        picture_url: imageUrl,
       };
     }),
   } as MercadoPagoPaymentRequest;
@@ -23,3 +25,9 @@ export const confirmPurchase = async (cart: CP[]) => {
     throw new Error(ErrorMessages.purchase);
   });
 };
+
+const exportedFunctions = {
+  confirmPurchase: confirmPurchase,
+};
+
+export default exportedFunctions;

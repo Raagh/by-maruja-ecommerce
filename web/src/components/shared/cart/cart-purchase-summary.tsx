@@ -9,7 +9,7 @@ import {
 import { colors } from '../../../config/global-styles';
 import { CartProduct as CP } from '../../../model/cart-product';
 import PrimaryButton from '../primary-button';
-import { confirmPurchase } from '../../../config/mercado-pago';
+import MP from '../../../config/mercado-pago';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
@@ -51,7 +51,7 @@ const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
   const [Error, setError] = useState('');
 
   const clickHandler = () => {
-    confirmPurchase(cart).catch((err) => {
+    MP.confirmPurchase(cart).catch((err) => {
       setError(err.message);
     });
   };

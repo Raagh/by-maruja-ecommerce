@@ -1,9 +1,9 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import axios from 'axios';
 import CartMock from '../../../../__mocks__/cart-products.mock';
 import PurchaseSummary from '../../../../src/components/shared/cart/cart-purchase-summary';
 import PrimaryButton from '../../../../src/components/shared/primary-button';
+import MP from '../../../../src/config/mercado-pago';
 
 describe('PurchaseSummary component', () => {
   it('should render', () => {
@@ -20,7 +20,7 @@ describe('PurchaseSummary component', () => {
 
   it('should call MercadoPago after the PrimaryButton is clicked', () => {
     const wrapper = mount(<PurchaseSummary cart={CartMock} />);
-    const mock = jest.spyOn(axios, 'post');
+    const mock = jest.spyOn(MP, 'confirmPurchase');
 
     wrapper.find(PrimaryButton).first().simulate('click');
 

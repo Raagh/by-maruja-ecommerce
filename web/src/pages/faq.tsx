@@ -1,23 +1,53 @@
 import React from 'react';
 import styled from 'styled-components';
 import { sanity } from '../../lib/sanity';
+import Link from 'next/link';
 
-import Faq from '../components/shared/faq';
 import Layout from '../components/shared/layout';
+import TopicSelector from '../components/shared/topic-selector';
+import jsonData from '../config/faq-page-conf.json';
 import { CategoryConfiguration } from '../model/category-configuration';
-import { StyledH3 } from '../config/global-styled-components';
+import { StyledH3, BodyCopyBoldSmall, BodyCopyRegularSmall } from '../config/global-styled-components';
+import { colors } from '../config/global-styles';
 
-const LinkContainer = styled.div`
+const FaqPageContainer = styled.section``;
+const AboutLinkContainer = styled.div`
   text-align: center;
+  margin-top: 2rem;
+`;
+const AboutCallToAction = styled(BodyCopyRegularSmall)`
+  font-size: 16px;
+`;
+const AboutLink = styled(BodyCopyBoldSmall)`
+  text-decoration: underline;
+`;
+
+const FaqPageTitle = styled(StyledH3)`
+  text-align: center;
+  background: ${colors.ui.grey5percent};
+  padding-bottom: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const FaqPage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
   return (
     <Layout categories={categories}>
-      <Faq />
-      <LinkContainer>
-        <StyledH3>Ver más</StyledH3>
-      </LinkContainer>
+      <FaqPageContainer>
+        <FaqPageTitle>
+          Preguntas
+          <br />
+          Frecuentes
+        </FaqPageTitle>
+        {jsonData.map((topic) => (
+          <TopicSelector key={topic.Topic} selection={topic} />
+        ))}
+        <AboutLinkContainer>
+          <AboutCallToAction>No encontrás la respuesta que buscás?</AboutCallToAction>
+          <Link href="/">
+            <AboutLink>Contactanos aquí</AboutLink>
+          </Link>
+        </AboutLinkContainer>
+      </FaqPageContainer>
     </Layout>
   );
 };

@@ -2,8 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import FaqPage from '../../src/pages/faq';
-import Faq from '../../src/components/shared/faq';
+import TopicSelector from '../../src/components/shared/topic-selector';
 import { mock as categoriesMock } from '../../__mocks__/categories-configuration.mock';
+import JsonData from '../../src/config/faq-page-conf.json';
 
 describe('Faq Page', () => {
   it('should render', () => {
@@ -12,9 +13,9 @@ describe('Faq Page', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('should render Faq component twice (Once in Menu and once in page)', () => {
+  it('should render as many topicSelector components as there are objects in faq-page-conf.json', () => {
     const wrapper = mount(<FaqPage categories={categoriesMock} />);
 
-    expect(wrapper.find(Faq).length).toBe(2);
+    expect(wrapper.find(TopicSelector).length).toBe(JsonData.length);
   });
 });

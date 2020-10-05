@@ -15,7 +15,7 @@ describe('PurchaseSummary component', () => {
   it('should display the sum of the prices of the objects in the cart', () => {
     const wrapper = shallow(<PurchaseSummary cart={CartMock} />);
 
-    expect(wrapper.text()).toContain('' + CartMock.reduce((accum, prod) => (accum += prod.price), 0));
+    expect(wrapper.text()).toContain('' + CartMock.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0));
   });
 
   it('should call MercadoPago after the PrimaryButton is clicked', () => {

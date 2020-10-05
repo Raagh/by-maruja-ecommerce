@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 
 import styled from 'styled-components';
+import { ErrorMessages } from '../../config/error-messages';
+import MP from '../../config/mercado-pago';
 import { store } from '../../context/store';
 import { ActionTypes } from '../../model/action-types';
-import { CartProduct } from '../../model/cart-product';
 
 import { Product } from '../../model/product';
 import PrimaryButton from '../shared/primary-button';
@@ -23,27 +24,32 @@ const ProductItemForm = ({ product }: { product: Product }) => {
   const [selectedSize, setSelectedSize] = useState(product.sizeChart ? product.sizeChart[0].size : '');
   const { dispatch } = useContext(store);
 
-  const addToCart = () => {
-    const newProduct: CartProduct = {
+  const createProductForPurchase = () => {
+    return {
       _id: product._id,
       name: product.name,
       size: selectedSize,
       quantity,
-      price: product.discountPrice === 0 ? product.price : product.discountPrice,
+      price: !product?.discountPrice || product.discountPrice === 0 ? product.price : product.discountPrice,
       image: product.images[0].image,
       asset: product.images[0].asset,
     };
-
-    dispatch({ type: ActionTypes.Add, payload: newProduct });
   };
 
-  const goToMercadoPago = () => console.log('going to mercadopago');
+  const addToCart = () => dispatch({ type: ActionTypes.Add, payload: createProductForPurchase() });
+
+  const goToMercadoPago = () =>
+    MP.confirmPurchase([createProductForPurchase()]).catch((_) => {
+      throw new Error(ErrorMessages.Purchase);
+    });
 
   const setQuantityIfThereIsStock = (selectedQuantity: number) => {
     if (selectedQuantity <= 0) return;
-    const stockBySize = product.sizeChart.find((x) => x.size === selectedSize).stock;
 
-    if (selectedQuantity <= stockBySize) setQuantity(selectedQuantity);
+    if (product.sizeChart) {
+      const stockBySize = product.sizeChart.find((x) => x.size === selectedSize).stock;
+      if (selectedQuantity <= stockBySize) setQuantity(selectedQuantity);
+    } else if (selectedQuantity <= product.stock) setQuantity(selectedQuantity);
   };
 
   const setSelectedSizeAndResetQuantity = (internalSize: string) => {
@@ -61,10 +67,10 @@ const ProductItemForm = ({ product }: { product: Product }) => {
         setSize={setSelectedSizeAndResetQuantity}
       />
       <ExtraPaddedPrimaryButton>
-        <PrimaryButton onClick={goToMercadoPago} text="Comprar con mercado pago" />
+        <PrimaryButton onClick={goToMercadoPago} text="comprar con mercado pago" />
       </ExtraPaddedPrimaryButton>
       <PaddedPrimaryButton>
-        <PrimaryButton inverted text="Agregar al Carrito" onClick={addToCart} />
+        <PrimaryButton inverted text="agregar al carrito" onClick={addToCart} />
       </PaddedPrimaryButton>
     </section>
   );

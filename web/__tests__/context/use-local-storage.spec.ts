@@ -1,5 +1,5 @@
 import CartProductsMock from '../../__mocks__/cart-products.mock';
-import { addToCart, removeFromCart, emptyCart, getCart, removeOneFromCart } from '../../src/config/use-local-storage';
+import { addToCart, removeFromCart, emptyCart, getCart } from '../../src/context/use-local-storage';
 
 describe('AddToCart', () => {
   beforeEach(() => {
@@ -72,33 +72,5 @@ describe('getCart', () => {
 
     expect(cart.length).toBe(2);
     expect(cart[1].name).toBe('test 1');
-  });
-});
-
-describe('removeOneFromCart', () => {
-  beforeEach(() => {
-    localStorage.clear();
-  });
-
-  it('should remove the item if quantity is one', () => {
-    addToCart(CartProductsMock[1]);
-    addToCart(CartProductsMock[0]);
-
-    expect(JSON.parse(localStorage.getItem('cart')).length).toBe(2);
-
-    removeOneFromCart(CartProductsMock[0]);
-
-    expect(JSON.parse(localStorage.getItem('cart')).length).toBe(1);
-    expect(JSON.parse(localStorage.getItem('cart'))[0].name).toBe('test 2');
-  });
-
-  it('should decrease quantity by one if quantity is greater than one', () => {
-    addToCart(CartProductsMock[1]);
-
-    expect(JSON.parse(localStorage.getItem('cart'))[0].quantity).toBe(3);
-
-    removeOneFromCart(CartProductsMock[1]);
-
-    expect(JSON.parse(localStorage.getItem('cart'))[0].quantity).toBe(2);
   });
 });

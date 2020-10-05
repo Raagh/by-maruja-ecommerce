@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react';
-import { addToCart, removeFromCart, emptyCart, getCart } from '../config/use-local-storage';
+import { addToCart, removeFromCart, emptyCart, getCart } from './use-local-storage';
 import { ActionTypes } from '../model/action-types';
 
 type initialState = any;

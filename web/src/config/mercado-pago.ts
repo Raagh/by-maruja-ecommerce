@@ -22,12 +22,12 @@ const confirmPurchase = async (cart: CP[]) => {
   const result = await axios.post('/api/create-payment', paymentDataRequest);
   const url = result.data.replace(/https?:/, '');
   return Router.push(url).catch(() => {
-    throw new Error(ErrorMessages.purchase);
+    throw new Error(ErrorMessages.Purchase);
   });
 };
 
 const exportedFunctions = {
-  confirmPurchase: confirmPurchase,
+  confirmPurchase,
 };
 
 export default exportedFunctions;

@@ -17,6 +17,7 @@ const SingleItemContainer = styled.div`
 
 const SingleItemImage = styled(RemoteFixedSizeImage)`
   width: 118px;
+  object-fit: cover;
 `;
 
 const InfoContainer = styled.div`

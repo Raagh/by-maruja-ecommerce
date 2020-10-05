@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react';
-import { addToCart, clearFromCart, emptyCart, getCart, removeOneFromCart } from '../config/use-local-storage';
+import { addToCart, removeFromCart, emptyCart, getCart } from '../config/use-local-storage';
 import { ActionTypes } from '../model/action-types';
 
 type initialState = any;
@@ -12,45 +12,29 @@ const store = createContext(initialState);
 const { Provider } = store;
 
 const cartReducer = (state: initialState, action: reducerAction) => {
-  let newState;
   switch (action.type) {
     case ActionTypes.Add:
       addToCart(action.payload);
-      newState = {
-        ...state,
-        cart: getCart(),
-      };
-      return newState;
-    case ActionTypes.Clear:
-      clearFromCart(action.payload);
-      newState = {
-        ...state,
-        cart: getCart(),
-      };
-      return newState;
+      break;
+    case ActionTypes.Remove:
+      removeFromCart(action.payload);
+      break;
     case ActionTypes.Empty:
       emptyCart();
-      newState = {
-        ...state,
-        cart: getCart(),
-      };
-      return newState;
-    case ActionTypes.Remove:
-      removeOneFromCart(action.payload);
-      newState = {
-        ...state,
-        cart: getCart(),
-      };
-      return newState;
+      break;
     case ActionTypes.KeepCartState:
-      newState = {
+      return {
         ...state,
         cart: getCart(),
       };
-      return newState;
     default:
       throw new Error('Wrong Action Type');
   }
+
+  return {
+    ...state,
+    cart: getCart(),
+  };
 };
 
 const StateProvider = ({ children }: { children: any }) => {
@@ -59,7 +43,6 @@ const StateProvider = ({ children }: { children: any }) => {
   useEffect(() => {
     dispatch({
       type: ActionTypes.KeepCartState,
-      payload: JSON.parse(localStorage.getItem('cart')) || [],
     });
   }, []);
 

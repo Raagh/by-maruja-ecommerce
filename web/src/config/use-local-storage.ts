@@ -2,7 +2,7 @@ import { CartProduct } from '../model/cart-product';
 
 export const addToCart = (product: CartProduct) => {
   let cartContent: CartProduct[] = JSON.parse(localStorage.getItem('cart'));
-  let productIndex = findProductIndex(cartContent, product);
+  const productIndex = findProductIndex(cartContent, product);
 
   if (productIndex !== null) {
     cartContent[productIndex].quantity += 1;
@@ -14,7 +14,7 @@ export const addToCart = (product: CartProduct) => {
   localStorage.setItem('cart', JSON.stringify(cartContent));
 };
 
-export const clearFromCart = (product: CartProduct) => {
+export const removeFromCart = (product: CartProduct) => {
   let cartContent: CartProduct[] = JSON.parse(localStorage.getItem('cart'));
   cartContent = cartContent
     ? cartContent.filter((cartProd) => {
@@ -25,25 +25,9 @@ export const clearFromCart = (product: CartProduct) => {
   localStorage.setItem('cart', JSON.stringify(cartContent));
 };
 
-export const emptyCart = () => {
-  localStorage.removeItem('cart');
-};
+export const emptyCart = () => localStorage.removeItem('cart');
 
-export const getCart = () => {
-  return JSON.parse(localStorage.getItem('cart'));
-};
-
-export const removeOneFromCart = (product: CartProduct) => {
-  let cartContent: CartProduct[] = JSON.parse(localStorage.getItem('cart'));
-
-  let productIndex = findProductIndex(cartContent, product);
-
-  if (productIndex !== null) {
-    cartContent[productIndex].quantity > 1
-      ? (cartContent[productIndex].quantity -= 1) && localStorage.setItem('cart', JSON.stringify(cartContent))
-      : clearFromCart(product);
-  }
-};
+export const getCart = () => JSON.parse(localStorage.getItem('cart'));
 
 const findProductIndex = (cart: CartProduct[], product: CartProduct) => {
   if (cart === null) return null;

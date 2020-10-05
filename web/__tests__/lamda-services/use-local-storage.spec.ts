@@ -1,5 +1,5 @@
 import CartProductsMock from '../../__mocks__/cart-products.mock';
-import { addToCart, clearFromCart, emptyCart, getCart, removeOneFromCart } from '../../src/config/use-local-storage';
+import { addToCart, removeFromCart, emptyCart, getCart, removeOneFromCart } from '../../src/config/use-local-storage';
 
 describe('AddToCart', () => {
   beforeEach(() => {
@@ -38,7 +38,7 @@ describe('clearFromCart', () => {
   it('should clear an object from cart irregardless of quantity', () => {
     addToCart(CartProductsMock[1]);
     addToCart(CartProductsMock[0]);
-    clearFromCart(CartProductsMock[1]);
+    removeFromCart(CartProductsMock[1]);
 
     expect(JSON.parse(localStorage.getItem('cart')).length).toBe(1);
     expect(JSON.parse(localStorage.getItem('cart'))[0].name).toBe('test 1');

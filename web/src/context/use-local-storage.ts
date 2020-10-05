@@ -24,4 +24,4 @@ export const removeFromCart = (product: CartProduct) => {
 
 export const emptyCart = () => localStorage.removeItem(STORAGE_KEY);
 
-export const getCart = () => JSON.parse(localStorage.getItem(STORAGE_KEY));
+export const getCart = () => JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? [];

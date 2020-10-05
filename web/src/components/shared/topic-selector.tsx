@@ -5,13 +5,18 @@ import Sidebar from './sidebar/sidebar';
 import Accordion from './accordion/accordion';
 import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
+import { device } from '../../config/device';
 
 const TopicSelectorContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 1.5rem 1rem 1.5rem;
+  margin-bottom: 1rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   background: ${colors.ui.grey5percent};
+  @media ${device.large} {
+    width: 405px;
+    display: flex;
+  }
 `;
 
 const TopicSelectorIcon = styled.img`

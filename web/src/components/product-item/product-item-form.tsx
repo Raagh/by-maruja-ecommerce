@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import styled from 'styled-components';
+import { store } from '../../context/store';
+import { ActionTypes } from '../../model/action-types';
 import { CartProduct } from '../../model/cart-product';
 
 import { Product } from '../../model/product';
@@ -19,21 +21,20 @@ const ExtraPaddedPrimaryButton = styled.div`
 const ProductItemForm = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(product.sizeChart ? product.sizeChart[0].size : '');
+  const { dispatch } = useContext(store);
 
   const addToCart = () => {
-    const finalPrice = product.discountPrice === 0 ? product.price : product.discountPrice;
-
     const newProduct: CartProduct = {
       _id: product._id,
       name: product.name,
       size: selectedSize,
       quantity,
-      price: quantity * finalPrice,
+      price: product.discountPrice === 0 ? product.price : product.discountPrice,
       image: product.images[0].image,
       asset: product.images[0].asset,
     };
 
-    console.log(newProduct);
+    dispatch({ type: ActionTypes.Add, payload: newProduct });
   };
 
   const goToMercadoPago = () => console.log('going to mercadopago');

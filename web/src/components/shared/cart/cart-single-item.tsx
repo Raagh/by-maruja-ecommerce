@@ -5,7 +5,7 @@ import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
 import { LabelLarge, LabelLargeBold, StyledH6Title, LabelSmall } from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
 import { store } from '../../../context/store';
-import { actionTypes } from '../../../model/action-types';
+import { ActionTypes } from '../../../model/action-types';
 
 const SingleItemContainer = styled.div`
   display: flex;
@@ -23,6 +23,7 @@ const InfoContainer = styled.div`
   display: flex;
   flex-flow: column;
   width: 100%;
+  padding: 1rem 0.5rem 1rem 0.5rem;
 `;
 
 const NameAndPrice = styled.div`
@@ -30,7 +31,6 @@ const NameAndPrice = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding-right: 1rem;
 `;
 
 const Quantity = styled.div`
@@ -46,10 +46,18 @@ const QuantityTitle = styled(StyledH6Title)`
 `;
 
 const DeleteImg = styled.img`
-  margin: auto 1rem 1.25rem auto;
+  /* margin: auto 1rem 1.25rem auto; */
   :hover {
     cursor: pointer;
   }
+`;
+
+const StyledImgContainer = styled.div`
+  display: flex;
+  display: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
 `;
 
 const SingleItem = ({ product }: { product: CP }) => {
@@ -68,11 +76,13 @@ const SingleItem = ({ product }: { product: CP }) => {
             {product.quantity} {product.quantity > 1 ? 'unidades' : 'unidad'}
           </LabelSmall>
         </Quantity>
-        <DeleteImg
-          src="/assets/delete.svg"
-          alt="Delete"
-          onClick={() => dispatch({ type: actionTypes.Clear, payload: product })}
-        />
+        <StyledImgContainer>
+          <DeleteImg
+            src="/assets/delete.svg"
+            alt="Delete"
+            onClick={() => dispatch({ type: ActionTypes.Remove, payload: product })}
+          />
+        </StyledImgContainer>
       </InfoContainer>
     </SingleItemContainer>
   );

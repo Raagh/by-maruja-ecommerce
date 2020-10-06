@@ -16,8 +16,8 @@ const SidebarNavContainer = styled.section`
 
   background-color: ${colors.ui.whiteBackground};
   @media ${device.large} {
-    max-width: 408px;
-    min-width: 408px;
+    max-width: 595px;
+    min-width: 595px;
   }
 `;
 

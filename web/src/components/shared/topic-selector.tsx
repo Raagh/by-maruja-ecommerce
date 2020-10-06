@@ -7,9 +7,7 @@ import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../config/global-sty
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 
-const TopicSelectorContainer = styled.div`
-  display: flex;
-  align-items: center;
+const TopicSelectorOuterContainer = styled.div`
   margin-bottom: 1rem;
   padding: 1rem 1.5rem 1rem 1.5rem;
   background: ${colors.ui.grey5percent};
@@ -17,6 +15,11 @@ const TopicSelectorContainer = styled.div`
     width: 405px;
     display: flex;
   }
+`;
+
+const TopicSelectorInnerContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const TopicSelectorIcon = styled.img`
@@ -40,10 +43,12 @@ const TopicSelector = ({
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <TopicSelectorContainer onClick={() => setOpen(!isOpen)}>
-      <TopicSelectorIcon src="/assets/Shippings.svg" alt="Shippings Icon" />
-      <TopicSelectorTitle>{selection.Topic}</TopicSelectorTitle>
-      <Sidebar isOpen={isOpen} clickHandler={() => setOpen(!isOpen)} sidebarTitle={selection.Topic}>
+    <TopicSelectorOuterContainer>
+      <TopicSelectorInnerContainer onClick={() => setOpen(true)}>
+        <TopicSelectorIcon src="/assets/Shippings.svg" alt="Shippings Icon" />
+        <TopicSelectorTitle>{selection.Topic}</TopicSelectorTitle>
+      </TopicSelectorInnerContainer>
+      <Sidebar isOpen={isOpen} clickHandler={() => setOpen(false)} sidebarTitle={selection.Topic}>
         <QuestionsContainer>
           {selection.data.map((topic, index) => {
             return (
@@ -54,7 +59,7 @@ const TopicSelector = ({
           })}
         </QuestionsContainer>
       </Sidebar>
-    </TopicSelectorContainer>
+    </TopicSelectorOuterContainer>
   );
 };
 

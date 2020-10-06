@@ -83,7 +83,7 @@ const Faq = ({ isDarkBackgroundColor }: { isDarkBackgroundColor?: boolean }) => 
           )}
         </AccordionsDesktopContainer>
         <FaqButtonContainer>
-          <Button text="LEER MÁS" url="/" />
+          <Button text="LEER MÁS" url="/faq" />
         </FaqButtonContainer>
       </FaqContainer>
     </BackgroundContainer>

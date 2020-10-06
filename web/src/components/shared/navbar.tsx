@@ -68,6 +68,7 @@ const HeadroomContainer = styled(Headroom)`
   .headroom--unfixed {
     position: fixed !important;
     transition: all 0.2s ease-in-out 0s !important;
+    min-height: 73px;
   }
 `;
 

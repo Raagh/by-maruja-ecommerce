@@ -9,10 +9,8 @@ import { device } from '../../config/device';
 
 const TopicSelectorOuterContainer = styled.div`
   margin-bottom: 1rem;
-  padding: 1rem 1.5rem 1rem 1.5rem;
   background: ${colors.ui.grey5percent};
   @media ${device.large} {
-    width: 405px;
     display: flex;
   }
 `;
@@ -20,6 +18,10 @@ const TopicSelectorOuterContainer = styled.div`
 const TopicSelectorInnerContainer = styled.div`
   display: flex;
   align-items: center;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  @media ${device.large} {
+    width: 405px;
+  }
 `;
 
 const TopicSelectorIcon = styled.img`
@@ -29,7 +31,8 @@ const TopicSelectorIcon = styled.img`
 const TopicSelectorTitle = styled(BodyCopyBoldSmall)``;
 
 const QuestionsContainer = styled.div`
-  margin: 1.5rem 2rem 0 2rem;
+  padding: 1.5rem 2rem 0 2rem;
+  width:100%;
 `;
 
 const Answer = styled(BodyCopyRegularSmall)`

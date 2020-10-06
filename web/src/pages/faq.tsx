@@ -7,7 +7,7 @@ import Layout from '../components/shared/layout';
 import TopicSelector from '../components/shared/topic-selector';
 import jsonData from '../config/faq-page-conf.json';
 import { CategoryConfiguration } from '../model/category-configuration';
-import { StyledH3, BodyCopyBoldSmall, BodyCopyRegularSmall } from '../config/global-styled-components';
+import { StyledH3Title, BodyCopyBoldSmall, BodyCopyRegularSmall } from '../config/global-styled-components';
 import { colors } from '../config/global-styles';
 import { device } from '../config/device';
 
@@ -27,7 +27,7 @@ const AboutLink = styled(BodyCopyBoldSmall)`
   text-decoration: underline;
 `;
 
-const FaqPageTitle = styled(StyledH3)`
+const FaqPageTitle = styled(StyledH3Title)`
   text-align: center;
   background: ${colors.ui.grey5percent};
   padding-bottom: 3rem;

@@ -5,7 +5,7 @@ import SingleItem from './cart-single-item';
 import PurchaseSummary from './cart-purchase-summary';
 
 const CartListContainer = styled.div<{ cart: CP[] }>`
-  ${(props) => (props.cart.length ? '' : 'display: none;')}
+  ${(props) => (props.cart?.length ? '' : 'display: none;')}
   margin: 4.5rem 0 0 0;
   text-align: center;
 `;

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { CaptionSmall } from '../../../config/global-styled-components';
-
 import { device } from '../../../config/device';
+import { colors } from '../../../config/global-styles';
 
 const DisclaimerContainer = styled.div`
   padding-top: 2.5rem;
@@ -16,6 +16,7 @@ const DisclaimerContainer = styled.div`
 const FooterDisclaimerText = styled(CaptionSmall)`
   letter-spacing: 1px;
   margin-right: 5px;
+  color: ${colors.ui.grey50percent};
 `;
 
 const FooterDisclaimerOnlyLarge = styled(FooterDisclaimerText)`

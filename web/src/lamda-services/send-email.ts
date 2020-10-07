@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-export const sendEmail = async ({ name, email, content }: { name: string; email: string; content: string }) => {
+export const sendEmail = ({ name, email, content }: { name: string; email: string; content: string }) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -16,11 +16,13 @@ export const sendEmail = async ({ name, email, content }: { name: string; email:
     text: `El usuario ${name} envio el siguiente mensaje: ${content}. Responder a ${email}`,
   };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      return error;
-    } else {
-      return 'Email sent: ' + info.response;
-    }
-  });
+  const sendMailPromise = () => {
+    return new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        return error ? reject(error) : resolve(info);
+      });
+    });
+  };
+
+  return sendMailPromise();
 };

@@ -65,6 +65,10 @@ const Index = (product: Product) => {
     axios.get('/api/instagram-feed').then(console.log);
   };
 
+  const contactEmailSender = () => {
+    axios.post('/api/send-email', { name: 'test', email: 'cualquiera@gmail.com', content: 'test content' });
+  };
+
   return (
     <Layout categories={categoriesMock}>
       <Container>
@@ -88,6 +92,9 @@ const Index = (product: Product) => {
           </button>
           <button type="button" onClick={contactInstagramFeed}>
             Call Instagram Feed
+          </button>
+          <button type="button" onClick={contactEmailSender}>
+            Send test email
           </button>
           <br />
           <p id="buttonText">{buttonText}</p>

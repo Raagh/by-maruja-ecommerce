@@ -30,8 +30,7 @@ const AboutLink = styled(BodyCopyBoldSmall)`
 const FaqPageTitle = styled(StyledH3Title)`
   text-align: center;
   background: ${colors.ui.grey5percent};
-  padding-bottom: 3rem;
-  margin-bottom: 1.5rem;
+  padding: 4rem 1.5rem 4rem 1.5rem;
 `;
 
 const SelectorsContainer = styled.div`

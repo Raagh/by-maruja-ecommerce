@@ -20,7 +20,7 @@ it('should render the title', () => {
 it('should render a button', () => {
   const wrapper = render(<Index {...product} />);
 
-  expect(wrapper.find('button').length).toEqual(3);
+  expect(wrapper.find('button').length).toEqual(4);
 });
 
 it('button should say "Call MercadoPago"', () => {
@@ -33,6 +33,12 @@ it('button should say "Call Instagram Feed"', () => {
   const wrapper = render(<Index {...product} />);
 
   expect(wrapper.find('button').text()).toContain('Call Instagram Feed');
+});
+
+it('button should say "Send test email"', () => {
+  const wrapper = render(<Index {...product} />);
+
+  expect(wrapper.find('button').text()).toContain('Send test email');
 });
 
 it('when button is clicked the api request should have the correct values', () => {

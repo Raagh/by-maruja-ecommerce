@@ -62,7 +62,7 @@ const FooterMobileDesktopLinks = ({ isFooter }: { isFooter: boolean }) => {
           <FooterLabel>SOBRE MARUJA</FooterLabel>
         </LargeOnlyLink>
       </Link>
-      <Link href="/" passHref>
+      <Link href="/contact" passHref>
         <FooterLink>
           <FooterLabel>CONTACTO</FooterLabel>
         </FooterLink>

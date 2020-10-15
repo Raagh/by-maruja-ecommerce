@@ -61,7 +61,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
     <Layout categories={categories}>
       <ContactPageTitle>Contacto</ContactPageTitle>
       <ContactPageContainer>
-          <ContactForm>
+          <ContactForm autoComplete="off">
                 <ContactHeader>Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.</ContactHeader>
                 <FormInput name={'Nombre'} type={'text'} />
                 <FormInput name={'E-mail'} type={'email'} />

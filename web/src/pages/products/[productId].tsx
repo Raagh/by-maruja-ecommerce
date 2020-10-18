@@ -6,7 +6,7 @@ import { sanity } from '../../../lib/sanity';
 import Layout from '../../components/shared/layout';
 import Faq from '../../components/shared/faq';
 import UserReviews from '../../components/home/user-reviews';
-import { Product } from '../../model/product';
+import { Product, ProductSizeChart } from '../../model/product';
 import ProductItemDisplay from '../../components/product-item/product-item';
 
 import { UserReviewsConfiguration } from '../../model/user-reviews-configuration';
@@ -62,6 +62,10 @@ export const getServerSideProps = async (context: NextPageContext) => {
     }
     `
   );
+
+  if(productResult.sizeChart) {
+    productResult.sizeChart = productResult.sizeChart.filter((x: ProductSizeChart) => x.stock > 0);
+  }
 
   return {
     props: {

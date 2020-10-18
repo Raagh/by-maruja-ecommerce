@@ -1,6 +1,7 @@
 declare module 'mercadopago' {
   export function configure(options: ConfigureOptions);
   export const preferences: Preferences;
+  export const payment: Payments;
 
   export interface ConfigureOptions {
     client_id?: string;
@@ -34,23 +35,19 @@ declare module 'mercadopago' {
     items: PaymentItem[];
     back_urls?: {
       success: string;
-      pending: string;
-      failure: string;
     };
     auto_return?: string;
-    external_reference: string;
-    expires: boolean;
+    external_reference?: any;
+    notification_url?: string;
     // tracks: [Object];
     // metadata: [Object];
     // payer: [Object];
     // payment_methods: [Object];
     // shipments: [Object];
 
-    // notification_url: [Object];
     // mode: [Object];
     // additional_info: [Object];
 
-    // external_reference: [Object];
     // expires: [Object];
     // expiration_date_from: [Object];
     // expiration_date_to: [Object];
@@ -60,6 +57,12 @@ declare module 'mercadopago' {
     // marketplace_fee: [Object];
     // differential_pricing: [Object];
     // taxes: [Object];
+  }
+
+  export interface MercadoPagoPaymentDataResponse {
+    response: {
+      external_reference: any;
+    };
   }
 
   export interface Preferences {
@@ -73,5 +76,9 @@ declare module 'mercadopago' {
     update: Function;
     get: Function;
     findById: Function;
+  }
+
+  export interface Payments {
+    get: (paymentId: string) => Promise<MercadoPagoPaymentDataResponse>;
   }
 }

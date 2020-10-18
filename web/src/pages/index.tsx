@@ -16,6 +16,7 @@ import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
 
+
 const Home = ({
   hero,
   categories,
@@ -42,6 +43,8 @@ const Home = ({
 };
 
 export const getServerSideProps = async () => {
+
+
   const sanityResult = await sanity.fetch(
     `
     *[_type == "homeSettings"][0]{

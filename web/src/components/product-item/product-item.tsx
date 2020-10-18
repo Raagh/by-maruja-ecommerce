@@ -157,7 +157,6 @@ const StyledImage = styled(RemoteFixedSizeImage)`
 
   @media ${device.medium} {
     height: 100%;
-    width: 100%;
   }
 
   @media ${device.large} {

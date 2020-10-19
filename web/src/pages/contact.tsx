@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { sanity } from '../../lib/sanity';
 
 import Layout from '../components/shared/layout';
@@ -80,17 +81,27 @@ const Icon = styled.img`
 `;
 
 const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [content, setContent] = useState('');
+
+    const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        let result = await axios.post('/api/send-email', {name, email, content})
+        console.log(result);
+    };
+
   return (
     <Layout categories={categories}>
       <ContactPageTitle>Contacto</ContactPageTitle>
       <ContactPageContainer>
           <LargeOnlyContainer>
-          <ContactForm autoComplete="off">
+          <ContactForm autoComplete="off" onSubmit={(e) => submitHandler(e)}>
                 <ContactHeader onlyMobile={true}>Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.</ContactHeader>
-                <FormInput name={'Nombre'} type={'text'} />
-                <FormInput name={'E-mail'} type={'email'} />
-                <FormInput name={'Mensaje'} type={'text'} big={true}/>
-                <PrimaryButton text='ENVIAR MENSAJE' onClick={() => console.log('Here')}/>
+                <FormInput name={'Nombre'} type={'text'} value={name} onChange={setName} />
+                <FormInput name={'E-mail'} type={'email'} value={email} onChange={setEmail} />
+                <FormInput name={'Mensaje'} type={'text'} big={true} value={content} onChange={setContent}/>
+                <PrimaryButton text='ENVIAR MENSAJE' onClick={() => 0}/>
           </ContactForm>
           <SocialNetworksContainer>
             <ContactHeader onlyMobile={false}>Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.</ContactHeader>

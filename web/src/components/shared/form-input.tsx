@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { LabelSmall } from '../../config/global-styled-components';
@@ -49,16 +49,18 @@ const FormInputBigArea = styled.textarea`
     };
 `;
 
-const FormInput = ({type, name, big = false} : {type: string, name:string, big?: boolean}) => {
-    const [value, setValue] = useState('');
+const FormInput = ({type, name, value,  onChange, big = false} : {type: string, name:string, value: string,  onChange: any, big?: boolean}) => {
+    const inputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+        onChange(e.currentTarget.value);
+    };
 
-    const changeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-        setValue(e.currentTarget.value);
+    const textAreaChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        onChange(e.currentTarget.value);
     };
 
     return <FormInputcontainer>
         <LabelSmall>{name}</LabelSmall>
-        {big ? <FormInputBigArea/> : <FormInputArea name={name} type={type} value={value} onChange={changeHandler}/>}
+        {big ? <FormInputBigArea value={value} onChange={textAreaChangeHandler}/> : <FormInputArea name={name} type={type} value={value} onChange={inputChangeHandler}/>}
     </FormInputcontainer>
 };
 

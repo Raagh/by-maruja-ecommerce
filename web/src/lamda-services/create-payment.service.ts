@@ -17,7 +17,7 @@ export const createPaymentLink = (data: RequestPaymentItem[]) => {
     } as PaymentItem;
   });
 
-  const url = 'https://tricky-impala-22.loca.lt/';
+  const url = 'https://dry-seahorse-96.loca.lt/';
 
   const paymentObject: MercadoPagoPaymentRequest = {
     items,

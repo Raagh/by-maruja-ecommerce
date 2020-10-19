@@ -1,36 +1,33 @@
-import { tryCatch, map } from 'fp-ts/lib/TaskEither';
-import { toError } from 'fp-ts/lib/Either';
-import { pipe } from 'fp-ts/lib/pipeable';
-import { SanityDocument } from '@sanity/client';
 import { sanityWriteClient as sanityClient } from '../../lib/sanity';
-import { Product, ProductSizeChart } from '../model/product';
 import { getPayment } from './mercadopago.service';
 
-const updateStockFromSize = async (id: string, amount: number, size?: string) => {
-  const document = await sanityClient.getDocument<Product>(id);
-  document.sizeChart.find((x: ProductSizeChart) => x._key === size).stock -= amount;
-
-  return sanityClient.patch(id).set(document).commit();
+type Reference = {
+  id: string;
+  size: string;
+  quantity: number;
 };
 
 export const updateSanityStock = async (paymentId: string) => {
   const paymentData = await getPayment(paymentId);
-  const references = JSON.parse(paymentData.response.external_reference);
+  const references: Reference[] = JSON.parse(paymentData.response.external_reference);
 
-  for (const reference of references) {
-    const { id, size, quantity } = reference;
+  const patches = references.map((reference) => {
+    const { id, quantity, size } = reference;
+
+    const patch = {
+      patch: {
+        id,
+        dec: {},
+      },
+    };
 
     if (size) {
-      return pipe(
-        tryCatch(() => updateStockFromSize(id, quantity, size), toError),
-        map((result: SanityDocument<Product>) => !!result)
-      );
-    }
+      const property = `sizeChart[_key == "${size}"].stock`;
+      patch.patch.dec[property] = quantity;
+    } else patch.patch.dec = { stock: quantity };
 
-    const result = !!sanityClient.patch(id).dec({ stock: quantity }).commit();
+    return patch;
+  });
 
-    if (!result) return result;
-  }
-
-  return true;
+  sanityClient.transaction(patches).commit();
 };

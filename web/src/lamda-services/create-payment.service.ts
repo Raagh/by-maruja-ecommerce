@@ -17,13 +17,13 @@ export const createPaymentLink = (data: RequestPaymentItem[]) => {
     } as PaymentItem;
   });
 
-  const url = 'https://dry-seahorse-96.loca.lt/';
+  const { url } = process.env;
 
   const paymentObject: MercadoPagoPaymentRequest = {
     items,
     notification_url: `${url}/api/update-stock`,
     back_urls: {
-      success: url,
+      success: `${url}?clearCart`,
     },
     auto_return: 'approved',
     external_reference: JSON.stringify(

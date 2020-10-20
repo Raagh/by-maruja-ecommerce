@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
 export const sendEmail = ({ name, email, content }: { name: string; email: string; content: string }) => {
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.GMAIL_USER,
@@ -9,10 +9,10 @@ export const sendEmail = ({ name, email, content }: { name: string; email: strin
     },
   });
 
-  let mailOptions = {
+  const mailOptions = {
     from: email,
     to: process.env.GMAIL_USER,
-    subject: 'Email from ' + name,
+    subject: `Email from ${name}`,
     text: `El usuario ${name} envio el siguiente mensaje: ${content}. Responder a ${email}`,
   };
 

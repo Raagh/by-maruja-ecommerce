@@ -66,7 +66,13 @@ const Index = (product: Product) => {
   };
 
   const contactEmailSender = () => {
-    axios.post('/api/send-email', { name: 'test', email: 'cualquiera@gmail.com', content: 'test content' });
+    axios
+      .post('/api/send-email', { name: 'test', email: 'cualquiera@gmail.com', content: 'test content' })
+      .then(console.log);
+  };
+
+  const updateStock = () => {
+    axios.post('/api/update-stock', { id:'322aff62-701b-4413-8d55-18ac1542db81', amount:1, size:'1645edcc1110' }).then(console.log);
   };
 
   return (
@@ -95,6 +101,9 @@ const Index = (product: Product) => {
           </button>
           <button type="button" onClick={contactEmailSender}>
             Send test email
+          </button>
+          <button type="button" onClick={updateStock}>
+            Update stock
           </button>
           <br />
           <p id="buttonText">{buttonText}</p>

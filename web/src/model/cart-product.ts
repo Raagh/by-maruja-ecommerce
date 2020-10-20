@@ -5,6 +5,7 @@ export type CartProduct = {
   _id: string;
   name: string;
   price: number;
+  description: string;
   image: SanityImageSource;
   asset: SanityImageSourceAsset;
   size: string;

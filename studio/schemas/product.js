@@ -5,6 +5,7 @@ export default {
   icon: BsBag,
   name: "product",
   type: "document",
+  __experimental_actions: ["create", "update", "delete", "publish"],
   fields: [
     {
       title: "Nombre",

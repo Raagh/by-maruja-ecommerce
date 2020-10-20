@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { sanity } from '../../lib/sanity';
 import Link from 'next/link';
+import { sanity } from '../../lib/sanity';
 
 import Layout from '../components/shared/layout';
 import TopicSelector from '../components/shared/topic-selector';
@@ -79,7 +79,7 @@ const FaqPage = ({ categories }: { categories: Array<CategoryConfiguration> }) =
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const sanityResult = await sanity.fetch(
     `
       *[_type == "homeSettings"][0]{

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { sanity } from '../../lib/sanity';
+import { useRouter } from 'next/router';
 
 import Layout from '../components/shared/layout';
 import FormInput from '../components/shared/form-input';
@@ -84,11 +85,14 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [content, setContent] = useState('');
+    const router = useRouter();
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let result = await axios.post('/api/send-email', {name, email, content})
-        console.log(result);
+        if(result.status === 200){
+           router.push('/contact-success');
+        };
     };
 
   return (

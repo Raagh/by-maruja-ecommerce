@@ -23,7 +23,7 @@ export const createPaymentLink = (data: RequestPaymentItem[]) => {
     items,
     notification_url: `${url}/api/update-stock`,
     back_urls: {
-      success: `${url}?clearCart`,
+      success: `${url}/purchase-confirm`,
     },
     auto_return: 'approved',
     external_reference: JSON.stringify(

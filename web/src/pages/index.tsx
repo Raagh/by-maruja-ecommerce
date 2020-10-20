@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { sanity } from '../../lib/sanity';
 
 import Layout from '../components/shared/layout';
@@ -15,8 +15,6 @@ import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
-import { store } from '../context/store';
-import { ActionTypes } from '../model/action-types';
 
 
 const Home = ({
@@ -30,12 +28,8 @@ const Home = ({
   recommended: Array<RecommendedConfiguration>;
   userReviews: UserReviewsConfiguration;
 }) => {
-  const { dispatch } = useContext(store);
 
-  useEffect(() => {
-    const url = window.location.href;
-    if (url.includes('?clearCart')) dispatch({ type: ActionTypes.Empty });
-  }, []);
+
 
   return (
     <Layout categories={categories}>

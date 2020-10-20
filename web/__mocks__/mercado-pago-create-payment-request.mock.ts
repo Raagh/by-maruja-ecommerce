@@ -1,9 +1,12 @@
-import { PaymentItem as RequestPaymentItem } from '../src/model/payment-request';
-export const mock = [
-  {
-    name: 'Dummy Item',
-    description: 'Multicolor Item',
-    quantity: 1,
-    price: 10.0,
-  } as RequestPaymentItem,
-];
+import { MercadoPagoPaymentRequest } from 'mercadopago';
+
+export const mock = {
+  items: [
+    {
+      title: 'Dummy Item',
+      description: 'Multicolor Item',
+      quantity: 1,
+      unit_price: 10.0,
+    },
+  ],
+} as MercadoPagoPaymentRequest;

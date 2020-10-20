@@ -4,7 +4,7 @@ import { right } from 'fp-ts/lib/TaskEither';
 import { createPaymentLink } from '../../src/lamda-services/create-payment.service';
 import { configureMercadoPagoSDK, createPreference } from '../../src/lamda-services/mercadopago.service';
 
-import { mock as paymentData } from '../../__mocks__/mercado-pago-create-payment-request.mock';
+import { mock as paymentData } from '../../__mocks__/request-payment-item.mock';
 import { mock as createPaymentMock } from '../../__mocks__/mercado-pago-create-payment-response.mock';
 
 jest.mock('../../src/lamda-services/mercadopago.service');

@@ -17,7 +17,7 @@ export const updateSanityStock = async (paymentId: string) => {
     const patch = {
       patch: {
         id,
-        dec: {},
+        dec: {} as any,
       },
     };
 

@@ -109,7 +109,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
         <Link href="/" passHref>
           <StyledLink>contacto y ayuda</StyledLink>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/about" passHref>
           <StyledLink>sobre Maruja</StyledLink>
         </Link>
         <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">

@@ -104,6 +104,10 @@ export const StyledH6Title = styled.h6`
   ${H6Styles}
 `;
 
+export const StyledH4Title = styled.h4`
+  ${H4Styles}
+`;
+
 export const Subtitle = styled.p`
   font-family: ${typography.subtitle.font.name};
   font-style: normal;

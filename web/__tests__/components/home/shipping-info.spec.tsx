@@ -14,10 +14,4 @@ describe('ShippingInfo component', () => {
 
     expect(wrapper.render().find('h4').length).toEqual(1);
   });
-
-  it('should render 3 iconAndText components', () => {
-    const wrapper = shallow(<ShippingInfo />);
-
-    expect(wrapper.find('IconListItem').length).toEqual(3);
-  });
 });

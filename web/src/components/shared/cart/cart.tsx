@@ -18,12 +18,16 @@ const FaqWrapper = styled.div`
   }
 `;
 
+const CartContainer = styled.section`
+  width: 100%;
+`;
+
 const Cart = () => {
   const { state } = useContext(store);
   const cart = state ? state.cart : [];
 
   return (
-    <section>
+    <CartContainer>
       <CartProductContainer>
         <CartEmpty cart={cart} />
         <CartList cart={cart} />
@@ -32,7 +36,7 @@ const Cart = () => {
       <FaqWrapper>
         <Faq />
       </FaqWrapper>
-    </section>
+    </CartContainer>
   );
 };
 

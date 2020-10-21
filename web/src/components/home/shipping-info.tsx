@@ -19,6 +19,7 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
   margin-bottom: 5rem;
 
   @media ${device.large} {
+    margin-top: 8rem;
     flex-direction: row;
     justify-content: center;
   }
@@ -38,15 +39,27 @@ const ShippingInfoTitle = styled.h4`
   }
 `;
 
+const StyledIconListItem = styled(IconListItem)`
+  padding-right: 3rem;
+`;
+
 const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number) => {
-  return <IconListItem image={shippingInfo.image} text={shippingInfo.text} alt={shippingInfo.alt} key={key} />;
+  return <StyledIconListItem image={shippingInfo.image} text={shippingInfo.text} alt={shippingInfo.alt} key={key} />;
 };
+
+const ShippingInfoItemsContainer = styled.div`
+  padding: 2.5rem auto 0 auto;
+  display: flex;
+  flex-direction: row;
+`;
 
 const ShippingInfo = () => {
   return (
     <ShippingInfoContainer>
       <ShippingInfoTitle>{ShippingInfoJson.title}</ShippingInfoTitle>
-      {ShippingInfoJson.data.map((data, index) => createShippingInfoContent(data, index))}
+      <ShippingInfoItemsContainer>
+        {ShippingInfoJson.data.map((data, index) => createShippingInfoContent(data, index))}
+      </ShippingInfoItemsContainer>
     </ShippingInfoContainer>
   );
 };

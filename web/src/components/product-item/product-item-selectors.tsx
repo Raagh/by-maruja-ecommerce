@@ -41,6 +41,7 @@ const FakeSelect = styled.div`
 
 const StyledButton = styled.button`
   border: none;
+  user-select: none;
 `;
 
 const ProductItemDescription = styled(BodyCopyRegularSmall)`

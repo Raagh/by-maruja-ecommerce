@@ -57,7 +57,7 @@ const SmallOnlyLink = styled.a`
 const FooterMobileDesktopLinks = ({ isFooter }: { isFooter: boolean }) => {
   return (
     <FooterMobileDesktopLinksContainer isFooter={isFooter}>
-      <Link href="/" passHref>
+      <Link href="/about" passHref>
         <LargeOnlyLink isFooter={isFooter}>
           <FooterLabel>SOBRE MARUJA</FooterLabel>
         </LargeOnlyLink>

@@ -1,0 +1,10 @@
+{
+    "email": {
+        "title":"El mensaje no ha sido enviado.",
+        "subtitle": "Por favor, intentá de nuevo en unos minutos."
+    },
+    "cart": {
+        "title": "Mercado Pago no puede procesar tu pago ahora.",
+        "subtitle": "No te preocupes, no se realizó ningún cobro. Intentá de nuevo en unos minutos."
+    }
+}

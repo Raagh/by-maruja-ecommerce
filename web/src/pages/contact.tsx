@@ -8,11 +8,12 @@ import Layout from '../components/shared/layout';
 import FormInput from '../components/shared/form-input';
 import PrimaryButton from '../components/shared/primary-button';
 import Faq from '../components/shared/faq';
+import ErrorAlert from '../components/shared/error-alert';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { StyledH3Title, BodyCopyBoldSmall, BodyCopyRegularSmall, StyledH6Title } from '../config/global-styled-components';
 import { colors } from '../config/global-styles';
 import { device } from '../config/device';
-
+import ErrorData from '../config/error-alert-conf.json';
 
 const ContactPageContainer = styled.section`
     padding: 0 1.5rem 0 1.5rem;
@@ -85,6 +86,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [content, setContent] = useState('');
+    const [showError, setShowError] = useState(false);
     const router = useRouter();
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -92,6 +94,8 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
         let result = await axios.post('/api/send-email', {name, email, content})
         if(result.status === 200){
            router.push('/contact-success');
+        }else{
+            setShowError(true);
         };
     };
 
@@ -101,6 +105,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
       <ContactPageContainer>
           <LargeOnlyContainer>
           <ContactForm autoComplete="off" onSubmit={(e) => submitHandler(e)}>
+                <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
                 <ContactHeader onlyMobile={true}>Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.</ContactHeader>
                 <FormInput name={'Nombre'} type={'text'} value={name} onChange={setName} />
                 <FormInput name={'E-mail'} type={'email'} value={email} onChange={setEmail} />

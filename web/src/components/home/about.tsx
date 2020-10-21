@@ -111,7 +111,7 @@ const About = () => {
               Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong> María Mahia de Ares</strong>
               ...
             </AboutMobile>
-            <Button text="Quien fue Maruja?" url="/aningunlado" />
+            <Button text="Quien fue Maruja?" url="/about" />
           </TextContainer>
         </ContentContainer>
       </AboutContainer>

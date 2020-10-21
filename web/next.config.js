@@ -12,6 +12,7 @@ module.exports = (phase, { defaultConfig }) => {
         sanityProjectId: process.env.SANITY_PROJECT_ID,
         instagramUser: process.env.INSTAGRAM_USER,
         instagramPassword: process.env.INSTAGRAM_PASSWORD,
+        url: process.env.URL,
       },
     };
   }
@@ -26,6 +27,7 @@ module.exports = (phase, { defaultConfig }) => {
       sanityProjectId: process.env.SANITY_PROJECT_ID,
       instagramUser: process.env.INSTAGRAM_USER,
       instagramPassword: process.env.INSTAGRAM_PASSWORD,
+      url: process.env.URL,
     },
   };
 };

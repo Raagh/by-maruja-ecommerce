@@ -16,6 +16,7 @@ import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
 
+
 const Home = ({
   hero,
   categories,
@@ -27,6 +28,9 @@ const Home = ({
   recommended: Array<RecommendedConfiguration>;
   userReviews: UserReviewsConfiguration;
 }) => {
+
+
+
   return (
     <Layout categories={categories}>
       <Hero {...hero} />

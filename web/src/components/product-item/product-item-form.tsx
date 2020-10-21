@@ -28,7 +28,8 @@ const ProductItemForm = ({ product }: { product: Product }) => {
     return {
       _id: product._id,
       name: product.name,
-      size: selectedSize,
+      description: product.description ?? '',
+      size: product.sizeChart ? product.sizeChart.find(x => x.size === selectedSize)._key : '',
       quantity,
       price: !product?.discountPrice || product.discountPrice === 0 ? product.price : product.discountPrice,
       image: product.images[0].image,

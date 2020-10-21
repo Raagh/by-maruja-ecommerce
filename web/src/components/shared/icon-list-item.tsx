@@ -9,9 +9,9 @@ const FlexContainer = styled.article`
   flex-direction: row;
   align-content: space-between;
   width: 100%;
-  max-width: 320px;
+
   height: 100%;
-  margin: 2.5rem auto 0 auto;
+  padding: 2.5rem auto 0 auto;
   text-align: left;
   overflow: hidden;
   @media ${device.large} {
@@ -31,7 +31,7 @@ const Icon = styled.img`
 
 const IconListItem = (props: IconListItemConfig) => {
   return (
-    <FlexContainer>
+    <FlexContainer className={props.className}>
       <Icon src={props.image} alt={props.alt} />
       <MarginLeftBodyCopySmall>{props.text}</MarginLeftBodyCopySmall>
     </FlexContainer>

@@ -19,6 +19,8 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   height: 54px;
   width: 100%;
   border: 2px solid ${colors.ui.darkSurface};
+  user-select: none;
+  outline: none;
 
   :hover,
   :focus,

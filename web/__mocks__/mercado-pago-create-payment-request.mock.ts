@@ -6,7 +6,6 @@ export const mock = {
       title: 'Dummy Item',
       description: 'Multicolor Item',
       quantity: 1,
-      currency_id: 'ARS',
       unit_price: 10.0,
     },
   ],

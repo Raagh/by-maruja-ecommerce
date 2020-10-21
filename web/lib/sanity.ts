@@ -9,12 +9,12 @@ export const sanity = sanityClient({
   useCdn: true,
 });
 
-// const sanityWriteClient = sanityClient({
-//   projectId: process.env.sanityProjectId,
-//   dataset: process.env.sanityDataset,
-//   token: process.env.sanityAccessToken,
-//   useCdn: true,
-// });
+export const sanityWriteClient = sanityClient({
+  projectId: process.env.sanityProjectId,
+  dataset: process.env.sanityDataset,
+  token: process.env.sanityAccessToken,
+  useCdn: false,
+});
 
 export const builder = imageUrlBuilder(sanity);
 

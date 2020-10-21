@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import AccordionQuestion from './accordion-question';
 import { device } from '../../../config/device';
 
-const PassInContainer = styled.section``;
+const PassInContainer = styled.section`
+  width: 100%;
+`;
 
 const AccordionContainer = styled.article<{ index: number }>`
   border-bottom: 1px solid rgba(81, 50, 50, 0.1);

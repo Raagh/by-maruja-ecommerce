@@ -17,16 +17,21 @@ const ConfirmPurchasePageContainer = styled.section`
     text-align: center;
   }
 `;
+
 const ConfirmPurchasePageTitle = styled(StyledH3Title)`
   text-align: center;
   background: ${colors.ui.grey5percent};
-  padding: 3rem 1.5rem 0 1.5rem;
+  padding: 5rem 1.5rem 0 1.5rem;
 `;
 
 const ConfirmPurchasePageSubTitle = styled.article`
   background: ${colors.ui.grey5percent};
-  padding: 3rem 1.5rem 4rem 1.5rem;
+  padding: 3rem 1.5rem 3rem 1.5rem;
   text-align: center;
+
+  @media ${device.large} {
+    padding-bottom: 8rem;
+  }
 `;
 
 const StyledSubTitle = styled(Subtitle)`
@@ -36,6 +41,7 @@ const StyledSubTitle = styled(Subtitle)`
   margin-bottom:3rem;
   text-transform:none;
   font-size:16px;
+  letter-spacing:1px;
 
   @media ${device.small} {
     max-width:100%;
@@ -62,7 +68,7 @@ const ConfirmPurchasePage = ({ categories }: { categories: Array<CategoryConfigu
     <Layout categories={categories}>
       <ConfirmPurchasePageContainer>
         <ConfirmPurchasePageTitle>
-          Gracias por tu compra!
+          ¡Gracias por tu compra!
         </ConfirmPurchasePageTitle>
         <ConfirmPurchasePageSubTitle>
           <StyledSubTitle>

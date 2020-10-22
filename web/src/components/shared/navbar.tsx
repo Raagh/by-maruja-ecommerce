@@ -106,7 +106,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
         <Link href="/categories/productos" passHref>
           <StyledLink>productos</StyledLink>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/contact" passHref>
           <StyledLink>contacto y ayuda</StyledLink>
         </Link>
         <Link href="/about" passHref>

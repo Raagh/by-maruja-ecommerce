@@ -28,6 +28,7 @@ const UnderLinedComponent = styled.span`
   padding-right: 5px;
   padding-left: 5px;
   border-radius: 9999;
+  cursor: pointer;
 
   :hover,
   :focus,

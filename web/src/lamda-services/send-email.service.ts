@@ -9,11 +9,14 @@ export const sendEmail = ({ name, email, content }: { name: string; email: strin
     },
   });
 
+  const usedName = name ?? email;
+  const usedContent = content ?? '';
+
   const mailOptions = {
     from: email,
     to: process.env.GMAIL_USER,
-    subject: `Email from ${name}`,
-    text: `El usuario ${name} envio el siguiente mensaje: ${content}. Responder a ${email}`,
+    subject: `Email from ${usedName}`,
+    text: `El usuario ${usedName} envio el siguiente mensaje: ${usedContent}. Responder a ${email}`,
   };
 
   const sendMailPromise = () => {

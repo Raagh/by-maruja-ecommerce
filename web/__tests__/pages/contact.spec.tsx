@@ -29,6 +29,6 @@ describe('Contact Page', () => {
   it('should render ErrorAlert component', () => {
     const wrapper = mount(<ContactPage categories={categoriesMock} />);
 
-    expect(wrapper.find(ErrorAlert).length).toBe(1);
+    expect(wrapper.find(ErrorAlert).length).toBe(2);
   });
 });

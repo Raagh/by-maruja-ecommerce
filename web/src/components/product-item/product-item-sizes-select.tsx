@@ -29,7 +29,7 @@ const StyledButton = styled.button`
 `;
 
 const ItemExtraQualities = styled.p`
-  font-family: ${fonts.primary};
+  font-family: ${fonts.secondary.regular.name};
   font-style: normal;
   font-weight: bold;
   font-size: 12px;

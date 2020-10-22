@@ -9,7 +9,7 @@ import { Product } from '../../model/product';
 import ProductItemSizesSelect from './product-item-sizes-select';
 
 const ItemExtraQualities = styled.p`
-  font-family: ${fonts.primary.name};
+  font-family: ${fonts.secondary.regular.name};
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -41,7 +41,7 @@ const FakeSelect = styled.div`
 
 const StyledButton = styled.button`
   border: none;
-  user-select: none;
+  background: ${colors.ui.grey10percent};
 `;
 
 const ProductItemDescription = styled(BodyCopyRegularSmall)`
@@ -72,9 +72,13 @@ const ProductItemSelectors = ({
       <ItemExtraQualityRow>
         <ItemExtraQualities>Cantidad</ItemExtraQualities>
         <FakeSelect>
-          <StyledButton onClick={() => setQuantity(quantity - 1)}>-</StyledButton>
+          <StyledButton onClick={() => setQuantity(quantity - 1)} autoFocus={false}>
+            -
+          </StyledButton>
           <LabelSmall>{quantity}</LabelSmall>
-          <StyledButton onClick={() => setQuantity(quantity + 1)}>+</StyledButton>
+          <StyledButton onClick={() => setQuantity(quantity + 1)} autoFocus={false}>
+            +
+          </StyledButton>
         </FakeSelect>
       </ItemExtraQualityRow>
       {hasSizes && (

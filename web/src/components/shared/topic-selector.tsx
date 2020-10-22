@@ -31,8 +31,8 @@ const TopicSelectorIcon = styled.img`
 const TopicSelectorTitle = styled(BodyCopyBoldSmall)``;
 
 const QuestionsContainer = styled.div`
-  padding: 1.5rem 2rem 0 2rem;
-  width:100%;
+  padding: 1.5rem 2.5rem 0 2.5rem;
+  width: 100%;
 `;
 
 const Answer = styled(BodyCopyRegularSmall)`

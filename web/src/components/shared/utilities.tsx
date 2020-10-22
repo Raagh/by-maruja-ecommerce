@@ -13,4 +13,4 @@ export const displayCorrectBadge = (product: Product) => {
 };
 
 export const calculateProductStock = (product: Product) =>
-  product.sizeChart ? product.sizeChart.reduce((_, curr, accu) => accu + curr.stock, 0) : product.stock;
+  product.sizeChart ? product.sizeChart.reduce((accu, curr, _) => accu + curr.stock, 0) : product.stock;

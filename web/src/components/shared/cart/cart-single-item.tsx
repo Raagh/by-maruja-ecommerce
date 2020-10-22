@@ -18,6 +18,7 @@ const SingleItemContainer = styled.div`
 const SingleItemImage = styled(RemoteFixedSizeImage)`
   width: 118px;
   object-fit: cover;
+  border-radius: 4px 0px 0px 4px;
 `;
 
 const InfoContainer = styled.div`
@@ -32,12 +33,13 @@ const NameAndPrice = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  padding: 0 2rem 0.5rem 0.5rem;
 `;
 
 const Quantity = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
 `;
 
 const QuantityTitle = styled(StyledH6Title)`
@@ -47,7 +49,6 @@ const QuantityTitle = styled(StyledH6Title)`
 `;
 
 const DeleteImg = styled.img`
-  /* margin: auto 1rem 1.25rem auto; */
   :hover {
     cursor: pointer;
   }
@@ -59,6 +60,7 @@ const StyledImgContainer = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   height: 100%;
+  padding-right: 2rem;
 `;
 
 const SingleItem = ({ product }: { product: CP }) => {

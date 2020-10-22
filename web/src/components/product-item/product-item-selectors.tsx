@@ -37,12 +37,11 @@ const FakeSelect = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 1rem 0.8rem 1rem;
-  user-select: none;
 `;
 
 const StyledButton = styled.button`
   border: none;
-  user-select: none;
+  background: ${colors.ui.grey10percent};
 `;
 
 const ProductItemDescription = styled(BodyCopyRegularSmall)`
@@ -73,9 +72,13 @@ const ProductItemSelectors = ({
       <ItemExtraQualityRow>
         <ItemExtraQualities>Cantidad</ItemExtraQualities>
         <FakeSelect>
-          <StyledButton onClick={() => setQuantity(quantity - 1)}>-</StyledButton>
+          <StyledButton onClick={() => setQuantity(quantity - 1)} autoFocus={false}>
+            -
+          </StyledButton>
           <LabelSmall>{quantity}</LabelSmall>
-          <StyledButton onClick={() => setQuantity(quantity + 1)}>+</StyledButton>
+          <StyledButton onClick={() => setQuantity(quantity + 1)} autoFocus={false}>
+            +
+          </StyledButton>
         </FakeSelect>
       </ItemExtraQualityRow>
       {hasSizes && (

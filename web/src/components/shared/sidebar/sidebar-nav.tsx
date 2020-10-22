@@ -10,10 +10,11 @@ const SidebarNavContainer = styled.section`
   flex-direction: row;
   justify-content: space-between;
 
-  padding: 2.5rem 2.5rem 0 2.5rem;
+  padding: 2.5rem 1.5rem 0 1.5rem;
 
   background-color: ${colors.ui.whiteBackground};
   @media ${device.large} {
+    padding: 2.5rem 2.5rem 0 2.5rem;
     max-width: 595px;
     min-width: 595px;
   }

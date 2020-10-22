@@ -9,7 +9,11 @@ import CartList from './cart-list';
 import PaymentDescription from '../payment-description';
 
 const CartProductContainer = styled.div`
-  margin: 0 2.5rem 0 2.5rem;
+  margin: 0 1.5rem 0 1.5rem;
+
+  @media ${device.large} {
+    margin: 0 2.5rem 0 2.5rem;
+  }
 `;
 
 const FaqWrapper = styled.div`

@@ -10,29 +10,28 @@ const FormInputcontainer = styled.div`
     margin-bottom: 1.5rem;
 `;
 
-const FormInputArea = styled.input`
+const FormInputArea = styled.div`
+    display: flex;
     background: ${colors.ui.grey10percent};
-    border: none;
     height: 3rem;
-    font-family: ${typography.bodyCopy.regular.font.name};
-    font-style: normal;
-    font-weight: ${typography.bodyCopy.regular.fontWeight};
-    font-size: 1rem;
-    line-height: ${typography.bodyCopy.regular.small.lineHeight};
-    letter-spacing: ${typography.bodyCopy.regular.small.letterSpacing};
-    color: ${colors.ui.darkSurface};
-    padding: 1rem;
-    &:focus {
+    padding: 0.9rem;
+    &:focus-within {
         box-shadow: 0px 2px 2px rgba(81, 50, 50, 0.15);
         outline: none;
         border: 1px solid ${colors.ui.grey50percent};
     };
 `;
 
-const FormInputBigArea = styled.textarea`
-    background: ${colors.ui.grey10percent};
-    border: none;
+const FormInputBigArea = styled(FormInputArea)`
     height: 9rem;
+    resize: both;
+`;
+
+const FormField = styled.input`
+    background: ${colors.ui.grey10percent};
+    width: 100%;
+    height: 100%;
+    border: none;
     font-family: ${typography.bodyCopy.regular.font.name};
     font-style: normal;
     font-weight: ${typography.bodyCopy.regular.fontWeight};
@@ -40,27 +39,51 @@ const FormInputBigArea = styled.textarea`
     line-height: ${typography.bodyCopy.regular.small.lineHeight};
     letter-spacing: ${typography.bodyCopy.regular.small.letterSpacing};
     color: ${colors.ui.darkSurface};
-    padding: 1rem;
+    &:focus {
+        outline: none;
+    };
+`;
+
+const FormTextArea = styled.textarea`
+    background: ${colors.ui.grey10percent};
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-family: ${typography.bodyCopy.regular.font.name};
+    font-style: normal;
+    font-weight: ${typography.bodyCopy.regular.fontWeight};
+    font-size: 1rem;
+    line-height: ${typography.bodyCopy.regular.small.lineHeight};
+    letter-spacing: ${typography.bodyCopy.regular.small.letterSpacing};
+    color: ${colors.ui.darkSurface};
     resize: none;
     &:focus {
-        box-shadow: 0px 2px 2px rgba(81, 50, 50, 0.15);
         outline: none;
-        border: 1px solid ${colors.ui.grey50percent};
     };
 `;
 
-const FormInput = ({type, name, value,  onChange, big = false} : {type: string, name:string, value: string,  onChange: any, big?: boolean}) => {
+const ErrorIcon = styled.img`
+`;
+
+const FormInput = ({type, name, value,  onChange, error = false} : {type: string, name:string, value: string,  onChange: any, error?: boolean}) => {
     const inputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-        onChange(e.currentTarget.value);
+        onChange({value: e.currentTarget.value, error: false});
     };
 
     const textAreaChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        onChange(e.currentTarget.value);
+        onChange({value: e.currentTarget.value, error: false});
     };
 
     return <FormInputcontainer>
         <LabelSmall>{name}</LabelSmall>
-        {big ? <FormInputBigArea value={value} onChange={textAreaChangeHandler}/> : <FormInputArea name={name} type={type} value={value} onChange={inputChangeHandler}/>}
+        {type === 'textarea' ? <FormInputBigArea>
+                <FormTextArea  value={value} onChange={textAreaChangeHandler} />
+                {error ? <ErrorIcon src={'/assets/error-icon-fill.svg'} /> : ''}
+             </FormInputBigArea>
+        : <FormInputArea>
+                <FormField name={name} type={type} value={value} onChange={inputChangeHandler} />
+                {error ? <ErrorIcon src={'/assets/error-icon-fill.svg'} /> : ''}
+            </FormInputArea>}
     </FormInputcontainer>
 };
 

@@ -83,20 +83,31 @@ const Icon = styled.img`
 `;
 
 const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [content, setContent] = useState('');
+    const [name, setName] = useState({value: '', error: false});
+    const [email, setEmail] = useState({value: '', error: false});
+    const [content, setContent] = useState({value: '', error: false});
+
     const [showError, setShowError] = useState(false);
     const router = useRouter();
 
-    const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    const isFieldValid = (field: {value: string, error: boolean}) => {
+        return /^\S/.test(field.value);
+    };
+
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let result = await axios.post('/api/send-email', {name, email, content})
-        if(result.status === 200){
-           router.push('/contact-success');
+
+        if(!isFieldValid(name)){
+            setName({value: name.value, error: true});
+        }else if(!isFieldValid(email)){
+            setEmail({value: email.value, error: true});
+        }else if(!isFieldValid(content)){
+            setContent({value: content.value, error: true});
         }else{
-            setShowError(true);
-        };
+            axios.post('/api/send-email', {name, email, content})
+            .then(() => router.push('/contact-success'))
+            .catch(()=> setShowError(true));
+        }
     };
 
   return (
@@ -107,9 +118,9 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
           <ContactForm autoComplete="off" onSubmit={(e) => submitHandler(e)}>
                 <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
                 <ContactHeader onlyMobile={true}>Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.</ContactHeader>
-                <FormInput name={'Nombre'} type={'text'} value={name} onChange={setName} />
-                <FormInput name={'E-mail'} type={'email'} value={email} onChange={setEmail} />
-                <FormInput name={'Mensaje'} type={'text'} big={true} value={content} onChange={setContent}/>
+                <FormInput name={'Nombre'} type={'text'} value={name.value} onChange={setName} error={name.error} />
+                <FormInput name={'E-mail'} type={'email'} value={email.value} onChange={setEmail} error={email.error}/>
+                <FormInput name={'Mensaje'} type={'textarea'} value={content.value} onChange={setContent} error={content.error}/>
                 <PrimaryButton text='ENVIAR MENSAJE' onClick={() => 0}/>
           </ContactForm>
           <SocialNetworksContainer>

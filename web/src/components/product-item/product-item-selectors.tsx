@@ -37,6 +37,7 @@ const FakeSelect = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 1rem 0.8rem 1rem;
+  user-select: none;
 `;
 
 const StyledButton = styled.button`

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Router from 'next/router';
 import { CartProduct as CP } from '../model/cart-product';
-import { ErrorMessages } from './error-messages';
 import { getDefaultImage } from '../../lib/sanity';
 import { PaymentRequest } from '../model/payment-request';
 
@@ -22,9 +21,7 @@ const confirmPurchase = async (cart: CP[]) => {
   } as PaymentRequest;
   const result = await axios.post('/api/create-payment', paymentDataRequest);
   const url = result.data.replace(/https?:/, '');
-  return Router.push(url).catch(() => {
-    throw new Error(ErrorMessages.Purchase);
-  });
+  return Router.push(url);
 };
 
 const exportedFunctions = {

@@ -16,7 +16,7 @@ const SlideImage = styled(RemoteFixedSizeImage)<SlideRemoteResponsiveImage>`
   width: ${(props) => props.width}px;
   height: 360px;
   user-select: none;
-
+  cursor: pointer;
   object-fit: cover;
   @media ${device.large} {
     height: 495px;

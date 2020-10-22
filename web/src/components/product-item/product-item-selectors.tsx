@@ -9,7 +9,7 @@ import { Product } from '../../model/product';
 import ProductItemSizesSelect from './product-item-sizes-select';
 
 const ItemExtraQualities = styled.p`
-  font-family: ${fonts.primary.name};
+  font-family: ${fonts.secondary.regular.name};
   font-style: normal;
   font-weight: bold;
   font-size: 12px;

@@ -10,9 +10,7 @@ const SidebarNavContainer = styled.section`
   flex-direction: row;
   justify-content: space-between;
 
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  padding-top: 1.5rem;
+  padding: 2.5rem 2.5rem 0 2.5rem;
 
   background-color: ${colors.ui.whiteBackground};
   @media ${device.large} {
@@ -25,6 +23,7 @@ const BackButton = styled.div`
   z-index: 10;
   background-image: url('/assets/Arrow-Back.svg');
   width: 14px;
+  margin-top: 5px;
   height: 14px;
   @media ${device.large} {
     background-image: url('/assets/Menu-Close.svg');

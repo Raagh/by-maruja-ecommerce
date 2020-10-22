@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ErrorMessages } from '../../../config/error-messages';
-import {
-  BodyCopyBoldSmall,
-  BodyCopyBoldLarge,
-  LabelSmall,
-  ErrorMessage,
-} from '../../../config/global-styled-components';
+import ErrorData from '../../../config/error-alert-conf.json';
+import { BodyCopyBoldSmall, BodyCopyBoldLarge, LabelSmall } from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
 import MP from '../../../config/mercado-pago';
 import { CartProduct as CP } from '../../../model/cart-product';
 import PrimaryButton from '../primary-button';
+import ErrorAlert from '../error-alert';
 
 const PurchaseSummaryContainer = styled.div`
   margin-top: 1rem;
@@ -49,37 +45,40 @@ const Total = styled.div`
 `;
 
 const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
-  const [Error, setError] = useState('');
+  const [showError, setShowError] = useState(false);
 
   const clickHandler = () => {
+    setShowError(false);
     MP.confirmPurchase(cart).catch((_) => {
-      setError(ErrorMessages.Purchase);
+      setShowError(true);
     });
   };
 
   return (
-    <PurchaseSummaryContainer>
-      <InfoContainer>
-        <ShippingIconContainer>
-          <img src="/assets/Shippings.svg" alt="Shipping icon" />
-        </ShippingIconContainer>
-        <InfoTextContainer>
-          <InfoTextBold>Podés elegir “Envío” o “Acordar la entrega” durante el pago.</InfoTextBold>
-          <LabelSmall>Envíos gratis para comprasa partir de $2500.</LabelSmall>
-        </InfoTextContainer>
-      </InfoContainer>
+    <section>
+      <PurchaseSummaryContainer>
+        <InfoContainer>
+          <ShippingIconContainer>
+            <img src="/assets/Shippings.svg" alt="Shipping icon" />
+          </ShippingIconContainer>
+          <InfoTextContainer>
+            <InfoTextBold>Podés elegir “Envío” o “Acordar la entrega” durante el pago.</InfoTextBold>
+            <LabelSmall>Envíos gratis para comprasa partir de $2500.</LabelSmall>
+          </InfoTextContainer>
+        </InfoContainer>
 
-      <PurchasePanel>
-        <Total>
-          <BodyCopyBoldSmall>TOTAL</BodyCopyBoldSmall>
-          <BodyCopyBoldLarge>
-            ${cart.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0).toFixed(2)}
-          </BodyCopyBoldLarge>
-        </Total>
-        <ErrorMessage>{Error}</ErrorMessage>
-        <PrimaryButton text="COMPRAR CON MERCADO PAGO" onClick={clickHandler} />
-      </PurchasePanel>
-    </PurchaseSummaryContainer>
+        <PurchasePanel>
+          <Total>
+            <BodyCopyBoldSmall>TOTAL</BodyCopyBoldSmall>
+            <BodyCopyBoldLarge>
+              ${cart.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0).toFixed(2)}
+            </BodyCopyBoldLarge>
+          </Total>
+          <PrimaryButton text="COMPRAR CON MERCADO PAGO" onClick={clickHandler} />
+        </PurchasePanel>
+      </PurchaseSummaryContainer>
+      <ErrorAlert isVisible={showError} title={ErrorData.cart.title} subtitle={ErrorData.cart.subtitle} />
+    </section>
   );
 };
 

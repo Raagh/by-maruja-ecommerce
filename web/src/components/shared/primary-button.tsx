@@ -16,6 +16,7 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   border: none;
   padding: 1rem;
   border-radius: 4px;
+  cursor: pointer;
   height: 54px;
   width: 100%;
   border: 2px solid ${colors.ui.darkSurface};

@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 
 import styled from 'styled-components';
-import { ErrorMessages } from '../../config/error-messages';
+import ErrorData from '../../config/error-alert-conf.json';
 import MP from '../../config/mercado-pago';
 import { store } from '../../context/store';
 import { ActionTypes } from '../../model/action-types';
 
 import { Product } from '../../model/product';
+import ErrorAlert from '../shared/error-alert';
 import PrimaryButton from '../shared/primary-button';
 
 import ProductItemSelectors from './product-item-selectors';
@@ -22,14 +23,16 @@ const ExtraPaddedPrimaryButton = styled.div`
 const ProductItemForm = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(product.sizeChart ? product.sizeChart[0].size : '');
+  const [showError, setShowError] = useState(false);
   const { dispatch } = useContext(store);
 
   const createProductForPurchase = () => {
+    setShowError(false);
     return {
       _id: product._id,
       name: product.name,
       description: product.description ?? '',
-      size: product.sizeChart ? product.sizeChart.find(x => x.size === selectedSize)._key : '',
+      size: product.sizeChart ? product.sizeChart.find((x) => x.size === selectedSize)._key : '',
       quantity,
       price: !product?.discountPrice || product.discountPrice === 0 ? product.price : product.discountPrice,
       image: product.images[0].image,
@@ -41,7 +44,7 @@ const ProductItemForm = ({ product }: { product: Product }) => {
 
   const goToMercadoPago = () =>
     MP.confirmPurchase([createProductForPurchase()]).catch((_) => {
-      throw new Error(ErrorMessages.Purchase);
+      setShowError(true);
     });
 
   const setQuantityIfThereIsStock = (selectedQuantity: number) => {
@@ -73,6 +76,7 @@ const ProductItemForm = ({ product }: { product: Product }) => {
       <PaddedPrimaryButton>
         <PrimaryButton inverted text="agregar al carrito" onClick={addToCart} />
       </PaddedPrimaryButton>
+      <ErrorAlert isVisible={showError} title={ErrorData.cart.title} subtitle={ErrorData.cart.subtitle} />
     </section>
   );
 };

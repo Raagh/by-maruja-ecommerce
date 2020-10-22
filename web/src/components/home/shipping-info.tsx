@@ -22,6 +22,7 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
     margin-top: 8rem;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -40,7 +41,8 @@ const ShippingInfoTitle = styled.h4`
 `;
 
 const StyledIconListItem = styled(IconListItem)`
-  padding-right: 3rem;
+  padding-left: 1rem;
+  padding-top: 2rem;
 `;
 
 const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number) => {
@@ -50,7 +52,11 @@ const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number
 const ShippingInfoItemsContainer = styled.div`
   padding: 2.5rem auto 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media ${device.large} {
+    flex-direction: row;
+  }
 `;
 
 const ShippingInfo = () => {

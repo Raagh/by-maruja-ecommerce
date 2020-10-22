@@ -18,8 +18,8 @@ describe('ProductItemForm component', () => {
   it('should render all main components component', () => {
     const wrapper = mount(<ProductItemForm product={product} />);
 
-    expect(wrapper.find('img').length).toBe(2);
-    expect(wrapper.find('p').length).toBe(5);
+    expect(wrapper.find('img').length).toBe(3);
+    expect(wrapper.find('p').length).toBe(7);
     expect(wrapper.find('button').length).toBe(6);
     expect(wrapper.find('p').some((x) => x.text().includes(product.description)));
     expect(wrapper.find(PrimaryButton).length).toEqual(2);

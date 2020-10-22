@@ -18,8 +18,8 @@ describe('ProductItemDisplay component', () => {
 
     expect(wrapper.find(Link).length).toEqual(1);
     expect(wrapper.find(Link).first().prop('href')).toEqual('/categories/productos');
-    expect(wrapper.find('img').length).toBe(4);
-    expect(wrapper.find('p').length).toBe(1);
+    expect(wrapper.find('img').length).toBe(5);
+    expect(wrapper.find('p').length).toBe(3);
     expect(wrapper.find('div').some((x) => x.text().includes('Volver al listado')));
     expect(wrapper.find(ProductItemCarousel).length).toEqual(1);
     expect(
@@ -33,8 +33,8 @@ describe('ProductItemDisplay component', () => {
     const wrapper = mount(<ProductItemDisplay product={product} hasStock={true} />);
 
     expect(wrapper.find(Link).length).toEqual(1);
-    expect(wrapper.find('img').length).toBe(9);
-    expect(wrapper.find('p').length).toBe(10);
+    expect(wrapper.find('img').length).toBe(10);
+    expect(wrapper.find('p').length).toBe(12);
     expect(wrapper.find(PaymentDescription).length).toEqual(1);
   });
 });

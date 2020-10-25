@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import Slider from '../shared/slider/slider';
 import { RecommendedConfiguration } from '../../model/recommended-configuration';
 import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
 import { device } from '../../config/device';
+import RecommendedCarousel from '../shared/recommended-carousel';
 
-const BackgroundContainer = styled(AlignedCenterContainer)`
+const BackgroundContainer = styled(AlignedCenterContainer).attrs({
+  style: {
+    backgroundImageMobile: "url('/assets/Background-Slider.svg')",
+    backgroundImageDesktop: "url('/assets/Background-Slider-Desktop.svg')",
+  },
+})`
   margin-top: 10rem;
-  background-image: url('/assets/Background-Slider.svg');
+  background-image: ${(props) => props.style.backgroundImageMobile};
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: 100%;
@@ -17,18 +22,24 @@ const BackgroundContainer = styled(AlignedCenterContainer)`
   }
 
   @media ${device.medium} {
-    background-image: url('/assets/Background-Slider-Desktop.svg');
+    background-image: ${(props) => props.style.backgroundImageDesktop};
   }
 
   @media ${device.large} {
-    padding: 0 0 6.5rem 0;
-    background-image: url('/assets/Background-Slider-Desktop.svg');
+    padding: 0 0 4rem 0;
+    background-image: ${(props) => props.style.backgroundImageDesktop};
   }
 `;
 
 const RecommendedContainer = styled.article`
   margin: auto;
   max-width: 1600px;
+  padding-bottom: 4rem;
+
+  @media ${device.large} {
+    padding-left: 2rem;
+    padding-bottom: 0;
+  }
 `;
 
 const RecommendedTitle = styled(StyledH2)`
@@ -41,12 +52,14 @@ const RecommendedTitle = styled(StyledH2)`
   }
 `;
 
+const StyledRecommendedCarousel = styled(RecommendedCarousel)``;
+
 const Recommended = ({ recommended }: { recommended: Array<RecommendedConfiguration> }) => {
   return (
     <BackgroundContainer>
       <RecommendedContainer>
         <RecommendedTitle>Favoritos del mes</RecommendedTitle>
-        <Slider recommended={recommended} />
+        <StyledRecommendedCarousel recommended={recommended} />
       </RecommendedContainer>
     </BackgroundContainer>
   );

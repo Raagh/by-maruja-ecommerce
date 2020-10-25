@@ -4,17 +4,13 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
-import NameAndPrice from '../name-and-price';
 import { device } from '../../../config/device';
 import RemoteFixedSizeImage from '../image-types/remote-fixed-size-image';
+import NameAndPrice from '../name-and-price';
 
-type SlideRemoteResponsiveImage = {
-  width: number;
-};
-
-const SlideImage = styled(RemoteFixedSizeImage)<SlideRemoteResponsiveImage>`
-  width: ${(props) => props.width}px;
+const SlideImage = styled(RemoteFixedSizeImage)`
   height: 360px;
+
   user-select: none;
   cursor: pointer;
   object-fit: cover;
@@ -23,27 +19,28 @@ const SlideImage = styled(RemoteFixedSizeImage)<SlideRemoteResponsiveImage>`
   }
 `;
 
-const SlideLink = styled.article<{ marginValue: number }>`
-  margin: 0 ${(props) => props.marginValue}rem 0 ${(props) => props.marginValue}rem;
+const SlideLink = styled.article``;
+
+const Container = styled.section`
+  height: 450px;
+  padding: 0 0 0 2rem;
+  @media ${device.large} {
+    padding: 0 0 0 2.5rem;
+    height: 550px;
+  }
 `;
 
-const SliderImage = ({
-  remoteImage,
-  width,
-  margin,
-}: {
-  remoteImage: RecommendedConfiguration;
-  width: number;
-  margin: number;
-}) => {
+const SliderImage = ({ remoteImage }: { remoteImage: RecommendedConfiguration }) => {
   const link = `/products/${remoteImage._id}`;
   return (
-    <Link href={link} passHref>
-      <SlideLink marginValue={margin}>
-        <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} width={width} />
-        <NameAndPrice name={remoteImage.name} price={remoteImage.price} />
-      </SlideLink>
-    </Link>
+    <Container>
+      <Link href={link} passHref>
+        <SlideLink>
+          <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} />
+        </SlideLink>
+      </Link>
+      <NameAndPrice name={remoteImage.name} price={remoteImage.price} />
+    </Container>
   );
 };
 

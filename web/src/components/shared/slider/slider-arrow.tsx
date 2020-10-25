@@ -8,7 +8,7 @@ const Arrow = styled.img<SliderArrowConfig>`
   top: 180px;
   background: url('/assets/Arrow.svg') no-repeat;
   background-size: cover;
-  ${(props) => (props.direction === 'right' ? 'right: 25px;' : 'left: 25px;')}
+  ${(props) => (props.direction === 'right' ? 'right: 5px;' : 'left: 5px;')}
   height: 20px;
   width: 78px;
   padding-left: 78px;
@@ -23,8 +23,9 @@ const Arrow = styled.img<SliderArrowConfig>`
   }
 `;
 
-const SliderArrow = (props: SliderArrowConfig) => {
-  return <Arrow direction={props.direction} />;
+const SliderArrow = ({ onClick, ...rest }: { onClick?: any; direction?: string }) => {
+  const { direction } = rest;
+  return <Arrow onClick={onClick} direction={direction} />;
 };
 
 export default SliderArrow;

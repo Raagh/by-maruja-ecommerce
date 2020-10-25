@@ -34,6 +34,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-headroom": "^3.0.0",
+    "react-multi-carousel": "^2.5.5",
     "react-responsive-carousel": "^3.2.10",
     "styled-components": "^5.1.0",
     "tslib": "^1.10.0"

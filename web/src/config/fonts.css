@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Ortica';
+  src: url('/fonts/Ortica-Light.woff') format('woff');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/Proxima-Nova.woff') format('woff');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('/fonts/Proxima-Nova-Bold.woff') format('woff');
+  font-display: block;
+}

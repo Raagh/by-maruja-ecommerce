@@ -1,6 +1,6 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import Recommended from '../../../src/components/home/recommended';
+import Recommended from '../../../src/components/home/recommended/recommended';
 import Slider from '../../../src/components/shared/slider/slider';
 import { mock as recommendedMock } from '../../../__mocks__/recommended-configuration.mock';
 

@@ -12,7 +12,7 @@ import Hero from '../../src/components/home/hero';
 import ShippingInfo from '../../src/components/home/shipping-info';
 import ProductCategories from '../../src/components/home/categories/product-categories';
 import NavBar from '../../src/components/shared/navbar';
-import Recommended from '../../src/components/home/recommended';
+import Recommended from '../../src/components/home/recommended/recommended';
 import UserReviews from '../../src/components/home/user-reviews';
 import Faq from '../../src/components/shared/faq';
 import Feed from '../../src/components/home/feed';

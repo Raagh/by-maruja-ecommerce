@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import Carousel from 'react-multi-carousel';
 import styled from 'styled-components';
 
 import { Product } from '../../model/product';
@@ -18,8 +18,11 @@ const PaddedImageContainer = styled.div`
   background-color: ${colors.ui.whiteBackground};
 `;
 
-const customIndicators = (onClickHandler: any, isSelected: any, index: any, label: any) => {
+const CustomDots = ({ onClick, ...rest }: { onClick?: any; active?: boolean; index?: number }) => {
+  const { active, index } = rest;
+
   const indicatorStyles: CSSProperties = {
+    bottom: '-50px',
     background: '#E4C2BE',
     border: '1px solid #E4C2BE',
     boxSizing: 'border-box',
@@ -30,41 +33,53 @@ const customIndicators = (onClickHandler: any, isSelected: any, index: any, labe
     borderRadius: 9999,
   };
 
-  if (isSelected) {
+  if (active) {
     return (
       <li
-        style={{ ...indicatorStyles, width: 45 }}
-        aria-label={`Selected: ${label} ${index + 1}`}
-        title={`Selected: ${label} ${index + 1}`}
+        style={{ ...indicatorStyles, width: 45, bottom: '-50px' }}
+        aria-label={`Selected: ${index} ${index + 1}`}
+        title={`Selected: ${index} ${index + 1}`}
       />
     );
   }
   return (
     <li
       style={indicatorStyles}
-      onClick={onClickHandler}
-      onKeyDown={onClickHandler}
+      onClick={onClick}
+      onKeyDown={onClick}
       value={index}
       key={index}
       role="button"
       tabIndex={0}
-      title={`${label} ${index + 1}`}
-      aria-label={`${label} ${index + 1}`}
+      title={`${index} ${index + 1}`}
+      aria-label={`${index} ${index + 1}`}
     />
   );
+};
+
+const responsive = {
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    partialVisibilityGutter: 30,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    partialVisibilityGutter: 30,
+  },
 };
 
 const ProductItemCarousel = ({ product, className }: { product: Product; className?: any }) => {
   return (
     <Carousel
       className={className}
-      showThumbs={false}
-      showStatus={false}
-      showIndicators
-      swipeable
-      centerMode
-      centerSlidePercentage={95}
-      renderIndicator={customIndicators}
+      responsive={responsive}
+      showDots
+      arrows={false}
+      customDot={<CustomDots />}
+      partialVisible
+      partialVisbile
     >
       {product.images.map((image) => {
         return (

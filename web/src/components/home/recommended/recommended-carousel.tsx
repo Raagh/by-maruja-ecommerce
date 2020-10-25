@@ -1,11 +1,11 @@
 import React, { CSSProperties } from 'react';
 import Carousel from 'react-multi-carousel';
 import styled from 'styled-components';
-import { device } from '../../config/device';
+import { device } from '../../../config/device';
 
-import { RecommendedConfiguration } from '../../model/recommended-configuration';
-import SliderArrow from './slider/slider-arrow';
-import SliderImage from './slider/slider-image';
+import { RecommendedConfiguration } from '../../../model/recommended-configuration';
+import SliderArrow from '../../shared/slider/slider-arrow';
+import SliderImage from '../../shared/slider/slider-image';
 
 const PaddedImageContainer = styled.div<{ isLast: boolean }>`
   ${(props: { isLast: boolean }) => (props.isLast ? 'margin-right: 2rem' : '')};

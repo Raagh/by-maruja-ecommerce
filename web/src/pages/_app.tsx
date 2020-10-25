@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'react-multi-carousel/lib/styles.css';
 import '../config/fonts.css';
 import type { AppProps } from 'next/app';

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RecommendedConfiguration } from '../../model/recommended-configuration';
-import { AlignedCenterContainer, StyledH2 } from '../../config/global-styled-components';
-import { device } from '../../config/device';
-import RecommendedCarousel from '../shared/recommended-carousel';
+import { RecommendedConfiguration } from '../../../model/recommended-configuration';
+import { AlignedCenterContainer, StyledH2 } from '../../../config/global-styled-components';
+import { device } from '../../../config/device';
+import RecommendedCarousel from './recommended-carousel';
 
 const BackgroundContainer = styled(AlignedCenterContainer).attrs({
   style: {

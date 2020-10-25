@@ -4,7 +4,7 @@ import { sanity } from '../../lib/sanity';
 import Layout from '../components/shared/layout';
 import Hero from '../components/home/hero';
 import ShippingInfo from '../components/home/shipping-info';
-import Recommended from '../components/home/recommended';
+import Recommended from '../components/home/recommended/recommended';
 import ProductCategories from '../components/home/categories/product-categories';
 import Feed from '../components/home/feed';
 import UserReviews from '../components/home/user-reviews';
@@ -15,7 +15,6 @@ import { HeroConfiguration } from '../model/hero-configuration';
 import { CategoryConfiguration } from '../model/category-configuration';
 import { RecommendedConfiguration } from '../model/recommended-configuration';
 import { UserReviewsConfiguration } from '../model/user-reviews-configuration';
-
 
 const Home = ({
   hero,
@@ -28,9 +27,6 @@ const Home = ({
   recommended: Array<RecommendedConfiguration>;
   userReviews: UserReviewsConfiguration;
 }) => {
-
-
-
   return (
     <Layout categories={categories}>
       <Hero {...hero} />

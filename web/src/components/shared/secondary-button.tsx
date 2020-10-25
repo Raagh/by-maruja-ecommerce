@@ -14,9 +14,7 @@ const StyledLink = styled.a`
   color: ${colors.ui.darkSurface};
   text-decoration: none;
 
-  :hover,
-  :focus,
-  :active {
+  :hover {
     color: ${colors.primary.dark};
   }
 `;
@@ -29,12 +27,6 @@ const UnderLinedComponent = styled.span`
   padding-left: 5px;
   border-radius: 9999;
   cursor: pointer;
-
-  :hover,
-  :focus,
-  :active {
-    border-bottom: 2px solid ${colors.primary.dark};
-  }
 `;
 
 export default ({ text, url }: { text: string; url: string }) => {

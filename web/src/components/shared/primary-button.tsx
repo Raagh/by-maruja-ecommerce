@@ -23,13 +23,12 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   user-select: none;
   outline: none;
 
-  :hover,
-  :focus,
-  :active {
+  :hover {
     background: ${colors.primary.dark};
     box-shadow: 0px 4px 8px rgba(81, 50, 50, 0.25);
     border-radius: 4px;
     border: 2px solid ${colors.primary.dark};
+    color: ${colors.ui.whiteBackground};
   }
 `;
 

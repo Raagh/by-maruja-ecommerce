@@ -66,6 +66,7 @@ const InstagramProfileImage = styled(RemoteFixedImage)`
 
   @media ${device.large} {
     margin-top: 0;
+    object-fit: cover;
   }
 `;
 

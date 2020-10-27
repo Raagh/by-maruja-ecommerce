@@ -21,46 +21,30 @@ const FooterDisclaimerText = styled(CaptionSmall)`
   color: ${colors.ui.grey50percent};
 `;
 
-const LinkContainer = styled.a`
-  display: block;
-  text-decoration: none;
-  display: none;
-  @media ${device.large} {
-    display: flex;
-    justify-content: flex-end;
-    margin-left: auto;
+const StyledLink = styled.a`
+  color: ${colors.ui.grey50percent};
+  :visited,
+  :active {
+    color: ${colors.ui.grey50percent};
   }
-`;
-
-const LinksContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const FooterDisclaimerOnlyLarge = styled(FooterDisclaimerText)``;
-
-const LinkPaddedContainer = styled.div`
-  padding-left: 1rem;
 `;
 
 const FooterDisclaimer = () => {
   return (
     <DisclaimerContainer>
       <FooterDisclaimerText>© 2020 MARUJA. Todos los derechos reservados</FooterDisclaimerText>
-      <LinksContainer>
+      <FooterDisclaimerText>
+        <Link href="/conditions" passHref>
+          <StyledLink> Términos y Condiciones de Uso</StyledLink>
+        </Link>{' '}
+        y{' '}
         <Link href="/privacy" passHref>
-          <LinkContainer>
-            <FooterDisclaimerOnlyLarge>Políticas de privacidad</FooterDisclaimerOnlyLarge>
-          </LinkContainer>
+          <StyledLink> Políticas de Privacidad</StyledLink>
         </Link>
-        <LinkPaddedContainer>
-          <Link href="/conditions" passHref>
-            <LinkContainer>
-              <FooterDisclaimerOnlyLarge>Téminos y condiciones</FooterDisclaimerOnlyLarge>
-            </LinkContainer>
-          </Link>
-        </LinkPaddedContainer>
-      </LinksContainer>
+      </FooterDisclaimerText>
+
+      <FooterDisclaimerText>Diseño - Thanh-Hông LÊ (Camille) y Sofia Toso</FooterDisclaimerText>
+      <FooterDisclaimerText>Desarrollo - Manuel Aceituno y Patricio Ferraggi</FooterDisclaimerText>
     </DisclaimerContainer>
   );
 };

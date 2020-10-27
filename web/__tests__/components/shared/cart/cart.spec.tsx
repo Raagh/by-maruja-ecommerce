@@ -19,12 +19,6 @@ describe('Cart component', () => {
     expect(wrapper.find(CartEmpty).length).toEqual(1);
   });
 
-  it('should render Faq', () => {
-    const wrapper = mount(<Cart />);
-
-    expect(wrapper.find(Faq).length).toEqual(1);
-  });
-
   it('should render CartList', () => {
     const wrapper = mount(<Cart />);
 

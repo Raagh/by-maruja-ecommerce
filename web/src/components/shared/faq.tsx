@@ -12,10 +12,9 @@ const BackgroundContainer = styled.section`
 `;
 
 const FaqContainer = styled(AlignedCenterContainer)`
-  padding-bottom: 4rem;
   max-width: 1600px;
   margin: auto;
-  padding: 4rem 1.5rem 4rem 1.5rem;
+  padding: 4rem 1.5rem 2.5rem 1.5rem;
 
   @media ${device.large} {
     text-align: left;
@@ -24,7 +23,11 @@ const FaqContainer = styled(AlignedCenterContainer)`
 `;
 
 const FaqButtonContainer = styled(AlignedCenterContainer)`
-  margin-top: 6rem;
+  margin-top: 2.5rem;
+
+  @media ${device.large} {
+    margin-top: 7rem;
+  }
 `;
 
 const FaqTitle = styled(StyledH2)`

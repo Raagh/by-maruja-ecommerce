@@ -35,11 +35,13 @@ const Cart = () => {
       <CartProductContainer>
         <CartEmpty cart={cart} />
         <CartList cart={cart} />
-        <PaymentDescription />
+        {cart.length > 0 && <PaymentDescription />}
       </CartProductContainer>
-      <FaqWrapper>
-        <Faq />
-      </FaqWrapper>
+      {cart.length > 0 && (
+        <FaqWrapper>
+          <Faq />
+        </FaqWrapper>
+      )}
     </CartContainer>
   );
 };

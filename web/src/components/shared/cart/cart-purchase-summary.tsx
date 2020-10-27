@@ -17,13 +17,11 @@ const PurchaseSummaryContainer = styled.div`
 
 const InfoContainer = styled.div`
   display: flex;
-  padding-top: 1.5rem;
+  padding: 1.5rem;
   border-bottom: 1px solid ${colors.ui.grey25percent};
-  padding-bottom: 1.5rem;
 `;
 
 const ShippingIconContainer = styled.div`
-  margin-left: 1.5rem;
   margin-right: 1.5rem;
 `;
 const InfoTextContainer = styled.div`

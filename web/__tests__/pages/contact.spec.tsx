@@ -20,10 +20,10 @@ describe('Contact Page', () => {
     expect(wrapper.find(FormInput).length).toBe(3);
   });
 
-  it('should render two Faq components(One for the NavBar)', () => {
+  it('should render one Faq component', () => {
     const wrapper = mount(<ContactPage categories={categoriesMock} />);
 
-    expect(wrapper.find(Faq).length).toBe(2);
+    expect(wrapper.find(Faq).length).toBe(1);
   });
 
   it('should render ErrorAlert component', () => {

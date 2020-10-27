@@ -1,7 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import Recommended from '../../../src/components/home/recommended';
-import Slider from '../../../src/components/shared/slider/slider';
+import Recommended from '../../../src/components/home/recommended/recommended';
+import RecommendedCarousel from '../../../src/components/home/recommended/recommended-carousel';
 import { mock as recommendedMock } from '../../../__mocks__/recommended-configuration.mock';
 
 describe('Recommended component', () => {
@@ -20,6 +20,6 @@ describe('Recommended component', () => {
   it('should render slider', () => {
     const wrapper = mount(<Recommended recommended={recommendedMock} />);
 
-    expect(wrapper.find(Slider).exists()).toBeTruthy();
+    expect(wrapper.find(RecommendedCarousel).exists()).toBeTruthy();
   });
 });

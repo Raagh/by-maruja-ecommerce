@@ -5,23 +5,20 @@ import { mock as recommendedMock } from '../../../../__mocks__/recommended-confi
 import NameAndPrice from '../../../../src/components/shared/name-and-price';
 
 describe('SliderImage component', () => {
-  const mockWidth = -240;
-  const imageMargin = 1;
-
   it('should render', () => {
-    const wrapper = shallow(<SliderImage remoteImage={recommendedMock[0]} width={mockWidth} margin={imageMargin} />);
+    const wrapper = shallow(<SliderImage remoteImage={recommendedMock[0]} />);
 
     expect(wrapper.exists()).toBeTruthy();
   });
 
   it('should contain an img', () => {
-    const wrapper = mount(<SliderImage remoteImage={recommendedMock[0]} width={mockWidth} margin={imageMargin} />);
+    const wrapper = mount(<SliderImage remoteImage={recommendedMock[0]} />);
 
     expect(wrapper.find('img').length).toEqual(1);
   });
 
   it('should render a NameAndPrice component', () => {
-    const wrapper = mount(<SliderImage remoteImage={recommendedMock[0]} width={mockWidth} margin={imageMargin} />);
+    const wrapper = mount(<SliderImage remoteImage={recommendedMock[0]} />);
 
     expect(wrapper.find(NameAndPrice).length).toEqual(1);
   });

@@ -23,9 +23,10 @@ const SidebarNavContainer = styled.section`
 const BackButton = styled.div`
   z-index: 10;
   background-image: url('/assets/Arrow-Back.svg');
-  width: 14px;
-  margin-top: 5px;
-  height: 14px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24px;
+  height: 24px;
   @media ${device.large} {
     background-image: url('/assets/Menu-Close.svg');
   }

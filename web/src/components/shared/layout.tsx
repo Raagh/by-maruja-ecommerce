@@ -6,31 +6,13 @@ import styled, { createGlobalStyle } from 'styled-components';
 import NavBar from './navbar';
 import Footer from './footer/footer';
 import { CategoryConfiguration } from '../../model/category-configuration';
-import { fonts, colors } from '../../config/global-styles';
+import { colors } from '../../config/global-styles';
 import SEO from '../../../next-seo.config';
 
 const GlobalStyle = createGlobalStyle`
   html,
   body {
     height: 100vh;
-  }
-
-  @font-face {
-    font-family: ${fonts.primary.name};
-    src: url('/fonts/Ortica-Light.woff') format("woff");
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: ${fonts.secondary.regular.name};
-    src: url('/fonts/Proxima-Nova.woff') format("woff");
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: ${fonts.secondary.bold.name};
-    src: url('/fonts/Proxima-Nova-Bold.woff') format("woff");
-    font-display: block;
   }
 
   * {

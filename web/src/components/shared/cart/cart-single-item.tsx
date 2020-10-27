@@ -25,7 +25,7 @@ const InfoContainer = styled.div`
   display: flex;
   flex-flow: column;
   width: 100%;
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  padding: 1rem 0rem 1rem 0rem;
 `;
 
 const NameAndPrice = styled.div`
@@ -33,7 +33,7 @@ const NameAndPrice = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem 0.5rem 0.5rem;
+  padding: 0 1rem 0 0.5rem;
 `;
 
 const Quantity = styled.div`
@@ -44,6 +44,7 @@ const Quantity = styled.div`
 
 const QuantityTitle = styled(StyledH6Title)`
   color: ${colors.ui.grey50percent};
+  letter-spacing: 1px;
   margin-right: 0.5rem;
   line-height: 18px;
 `;
@@ -60,7 +61,7 @@ const StyledImgContainer = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   height: 100%;
-  padding-right: 2rem;
+  padding-right: 1rem;
 `;
 
 const SingleItem = ({ product }: { product: CP }) => {

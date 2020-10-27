@@ -26,9 +26,17 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   :hover {
     background: ${colors.primary.dark};
     box-shadow: 0px 4px 8px rgba(81, 50, 50, 0.25);
-    border-radius: 4px;
     border: 2px solid ${colors.primary.dark};
     color: ${colors.ui.whiteBackground};
+  }
+
+  :active {
+    background: ${colors.primary.default};
+    border: 2px solid ${colors.primary.default};
+  }
+
+  :disabled {
+    background: ${colors.ui.grey25percent};
   }
 `;
 

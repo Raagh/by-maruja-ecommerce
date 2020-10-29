@@ -44,14 +44,18 @@ const DropdownListItem = styled(BodyCopyRegularSmall)`
 `;
 
 const FilterTitle = styled(LabelSmall)`
-  ${(props: { isOpen: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+  ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+  ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isSelected ? 'font-weight:bold;' : '')}
 `;
 
-const DropdownList = styled.ul`
+const DropdownList = styled.ul<{ shouldDisplayDropdown: boolean }>`
   list-style-type: none;
   text-align: center;
 
-  ${(props: { shouldDisplayDropdown: boolean }) => (props.shouldDisplayDropdown ? 'display:block' : 'display:none')};
+  transition: all ease-out 200ms;
+  visibility: ${(props) => (props.shouldDisplayDropdown ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.shouldDisplayDropdown ? 1 : 0)};
+  display: ${(props) => (props.shouldDisplayDropdown ? 'block' : 'none')};
 `;
 
 const ProductFilter = ({
@@ -63,14 +67,23 @@ const ProductFilter = ({
 }) => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isOrderOpen, setIsOrderOpen] = useState(false);
+  const [isFilterSelected, setIsFilterSelected] = useState(false);
+  const [isOrderSelected, setIsOrderSelected] = useState(false);
+  const [filterTitle, setFilterTitle] = useState('filtrar');
+  const [orderTitle, setOrderTitle] = useState('ordenar por');
 
   const filterAndClose = (tag: Tags) => {
     filterProducts(tag);
+    setIsFilterSelected(true);
+    if (tag !== Tags.All) setFilterTitle(tag.toLowerCase());
+    else setFilterTitle('todos');
     setIsFiltersOpen(false);
   };
 
   const orderAndClose = (order: Order) => {
     orderProducts(order);
+    setIsOrderSelected(true);
+    setOrderTitle(order);
     setIsOrderOpen(false);
   };
 
@@ -84,7 +97,9 @@ const ProductFilter = ({
             if (!isFiltersOpen && isOrderOpen) setIsOrderOpen(false);
           }}
         >
-          <FilterTitle isOpen={isFiltersOpen}>filtrar</FilterTitle>
+          <FilterTitle isSelected={isFilterSelected} isOpen={isFiltersOpen}>
+            {filterTitle}
+          </FilterTitle>
           <Chevron isOpen={isFiltersOpen} />
         </Dropdown>
         <Dropdown
@@ -94,7 +109,9 @@ const ProductFilter = ({
             if (!isOrderOpen && isFiltersOpen) setIsFiltersOpen(false);
           }}
         >
-          <FilterTitle isOpen={isOrderOpen}>ordernar por</FilterTitle>
+          <FilterTitle isSelected={isOrderSelected} isOpen={isOrderOpen}>
+            {orderTitle}
+          </FilterTitle>
           <Chevron isOpen={isOrderOpen} />
         </Dropdown>
       </HeaderContainer>

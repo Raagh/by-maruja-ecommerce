@@ -22,6 +22,7 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   border: 2px solid ${colors.ui.darkSurface};
   user-select: none;
   outline: none;
+  transition: ease-out 200ms;
 
   :hover {
     background: ${colors.primary.dark};

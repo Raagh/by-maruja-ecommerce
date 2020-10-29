@@ -50,11 +50,13 @@ const DropdownListItem = styled(BodyCopyRegularSmall)`
 `;
 
 const OrderTitle = styled(LabelSmall)`
-  ${(props: { isOpen: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+  ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+  ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isSelected ? 'font-weight:bold;' : '')}
 `;
 
 const FilterTitle = styled(LabelSmall)`
   padding-right: 2rem;
+  ${(props: { isSelected: boolean }) => (props.isSelected ? 'font-weight:bold;' : '')}
 `;
 
 const Filters = styled.div`
@@ -63,12 +65,13 @@ const Filters = styled.div`
   width: 50%;
 `;
 
-const DropdownList = styled.ul`
+const DropdownList = styled.ul<{ shouldDisplayDropdown: boolean }>`
   list-style-type: none;
   text-align: center;
-  transition: ease 2.5;
-
-  ${(props: { shouldDisplayDropdown: boolean }) => (props.shouldDisplayDropdown ? 'display:block' : 'display:none')};
+  transition: all 200s ease-out;
+  visibility: ${(props) => (props.shouldDisplayDropdown ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.shouldDisplayDropdown ? 1 : 0)};
+  display: ${(props) => (props.shouldDisplayDropdown ? 'block' : 'none')};
 `;
 
 const ProductFilterDesktop = ({
@@ -79,20 +82,38 @@ const ProductFilterDesktop = ({
   orderProducts: (tag: Order) => void;
 }) => {
   const [isOrderOpen, setIsOrderOpen] = useState(false);
+  const [isOrderSelected, setIsOrderSelected] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState(Tags.All);
+  const [orderTitle, setOrderTitle] = useState('ordenar por');
 
   const orderAndClose = (order: Order) => {
     orderProducts(order);
     setIsOrderOpen(false);
+    setOrderTitle(order);
+    setIsOrderSelected(true);
+  };
+
+  const filterAndSet = (tag: Tags) => {
+    filterProducts(tag);
+    setSelectedFilter(tag);
   };
 
   return (
     <FilterContainer>
       <HeaderContainer>
         <Filters>
-          <FilterTitle onClick={() => filterProducts(Tags.All)}>todos</FilterTitle>
-          <FilterTitle onClick={() => filterProducts(Tags.Steel)}>acero quirúrgico</FilterTitle>
-          <FilterTitle onClick={() => filterProducts(Tags.Discount)}>en descuento</FilterTitle>
-          <FilterTitle onClick={() => filterProducts(Tags.Favorite)}>favoritos</FilterTitle>
+          <FilterTitle isSelected={selectedFilter === Tags.All} onClick={() => filterAndSet(Tags.All)}>
+            todos
+          </FilterTitle>
+          <FilterTitle isSelected={selectedFilter === Tags.Steel} onClick={() => filterAndSet(Tags.Steel)}>
+            acero quirúrgico
+          </FilterTitle>
+          <FilterTitle isSelected={selectedFilter === Tags.Discount} onClick={() => filterAndSet(Tags.Discount)}>
+            en descuento
+          </FilterTitle>
+          <FilterTitle isSelected={selectedFilter === Tags.Favorite} onClick={() => filterAndSet(Tags.Favorite)}>
+            favoritos
+          </FilterTitle>
         </Filters>
         <DropdownContainer isOpen={isOrderOpen}>
           <Dropdown
@@ -100,7 +121,9 @@ const ProductFilterDesktop = ({
               setIsOrderOpen(!isOrderOpen);
             }}
           >
-            <OrderTitle isOpen={isOrderOpen}>ordernar por</OrderTitle>
+            <OrderTitle isSelected={isOrderSelected} isOpen={isOrderOpen}>
+              {orderTitle}
+            </OrderTitle>
             <Chevron isOpen={isOrderOpen} />
           </Dropdown>
         </DropdownContainer>

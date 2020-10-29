@@ -45,7 +45,7 @@ const CartEmpty = ({ cart }: { cart: CP[] }) => {
       <Line />
 
       <FooterMobileDesktopLinks isFooter={false} />
-      <FooterDisclaimer />
+      <FooterDisclaimer shouldDisplayBelow={true} />
     </EmptyContainer>
   );
 };

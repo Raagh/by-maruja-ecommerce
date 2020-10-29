@@ -12,24 +12,24 @@ const FooterMobileDesktopLinksContainer = styled.div<{ isFooter: boolean }>`
 
   @media ${device.large} {
     display: flex;
-    margin-left: 11rem;
+    ${(props) => (props.isFooter ? 'justify-content: center;' : '')}
     margin-bottom: 0;
   }
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled.a<{ isFooter: boolean }>`
   display: block;
   margin-bottom: 1.5rem;
   text-decoration: none;
   @media ${device.large} {
-    margin-right: 2rem;
+    ${(props) => (props.isFooter ? 'margin-right: 2rem;' : '')}
   }
 `;
 
-const FooterLabel = styled(LabelSmall)`
+const FooterLabel = styled(LabelSmall)<{ isFooter: boolean }>`
   @media ${device.large} {
     display: block;
-    margin-right: 2rem;
+    ${(props) => (props.isFooter ? 'margin-right: 2rem;' : '')}
     font-size: ${typography.links.small.fontSize};
     line-height: ${typography.links.small.lineHeight};
     letter-spacing: ${typography.links.small.letterSpacing};
@@ -42,7 +42,7 @@ const LargeOnlyLink = styled.a<{ isFooter: boolean }>`
   text-decoration: none;
   @media ${device.large} {
     display: block;
-    margin-right: 2rem;
+    ${(props) => (props.isFooter ? 'margin-right: 2rem;' : '')}
   }
 `;
 
@@ -59,17 +59,17 @@ const FooterMobileDesktopLinks = ({ isFooter }: { isFooter: boolean }) => {
     <FooterMobileDesktopLinksContainer isFooter={isFooter}>
       <Link href="/about" passHref>
         <LargeOnlyLink isFooter={isFooter}>
-          <FooterLabel>SOBRE MARUJA</FooterLabel>
+          <FooterLabel isFooter={isFooter}>SOBRE MARUJA</FooterLabel>
         </LargeOnlyLink>
       </Link>
       <Link href="/contact" passHref>
-        <FooterLink>
-          <FooterLabel>CONTACTO</FooterLabel>
+        <FooterLink isFooter={isFooter}>
+          <FooterLabel isFooter={isFooter}>CONTACTO</FooterLabel>
         </FooterLink>
       </Link>
       <Link href="/faq" passHref>
-        <FooterLink>
-          <FooterLabel>PREGUNTAS FRECUENTES</FooterLabel>
+        <FooterLink isFooter={isFooter}>
+          <FooterLabel isFooter={isFooter}>PREGUNTAS FRECUENTES</FooterLabel>
         </FooterLink>
       </Link>
 

@@ -6,12 +6,13 @@ import { CaptionSmall } from '../../../config/global-styled-components';
 import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
 
-const DisclaimerContainer = styled.div`
+const DisclaimerContainer = styled.div<{ shouldDisplayBelow: boolean }>`
   padding-top: 2.5rem;
   padding-bottom: 2rem;
   @media ${device.large} {
     display: flex;
     justify-content: space-between;
+    ${(props) => (props.shouldDisplayBelow ? 'flex-direction: column' : '')}
   }
 `;
 
@@ -29,9 +30,9 @@ const StyledLink = styled.a`
   }
 `;
 
-const FooterDisclaimer = () => {
+const FooterDisclaimer = ({ shouldDisplayBelow }: { shouldDisplayBelow?: boolean }) => {
   return (
-    <DisclaimerContainer>
+    <DisclaimerContainer shouldDisplayBelow={shouldDisplayBelow}>
       <FooterDisclaimerText>© 2020 MARUJA. Todos los derechos reservados</FooterDisclaimerText>
       <FooterDisclaimerText>
         <Link href="/conditions" passHref>

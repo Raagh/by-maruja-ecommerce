@@ -91,6 +91,7 @@ const TransparentBadge = styled(CaptionSmall)`
 `;
 
 const NoStockMessage = styled(CaptionLarge)`
+  margin-top: 1rem;
   @media ${device.large} {
     margin-top: 1.5rem;
   }

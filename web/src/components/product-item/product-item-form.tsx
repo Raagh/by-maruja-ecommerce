@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import styled from 'styled-components';
+
 import ErrorData from '../../config/error-alert-conf.json';
 import MP from '../../config/mercado-pago';
 import { store } from '../../context/store';
@@ -70,8 +71,9 @@ const ProductItemForm = ({ product }: { product: Product }) => {
         size={selectedSize}
         setSize={setSelectedSizeAndResetQuantity}
       />
+
       <ExtraPaddedPrimaryButton>
-        <PrimaryButton onClick={goToMercadoPago} text="comprar con mercado pago" />
+        <PrimaryButton shouldLoad={true} onClick={goToMercadoPago} text="comprar con mercado pago" />
       </ExtraPaddedPrimaryButton>
       <PaddedPrimaryButton>
         <PrimaryButton inverted text="agregar al carrito" onClick={addToCart} />

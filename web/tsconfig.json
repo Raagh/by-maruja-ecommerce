@@ -16,7 +16,6 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "noImplicitAny": true,
     "isolatedModules": true,
     "types": ["jest"],
     "typeRoots": ["types", "node_modules/@types"]

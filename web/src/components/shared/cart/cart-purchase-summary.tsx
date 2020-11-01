@@ -72,7 +72,7 @@ const PurchaseSummary = ({ cart }: { cart: CP[] }) => {
               ${cart.reduce((accum, prod) => (accum += prod.price * prod.quantity), 0).toFixed(2)}
             </BodyCopyBoldLarge>
           </Total>
-          <PrimaryButton text="COMPRAR CON MERCADO PAGO" onClick={clickHandler} />
+          <PrimaryButton shouldLoad={true} text="COMPRAR CON MERCADO PAGO" onClick={clickHandler} />
         </PurchasePanel>
       </PurchaseSummaryContainer>
       <ErrorAlert isVisible={showError} title={ErrorData.cart.title} subtitle={ErrorData.cart.subtitle} />

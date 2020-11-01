@@ -58,8 +58,11 @@ const LinkImg = styled.img`
 `;
 
 const ProductItemTitle = styled(StyledH3Title)`
-  margin-bottom: 1.5rem;
   max-width: 397px;
+
+  @media ${device.large} {
+    margin-bottom: 1rem;
+  }
 `;
 
 const PriceDisplay = styled.div`

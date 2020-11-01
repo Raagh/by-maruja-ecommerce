@@ -18,7 +18,7 @@ import ErrorData from '../../config/error-alert-conf.json';
 
 const ProductItemContainer = styled.section`
   display: block;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
 
   margin: auto;
   max-width: 1600px;
@@ -34,10 +34,14 @@ const BackButton = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding-bottom: 1rem;
+
+  @media ${device.large} {
+    padding-bottom: 2rem;
+  }
 `;
 
 const BackCaption = styled(CaptionSmall)`
-  padding: 0.8rem 0 0.8rem 0;
   color: ${colors.ui.darkSurface};
   padding-left: 4px;
   cursor: pointer;
@@ -54,13 +58,11 @@ const LinkImg = styled.img`
 `;
 
 const ProductItemTitle = styled(StyledH3Title)`
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
   max-width: 397px;
 `;
 
 const PriceDisplay = styled.div`
-  padding-top: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -86,8 +88,11 @@ const TransparentBadge = styled(CaptionSmall)`
 `;
 
 const NoStockMessage = styled(CaptionLarge)`
-  margin-top: 0.8rem;
+  @media ${device.large} {
+    margin-top: 1.5rem;
+  }
 `;
+
 const EmailInputContainer = styled.form`
   border: 1px solid ${colors.ui.darkSurface};
   box-sizing: border-box;
@@ -182,6 +187,20 @@ const ProductInformation = styled.section`
   }
 `;
 
+const ProductTitlePrice = styled.section`
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @media ${device.large} {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+`;
+
 const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock: boolean }) => {
   const [showError, setShowError] = useState(false);
   const [email, setEmail] = useState('');
@@ -210,17 +229,20 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
       </section>
 
       <ProductInformation>
-        <ProductItemTitle>{product.name}</ProductItemTitle>
-        <PriceDisplay>
-          {product.tag === Tags.Discount && hasStock && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
-          {product.tag === Tags.Discount && hasStock && (
-            <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>
-          )}
-          {product.tag === Tags.Discount && hasStock && (
-            <TransparentBadge>{100 - (product.discountPrice * 100) / product.price} % off</TransparentBadge>
-          )}
-          {(product.tag !== Tags.Discount || !hasStock) && <ProductItemPrice>${product.price}</ProductItemPrice>}
-        </PriceDisplay>
+        <ProductTitlePrice>
+          <ProductItemTitle>{product.name}</ProductItemTitle>
+          <PriceDisplay>
+            {product.tag === Tags.Discount && hasStock && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
+            {product.tag === Tags.Discount && hasStock && (
+              <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>
+            )}
+            {product.tag === Tags.Discount && hasStock && (
+              <TransparentBadge>{100 - (product.discountPrice * 100) / product.price} % off</TransparentBadge>
+            )}
+            {(product.tag !== Tags.Discount || !hasStock) && <ProductItemPrice>${product.price}</ProductItemPrice>}
+          </PriceDisplay>
+        </ProductTitlePrice>
+
         {hasStock && (
           <article>
             <ProductItemForm product={product} />

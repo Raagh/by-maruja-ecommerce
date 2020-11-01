@@ -20,7 +20,7 @@ const ItemExtraQualities = styled.p`
 `;
 
 const ItemExtraQualityRow = styled.div`
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

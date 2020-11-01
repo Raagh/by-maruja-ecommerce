@@ -71,7 +71,7 @@ const DropdownList = styled.ul<{ shouldDisplayDropdown: boolean }>`
   transition: all 200s ease-out;
   visibility: ${(props) => (props.shouldDisplayDropdown ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.shouldDisplayDropdown ? 1 : 0)};
-  display: ${(props) => (props.shouldDisplayDropdown ? 'block' : 'none')};
+  ${(props) => (props.shouldDisplayDropdown ? '' : 'height:0;')}
 `;
 
 const ProductFilterDesktop = ({

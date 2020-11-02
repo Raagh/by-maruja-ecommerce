@@ -4,4 +4,5 @@ export enum ActionTypes {
   Empty = 'EMPTY_CART',
   Remove = 'REMOVE_FROM_CART',
   KeepCartState = 'KEEP_CART_STATE',
+  CartOpened = 'CART_WAS_OPEN',
 }

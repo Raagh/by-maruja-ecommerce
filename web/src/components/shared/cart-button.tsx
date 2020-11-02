@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { LinksSmall, StyledH6Title } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
 import { store } from '../../context/store';
+import { ActionTypes } from '../../model/action-types';
 
 const Container = styled.section`
   margin-top: 1.5rem;
@@ -58,7 +59,14 @@ const Links = styled(LinksSmall)`
 `;
 
 const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
-  let { state } = useContext(store);
+  const { state, dispatch } = useContext(store);
+
+  useEffect(() => {
+    if (state.openCart) {
+      clickHandler();
+      dispatch({ type: ActionTypes.CartOpened, payload: {} });
+    }
+  }, [state.openCart, clickHandler, dispatch]);
 
   return (
     <Container onClick={clickHandler}>

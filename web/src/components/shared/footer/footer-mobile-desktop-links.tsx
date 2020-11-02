@@ -12,7 +12,7 @@ const FooterMobileDesktopLinksContainer = styled.div<{ isFooter: boolean }>`
 
   @media ${device.large} {
     display: flex;
-    ${(props) => (props.isFooter ? 'justify-content: center;' : '')}
+    ${(props) => (props.isFooter ? 'margin-left:11rem;' : '')}
     margin-bottom: 0;
   }
 `;

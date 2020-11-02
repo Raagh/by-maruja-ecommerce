@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
 
-import FooterPayment from './footer-payment';
 import FooterDesktopLinks from './footer-desktop-links';
 import FooterMobileDesktopLinks from './footer-mobile-desktop-links';
 import FooterDisclaimer from './footer-disclaimer';
@@ -39,7 +38,6 @@ const FooterLine = styled.hr`
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterPayment />
       <FooterLine />
       <FooterDesktopLinks />
       <FooterMobileDesktopLinks isFooter={true} />

@@ -46,8 +46,16 @@ const Image = styled(LazyLoadImage)`
   }
 `;
 
-const Text = styled(BodyCopyRegularSmall)`
-  padding: 3rem 1.5rem 3rem 1.5rem;
+const UpperText = styled(BodyCopyRegularSmall)`
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+
+  @media ${device.large} {
+    padding: 3rem;
+  }
+`;
+
+const LowerText = styled(BodyCopyRegularSmall)`
+  padding: 2.5rem 1.5rem 3.5rem 1.5rem;
 
   @media ${device.large} {
     padding: 3rem;
@@ -62,12 +70,13 @@ const BuyMarujaContainer = styled.section`
   border-radius: 8px;
   @media ${device.large} {
     margin: 0 3rem 3rem 3rem;
-    padding: 3rem 4rem 0 4rem;
+    padding: 3rem 4rem 2rem 4rem;
     background-color: ${colors.ui.grey5percent};
   }
 `;
 
 const ByMarujaTitle = styled(StyledH4Title)`
+  text-align: center;
   @media ${device.small} {
     padding: 0 2rem 0 2rem;
   }
@@ -77,12 +86,12 @@ const BuyMarujaBenefits = styled.article`
   padding: 3rem 0 2rem 0;
 
   @media ${device.small} {
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 3rem 1.5rem 0 1.5rem;
   }
 `;
 
-const StyledIconListItem = styled(IconListItem)`
-  padding-bottom: 2rem;
+const StyledIconListItem = styled(IconListItem)<{ removePadding: boolean }>`
+  ${(props) => (props.removePadding ? '' : 'padding-bottom: 3rem')};
 `;
 
 const AboutPage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
@@ -92,22 +101,23 @@ const AboutPage = ({ categories }: { categories: Array<CategoryConfiguration> })
         <CategoryHeader>Sobre Maruja</CategoryHeader>
         <CenteredContainer>
           <AboutTextContainer>
-            <Text>
+            <UpperText>
               Maruja nace cómo un emprendimiento personal inspirado en mi abuela; María Mahia de Ares... ¿Quién fue
               Maruja? Una mujer simple, amable, con mucha energía sobre todas las cosas, andaba de un lado para el otro
               siempre con una sonrisa. Te animaba siempre a no preocuparte, a no hacerte problema por las cosas...
-            </Text>
+            </UpperText>
             <Image alt="feed-image" key="maruja" src="/assets/Maruja-About.jpg" placeholderSrc={reusablePlaceholder} />
-            <Text>
+            <LowerText>
               Hoy Maruja lorem ipusm nace cómo un emprendimiento personal inspirado en uién fue Maruja? Una mujer
               simple, amable, con mucha energía sobre todas las cosas, andaba de un lado para el otro siempre con una
               sonrisa. Te animaba siempre a no preocuparte, a no hacerte problema.
-            </Text>
+            </LowerText>
           </AboutTextContainer>
           <BuyMarujaContainer>
             <ByMarujaTitle>Comprar en Maruja significa...</ByMarujaTitle>
             <BuyMarujaBenefits>
               <StyledIconListItem
+                removePadding={false}
                 image="/assets/Contact.svg"
                 text="Comprar a un emprendimiento Lorem ipsum dolor Mercado Envíos a toda la Argentina"
                 alt="beneficio"
@@ -115,6 +125,7 @@ const AboutPage = ({ categories }: { categories: Array<CategoryConfiguration> })
               />
 
               <StyledIconListItem
+                removePadding={false}
                 image="/assets/Contact.svg"
                 text="Comprar a industria nacional  (?) lorem ipsum Corar a industria nacional  (?) lorem ipsum"
                 alt="beneficio"
@@ -122,6 +133,7 @@ const AboutPage = ({ categories }: { categories: Array<CategoryConfiguration> })
               />
 
               <StyledIconListItem
+                removePadding={true}
                 image="/assets/Contact.svg"
                 text="Comprar a industria nacional  (?) lorem ipsum"
                 alt="beneficio"

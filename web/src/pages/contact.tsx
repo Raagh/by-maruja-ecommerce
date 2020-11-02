@@ -112,7 +112,10 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
       axios
         .post('/api/send-email', { name, email, content })
         .then(() => router.push('/contact-success'))
-        .catch(() => setShowError(true));
+        .catch(() => {
+          setShowError(true);
+          window.scrollTo(0, 300);
+        });
     }
   };
 
@@ -122,10 +125,11 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
       <ContactPageContainer>
         <LargeOnlyContainer>
           <ContactForm autoComplete="off" onSubmit={(e) => submitHandler(e)}>
-            <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
             <ContactHeader onlyMobile={true}>
-              Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.
+              Llená el formulario para contactarnos. <br />
+              Te vamos a responder dentro de las próximas 24 horas hábiles.
             </ContactHeader>
+            <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
             <FormInput name="Nombre" type="text" value={name.value} onChange={setName} error={name.error} />
             <FormInput name="E-mail" type="email" value={email.value} onChange={setEmail} error={email.error} />
             <FormInput
@@ -135,11 +139,16 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
               onChange={setContent}
               error={content.error}
             />
-            <PrimaryButton text="ENVIAR MENSAJE" onClick={() => 0} />
+            <PrimaryButton
+              text="ENVIAR MENSAJE"
+              disabled={name.value === '' || email.value === '' || content.value === ''}
+              onClick={() => 0}
+            />
           </ContactForm>
           <SocialNetworksContainer>
             <ContactHeader onlyMobile={false}>
-              Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.
+              Llená el formulario para contactarnos. <br />
+              Te vamos a responder dentro de las próximas 24 horas hábiles.
             </ContactHeader>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR INSTAGRAM</SocialNetworkTitle>

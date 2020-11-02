@@ -84,7 +84,9 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   }
 
   :disabled {
+    border: 2px solid ${colors.ui.grey25percent};
     background: ${colors.ui.grey25percent};
+    user-select: none;
   }
 `;
 
@@ -93,21 +95,23 @@ const PrimaryButton = ({
   inverted,
   onClick,
   shouldLoad,
+  disabled = false,
 }: {
   text: string;
   inverted?: boolean;
   onClick: any;
   shouldLoad?: boolean;
+  disabled?: boolean;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOnClick = () => {
     if (shouldLoad) setIsLoading(true);
-    onClick();
+    if (!disabled) onClick();
   };
 
   return (
-    <StyledButton onClick={handleOnClick} inverted={inverted}>
+    <StyledButton onClick={handleOnClick} inverted={inverted} disabled={disabled} autoFocus={false}>
       {isLoading && <Ring />}
       {!isLoading && text}
     </StyledButton>

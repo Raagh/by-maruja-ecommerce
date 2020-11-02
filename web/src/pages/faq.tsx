@@ -44,7 +44,7 @@ const SelectorsContainer = styled.div`
   :hover {
     cursor: pointer;
   }
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
   @media ${device.large} {
     display: flex;
     width: 880px;
@@ -65,11 +65,11 @@ const FaqPage = ({ categories }: { categories: Array<CategoryConfiguration> }) =
         </FaqPageTitle>
         <SelectorsContainer>
           {jsonData.map((topic) => (
-            <TopicSelector key={topic.Topic} selection={topic} />
+            <TopicSelector key={topic.topic} selection={topic} />
           ))}
         </SelectorsContainer>
         <AboutLinkContainer>
-          <AboutCallToAction>No encontrás la respuesta que buscás?</AboutCallToAction>
+          <AboutCallToAction>¿No encontrás la respuesta que buscás?</AboutCallToAction>
           <Link href="/">
             <AboutLink>Contactanos aquí</AboutLink>
           </Link>

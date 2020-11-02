@@ -24,7 +24,7 @@ const Container = styled.section`
   background-color: ${colors.ui.grey5percent};
   @media ${device.large} {
     height: 100px;
-    padding: 1.25rem 3.75rem 0 3.75rem;
+    padding: 0.75rem 3.75rem 0 3.75rem;
 
     justify-content: flex-start;
   }
@@ -61,6 +61,10 @@ const StyledLink = styled(LinksSmall)`
   margin-left: 2rem;
   @media ${device.large} {
     display: block;
+  }
+
+  :hover {
+    color: ${colors.primary.default};
   }
 `;
 

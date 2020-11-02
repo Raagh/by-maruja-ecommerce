@@ -5,6 +5,7 @@ import { CategoryConfiguration } from '../../../model/category-configuration';
 import { device } from '../../../config/device';
 import { StyledH4 } from '../../../config/global-styled-components';
 import RemoteFixedImage from '../../shared/image-types/remote-fixed-size-image';
+import { colors } from '../../../config/global-styles';
 
 const DesktopContainer = styled.section`
   display: none;
@@ -52,6 +53,11 @@ const CategoryImg = styled(RemoteFixedImage)`
   border-radius: 2px;
   max-width: 100%;
   object-fit: cover;
+  transition: all 0.5s ease-in-out;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 const LinkContainer = styled.div`
@@ -77,9 +83,14 @@ const CategoryContainer = styled.div`
 
 const StyledLink = styled.a`
   text-decoration: none;
+  overflow: hidden;
 `;
 
-const CategoryName = styled(StyledH4)``;
+const CategoryName = styled(StyledH4)`
+  :hover {
+    color: ${colors.primary.dark};
+  }
+`;
 
 const createCategoryContent = (category: CategoryConfiguration) => {
   const link = `categories/${category.searchName}`;

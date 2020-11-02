@@ -17,9 +17,16 @@ const SlideImage = styled(RemoteFixedSizeImage)`
   @media ${device.large} {
     height: 495px;
   }
+  transition: all 0.5s ease-in-out;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
-const SlideLink = styled.article``;
+const SlideLink = styled.article`
+  overflow: hidden;
+`;
 
 const Container = styled.section`
   height: 450px;

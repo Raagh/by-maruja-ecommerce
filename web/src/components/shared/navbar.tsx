@@ -64,7 +64,7 @@ const StyledLink = styled(LinksSmall)`
   }
 
   :hover {
-    color: ${colors.primary.default};
+    color: ${colors.primary.dark};
   }
 `;
 

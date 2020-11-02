@@ -44,10 +44,11 @@ const RecommendedContainer = styled.article`
 
 const RecommendedTitle = styled(StyledH2)`
   width: 150px;
-  margin: 0 auto 2.75rem auto;
+  margin: 0 auto 2.7rem auto;
   @media ${device.large} {
+    margin: 0 auto 6rem auto;
     width: 100%;
-    padding-left: 5vw;
+    padding-left: 2vw;
     text-align: left;
   }
 `;

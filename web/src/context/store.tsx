@@ -5,6 +5,7 @@ import { ActionTypes } from '../model/action-types';
 type initialState = any;
 type reducerAction = { type: ActionTypes; payload?: any };
 const initialState: initialState = {
+  openCart: false,
   cart: [],
 };
 
@@ -27,6 +28,7 @@ const cartReducer = (state: initialState, action: reducerAction) => {
     case ActionTypes.KeepCartState:
       return {
         ...state,
+        openCart: false,
         cart: getCart(),
       };
     case ActionTypes.CartOpened:

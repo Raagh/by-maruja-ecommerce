@@ -44,7 +44,7 @@ const Ellipse = styled.div<{ quantity: number }>`
 `;
 
 const EllipseText = styled(StyledH6Title)`
-  color: #fff;
+  color: ${colors.ui.whiteBackground};
   margin: auto;
 `;
 
@@ -62,11 +62,11 @@ const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {
   const { state, dispatch } = useContext(store);
 
   useEffect(() => {
-    if (state.openCart) {
+    if (state?.openCart) {
       clickHandler();
       dispatch({ type: ActionTypes.CartOpened, payload: {} });
     }
-  }, [state.openCart, clickHandler, dispatch]);
+  }, [state?.openCart, clickHandler, dispatch]);
 
   return (
     <Container onClick={clickHandler}>

@@ -56,6 +56,10 @@ const Links = styled(LinksSmall)`
   @media ${device.large} {
     display: block;
   }
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const CartButton = ({ clickHandler }: { clickHandler: () => void }) => {

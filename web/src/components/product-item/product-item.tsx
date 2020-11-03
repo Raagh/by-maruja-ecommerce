@@ -3,7 +3,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import { CaptionLarge, CaptionSmall, LabelLargeBold, StyledH3Title } from '../../config/global-styled-components';
+import {
+  CaptionLarge,
+  CaptionSmall,
+  DiscountFavoriteBadge,
+  LabelLargeBold,
+  NoStockBadge,
+  SteelBadge,
+  StyledH3Title,
+} from '../../config/global-styled-components';
 import { colors, typography } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
 import { Product } from '../../model/product';
@@ -15,8 +23,9 @@ import { device } from '../../config/device';
 import RemoteFixedSizeImage from '../shared/image-types/remote-fixed-size-image';
 import ErrorAlert from '../shared/error-alert';
 import ErrorData from '../../config/error-alert-conf.json';
+import { calculateProductStock } from '../shared/utilities';
 
-const ProductItemContainer = styled.section`
+const ProductItemContainer = styled.section<{ extraPadding: boolean }>`
   display: block;
   padding: 1rem 1.5rem 1.5rem 1.5rem;
 
@@ -24,9 +33,10 @@ const ProductItemContainer = styled.section`
   max-width: 1600px;
 
   @media ${device.large} {
-    padding: 2rem 4.5rem 2rem 4.5rem;
+    padding: 2rem 4.5rem 4rem 4.5rem;
     display: flex;
     flex-direction: row;
+    ${(props) => (props.extraPadding ? 'padding-bottom:10.5rem' : '')};
   }
 `;
 
@@ -62,6 +72,7 @@ const ProductItemTitle = styled(StyledH3Title)`
 
   @media ${device.large} {
     margin-bottom: 1rem;
+    font-size: 40px;
   }
 `;
 
@@ -136,6 +147,12 @@ const SendEmailButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  :disabled {
+    border: 2px solid ${colors.ui.grey25percent};
+    background: ${colors.ui.grey25percent};
+    user-select: none;
+  }
 `;
 
 const StyledCarousel = styled(ProductItemCarousel)`
@@ -144,10 +161,10 @@ const StyledCarousel = styled(ProductItemCarousel)`
   }
 `;
 
-const ImageMozaic = styled.article`
+const ImageMozaic = styled.article<{ rows: number }>`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: ${(props) => `repeat(${props.rows}, 1fr);`};
   grid-gap: 1.2rem;
   margin-right: 4.5rem;
 
@@ -192,7 +209,7 @@ const ProductInformation = styled.section`
 `;
 
 const ProductTitlePrice = styled.section`
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -205,6 +222,49 @@ const ProductTitlePrice = styled.section`
   }
 `;
 
+const RelativeNoStock = styled(NoStockBadge)`
+  display: none;
+  @media ${device.large} {
+    display: block;
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 1rem;
+  }
+`;
+
+const RelativeDiscount = styled(DiscountFavoriteBadge)`
+  display: none;
+  @media ${device.large} {
+    position: relative;
+    display: block;
+    top: 0;
+    right: 0;
+    margin-bottom: 1rem;
+  }
+`;
+
+const RelativeSteel = styled(SteelBadge)`
+  display: none;
+  @media ${device.large} {
+    position: relative;
+    display: block;
+    top: 0;
+    right: 0;
+    margin-bottom: 1rem;
+  }
+`;
+
+const displayRelativeBadge = (product: Product) => {
+  const realStock = calculateProductStock(product);
+
+  if (realStock === 0) return <RelativeNoStock>Sin stock</RelativeNoStock>;
+  if (realStock > 0 && (product.tag === Tags.Discount || product.tag === Tags.Favorite))
+    return <RelativeDiscount>{product.tag}</RelativeDiscount>;
+
+  if (realStock > 0 && product.tag === Tags.Steel) return <RelativeSteel>{product.tag}</RelativeSteel>;
+};
+
 const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock: boolean }) => {
   const [showError, setShowError] = useState(false);
   const [email, setEmail] = useState('');
@@ -212,11 +272,13 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    axios.post('/api/send-email', { email }).catch(() => setShowError(true));
+    if (email !== '') axios.post('/api/send-email', { email }).catch(() => setShowError(true));
   };
 
+  const rows = Math.abs(product.images.length / 2);
+
   return (
-    <ProductItemContainer>
+    <ProductItemContainer extraPadding={rows === 1}>
       <section>
         <Link href="/categories/productos" passHref>
           <BackButton>
@@ -224,7 +286,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
             <BackCaption>Volver al listado</BackCaption>
           </BackButton>
         </Link>
-        <ImageMozaic>
+        <ImageMozaic rows={rows}>
           {product.images.map((x, index) => (
             <StyledImage key={index} asset={x.asset} image={x.image} alt="product" />
           ))}
@@ -234,6 +296,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
 
       <ProductInformation>
         <ProductTitlePrice>
+          {displayRelativeBadge(product)}
           <ProductItemTitle>{product.name}</ProductItemTitle>
           <PriceDisplay>
             {product.tag === Tags.Discount && hasStock && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
@@ -258,7 +321,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
             <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>
             <EmailInputContainer onSubmit={(e) => submitHandler(e)}>
               <EmailInput onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Tu email" />
-              <SendEmailButton type="submit">
+              <SendEmailButton type="submit" disabled={email !== ''}>
                 <img src="/assets/Send-Email.svg" alt="send-email" />
               </SendEmailButton>
             </EmailInputContainer>

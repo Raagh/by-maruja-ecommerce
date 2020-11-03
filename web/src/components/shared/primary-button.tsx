@@ -87,6 +87,7 @@ const StyledButton = styled.button<{ inverted: boolean }>`
     border: 2px solid ${colors.ui.grey25percent};
     background: ${colors.ui.grey25percent};
     user-select: none;
+    box-shadow: none;
   }
 `;
 

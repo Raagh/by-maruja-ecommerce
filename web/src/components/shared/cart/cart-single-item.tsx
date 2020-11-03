@@ -33,13 +33,13 @@ const NameAndPrice = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem 0 0.5rem;
+  padding: 0 1rem 0 1rem;
 `;
 
 const Quantity = styled.div`
   display: flex;
   width: 100%;
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 `;
 
 const QuantityTitle = styled(StyledH6Title)`

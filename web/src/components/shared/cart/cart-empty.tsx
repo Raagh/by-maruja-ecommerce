@@ -30,6 +30,7 @@ const Line = styled.div`
 const LinkPointer = styled(LinksLarge)`
   :hover {
     cursor: pointer;
+    color: ${colors.primary.dark};
   }
 `;
 const CartEmpty = ({ cart }: { cart: CP[] }) => {

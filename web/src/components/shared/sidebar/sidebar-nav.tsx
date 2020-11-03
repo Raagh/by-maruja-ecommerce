@@ -15,8 +15,8 @@ const SidebarNavContainer = styled.section`
   background-color: ${colors.ui.whiteBackground};
   @media ${device.large} {
     padding: 2.5rem 2.5rem 0 2.5rem;
-    max-width: 595px;
-    min-width: 595px;
+    max-width: 480px;
+    min-width: 480px;
   }
 `;
 
@@ -29,6 +29,9 @@ const BackButton = styled.div`
   height: 24px;
   @media ${device.large} {
     background-image: url('/assets/Menu-Close.svg');
+  }
+  :hover {
+    cursor: pointer;
   }
 `;
 

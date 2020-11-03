@@ -29,6 +29,10 @@ const BackButton = styled.div`
   @media ${device.large} {
     background-image: url('/assets/Menu-Close.svg');
   }
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const InvDiv = styled.div`

@@ -22,9 +22,8 @@ const AboutContainer = styled.section`
 const Image = styled(LazyLoadImage)`
   width: 100%;
   @media ${device.large} {
-    max-width: 50%;
     object-fit: cover;
-    padding-right: 7rem;
+    max-width: 491px;
   }
 `;
 
@@ -61,7 +60,8 @@ const TextContainer = styled.div`
   margin-left: 1.5rem;
 
   @media ${device.large} {
-    max-width: 30%;
+    max-width: 40%;
+    margin: auto;
   }
 `;
 
@@ -103,7 +103,7 @@ const About = () => {
             <MobileHeartIcon alt="heart-icon" src="/assets/Heart.svg" />
             <MobileAboutTitle>Sobre Maruja</MobileAboutTitle>
             <AboutDescription>
-              Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong> María Mahia de Ares</strong>.
+              Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong>María Mahia de Ares</strong>.
               ¿Quién fue Maruja? Una mujer simple, amable, con mucha energía sobre todas las cosas, andaba de un lado
               para el otro siempre con una sonrisa.
             </AboutDescription>

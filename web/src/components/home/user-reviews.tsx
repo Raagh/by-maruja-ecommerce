@@ -38,7 +38,7 @@ const ReviewText = styled(StyledH3)`
   text-align: center;
 
   @media ${device.large} {
-    padding: 2rem 0;
+    padding: 1.5rem 0 1.5rem 0;
     text-align: left;
   }
 `;
@@ -50,6 +50,7 @@ const ReviewTag = styled(LabelSmall)`
   justify-content: center;
 
   @media ${device.large} {
+    margin-top: 0;
     justify-content: left;
   }
 `;

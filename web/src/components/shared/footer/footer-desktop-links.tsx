@@ -21,6 +21,10 @@ const FooterLink = styled(LinksLarge)`
   @media ${device.large} {
     margin-right: 2rem;
   }
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const LogoLink = styled(FooterLink)`
@@ -53,6 +57,16 @@ const CornerLinkText = styled.p`
   text-transform: ${typography.links.textTransform};
 `;
 
+const MarujaLink = styled.a`
+  text-decoration: none;
+  color: ${colors.ui.darkSurface};
+  font-weight: bold;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
+`;
+
 const createLink = (legend: string, link: string, key: number) => {
   return (
     <Link href={`/categories${link}`} key={key} passHref>
@@ -72,7 +86,9 @@ const FooterDesktopLinks = () => {
 
       <CornerLink href="/">
         <CornerLinkText>SEGUÍNOS EN INSTAGRAM</CornerLinkText>
-        <InstaLogoLarge src="/assets/Instagram.svg" alt="Instagram Logo" />
+        <MarujaLink href="https://www.instagram.com/bymaruja/" target="_blank" rel="noopener noreferrer">
+          <InstaLogoLarge src="/assets/Instagram.svg" alt="Instagram Logo" />
+        </MarujaLink>
       </CornerLink>
     </FooterDesktopLinksContainer>
   );

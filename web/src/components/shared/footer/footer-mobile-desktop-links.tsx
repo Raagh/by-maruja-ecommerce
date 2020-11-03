@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import { LabelSmall } from '../../../config/global-styled-components';
-import { typography } from '../../../config/global-styles';
+import { colors, typography } from '../../../config/global-styles';
 import { device } from '../../../config/device';
 
 const FooterMobileDesktopLinksContainer = styled.div<{ isFooter: boolean }>`
@@ -29,10 +29,13 @@ const FooterLink = styled.a<{ isFooter: boolean }>`
 const FooterLabel = styled(LabelSmall)<{ isFooter: boolean }>`
   @media ${device.large} {
     display: block;
-    ${(props) => (props.isFooter ? 'margin-right: 2rem;' : '')}
     font-size: ${typography.links.small.fontSize};
     line-height: ${typography.links.small.lineHeight};
     letter-spacing: ${typography.links.small.letterSpacing};
+  }
+
+  :hover {
+    color: ${colors.primary.dark};
   }
 `;
 

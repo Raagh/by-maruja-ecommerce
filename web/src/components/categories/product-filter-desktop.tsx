@@ -46,17 +46,27 @@ const DropdownListItem = styled(BodyCopyRegularSmall)`
 
   &:hover {
     background-color: ${colors.ui.grey25percent};
+    cursor: pointer;
   }
 `;
 
 const OrderTitle = styled(LabelSmall)`
   ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
   ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isSelected ? 'font-weight:bold;' : '')}
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const FilterTitle = styled(LabelSmall)`
   padding-right: 2rem;
   ${(props: { isSelected: boolean }) => (props.isSelected ? 'font-weight:bold;' : '')}
+  ${(props: { isSelected: boolean }) => (props.isSelected ? 'text-decoration:underline;' : '')}
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const Filters = styled.div`
@@ -68,7 +78,7 @@ const Filters = styled.div`
 const DropdownList = styled.ul<{ shouldDisplayDropdown: boolean }>`
   list-style-type: none;
   text-align: center;
-  transition: all 200s ease-out;
+  transition: all 200ms ease-out;
   visibility: ${(props) => (props.shouldDisplayDropdown ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.shouldDisplayDropdown ? 1 : 0)};
   ${(props) => (props.shouldDisplayDropdown ? '' : 'height:0;')}

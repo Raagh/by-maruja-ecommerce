@@ -31,6 +31,11 @@ const ProductItemImage = styled(RemoteFixedSizeImage)`
   border-radius: 2px;
   height: 360px;
   object-fit: cover;
+  transition: all 0.5s ease-in-out;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 const ProductItemName = styled(LabelLarge)``;
@@ -39,10 +44,12 @@ const ProductItemPrice = styled(LabelLargeBold)``;
 
 const ProductItemImageContainer = styled.div`
   position: relative;
+  overflow: hidden;
 `;
 
 const StyledLink = styled.a`
   text-decoration: none;
+  overflow: hidden;
 `;
 
 const ProductListItem = ({ product }: { product: Product }) => {

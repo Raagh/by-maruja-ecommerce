@@ -37,7 +37,7 @@ const RecommendedContainer = styled.article`
   padding-bottom: 4rem;
 
   @media ${device.large} {
-    padding-left: 7rem;
+    padding-left: 5rem;
     padding-bottom: 0;
   }
 `;

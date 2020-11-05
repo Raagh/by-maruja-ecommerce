@@ -79,7 +79,6 @@ const ProductItemCarousel = ({ product, className }: { product: Product; classNa
       arrows={false}
       customDot={<CustomDots />}
       partialVisible
-      partialVisbile
     >
       {product.images.map((image) => {
         return (

@@ -99,7 +99,6 @@ const RecommendedCarousel = ({
         showDots
         customDot={<CustomDots />}
         partialVisible
-        partialVisbile
         renderDotsOutside
         customRightArrow={<SliderArrow direction="right" />}
         customLeftArrow={<SliderArrow direction="left" />}

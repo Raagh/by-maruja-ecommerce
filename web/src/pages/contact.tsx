@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+
 import { sanity } from '../../lib/sanity';
 
 import Layout from '../components/shared/layout';
@@ -87,6 +88,12 @@ const Icon = styled.img`
   vertical-align: text-top;
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+  overflow: hidden;
+  user-select: none;
+`;
+
 const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
   const [name, setName] = useState({ value: '', error: false });
   const [email, setEmail] = useState({ value: '', error: false });
@@ -115,6 +122,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
         .catch(() => {
           setShowError(true);
           window.scrollTo(0, 300);
+          router.push('/contact-success');
         });
     }
   };
@@ -152,10 +160,13 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
             </ContactHeader>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR INSTAGRAM</SocialNetworkTitle>
-              <SocialNetworkHeader>
-                <Icon src="/assets/Instagram.svg" />
-                @ByMaruja
-              </SocialNetworkHeader>
+
+              <StyledLink href="https://www.instagram.com/bymaruja/" target="_blank" rel="noopener noreferrer">
+                <SocialNetworkHeader>
+                  <Icon src="/assets/Instagram.svg" />
+                  @ByMaruja
+                </SocialNetworkHeader>
+              </StyledLink>
             </SocialNetwork>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR EMAIL</SocialNetworkTitle>

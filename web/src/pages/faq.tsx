@@ -20,11 +20,18 @@ const AboutLinkContainer = styled.div`
   text-align: center;
   margin-top: 2rem;
 `;
+
 const AboutCallToAction = styled(BodyCopyRegularSmall)`
   font-size: 16px;
 `;
+
 const AboutLink = styled(BodyCopyBoldSmall)`
   text-decoration: underline;
+  cursor: pointer;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const FaqPageTitle = styled(StyledH3Title)`
@@ -58,11 +65,7 @@ const FaqPage = ({ categories }: { categories: Array<CategoryConfiguration> }) =
   return (
     <Layout categories={categories}>
       <FaqPageContainer>
-        <FaqPageTitle>
-          Preguntas
-          <br />
-          Frecuentes
-        </FaqPageTitle>
+        <FaqPageTitle>Preguntas Frecuentes</FaqPageTitle>
         <SelectorsContainer>
           {jsonData.map((topic) => (
             <TopicSelector key={topic.topic} selection={topic} />
@@ -70,7 +73,7 @@ const FaqPage = ({ categories }: { categories: Array<CategoryConfiguration> }) =
         </SelectorsContainer>
         <AboutLinkContainer>
           <AboutCallToAction>¿No encontrás la respuesta que buscás?</AboutCallToAction>
-          <Link href="/">
+          <Link href="/contact">
             <AboutLink>Contactanos aquí</AboutLink>
           </Link>
         </AboutLinkContainer>

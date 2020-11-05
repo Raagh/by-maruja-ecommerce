@@ -70,7 +70,7 @@ const BuyMarujaContainer = styled.section`
   border-radius: 8px;
   @media ${device.large} {
     margin: 0 3rem 3rem 3rem;
-    padding: 3rem 4rem 2rem 4rem;
+    padding: 3rem;
     background-color: ${colors.ui.grey5percent};
   }
 `;
@@ -83,7 +83,7 @@ const ByMarujaTitle = styled(StyledH4Title)`
 `;
 
 const BuyMarujaBenefits = styled.article`
-  padding: 3rem 0 2rem 0;
+  padding: 3rem 0 0 0;
 
   @media ${device.small} {
     padding: 3rem 1.5rem 0 1.5rem;

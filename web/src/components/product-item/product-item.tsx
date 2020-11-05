@@ -153,6 +153,10 @@ const SendEmailButton = styled.button`
     background: ${colors.ui.grey25percent};
     user-select: none;
   }
+
+  :hover {
+    background: ${colors.primary.light};
+  }
 `;
 
 const StyledCarousel = styled(ProductItemCarousel)`
@@ -321,7 +325,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
             <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>
             <EmailInputContainer onSubmit={(e) => submitHandler(e)}>
               <EmailInput onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Tu email" />
-              <SendEmailButton type="submit" disabled={email !== ''}>
+              <SendEmailButton type="submit" disabled={email === ''}>
                 <img src="/assets/Send-Email.svg" alt="send-email" />
               </SendEmailButton>
             </EmailInputContainer>

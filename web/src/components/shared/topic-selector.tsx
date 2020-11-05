@@ -10,6 +10,7 @@ import { device } from '../../config/device';
 const TopicSelectorOuterContainer = styled.div`
   margin-bottom: 1rem;
   background: ${colors.ui.grey5percent};
+  border-radius: 8px;
   @media ${device.large} {
     display: flex;
   }

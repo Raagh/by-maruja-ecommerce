@@ -55,9 +55,13 @@ const CornerLinkText = styled.p`
   color: ${colors.ui.darkSurface};
 
   text-transform: ${typography.links.textTransform};
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
-const MarujaLink = styled.a`
+const MarujaLink = styled.div`
   text-decoration: none;
   color: ${colors.ui.darkSurface};
   font-weight: bold;
@@ -84,9 +88,9 @@ const FooterDesktopLinks = () => {
 
       {footerJson.data.desktop.map((link, index) => createLink(link.legend, link.link, index))}
 
-      <CornerLink href="/">
+      <CornerLink href="https://www.instagram.com/bymaruja/" target="_blank" rel="noopener noreferrer">
         <CornerLinkText>SEGUÍNOS EN INSTAGRAM</CornerLinkText>
-        <MarujaLink href="https://www.instagram.com/bymaruja/" target="_blank" rel="noopener noreferrer">
+        <MarujaLink>
           <InstaLogoLarge src="/assets/Instagram.svg" alt="Instagram Logo" />
         </MarujaLink>
       </CornerLink>

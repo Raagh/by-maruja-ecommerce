@@ -107,7 +107,7 @@ const PrimaryButton = ({
 
   const handleOnClick = () => {
     if (shouldLoad) setIsLoading(true);
-    if (!disabled && isLoading && !isLoading) onClick();
+    if (!disabled) onClick();
   };
 
   return (

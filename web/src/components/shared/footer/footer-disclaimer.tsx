@@ -19,6 +19,7 @@ const DisclaimerContainer = styled.div<{ shouldDisplayBelow: boolean }>`
 const FooterDisclaimerText = styled(CaptionSmall)`
   letter-spacing: 1px;
   margin-right: 5px;
+  text-align: left;
   color: ${colors.ui.grey50percent};
 `;
 

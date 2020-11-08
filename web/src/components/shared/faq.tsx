@@ -49,7 +49,14 @@ const StyledAccordion = styled(Accordion)`
 
 const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
   return (
-    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden} isBold={true}>
+    <StyledAccordion
+      title={question}
+      key={index}
+      index={index}
+      initialHiddenStatus={isHidden}
+      isBold={true}
+      makeStatic={true}
+    >
       <BodyCopyRegularSmall>{answer}</BodyCopyRegularSmall>
     </StyledAccordion>
   );
@@ -86,7 +93,7 @@ const Faq = ({ isDarkBackgroundColor }: { isDarkBackgroundColor?: boolean }) => 
           )}
         </AccordionsDesktopContainer>
         <FaqButtonContainer>
-          <Button text="LEER MÁS" url="/faq" />
+          <Button text="Ver todas las preguntas frecuentes" url="/faq" />
         </FaqButtonContainer>
       </FaqContainer>
     </BackgroundContainer>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LazyLoadImage from '../shared/image-types/lazy-image';
 import { reusablePlaceholder, device } from '../../config/device';
-import { StyledH2, BodyCopyRegularSmall } from '../../config/global-styled-components';
+import { StyledH3, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import Button from '../shared/secondary-button';
 import { colors } from '../../config/global-styles';
 
@@ -27,18 +27,11 @@ const Image = styled(LazyLoadImage)`
   }
 `;
 
-const AboutTitle = styled(StyledH2)`
-  display: none;
+const MobileAboutTitle = styled(StyledH3)`
+  padding-top: 4rem;
   @media ${device.large} {
-    padding-bottom: 4rem;
-    display: block;
-  }
-`;
-
-const MobileAboutTitle = styled(StyledH2)`
-  padding-top: 2rem;
-  @media ${device.large} {
-    display: none;
+    padding-top: 0;
+    padding-bottom: 3rem;
   }
 `;
 
@@ -84,23 +77,13 @@ const AboutMobile = styled(BodyCopyRegularSmall)`
   }
 `;
 
-const MobileHeartIcon = styled.img`
-  padding-top: 2rem;
-
-  @media ${device.large} {
-    display: none;
-  }
-`;
-
 const About = () => {
   return (
     <BackgroundContainer>
       <AboutContainer>
-        <AboutTitle>Sobre Maruja</AboutTitle>
         <ContentContainer>
           <Image alt="feed-image" key="maruja" src="/assets/Maruja-About.jpg" placeholderSrc={reusablePlaceholder} />
           <TextContainer>
-            <MobileHeartIcon alt="heart-icon" src="/assets/Heart.svg" />
             <MobileAboutTitle>Sobre Maruja</MobileAboutTitle>
             <AboutDescription>
               Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong>María Mahia de Ares</strong>.
@@ -111,7 +94,7 @@ const About = () => {
               Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong> María Mahia de Ares</strong>
               ...
             </AboutMobile>
-            <Button text="Quien fue Maruja?" url="/about" />
+            <Button text="¿Quién fue Maruja?" url="/about" />
           </TextContainer>
         </ContentContainer>
       </AboutContainer>

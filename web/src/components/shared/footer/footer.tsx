@@ -11,7 +11,6 @@ const FooterContainer = styled.article`
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 57px;
   text-align: center;
   @media ${device.large} {
     margin-top: 0;

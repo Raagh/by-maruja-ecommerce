@@ -7,7 +7,7 @@ import { colors, typography } from '../../../config/global-styles';
 import { device } from '../../../config/device';
 
 const FooterMobileDesktopLinksContainer = styled.div<{ isFooter: boolean }>`
-  ${(props) => (props.isFooter ? '' : 'display:flex; flex-flow:column; align-items: center;')}
+  ${(props) => (props.isFooter ? 'display:none;' : 'display:flex; flex-flow:column; align-items: center;')}
   margin-bottom: 2rem;
 
   @media ${device.large} {
@@ -33,7 +33,7 @@ const FooterLabel = styled(LabelSmall)<{ isFooter: boolean }>`
     line-height: ${typography.links.small.lineHeight};
     letter-spacing: ${typography.links.small.letterSpacing};
   }
-
+  transition: ease-out 200ms;
   :hover {
     color: ${colors.primary.dark};
   }

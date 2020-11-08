@@ -74,6 +74,7 @@ const MarujaLink = styled.a`
   text-decoration: none;
   color: ${colors.ui.darkSurface};
   font-weight: bold;
+  transition: ease-out 200ms;
 
   :hover {
     color: ${colors.primary.dark};

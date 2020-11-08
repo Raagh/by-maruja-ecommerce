@@ -51,6 +51,7 @@ const StyledSubTitle = styled(Subtitle)`
 const StyledContact = styled.span`
   text-decoration: underline;
   font-weight: bold;
+  transition: ease-out 200ms;
   :hover {
     cursor: pointer;
     color: ${colors.primary.dark};

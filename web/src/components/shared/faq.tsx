@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './secondary-button';
 import Accordion from './accordion/accordion';
-import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH2 } from '../../config/global-styled-components';
+import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH3 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
@@ -30,7 +30,7 @@ const FaqButtonContainer = styled(AlignedCenterContainer)`
   }
 `;
 
-const FaqTitle = styled(StyledH2)`
+const FaqTitle = styled(StyledH3)`
   margin-bottom: 2.5rem;
 
   @media ${device.large} {

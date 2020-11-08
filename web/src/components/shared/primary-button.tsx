@@ -27,8 +27,7 @@ const RingSpinner = styled.div`
   position: absolute;
   width: 34px;
   height: 34px;
-  margin: 6px;
-  border: 6px solid ${colors.primary.default};
+  border: 4px solid ${colors.primary.default};
   border-radius: 50%;
   animation: ${(p) => motion(p)} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: ${colors.primary.default} transparent transparent transparent;
@@ -108,7 +107,7 @@ const PrimaryButton = ({
 
   const handleOnClick = () => {
     if (shouldLoad) setIsLoading(true);
-    if (!disabled) onClick();
+    if (!disabled && isLoading && !isLoading) onClick();
   };
 
   return (

@@ -28,7 +28,7 @@ const AboutCallToAction = styled(BodyCopyRegularSmall)`
 const AboutLink = styled(BodyCopyBoldSmall)`
   text-decoration: underline;
   cursor: pointer;
-
+  transition: ease-out 200ms;
   :hover {
     color: ${colors.primary.dark};
   }

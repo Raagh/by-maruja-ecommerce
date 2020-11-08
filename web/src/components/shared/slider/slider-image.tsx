@@ -37,12 +37,18 @@ const Container = styled.section`
   }
 `;
 
-const SliderImage = ({ remoteImage }: { remoteImage: RecommendedConfiguration }) => {
+const SliderImage = ({ remoteImage, isMoving }: { remoteImage: RecommendedConfiguration; isMoving: boolean }) => {
   const link = `/products/${remoteImage._id}`;
   return (
     <Container>
       <Link href={link} passHref>
-        <SlideLink>
+        <SlideLink
+          onClick={(e: React.MouseEvent<Element, MouseEvent>) => {
+            if (isMoving) {
+              e.preventDefault();
+            }
+          }}
+        >
           <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} />
         </SlideLink>
       </Link>

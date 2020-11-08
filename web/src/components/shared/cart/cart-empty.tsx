@@ -26,6 +26,7 @@ const Line = styled.div`
 `;
 
 const LinkPointer = styled(LinksLarge)`
+  transition: ease-out 200ms;
   :hover {
     cursor: pointer;
     color: ${colors.primary.dark};

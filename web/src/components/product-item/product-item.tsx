@@ -10,7 +10,7 @@ import {
   LabelLargeBold,
   NoStockBadge,
   SteelBadge,
-  StyledH3Title,
+  StyledH3,
 } from '../../config/global-styled-components';
 import { colors, typography } from '../../config/global-styles';
 import { Tags } from '../../model/filters/tags';
@@ -55,6 +55,7 @@ const BackCaption = styled(CaptionSmall)`
   color: ${colors.ui.darkSurface};
   padding-left: 4px;
   cursor: pointer;
+  transition: ease-out 200ms;
 
   :hover {
     color: ${colors.primary.dark};
@@ -67,7 +68,7 @@ const LinkImg = styled.img`
   padding-bottom: 1px;
 `;
 
-const ProductItemTitle = styled(StyledH3Title)`
+const ProductItemTitle = styled(StyledH3)`
   max-width: 397px;
 
   @media ${device.large} {

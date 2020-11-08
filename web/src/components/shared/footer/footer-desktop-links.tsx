@@ -21,6 +21,7 @@ const FooterLink = styled(LinksLarge)`
   @media ${device.large} {
     margin-right: 2rem;
   }
+  transition: ease-out 200ms;
 
   :hover {
     color: ${colors.primary.dark};
@@ -55,6 +56,7 @@ const CornerLinkText = styled.p`
   color: ${colors.ui.darkSurface};
 
   text-transform: ${typography.links.textTransform};
+  transition: ease-out 200ms;
 
   :hover {
     color: ${colors.primary.dark};
@@ -65,6 +67,7 @@ const MarujaLink = styled.div`
   text-decoration: none;
   color: ${colors.ui.darkSurface};
   font-weight: bold;
+  transition: ease-out 200ms;
 
   :hover {
     color: ${colors.primary.dark};

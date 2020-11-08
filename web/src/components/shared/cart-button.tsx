@@ -53,6 +53,7 @@ const Links = styled(LinksSmall)`
   margin-top: 0.5rem;
   margin-right: 1.5rem;
   text-decoration: none;
+  transition: ease-out 200ms;
   @media ${device.large} {
     display: block;
   }

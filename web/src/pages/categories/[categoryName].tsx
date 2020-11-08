@@ -13,14 +13,22 @@ import Faq from '../../components/shared/faq';
 const toLowerCase = (text: string | string[]) => (text as string).toLowerCase();
 const capitalize = (text: string | string[]) => (text as string).charAt(0).toUpperCase() + text.slice(1);
 
-const CategoryDisplay = ({ categories, products }: { categories: CategoryConfiguration[]; products: Product[] }) => {
+const CategoryDisplay = ({
+  categories,
+  products,
+  categoryName,
+}: {
+  categories: CategoryConfiguration[];
+  products: Product[];
+  categoryName?: string;
+}) => {
   const router = useRouter();
   const lowerCaseCategoryName = toLowerCase(router.query.categoryName);
 
   const formatedCategoryName = capitalize(lowerCaseCategoryName);
   return (
     <Layout categories={categories}>
-      <ProductList categoryName={formatedCategoryName} products={products} />
+      <ProductList categoryName={categoryName ?? formatedCategoryName} products={products} />
       <Faq isDarkBackgroundColor={true} />
     </Layout>
   );
@@ -58,7 +66,13 @@ export const getServerSideProps = async (context: NextPageContext) => {
   `
   );
 
-  return { props: { categories: sanityCategories.categories, products: sanityProduct } };
+  return {
+    props: {
+      categories: sanityCategories.categories,
+      products: sanityProduct,
+      categoryName: sanityCategories.categories.find((x) => x.searchName === lowerCaseCategoryName)?.name ?? null,
+    },
+  };
 };
 
 export default CategoryDisplay;

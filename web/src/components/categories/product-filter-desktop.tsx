@@ -94,12 +94,12 @@ const ProductFilterDesktop = ({
   const [isOrderOpen, setIsOrderOpen] = useState(false);
   const [isOrderSelected, setIsOrderSelected] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState(Tags.All);
-  const [orderTitle, setOrderTitle] = useState('ordenar por');
+  const [orderTitle, setOrderTitle] = useState('Ordenar por');
 
   const orderAndClose = (order: Order) => {
     orderProducts(order);
     setIsOrderOpen(false);
-    setOrderTitle(order);
+    setOrderTitle(order == Order.ASC ? 'Precio ascendente' : 'Precio descendente');
     setIsOrderSelected(true);
   };
 
@@ -113,16 +113,16 @@ const ProductFilterDesktop = ({
       <HeaderContainer>
         <Filters>
           <FilterTitle isSelected={selectedFilter === Tags.All} onClick={() => filterAndSet(Tags.All)}>
-            todos
+            Todos
           </FilterTitle>
           <FilterTitle isSelected={selectedFilter === Tags.Steel} onClick={() => filterAndSet(Tags.Steel)}>
-            acero quirúrgico
+            Acero quirúrgico
           </FilterTitle>
           <FilterTitle isSelected={selectedFilter === Tags.Discount} onClick={() => filterAndSet(Tags.Discount)}>
-            en descuento
+            En descuento
           </FilterTitle>
           <FilterTitle isSelected={selectedFilter === Tags.Favorite} onClick={() => filterAndSet(Tags.Favorite)}>
-            favoritos
+            Favoritos
           </FilterTitle>
         </Filters>
         <DropdownContainer isOpen={isOrderOpen}>
@@ -140,8 +140,8 @@ const ProductFilterDesktop = ({
       </HeaderContainer>
       <ListContainer>
         <DropdownList shouldDisplayDropdown={isOrderOpen}>
-          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>precio ascendente</DropdownListItem>
-          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>precio descendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>Precio ascendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>Precio descendente</DropdownListItem>
         </DropdownList>
       </ListContainer>
     </FilterContainer>

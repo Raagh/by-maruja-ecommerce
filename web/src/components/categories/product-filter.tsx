@@ -69,14 +69,14 @@ const ProductFilter = ({
   const [isOrderOpen, setIsOrderOpen] = useState(false);
   const [isFilterSelected, setIsFilterSelected] = useState(false);
   const [isOrderSelected, setIsOrderSelected] = useState(false);
-  const [filterTitle, setFilterTitle] = useState('filtrar');
-  const [orderTitle, setOrderTitle] = useState('ordenar por');
+  const [filterTitle, setFilterTitle] = useState('Filtrar');
+  const [orderTitle, setOrderTitle] = useState('Ordenar por');
 
   const filterAndClose = (tag: Tags) => {
     filterProducts(tag);
     setIsFilterSelected(true);
     if (tag !== Tags.All) setFilterTitle(tag.toLowerCase());
-    else setFilterTitle('todos');
+    else setFilterTitle('Todos');
     setIsFiltersOpen(false);
   };
 
@@ -117,14 +117,14 @@ const ProductFilter = ({
       </HeaderContainer>
       <ListContainer>
         <DropdownList shouldDisplayDropdown={isOrderOpen}>
-          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>precio ascendente</DropdownListItem>
-          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>precio descendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>Precio ascendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>Precio descendente</DropdownListItem>
         </DropdownList>
         <DropdownList shouldDisplayDropdown={isFiltersOpen}>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Steel)}>acero quirúrgico</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Discount)}>en descuento</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Favorite)}>favoritos</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.All)}>todos</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Steel)}>Acero quirúrgico</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Discount)}>En descuento</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Favorite)}>Favoritos</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.All)}>Todos</DropdownListItem>
         </DropdownList>
       </ListContainer>
     </FilterContainer>

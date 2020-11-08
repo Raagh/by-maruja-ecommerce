@@ -21,6 +21,7 @@ const ReviewContainer = styled.article`
     padding-top: 8rem;
     padding-left: 8rem;
     padding-right: 8rem;
+    padding-bottom: 2.5rem;
     flex-direction: row-reverse;
     margin: auto;
     max-width: 1600px;

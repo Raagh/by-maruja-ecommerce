@@ -15,7 +15,7 @@ const FeedContainer = styled.section`
   text-align: center;
 
   @media ${device.large} {
-    padding: 8rem;
+    padding: 5.5rem 8rem;
     display: flex;
     flex-direction: row;
     justify-content: center;

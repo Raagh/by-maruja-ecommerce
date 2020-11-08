@@ -32,7 +32,7 @@ const ItemExtraQualityRow = styled.div`
   }
 `;
 
-const FakeSelect = styled.div`
+const FakeSelect = styled.div<{ onlyOneItem: boolean }>`
   background: ${colors.ui.grey10percent};
   border-radius: 8px;
   width: 168px;
@@ -41,7 +41,8 @@ const FakeSelect = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  ${(props) => (props.onlyOneItem ? 'justify-content:center;' : 'justify-content: space-between;')};
+
   padding: 0.8rem 1rem 0.8rem 1rem;
 `;
 
@@ -85,23 +86,29 @@ const ProductItemSelectors = ({
   setSize: (size: string) => void;
 }) => {
   const hasSizes = product.sizeChart !== undefined;
+  const productStock = calculateProductStock(product);
 
   return (
     <section>
       <ProductItemDescription>{product.description}</ProductItemDescription>
       <ItemExtraQualityRow>
         <ItemExtraQualities>Cantidad</ItemExtraQualities>
-        <FakeSelect>
-          <StyledButton onClick={() => setQuantity(quantity - 1)} autoFocus={false}>
-            -
-          </StyledButton>
+        <FakeSelect onlyOneItem={productStock === 1}>
+          {productStock !== 1 && (
+            <StyledButton onClick={() => setQuantity(quantity - 1)} autoFocus={false}>
+              -
+            </StyledButton>
+          )}
           <LabelSmall>{quantity}</LabelSmall>
-          <StyledButton onClick={() => setQuantity(quantity + 1)} autoFocus={false}>
-            +
-          </StyledButton>
+
+          {productStock !== 1 && (
+            <StyledButton onClick={() => setQuantity(quantity + 1)} autoFocus={false}>
+              +
+            </StyledButton>
+          )}
         </FakeSelect>
       </ItemExtraQualityRow>
-      {calculateProductStock(product) === quantity && (
+      {productStock !== 1 && productStock === quantity && (
         <StyledNoMoreStock>Esta es la cantidad maxima disponible para este producto</StyledNoMoreStock>
       )}
       {hasSizes && (

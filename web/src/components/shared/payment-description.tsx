@@ -21,7 +21,7 @@ const PaddedImage = styled.img`
 const PaymentDescription = () => {
   return (
     <DeliveryInformationContainer>
-      <Accordion title="Informacion sobre el pago" index={0} initialHiddenStatus isBold={true}>
+      <Accordion title="Información sobre el pago" index={0} initialHiddenStatus isBold={true}>
         <PaddedImage alt="mercadopago" src="/assets/MercadoPago.svg" />
         <PaddedH6Title>MERCADOPAGO</PaddedH6Title>
         <BodyCopyRegularSmall>
@@ -29,7 +29,7 @@ const PaymentDescription = () => {
           Además. no tiene costo adicional.
         </BodyCopyRegularSmall>
       </Accordion>
-      <Accordion title="Informacion sobre envios y entregas" index={0} initialHiddenStatus isBold={true}>
+      <Accordion title="Información sobre envíos y entregas" index={0} initialHiddenStatus isBold={true}>
         <PaddedImage alt="mercadopago" src="/assets/Pagos.svg" />
         <PaddedH6Title>PAGO EN EFECTIVO EN LA ENTREGA</PaddedH6Title>
         <BodyCopyRegularSmall>

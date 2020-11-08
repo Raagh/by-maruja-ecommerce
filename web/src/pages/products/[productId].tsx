@@ -63,7 +63,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
     `
   );
 
-  if(productResult.sizeChart) {
+  if (productResult.sizeChart) {
     productResult.sizeChart = productResult.sizeChart.filter((x: ProductSizeChart) => x.stock > 0);
   }
 

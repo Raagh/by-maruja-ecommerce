@@ -36,7 +36,7 @@ const ProductItemContainer = styled.section<{ extraPadding: boolean }>`
     padding: 2rem 4.5rem 4rem 4.5rem;
     display: flex;
     flex-direction: row;
-    ${(props) => (props.extraPadding ? 'padding-bottom:10.5rem' : '')};
+    ${(props) => (props.extraPadding ? 'padding-bottom:4rem' : '')};
   }
 `;
 
@@ -70,6 +70,7 @@ const LinkImg = styled.img`
 
 const ProductItemTitle = styled(StyledH3)`
   max-width: 397px;
+  align-self: flex-start;
 
   @media ${device.large} {
     margin-bottom: 1rem;
@@ -79,8 +80,21 @@ const ProductItemTitle = styled(StyledH3)`
 
 const PriceDisplay = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+
+  @media ${device.large} {
+    padding-top: 0;
+    flex-direction: row;
+  }
+`;
+
+const PriceDisplayPrice = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 12px;
 `;
 
 const ProductItemPrice = styled(LabelLargeBold)``;
@@ -97,6 +111,7 @@ const TransparentBadge = styled(CaptionSmall)`
   padding: 0.5rem 1rem;
   margin-left: 1rem;
   color: ${colors.ui.grey75percent};
+  text-align: center;
 
   border-radius: 100px;
   border: 1px solid ${colors.ui.grey50percent};
@@ -150,8 +165,7 @@ const SendEmailButton = styled.button`
   align-items: center;
 
   :disabled {
-    border: 2px solid ${colors.ui.grey25percent};
-    background: ${colors.ui.grey25percent};
+    opacity: 0.3;
     user-select: none;
   }
 
@@ -288,7 +302,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
         <Link href="/categories/productos" passHref>
           <BackButton>
             <LinkImg src="/assets/Arrow-Back.svg" alt="arrow" />
-            <BackCaption>Volver al listado</BackCaption>
+            <BackCaption>Ir al listado</BackCaption>
           </BackButton>
         </Link>
         <ImageMozaic rows={rows}>
@@ -304,14 +318,18 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
           {displayRelativeBadge(product)}
           <ProductItemTitle>{product.name}</ProductItemTitle>
           <PriceDisplay>
-            {product.tag === Tags.Discount && hasStock && <ProductItemPrice>${product.discountPrice}</ProductItemPrice>}
-            {product.tag === Tags.Discount && hasStock && (
-              <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>
-            )}
+            <PriceDisplayPrice>
+              {product.tag === Tags.Discount && hasStock && (
+                <ProductItemPrice>${product.discountPrice}</ProductItemPrice>
+              )}
+              {product.tag === Tags.Discount && hasStock && (
+                <ProductItemDiscountPrice>${product.price}</ProductItemDiscountPrice>
+              )}
+              {(product.tag !== Tags.Discount || !hasStock) && <ProductItemPrice>${product.price}</ProductItemPrice>}
+            </PriceDisplayPrice>
             {product.tag === Tags.Discount && hasStock && (
               <TransparentBadge>{100 - (product.discountPrice * 100) / product.price} % off</TransparentBadge>
             )}
-            {(product.tag !== Tags.Discount || !hasStock) && <ProductItemPrice>${product.price}</ProductItemPrice>}
           </PriceDisplay>
         </ProductTitlePrice>
 
@@ -326,7 +344,7 @@ const ProductItemDisplay = ({ product, hasStock }: { product: Product; hasStock:
             <NoStockMessage>Dejanos tu email y te avisamos cuando esté disponible nuevamente</NoStockMessage>
             <EmailInputContainer onSubmit={(e) => submitHandler(e)}>
               <EmailInput onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Tu email" />
-              <SendEmailButton type="submit" disabled={email === ''}>
+              <SendEmailButton type="submit" disabled={email === '' || !email.includes('@')}>
                 <img src="/assets/Send-Email.svg" alt="send-email" />
               </SendEmailButton>
             </EmailInputContainer>

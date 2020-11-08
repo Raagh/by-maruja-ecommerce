@@ -7,9 +7,10 @@ import { device } from '../../../config/device';
 import { colors } from '../../../config/global-styles';
 
 const DisclaimerContainer = styled.div<{ shouldDisplayBelow: boolean }>`
-  padding-top: 2.5rem;
-  padding-bottom: 2rem;
+  padding: 2.5rem 2rem 2rem 2rem;
   @media ${device.large} {
+    padding-right: 0;
+    padding-left: 0;
     display: flex;
     justify-content: space-between;
     ${(props) => (props.shouldDisplayBelow ? 'flex-direction: column' : '')}
@@ -21,6 +22,10 @@ const FooterDisclaimerText = styled(CaptionSmall)`
   margin-right: 5px;
   text-align: left;
   color: ${colors.ui.grey50percent};
+
+  @media ${device.small} {
+    padding-bottom: 0.5rem;
+  }
 `;
 
 const StyledLink = styled.a`

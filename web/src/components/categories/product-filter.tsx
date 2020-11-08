@@ -75,7 +75,7 @@ const ProductFilter = ({
   const filterAndClose = (tag: Tags) => {
     filterProducts(tag);
     setIsFilterSelected(true);
-    if (tag !== Tags.All) setFilterTitle(tag.toLowerCase());
+    if (tag !== Tags.All) setFilterTitle(tag);
     else setFilterTitle('Todos');
     setIsFiltersOpen(false);
   };

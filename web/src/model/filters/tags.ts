@@ -1,6 +1,6 @@
 export enum Tags {
   Steel = 'Acero quirúrgico',
   Favorite = 'Favorito',
-  Discount = 'Descuento',
+  Discount = 'En Descuento',
   All = 'Normal',
 }

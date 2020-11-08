@@ -38,7 +38,7 @@ const ContactSuccessPage = ({ categories }: { categories: Array<CategoryConfigur
   return (
     <Layout categories={categories}>
       <ContactSuccessContainer>
-        <ContactSuccessTitle>!Listo! Tu mensaje ha sido enviado.</ContactSuccessTitle>
+        <ContactSuccessTitle>¡Listo! Recibimos tu mensaje.</ContactSuccessTitle>
         <ContactSuccessText>Te vamos a responder dentro de las próximas 24 horas hábiles.</ContactSuccessText>
         <LinkContainer>
           <Button text="SEGUIR MIRANDO" url="/" />

@@ -14,6 +14,10 @@ const TopicSelectorOuterContainer = styled.div`
   @media ${device.large} {
     display: flex;
   }
+
+  :hover {
+    box-shadow: 2px 2px 4px 0px rgba(81, 50, 50, 0.08);
+  }
 `;
 
 const TopicSelectorInnerContainer = styled.div`

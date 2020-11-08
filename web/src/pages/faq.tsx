@@ -19,6 +19,10 @@ const FaqPageContainer = styled.section`
 const AboutLinkContainer = styled.div`
   text-align: center;
   margin-top: 2rem;
+  margin-bottom: 3rem;
+  @media ${device.large} {
+    margin-bottom: 5rem;
+  }
 `;
 
 const AboutCallToAction = styled(BodyCopyRegularSmall)`

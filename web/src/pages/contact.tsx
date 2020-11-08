@@ -23,6 +23,10 @@ import ErrorData from '../config/error-alert-conf.json';
 
 const ContactPageContainer = styled.section`
   padding: 0 1.5rem 0 1.5rem;
+
+  @media ${device.large} {
+    padding-top: 2.5rem;
+  }
 `;
 
 const LargeOnlyContainer = styled.div`
@@ -81,6 +85,10 @@ const SocialNetworkHeader = styled(BodyCopyBoldSmall)`
   font-size: 16px;
   text-align: center;
   margin-bottom: 2.5rem;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 const Icon = styled.img`
   display: inline-block;
@@ -122,7 +130,6 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
         .catch(() => {
           setShowError(true);
           window.scrollTo(0, 300);
-          router.push('/contact-success');
         });
     }
   };
@@ -138,10 +145,10 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
               Te vamos a responder dentro de las próximas 24 horas hábiles.
             </ContactHeader>
             <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
-            <FormInput name="Nombre" type="text" value={name.value} onChange={setName} error={name.error} />
-            <FormInput name="E-mail" type="email" value={email.value} onChange={setEmail} error={email.error} />
+            <FormInput name="Nombre *" type="text" value={name.value} onChange={setName} error={name.error} />
+            <FormInput name="E-mail *" type="email" value={email.value} onChange={setEmail} error={email.error} />
             <FormInput
-              name="Mensaje"
+              name="Mensaje *"
               type="textarea"
               value={content.value}
               onChange={setContent}
@@ -149,7 +156,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
             />
             <PrimaryButton
               text="ENVIAR MENSAJE"
-              disabled={name.value === '' || email.value === '' || content.value === ''}
+              disabled={name.value === '' || email.value === '' || !email.value.includes('@') || content.value === ''}
               onClick={() => 0}
             />
           </ContactForm>
@@ -170,10 +177,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
             </SocialNetwork>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR EMAIL</SocialNetworkTitle>
-              <SocialNetworkHeader>
-                <Icon src="/assets/Instagram.svg" />
-                hola@maruja.com
-              </SocialNetworkHeader>
+              <SocialNetworkHeader>hola@maruja.com</SocialNetworkHeader>
             </SocialNetwork>
           </SocialNetworksContainer>
         </LargeOnlyContainer>

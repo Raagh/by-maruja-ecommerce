@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import { CartProduct as CP } from '../../../model/cart-product';
-import { StyledH2, LinksLarge } from '../../../config/global-styled-components';
+import { StyledH3, LinksLarge } from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
-import FooterMobileDesktopLinks from '../footer/footer-mobile-desktop-links';
-import FooterDisclaimer from '../footer/footer-disclaimer';
 
 const EmptyContainer = styled.div<{ cart: CP[] }>`
   ${(props) => (props.cart.length ? 'display: none;' : '')}
@@ -14,8 +12,8 @@ const EmptyContainer = styled.div<{ cart: CP[] }>`
   text-align: center;
 `;
 
-const EmptyCartTitle = styled(StyledH2)`
-  margin-bottom: 2.5rem;
+const EmptyCartTitle = styled(StyledH3)`
+  margin-bottom: 4rem;
 `;
 
 const Line = styled.div`
@@ -44,9 +42,6 @@ const CartEmpty = ({ cart }: { cart: CP[] }) => {
         <LinkPointer>DESCUBRIR PRODUCTOS</LinkPointer>
       </Link>
       <Line />
-
-      <FooterMobileDesktopLinks isFooter={false} />
-      <FooterDisclaimer shouldDisplayBelow={true} />
     </EmptyContainer>
   );
 };

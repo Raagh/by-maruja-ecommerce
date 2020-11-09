@@ -33,7 +33,6 @@ const Container = styled.section`
 const Logo = styled.img`
   margin-top: 0.5rem;
   @media ${device.large} {
-    height: 68px;
     margin-right: 0.75rem;
   }
 `;

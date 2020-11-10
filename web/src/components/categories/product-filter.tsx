@@ -44,14 +44,18 @@ const DropdownListItem = styled(BodyCopyRegularSmall)`
 `;
 
 const FilterTitle = styled(LabelSmall)`
-  ${(props: { isOpen: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+  ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isOpen ? 'font-weight:bold;' : '')}
+  ${(props: { isOpen: boolean; isSelected: boolean }) => (props.isSelected ? 'font-weight:bold;' : '')}
 `;
 
-const DropdownList = styled.ul`
+const DropdownList = styled.ul<{ shouldDisplayDropdown: boolean }>`
   list-style-type: none;
   text-align: center;
 
-  ${(props: { shouldDisplayDropdown: boolean }) => (props.shouldDisplayDropdown ? 'display:block' : 'display:none')};
+  transition: all ease-out 200ms;
+  visibility: ${(props) => (props.shouldDisplayDropdown ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.shouldDisplayDropdown ? 1 : 0)};
+  ${(props) => (props.shouldDisplayDropdown ? '' : 'height:0')};
 `;
 
 const ProductFilter = ({
@@ -63,14 +67,23 @@ const ProductFilter = ({
 }) => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isOrderOpen, setIsOrderOpen] = useState(false);
+  const [isFilterSelected, setIsFilterSelected] = useState(false);
+  const [isOrderSelected, setIsOrderSelected] = useState(false);
+  const [filterTitle, setFilterTitle] = useState('Filtrar');
+  const [orderTitle, setOrderTitle] = useState('Ordenar por');
 
   const filterAndClose = (tag: Tags) => {
     filterProducts(tag);
+    setIsFilterSelected(true);
+    if (tag !== Tags.All) setFilterTitle(tag);
+    else setFilterTitle('Todos');
     setIsFiltersOpen(false);
   };
 
   const orderAndClose = (order: Order) => {
     orderProducts(order);
+    setIsOrderSelected(true);
+    setOrderTitle(order);
     setIsOrderOpen(false);
   };
 
@@ -84,7 +97,9 @@ const ProductFilter = ({
             if (!isFiltersOpen && isOrderOpen) setIsOrderOpen(false);
           }}
         >
-          <FilterTitle isOpen={isFiltersOpen}>filtrar</FilterTitle>
+          <FilterTitle isSelected={isFilterSelected} isOpen={isFiltersOpen}>
+            {filterTitle}
+          </FilterTitle>
           <Chevron isOpen={isFiltersOpen} />
         </Dropdown>
         <Dropdown
@@ -94,20 +109,22 @@ const ProductFilter = ({
             if (!isOrderOpen && isFiltersOpen) setIsFiltersOpen(false);
           }}
         >
-          <FilterTitle isOpen={isOrderOpen}>ordernar por</FilterTitle>
+          <FilterTitle isSelected={isOrderSelected} isOpen={isOrderOpen}>
+            {orderTitle}
+          </FilterTitle>
           <Chevron isOpen={isOrderOpen} />
         </Dropdown>
       </HeaderContainer>
       <ListContainer>
         <DropdownList shouldDisplayDropdown={isOrderOpen}>
-          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>precio ascendente</DropdownListItem>
-          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>precio descendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.ASC)}>Precio ascendente</DropdownListItem>
+          <DropdownListItem onClick={() => orderAndClose(Order.DESC)}>Precio descendente</DropdownListItem>
         </DropdownList>
         <DropdownList shouldDisplayDropdown={isFiltersOpen}>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Steel)}>acero quirúrgico</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Discount)}>en descuento</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.Favorite)}>favoritos</DropdownListItem>
-          <DropdownListItem onClick={() => filterAndClose(Tags.All)}>todos</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Steel)}>Acero quirúrgico</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Discount)}>En descuento</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.Favorite)}>Favoritos</DropdownListItem>
+          <DropdownListItem onClick={() => filterAndClose(Tags.All)}>Todos</DropdownListItem>
         </DropdownList>
       </ListContainer>
     </FilterContainer>

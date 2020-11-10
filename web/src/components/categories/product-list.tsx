@@ -72,15 +72,21 @@ const ProductList = ({ categoryName, products }: { categoryName: string; product
     setFilter(tag);
   };
 
+  const count = products.filter(getFilterFunction()).length;
+
   return (
     <div>
       <CategoryHeader>{categoryName}</CategoryHeader>
       <HeaderSeparation />
       <ProductFilter filterProducts={onFilterChange} orderProducts={onSortChange} />
       <ProductFilterDesktop filterProducts={onFilterChange} orderProducts={onSortChange} />
-      <TotalCount>
-        Tenemos <strong>{products.filter(getFilterFunction()).length}</strong> productos para vos
-      </TotalCount>
+      {count > 0 && (
+        <TotalCount>
+          Tenemos <strong>{count}</strong> productos para vos
+        </TotalCount>
+      )}
+      {count === 0 && <TotalCount>Todavía no tenemos productos en esta categoría, volvé pronto</TotalCount>}
+
       <ProductListContainer>
         {products
           .filter(getFilterFunction())

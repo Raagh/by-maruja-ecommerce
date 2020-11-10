@@ -11,12 +11,6 @@ describe('Recommended component', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('should render 1 title', () => {
-    const wrapper = shallow(<Recommended recommended={recommendedMock} />);
-
-    expect(wrapper.render().find('h2').length).toEqual(1);
-  });
-
   it('should render slider', () => {
     const wrapper = mount(<Recommended recommended={recommendedMock} />);
 

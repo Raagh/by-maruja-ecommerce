@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import styled from 'styled-components';
 import { device } from '../../../config/device';
@@ -91,6 +91,8 @@ const RecommendedCarousel = ({
   recommended: Array<RecommendedConfiguration>;
   className?: any;
 }) => {
+  const [isMoving, setIsMoving] = useState(false);
+
   return (
     <CarouselContainer>
       <StyledCarousel
@@ -99,15 +101,16 @@ const RecommendedCarousel = ({
         showDots
         customDot={<CustomDots />}
         partialVisible
-        partialVisbile
         renderDotsOutside
+        beforeChange={() => setIsMoving(true)}
+        afterChange={() => setIsMoving(false)}
         customRightArrow={<SliderArrow direction="right" />}
         customLeftArrow={<SliderArrow direction="left" />}
       >
         {recommended.map((x, index) => {
           return (
             <PaddedImageContainer key={x.name} isLast={recommended.length - 1 === index}>
-              <SliderImage remoteImage={x} />
+              <SliderImage remoteImage={x} isMoving={isMoving} />
             </PaddedImageContainer>
           );
         })}

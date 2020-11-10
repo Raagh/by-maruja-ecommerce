@@ -10,7 +10,7 @@ import { ActionTypes } from '../../../model/action-types';
 const SingleItemContainer = styled.div`
   display: flex;
   margin-bottom: 0.5rem;
-  box-shadow: 0px 2px 2px rgba(81, 50, 50, 0.05);
+  box-shadow: 2px 2px 4px rgba(81, 50, 50, 0.08);
   border-radius: 4px;
   height: 133px;
 `;
@@ -33,13 +33,13 @@ const NameAndPrice = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem 0 0.5rem;
+  padding: 0 1rem 0 1rem;
 `;
 
 const Quantity = styled.div`
   display: flex;
   width: 100%;
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 `;
 
 const QuantityTitle = styled(StyledH6Title)`

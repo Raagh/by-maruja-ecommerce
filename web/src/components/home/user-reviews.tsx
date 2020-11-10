@@ -21,6 +21,7 @@ const ReviewContainer = styled.article`
     padding-top: 8rem;
     padding-left: 8rem;
     padding-right: 8rem;
+    padding-bottom: 2.5rem;
     flex-direction: row-reverse;
     margin: auto;
     max-width: 1600px;
@@ -38,7 +39,7 @@ const ReviewText = styled(StyledH3)`
   text-align: center;
 
   @media ${device.large} {
-    padding: 2rem 0;
+    padding: 1.5rem 0 1.5rem 0;
     text-align: left;
   }
 `;
@@ -50,6 +51,7 @@ const ReviewTag = styled(LabelSmall)`
   justify-content: center;
 
   @media ${device.large} {
+    margin-top: 0;
     justify-content: left;
   }
 `;

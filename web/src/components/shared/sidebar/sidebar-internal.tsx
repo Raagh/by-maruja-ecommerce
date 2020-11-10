@@ -18,7 +18,7 @@ const SidebarContainer = styled.div<{ isOpen: boolean }>`
   flex-flow: column;
   align-items: center;
   @media ${device.large} {
-    width: 595px;
+    width: 480px;
   }
 `;
 

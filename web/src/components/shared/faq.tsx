@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './secondary-button';
-import Accordion from './accordion/accordion';
-import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH2 } from '../../config/global-styled-components';
+import Accordion from './cart/accordion/accordion';
+import { AlignedCenterContainer, BodyCopyRegularSmall, StyledH3 } from '../../config/global-styled-components';
 import FaqJson from '../../config/faq-conf.json';
 import { device } from '../../config/device';
 import { colors } from '../../config/global-styles';
@@ -30,7 +30,7 @@ const FaqButtonContainer = styled(AlignedCenterContainer)`
   }
 `;
 
-const FaqTitle = styled(StyledH2)`
+const FaqTitle = styled(StyledH3)`
   margin-bottom: 2.5rem;
 
   @media ${device.large} {
@@ -49,7 +49,14 @@ const StyledAccordion = styled(Accordion)`
 
 const createAccordionContent = (question: string, answer: string, index: number, isHidden: boolean) => {
   return (
-    <StyledAccordion title={question} key={index} index={index} initialHiddenStatus={isHidden} isBold={true}>
+    <StyledAccordion
+      title={question}
+      key={index}
+      index={index}
+      initialHiddenStatus={isHidden}
+      isBold={true}
+      makeStatic={true}
+    >
       <BodyCopyRegularSmall>{answer}</BodyCopyRegularSmall>
     </StyledAccordion>
   );
@@ -86,7 +93,7 @@ const Faq = ({ isDarkBackgroundColor }: { isDarkBackgroundColor?: boolean }) => 
           )}
         </AccordionsDesktopContainer>
         <FaqButtonContainer>
-          <Button text="LEER MÁS" url="/faq" />
+          <Button text="Ver todas las preguntas frecuentes" url="/faq" />
         </FaqButtonContainer>
       </FaqContainer>
     </BackgroundContainer>

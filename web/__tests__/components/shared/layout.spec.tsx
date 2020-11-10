@@ -1,7 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Layout from '../../../src/components/shared/layout';
-import NavBar from '../../../src/components/shared/navbar';
+import NavBar from '../../../src/components/shared/navbar/navbar';
 import Footer from '../../../src/components/shared/footer/footer';
 import { mock as categoriesMock } from '../../../__mocks__/categories-configuration.mock';
 

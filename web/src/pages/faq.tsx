@@ -19,12 +19,23 @@ const FaqPageContainer = styled.section`
 const AboutLinkContainer = styled.div`
   text-align: center;
   margin-top: 2rem;
+  margin-bottom: 3rem;
+  @media ${device.large} {
+    margin-bottom: 5rem;
+  }
 `;
+
 const AboutCallToAction = styled(BodyCopyRegularSmall)`
   font-size: 16px;
 `;
+
 const AboutLink = styled(BodyCopyBoldSmall)`
   text-decoration: underline;
+  cursor: pointer;
+  transition: ease-out 200ms;
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const FaqPageTitle = styled(StyledH3Title)`
@@ -44,7 +55,7 @@ const SelectorsContainer = styled.div`
   :hover {
     cursor: pointer;
   }
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
   @media ${device.large} {
     display: flex;
     width: 880px;
@@ -58,19 +69,15 @@ const FaqPage = ({ categories }: { categories: Array<CategoryConfiguration> }) =
   return (
     <Layout categories={categories}>
       <FaqPageContainer>
-        <FaqPageTitle>
-          Preguntas
-          <br />
-          Frecuentes
-        </FaqPageTitle>
+        <FaqPageTitle>Preguntas Frecuentes</FaqPageTitle>
         <SelectorsContainer>
           {jsonData.map((topic) => (
-            <TopicSelector key={topic.Topic} selection={topic} />
+            <TopicSelector key={topic.topic} selection={topic} />
           ))}
         </SelectorsContainer>
         <AboutLinkContainer>
-          <AboutCallToAction>No encontrás la respuesta que buscás?</AboutCallToAction>
-          <Link href="/">
+          <AboutCallToAction>¿No encontrás la respuesta que buscás?</AboutCallToAction>
+          <Link href="/contact">
             <AboutLink>Contactanos aquí</AboutLink>
           </Link>
         </AboutLinkContainer>

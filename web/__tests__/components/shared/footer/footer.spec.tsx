@@ -2,7 +2,6 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Footer from '../../../../src/components/shared/footer/footer';
 import FooterDesktopLinks from '../../../../src/components/shared/footer/footer-desktop-links';
-import FooterPayment from '../../../../src/components/shared/footer/footer-payment';
 import FooterMobileDesktopLinks from '../../../../src/components/shared/footer/footer-mobile-desktop-links';
 import FooterDisclaimer from '../../../../src/components/shared/footer/footer-disclaimer';
 
@@ -11,12 +10,6 @@ describe('Footer component', () => {
     const wrapper = shallow(<Footer />);
 
     expect(wrapper.exists()).toBe(true);
-  });
-
-  it('should render FooterPayment Component', () => {
-    const wrapper = mount(<Footer />);
-
-    expect(wrapper.find(FooterPayment).length).toBe(1);
   });
 
   it('should render FooterDesktopLinks Component', () => {

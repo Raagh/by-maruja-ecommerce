@@ -36,26 +36,27 @@ const ConfirmPurchasePageSubTitle = styled.article`
 
 const StyledSubTitle = styled(Subtitle)`
   color: ${colors.ui.darkSurface};
-  max-width:50%;
-  margin:auto;
-  margin-bottom:3rem;
-  text-transform:none;
-  font-size:16px;
-  letter-spacing:1px;
+  max-width: 50%;
+  margin: auto;
+  margin-bottom: 3rem;
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 1px;
 
   @media ${device.small} {
-    max-width:100%;
+    max-width: 100%;
   }
 `;
 
-const StyledContact= styled.span`
-  text-decoration:underline;
-  font-weight:bold;
+const StyledContact = styled.span`
+  text-decoration: underline;
+  font-weight: bold;
+  transition: ease-out 200ms;
   :hover {
     cursor: pointer;
+    color: ${colors.primary.dark};
   }
 `;
-
 
 const ConfirmPurchasePage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
   const { dispatch } = useContext(store);
@@ -63,20 +64,17 @@ const ConfirmPurchasePage = ({ categories }: { categories: Array<CategoryConfigu
     dispatch({ type: ActionTypes.Empty });
   }, []);
 
-  
   return (
     <Layout categories={categories}>
       <ConfirmPurchasePageContainer>
-        <ConfirmPurchasePageTitle>
-          ¡Gracias por tu compra!
-        </ConfirmPurchasePageTitle>
+        <ConfirmPurchasePageTitle>¡Gracias por tu compra!</ConfirmPurchasePageTitle>
         <ConfirmPurchasePageSubTitle>
           <StyledSubTitle>
             Vas a recibir información sobre tu compra por email. <br />
             <Link href="/contact">
               <StyledContact>Comunicate con nosotros</StyledContact>
-            </Link>
-            {' '}si tenés alguna duda.
+            </Link>{' '}
+            si tenés alguna duda.
           </StyledSubTitle>
           <SecondaryButton text="DESCUBRIR MAS PRODUCTOS" url="/categories/productos" />
         </ConfirmPurchasePageSubTitle>

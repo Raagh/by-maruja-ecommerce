@@ -23,6 +23,7 @@ const ShippingInfoContainer = styled(AlignedCenterContainer)`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 `;
 
@@ -43,6 +44,13 @@ const ShippingInfoTitle = styled.h4`
 const StyledIconListItem = styled(IconListItem)`
   padding-left: 1rem;
   padding-top: 2rem;
+
+  @media ${device.large} {
+    padding-top: 0;
+    height: 72px;
+    margin-right: 6rem;
+    max-width: 312px;
+  }
 `;
 
 const createShippingInfoContent = (shippingInfo: ShippingInfoConfig, key: number) => {

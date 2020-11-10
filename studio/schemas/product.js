@@ -85,7 +85,7 @@ export default {
         list: [
           { title: "Favorito", value: "Favorito" },
           { title: "Acero quirúrgico", value: "Acero quirúrgico" },
-          { title: "Descuento", value: "Descuento" },
+          { title: "En Descuento", value: "En Descuento" },
           { title: "Normal", value: "Normal" },
         ],
         layout: "radio",

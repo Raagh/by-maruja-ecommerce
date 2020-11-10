@@ -17,6 +17,7 @@ const CartProductContainer = styled.div`
 `;
 
 const FaqWrapper = styled.div`
+  text-align: left;
   @media ${device.large} {
     display: none;
   }

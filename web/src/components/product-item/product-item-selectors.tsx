@@ -1,10 +1,12 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { device } from '../../config/device';
 
-import { BodyCopyRegularSmall, LabelSmall } from '../../config/global-styled-components';
+import { BodyCopyRegularSmall, CaptionSmall, LabelSmall } from '../../config/global-styled-components';
 import { colors, fonts } from '../../config/global-styles';
 import { Product } from '../../model/product';
+import { calculateProductStock } from '../shared/utilities';
 
 import ProductItemSizesSelect from './product-item-sizes-select';
 
@@ -20,13 +22,17 @@ const ItemExtraQualities = styled.p`
 `;
 
 const ItemExtraQualityRow = styled.div`
-  padding-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 1rem;
+
+  @media ${device.large} {
+    padding-top: 1.5rem;
+  }
 `;
 
-const FakeSelect = styled.div`
+const FakeSelect = styled.div<{ onlyOneItem: boolean }>`
   background: ${colors.ui.grey10percent};
   border-radius: 8px;
   width: 168px;
@@ -35,7 +41,8 @@ const FakeSelect = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  ${(props) => (props.onlyOneItem ? 'justify-content:center;' : 'justify-content: space-between;')};
+
   padding: 0.8rem 1rem 0.8rem 1rem;
 `;
 
@@ -49,6 +56,20 @@ const ProductItemDescription = styled(BodyCopyRegularSmall)`
   line-height: 24px;
   letter-spacing: 1px;
   padding-top: 1rem;
+
+  @media ${device.large} {
+    padding-top: 1.5rem;
+  }
+`;
+
+const StyledNoMoreStock = styled(CaptionSmall)`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: ${colors.ui.error};
+
+  @media ${device.large} {
+    text-align: right;
+  }
 `;
 
 const ProductItemSelectors = ({
@@ -65,22 +86,31 @@ const ProductItemSelectors = ({
   setSize: (size: string) => void;
 }) => {
   const hasSizes = product.sizeChart !== undefined;
+  const productStock = calculateProductStock(product);
 
   return (
     <section>
       <ProductItemDescription>{product.description}</ProductItemDescription>
       <ItemExtraQualityRow>
         <ItemExtraQualities>Cantidad</ItemExtraQualities>
-        <FakeSelect>
-          <StyledButton onClick={() => setQuantity(quantity - 1)} autoFocus={false}>
-            -
-          </StyledButton>
+        <FakeSelect onlyOneItem={productStock === 1}>
+          {productStock !== 1 && (
+            <StyledButton onClick={() => setQuantity(quantity - 1)} autoFocus={false}>
+              -
+            </StyledButton>
+          )}
           <LabelSmall>{quantity}</LabelSmall>
-          <StyledButton onClick={() => setQuantity(quantity + 1)} autoFocus={false}>
-            +
-          </StyledButton>
+
+          {productStock !== 1 && (
+            <StyledButton onClick={() => setQuantity(quantity + 1)} autoFocus={false}>
+              +
+            </StyledButton>
+          )}
         </FakeSelect>
       </ItemExtraQualityRow>
+      {productStock !== 1 && productStock === quantity && (
+        <StyledNoMoreStock>Esta es la cantidad maxima disponible para este producto</StyledNoMoreStock>
+      )}
       {hasSizes && (
         <ProductItemSizesSelect
           selectedSize={size}

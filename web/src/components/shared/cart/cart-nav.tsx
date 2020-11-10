@@ -29,6 +29,10 @@ const BackButton = styled.div`
   @media ${device.large} {
     background-image: url('/assets/Menu-Close.svg');
   }
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const InvDiv = styled.div`
@@ -39,7 +43,7 @@ const CartNav = ({ clickHandler }: { clickHandler: () => void }) => {
   return (
     <CartNavContainer>
       <BackButton onClick={clickHandler} />
-      <BodyCopyBoldLarge>Mi Carrito</BodyCopyBoldLarge>
+      <BodyCopyBoldLarge>Carrito</BodyCopyBoldLarge>
       <InvDiv />
     </CartNavContainer>
   );

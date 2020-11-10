@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RecommendedConfiguration } from '../../../model/recommended-configuration';
-import { AlignedCenterContainer, StyledH2 } from '../../../config/global-styled-components';
+import { AlignedCenterContainer, StyledH3 } from '../../../config/global-styled-components';
 import { device } from '../../../config/device';
 import RecommendedCarousel from './recommended-carousel';
 
@@ -37,17 +37,18 @@ const RecommendedContainer = styled.article`
   padding-bottom: 4rem;
 
   @media ${device.large} {
-    padding-left: 2rem;
+    padding-left: 5rem;
     padding-bottom: 0;
   }
 `;
 
-const RecommendedTitle = styled(StyledH2)`
+const RecommendedTitle = styled(StyledH3)`
   width: 150px;
-  margin: 0 auto 2.75rem auto;
+  margin: 0 auto 2.7rem auto;
   @media ${device.large} {
+    margin: 0 auto 6rem auto;
     width: 100%;
-    padding-left: 5vw;
+    padding-left: 3vw;
     text-align: left;
   }
 `;

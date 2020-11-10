@@ -15,7 +15,7 @@ const FeedContainer = styled.section`
   text-align: center;
 
   @media ${device.large} {
-    padding: 8rem;
+    padding: 5.5rem 8rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -70,6 +70,17 @@ const Image = styled(LazyLoadImage)`
   }
 `;
 
+const MarujaLink = styled.a`
+  text-decoration: none;
+  color: ${colors.ui.darkSurface};
+  font-weight: bold;
+  transition: ease-out 200ms;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
+`;
+
 const Feed = () => {
   const [items, setItems] = useState([reusablePlaceholder, reusablePlaceholder, reusablePlaceholder]);
   const [areItemsLoaded, setItemsLoaded] = useState(false);
@@ -91,9 +102,13 @@ const Feed = () => {
     <BackgroundContainer>
       <FeedContainer>
         <TextContainer>
-          <FeedSubtitle>Que se dice de Maruja?</FeedSubtitle>
+          <FeedSubtitle> ¿Qué se dice de Maruja?</FeedSubtitle>
           <FeedDescription>
-            Lee mas comentarios y seguinos en <strong>@bymaruja</strong>
+            Leé más comentarios y seguínos en
+            <MarujaLink href="https://www.instagram.com/bymaruja/" target="_blank" rel="noopener noreferrer">
+              {' '}
+              <strong>@bymaruja</strong>
+            </MarujaLink>
           </FeedDescription>
         </TextContainer>
 

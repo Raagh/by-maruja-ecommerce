@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LazyLoadImage from '../shared/image-types/lazy-image';
 import { reusablePlaceholder, device } from '../../config/device';
-import { StyledH2, BodyCopyRegularSmall } from '../../config/global-styled-components';
+import { StyledH3, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import Button from '../shared/secondary-button';
 import { colors } from '../../config/global-styles';
 
@@ -22,24 +22,16 @@ const AboutContainer = styled.section`
 const Image = styled(LazyLoadImage)`
   width: 100%;
   @media ${device.large} {
-    max-width: 50%;
     object-fit: cover;
-    padding-right: 7rem;
+    max-width: 491px;
   }
 `;
 
-const AboutTitle = styled(StyledH2)`
-  display: none;
+const MobileAboutTitle = styled(StyledH3)`
+  padding-top: 4rem;
   @media ${device.large} {
-    padding-bottom: 4rem;
-    display: block;
-  }
-`;
-
-const MobileAboutTitle = styled(StyledH2)`
-  padding-top: 2rem;
-  @media ${device.large} {
-    display: none;
+    padding-top: 0;
+    padding-bottom: 3rem;
   }
 `;
 
@@ -61,7 +53,8 @@ const TextContainer = styled.div`
   margin-left: 1.5rem;
 
   @media ${device.large} {
-    max-width: 30%;
+    max-width: 40%;
+    margin: auto;
   }
 `;
 
@@ -84,26 +77,16 @@ const AboutMobile = styled(BodyCopyRegularSmall)`
   }
 `;
 
-const MobileHeartIcon = styled.img`
-  padding-top: 2rem;
-
-  @media ${device.large} {
-    display: none;
-  }
-`;
-
 const About = () => {
   return (
     <BackgroundContainer>
       <AboutContainer>
-        <AboutTitle>Sobre Maruja</AboutTitle>
         <ContentContainer>
           <Image alt="feed-image" key="maruja" src="/assets/Maruja-About.jpg" placeholderSrc={reusablePlaceholder} />
           <TextContainer>
-            <MobileHeartIcon alt="heart-icon" src="/assets/Heart.svg" />
             <MobileAboutTitle>Sobre Maruja</MobileAboutTitle>
             <AboutDescription>
-              Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong> María Mahia de Ares</strong>.
+              Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong>María Mahia de Ares</strong>.
               ¿Quién fue Maruja? Una mujer simple, amable, con mucha energía sobre todas las cosas, andaba de un lado
               para el otro siempre con una sonrisa.
             </AboutDescription>
@@ -111,7 +94,7 @@ const About = () => {
               Maruja nace cómo un emprendimiento personal inspirado en mi abuela; <strong> María Mahia de Ares</strong>
               ...
             </AboutMobile>
-            <Button text="Quien fue Maruja?" url="/about" />
+            <Button text="¿Quién fue Maruja?" url="/about" />
           </TextContainer>
         </ContentContainer>
       </AboutContainer>

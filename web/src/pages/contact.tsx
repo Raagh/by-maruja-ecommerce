@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+
 import { sanity } from '../../lib/sanity';
 
 import Layout from '../components/shared/layout';
@@ -22,6 +23,10 @@ import ErrorData from '../config/error-alert-conf.json';
 
 const ContactPageContainer = styled.section`
   padding: 0 1.5rem 0 1.5rem;
+
+  @media ${device.large} {
+    padding-top: 2.5rem;
+  }
 `;
 
 const LargeOnlyContainer = styled.div`
@@ -80,11 +85,21 @@ const SocialNetworkHeader = styled(BodyCopyBoldSmall)`
   font-size: 16px;
   text-align: center;
   margin-bottom: 2.5rem;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 const Icon = styled.img`
   display: inline-block;
   margin-right: 0.5rem;
   vertical-align: text-top;
+`;
+
+const StyledLink = styled.a`
+  text-decoration: none;
+  overflow: hidden;
+  user-select: none;
 `;
 
 const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> }) => {
@@ -112,7 +127,10 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
       axios
         .post('/api/send-email', { name, email, content })
         .then(() => router.push('/contact-success'))
-        .catch(() => setShowError(true));
+        .catch(() => {
+          setShowError(true);
+          window.scrollTo(0, 300);
+        });
     }
   };
 
@@ -122,38 +140,44 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
       <ContactPageContainer>
         <LargeOnlyContainer>
           <ContactForm autoComplete="off" onSubmit={(e) => submitHandler(e)}>
-            <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
             <ContactHeader onlyMobile={true}>
-              Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.
+              Llená el formulario para contactarnos. <br />
+              Te vamos a responder dentro de las próximas 24 horas hábiles.
             </ContactHeader>
-            <FormInput name="Nombre" type="text" value={name.value} onChange={setName} error={name.error} />
-            <FormInput name="E-mail" type="email" value={email.value} onChange={setEmail} error={email.error} />
+            <ErrorAlert isVisible={showError} title={ErrorData.email.title} subtitle={ErrorData.email.subtitle} />
+            <FormInput name="Nombre *" type="text" value={name.value} onChange={setName} error={name.error} />
+            <FormInput name="E-mail *" type="email" value={email.value} onChange={setEmail} error={email.error} />
             <FormInput
-              name="Mensaje"
+              name="Mensaje *"
               type="textarea"
               value={content.value}
               onChange={setContent}
               error={content.error}
             />
-            <PrimaryButton text="ENVIAR MENSAJE" onClick={() => 0} />
+            <PrimaryButton
+              text="ENVIAR MENSAJE"
+              disabled={name.value === '' || email.value === '' || !email.value.includes('@') || content.value === ''}
+              onClick={() => 0}
+            />
           </ContactForm>
           <SocialNetworksContainer>
             <ContactHeader onlyMobile={false}>
-              Llená el formulario para contactarnos. Te vamos a responder dentro de las próximas 24 horas hábiles.
+              Llená el formulario para contactarnos. <br />
+              Te vamos a responder dentro de las próximas 24 horas hábiles.
             </ContactHeader>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR INSTAGRAM</SocialNetworkTitle>
-              <SocialNetworkHeader>
-                <Icon src="/assets/Instagram.svg" />
-                @ByMaruja
-              </SocialNetworkHeader>
+
+              <StyledLink href="https://www.instagram.com/bymaruja/" target="_blank" rel="noopener noreferrer">
+                <SocialNetworkHeader>
+                  <Icon src="/assets/Instagram.svg" />
+                  @ByMaruja
+                </SocialNetworkHeader>
+              </StyledLink>
             </SocialNetwork>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR EMAIL</SocialNetworkTitle>
-              <SocialNetworkHeader>
-                <Icon src="/assets/Instagram.svg" />
-                hola@maruja.com
-              </SocialNetworkHeader>
+              <SocialNetworkHeader>hola@maruja.com</SocialNetworkHeader>
             </SocialNetwork>
           </SocialNetworksContainer>
         </LargeOnlyContainer>

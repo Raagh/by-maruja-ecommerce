@@ -14,7 +14,7 @@ const ProductItemImage = styled(RemoteFixedSizeImage)`
 `;
 
 const PaddedImageContainer = styled.div`
-  padding: 0 0.7rem 0 0;
+  margin: 0 0.7rem 0 0;
   background-color: ${colors.ui.whiteBackground};
 `;
 
@@ -79,12 +79,11 @@ const ProductItemCarousel = ({ product, className }: { product: Product; classNa
       arrows={false}
       customDot={<CustomDots />}
       partialVisible
-      partialVisbile
     >
       {product.images.map((image) => {
         return (
           <PaddedImageContainer key={product.name}>
-            {displayCorrectBadge(product)}
+            {displayCorrectBadge(product, true)}
             <ProductItemImage image={image.image} alt={product.name} asset={image.asset} />
           </PaddedImageContainer>
         );

@@ -9,14 +9,15 @@ const SidebarNavContainer = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   padding: 2.5rem 1.5rem 0 1.5rem;
 
   background-color: ${colors.ui.whiteBackground};
   @media ${device.large} {
     padding: 2.5rem 2.5rem 0 2.5rem;
-    max-width: 595px;
-    min-width: 595px;
+    max-width: 480px;
+    min-width: 480px;
   }
 `;
 
@@ -25,10 +26,13 @@ const BackButton = styled.div`
   background-image: url('/assets/Arrow-Back.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   @media ${device.large} {
     background-image: url('/assets/Menu-Close.svg');
+  }
+  :hover {
+    cursor: pointer;
   }
 `;
 

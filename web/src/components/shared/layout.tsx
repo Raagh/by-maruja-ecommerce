@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { NextSeo } from 'next-seo';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import NavBar from './navbar';
+import NavBar from './navbar/navbar';
 import Footer from './footer/footer';
 import { CategoryConfiguration } from '../../model/category-configuration';
 import { colors } from '../../config/global-styles';
@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     height: 100vh;
+    scroll-behavior:smooth;
   }
 
   * {

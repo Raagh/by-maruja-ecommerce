@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../../config/global-styled-components';
-import { device } from '../../../config/device';
-import Chevron from '../chevron';
+import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../../../config/global-styled-components';
+import { device } from '../../../../config/device';
+import Chevron from '../../chevron';
 
 const AccordionQuestionContainer = styled.div`
   display: flex;
@@ -28,17 +28,19 @@ const AccordionQuestion = ({
   open,
   isBold,
   handleClick,
+  makeStatic = false,
 }: {
   question: string;
   isBold?: boolean;
   open: boolean;
   handleClick: Function;
+  makeStatic?: boolean;
 }) => {
   return (
     <AccordionQuestionContainer onClick={() => handleClick(open)}>
       {isBold && <AccordionQuestionBoldText>{question}</AccordionQuestionBoldText>}
       {!isBold && <AccordionQuestionRegularText>{question}</AccordionQuestionRegularText>}
-      <Chevron isOpen={open} />
+      <Chevron isOpen={open} makeStatic={makeStatic} />
     </AccordionQuestionContainer>
   );
 };

@@ -9,15 +9,9 @@ describe('About component', () => {
     expect(wrapper.exists()).toBeTruthy();
   });
 
-  it('should render 2 images', () => {
+  it('should render 1 images', () => {
     const wrapper = mount(<About />);
 
-    expect(wrapper.find('img').length).toEqual(2);
-  });
-
-  it('should render 1 HeartIcon', () => {
-    const wrapper = mount(<About />);
-
-    expect(wrapper.find('img').at(1).prop('src')).toContain('Heart.svg');
+    expect(wrapper.find('img').length).toEqual(1);
   });
 });

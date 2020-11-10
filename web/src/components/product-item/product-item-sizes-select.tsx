@@ -26,6 +26,7 @@ const FakeSelect = styled.div<{ isOpen: boolean }>`
 
 const StyledButton = styled.button`
   border: none;
+  user-select: none;
 `;
 
 const ItemExtraQualities = styled.p`

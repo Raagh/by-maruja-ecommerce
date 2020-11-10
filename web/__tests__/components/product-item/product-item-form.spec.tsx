@@ -20,7 +20,7 @@ describe('ProductItemForm component', () => {
 
     expect(wrapper.find('img').length).toBe(3);
     expect(wrapper.find('p').length).toBe(7);
-    expect(wrapper.find('button').length).toBe(6);
+    expect(wrapper.find('button').length).toBe(4);
     expect(wrapper.find('p').some((x) => x.text().includes(product.description)));
     expect(wrapper.find(PrimaryButton).length).toEqual(2);
     expect(wrapper.find(ProductItemSelectors).length).toEqual(1);

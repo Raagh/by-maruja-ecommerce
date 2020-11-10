@@ -17,9 +17,16 @@ const SlideImage = styled(RemoteFixedSizeImage)`
   @media ${device.large} {
     height: 495px;
   }
+  transition: all 0.5s ease-in-out;
+
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
-const SlideLink = styled.article``;
+const SlideLink = styled.article`
+  overflow: hidden;
+`;
 
 const Container = styled.section`
   height: 450px;
@@ -30,12 +37,18 @@ const Container = styled.section`
   }
 `;
 
-const SliderImage = ({ remoteImage }: { remoteImage: RecommendedConfiguration }) => {
+const SliderImage = ({ remoteImage, isMoving }: { remoteImage: RecommendedConfiguration; isMoving: boolean }) => {
   const link = `/products/${remoteImage._id}`;
   return (
     <Container>
       <Link href={link} passHref>
-        <SlideLink>
+        <SlideLink
+          onClick={(e: React.MouseEvent<Element, MouseEvent>) => {
+            if (isMoving) {
+              e.preventDefault();
+            }
+          }}
+        >
           <SlideImage image={remoteImage.image} asset={remoteImage.asset} alt={remoteImage.name} />
         </SlideLink>
       </Link>

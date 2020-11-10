@@ -1,6 +1,52 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+
 import { typography, colors } from '../../config/global-styles';
+
+const motion = (_: any) => keyframes`
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-right: 1rem;
+`;
+
+const RingSpinner = styled.div`
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 4px solid ${colors.primary.default};
+  border-radius: 50%;
+  animation: ${(p) => motion(p)} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: ${colors.primary.default} transparent transparent transparent;
+  :nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  :nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  :nth-child(3) {
+    animation-delay: -0.15s;
+  }
+`;
+
+const Ring = () => (
+  <Wrapper>
+    <RingSpinner />
+  </Wrapper>
+);
 
 const StyledButton = styled.button<{ inverted: boolean }>`
   display: inline-block;
@@ -22,6 +68,7 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   border: 2px solid ${colors.ui.darkSurface};
   user-select: none;
   outline: none;
+  transition: ease-out 200ms;
 
   :hover {
     background: ${colors.primary.dark};
@@ -36,14 +83,37 @@ const StyledButton = styled.button<{ inverted: boolean }>`
   }
 
   :disabled {
+    border: 2px solid ${colors.ui.grey25percent};
     background: ${colors.ui.grey25percent};
+    user-select: none;
+    box-shadow: none;
   }
 `;
 
-const PrimaryButton = ({ text, inverted, onClick }: { text: string; inverted?: boolean; onClick: any }) => {
+const PrimaryButton = ({
+  text,
+  inverted,
+  onClick,
+  shouldLoad,
+  disabled = false,
+}: {
+  text: string;
+  inverted?: boolean;
+  onClick: any;
+  shouldLoad?: boolean;
+  disabled?: boolean;
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleOnClick = () => {
+    if (shouldLoad) setIsLoading(true);
+    if (!disabled) onClick();
+  };
+
   return (
-    <StyledButton onClick={() => onClick()} inverted={inverted}>
-      {text}
+    <StyledButton onClick={handleOnClick} inverted={inverted} disabled={disabled} autoFocus={false}>
+      {isLoading && <Ring />}
+      {!isLoading && text}
     </StyledButton>
   );
 };

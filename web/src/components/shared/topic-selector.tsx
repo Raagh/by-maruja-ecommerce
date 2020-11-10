@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Sidebar from './sidebar/sidebar';
-import Accordion from './accordion/accordion';
+import Accordion from './cart/accordion/accordion';
 import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';
@@ -10,8 +10,13 @@ import { device } from '../../config/device';
 const TopicSelectorOuterContainer = styled.div`
   margin-bottom: 1rem;
   background: ${colors.ui.grey5percent};
+  border-radius: 8px;
   @media ${device.large} {
     display: flex;
+  }
+
+  :hover {
+    box-shadow: 2px 2px 4px 0px rgba(81, 50, 50, 0.08);
   }
 `;
 
@@ -41,22 +46,22 @@ const Answer = styled(BodyCopyRegularSmall)`
 const TopicSelector = ({
   selection,
 }: {
-  selection: { Topic: string; data: { Question: string; Answer: string }[] };
+  selection: { topic: string; icon: string; data: { question: string; answer: string }[] };
 }) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
     <TopicSelectorOuterContainer>
       <TopicSelectorInnerContainer onClick={() => setOpen(true)}>
-        <TopicSelectorIcon src="/assets/Shippings.svg" alt="Shippings Icon" />
-        <TopicSelectorTitle>{selection.Topic}</TopicSelectorTitle>
+        <TopicSelectorIcon src={selection.icon} alt="Shippings Icon" />
+        <TopicSelectorTitle>{selection.topic}</TopicSelectorTitle>
       </TopicSelectorInnerContainer>
-      <Sidebar isOpen={isOpen} clickHandler={() => setOpen(false)} sidebarTitle={selection.Topic}>
+      <Sidebar isOpen={isOpen} clickHandler={() => setOpen(false)} sidebarTitle={selection.topic}>
         <QuestionsContainer>
           {selection.data.map((topic, index) => {
             return (
-              <Accordion key={index} title={topic.Question} index={index} isBold={true} initialHiddenStatus={index > 0}>
-                <Answer>{topic.Answer}</Answer>
+              <Accordion key={index} title={topic.question} index={index} isBold={true} initialHiddenStatus={index > 0}>
+                <Answer>{topic.answer}</Answer>
               </Accordion>
             );
           })}

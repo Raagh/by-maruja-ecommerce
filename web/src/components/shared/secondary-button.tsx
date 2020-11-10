@@ -13,6 +13,7 @@ const StyledLink = styled.a`
   text-transform: ${typography.links.textTransform};
   color: ${colors.ui.darkSurface};
   text-decoration: none;
+  transition: ease-out 200ms;
 
   :hover {
     color: ${colors.primary.dark};

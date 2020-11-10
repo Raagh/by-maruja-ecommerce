@@ -20,7 +20,7 @@ describe('ProductItemDisplay component', () => {
     expect(wrapper.find(Link).first().prop('href')).toEqual('/categories/productos');
     expect(wrapper.find('img').length).toBe(4);
     expect(wrapper.find('p').length).toBe(3);
-    expect(wrapper.find('div').some((x) => x.text().includes('Volver al listado')));
+    expect(wrapper.find('div').some((x) => x.text().includes('Ir al listado')));
     expect(wrapper.find(ProductItemCarousel).length).toEqual(1);
     expect(
       wrapper

@@ -2,7 +2,7 @@ export default {
   name: "homeSettings",
   type: "document",
   title: "Home sections",
-  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
+  __experimental_actions: ["create", "update", /*'delete',*/ "publish"],
   fields: [
     {
       title: "Título de la página",

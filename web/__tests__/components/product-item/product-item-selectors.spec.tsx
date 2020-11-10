@@ -22,7 +22,7 @@ describe('ProductItemSelectors component', () => {
 
     expect(wrapper.find('img').length).toBe(2);
     expect(wrapper.find('p').length).toBe(5);
-    expect(wrapper.find('button').length).toBe(4);
+    expect(wrapper.find('button').length).toBe(2);
     expect(wrapper.find('p').some((x) => x.text().includes(product.description)));
     expect(wrapper.find('p').some((x) => x.text().includes('Cantidad')));
     expect(wrapper.find(ProductItemSizesSelect).length).toEqual(1);

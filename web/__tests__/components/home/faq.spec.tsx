@@ -15,7 +15,7 @@ describe('Faq component', () => {
   it('should render 1 title', () => {
     const wrapper = shallow(<Faq />);
 
-    expect(wrapper.render().find('h2').length).toEqual(1);
+    expect(wrapper.render().find('h3').length).toEqual(1);
   });
 
   it('should render an equal number of Accordions as questions/answers are in faq-conf.json file both for mobile and desktop', () => {

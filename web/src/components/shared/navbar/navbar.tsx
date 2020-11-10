@@ -102,7 +102,7 @@ const StyledProductTitle = styled.article`
 `;
 
 const StyledChevron = styled(Chevron)`
-  margin-top: 1.8rem;
+  margin-top: 1.781rem;
 `;
 
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {

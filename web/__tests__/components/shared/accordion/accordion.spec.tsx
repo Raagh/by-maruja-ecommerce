@@ -1,8 +1,8 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
-import Accordion from '../../../../src/components/shared/accordion/accordion';
-import AccordionQuestion from '../../../../src/components/shared/accordion/accordion-question';
+import Accordion from '../../../../src/components/shared/cart/accordion/accordion';
+import AccordionQuestion from '../../../../src/components/shared/cart/accordion/accordion-question';
 
 describe('Accordion component', () => {
   const data = { question: 'Is this testing correctly?', answer: '<AccordionQuestion />Yes, it is.', index: 1 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { CategoryConfiguration } from '../../../model/category-configuration';
@@ -92,8 +92,8 @@ const CategoryName = styled(StyledH4)`
   }
 `;
 
-const createCategoryContent = (category: CategoryConfiguration) => {
-  const link = `categories/${category.searchName}`;
+const createCategoryContent = (category: CategoryConfiguration, isCategoriesPage: boolean) => {
+  const link = isCategoriesPage ? `${category.searchName}` : `categories/${category.searchName}`;
   return (
     <CategoryContainer key={category.name}>
       <Link href={link} passHref>
@@ -115,10 +115,10 @@ const createCategoryContent = (category: CategoryConfiguration) => {
   );
 };
 
-const createDesktopResult = (categories: CategoryConfiguration[]) => (
+const createDesktopResult = (categories: CategoryConfiguration[], isCategoriesPage: boolean) => (
   <DesktopContainer>
     {categories.map((category: CategoryConfiguration, index: number) => {
-      const categoryContent = createCategoryContent(category);
+      const categoryContent = createCategoryContent(category, isCategoriesPage);
 
       if (index % 2 === 0) return <NormalColumn key={category.name}>{categoryContent}</NormalColumn>;
       return <LoweredColumn key={category.name}>{categoryContent}</LoweredColumn>;
@@ -126,22 +126,31 @@ const createDesktopResult = (categories: CategoryConfiguration[]) => (
   </DesktopContainer>
 );
 
-const createMobileResult = (categories: CategoryConfiguration[]) => () => {
+const createMobileResult = (categories: CategoryConfiguration[], isCategoriesPage: boolean) => () => {
   const normalColumnItems = categories.slice(0, categories.length / 2);
   const loweredColumnItems = categories.slice(categories.length / 2);
   return (
     <MobileContainer>
-      <NormalColumn key="normal-column">{normalColumnItems.map(createCategoryContent)}</NormalColumn>
-      <LoweredColumn key="lowered-column">{loweredColumnItems.map(createCategoryContent)}</LoweredColumn>
+      <NormalColumn key="normal-column">
+        {normalColumnItems.map((x) => createCategoryContent(x, isCategoriesPage))}
+      </NormalColumn>
+      <LoweredColumn key="lowered-column">
+        {loweredColumnItems.map((x) => createCategoryContent(x, isCategoriesPage))}
+      </LoweredColumn>
     </MobileContainer>
   );
 };
 
 const CategoriesContainer = ({ categories }: { categories: CategoryConfiguration[] }) => {
+  const [isCategoriesPage, setIsCategoriesPage] = useState(false);
+
+  useEffect(() => {
+    setIsCategoriesPage(window.location.href.includes('categories'));
+  }, []);
   return (
     <div>
-      {createDesktopResult(categories)}
-      {createMobileResult(categories)()}
+      {createDesktopResult(categories, isCategoriesPage)}
+      {createMobileResult(categories, isCategoriesPage)()}
     </div>
   );
 };

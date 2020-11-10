@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Sidebar from './sidebar/sidebar';
-import Accordion from './accordion/accordion';
+import Accordion from './cart/accordion/accordion';
 import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../config/global-styled-components';
 import { colors } from '../../config/global-styles';
 import { device } from '../../config/device';

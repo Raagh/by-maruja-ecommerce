@@ -47,6 +47,11 @@ export const getServerSideProps = async (context: NextPageContext) => {
         "categories": categories[]->{
           searchName,
           name,
+          image,
+          "asset": image.asset-> {
+            url,
+            metadata 
+          }
         },
       }  
     `

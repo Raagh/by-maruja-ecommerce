@@ -9,8 +9,24 @@ const ChevronIcon = styled.img<{ isOpen: boolean; makeStatic: boolean }>`
   ${(props) => (props.makeStatic ? 'display: none;' : '')};
 `;
 
-const Chevron = ({ isOpen, makeStatic = false }: { isOpen: boolean; makeStatic?: boolean }) => {
-  return <ChevronIcon alt="chevron-icon" src="/assets/Chevron.svg" isOpen={isOpen} makeStatic={makeStatic} />;
+const Chevron = ({
+  isOpen,
+  makeStatic = false,
+  className,
+}: {
+  isOpen: boolean;
+  makeStatic?: boolean;
+  className?: string;
+}) => {
+  return (
+    <ChevronIcon
+      className={className}
+      alt="chevron-icon"
+      src="/assets/Chevron.svg"
+      isOpen={isOpen}
+      makeStatic={makeStatic}
+    />
+  );
 };
 
 export default Chevron;

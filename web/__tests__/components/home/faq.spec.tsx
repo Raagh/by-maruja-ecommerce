@@ -2,7 +2,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Faq from '../../../src/components/shared/faq';
 import Button from '../../../src/components/shared/secondary-button';
-import Accordion from '../../../src/components/shared/accordion/accordion';
+import Accordion from '../../../src/components/shared/cart/accordion/accordion';
 import FaqJson from '../../../src/config/faq-conf.json';
 
 describe('Faq component', () => {

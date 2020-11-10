@@ -1,7 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import 'jest-styled-components';
-import AccordionQuestion from '../../../../src/components/shared/accordion/accordion-question';
+import AccordionQuestion from '../../../../src/components/shared/cart/accordion/accordion-question';
 
 describe('AccordionQuestion component', () => {
   const data = { question: 'Is this testing correctly?', open: true, handleClick: () => (data.open = !data.open) };

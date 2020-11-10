@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Headroom from 'react-headroom';
-import { LinksSmall } from '../../config/global-styled-components';
-import { colors } from '../../config/global-styles';
-import { device } from '../../config/device';
-import { CategoryConfiguration } from '../../model/category-configuration';
-import CartButton from './cart-button';
-import Cart from './cart/cart';
-import Menu from './menu/menu';
-import Sidebar from './sidebar/sidebar';
+import { LinksSmall } from '../../../config/global-styled-components';
+import { colors, typography } from '../../../config/global-styles';
+import { device } from '../../../config/device';
+import { CategoryConfiguration } from '../../../model/category-configuration';
+import CartButton from '../cart-button';
+import Cart from '../cart/cart';
+import Menu from '../menu/menu';
+import Sidebar from '../sidebar/sidebar';
+import Chevron from '../chevron';
+import NavbarDropHeader from './navbar-drop-header';
 
 const Container = styled.section`
   min-width: 100vw;
@@ -60,7 +62,7 @@ const StyledLink = styled(LinksSmall)`
   margin-left: 2rem;
   transition: ease-out 200ms;
   @media ${device.large} {
-    display: block;
+    display: flex;
   }
 
   :hover {
@@ -76,18 +78,46 @@ const HeadroomContainer = styled(Headroom)`
   }
 `;
 
+const LinkContainer = styled.div`
+  display: none;
+  flex-direction: row;
+  margin-left: 2rem;
+
+  @media ${device.large} {
+    display: flex;
+  }
+`;
+
+const StyledProductTitle = styled.article`
+  font-family: ${typography.links.small.font.name};
+  font-style: normal;
+  font-weight: ${typography.links.small.font.fontWeight};
+  font-size: ${typography.links.small.fontSize};
+  line-height: ${typography.links.small.lineHeight};
+  letter-spacing: ${typography.links.small.letterSpacing};
+  color: ${colors.ui.darkSurface};
+
+  text-transform: ${typography.links.textTransform};
+  margin-top: 2rem;
+`;
+
+const StyledChevron = styled(Chevron)`
+  margin-top: 1.8rem;
+`;
+
 const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
+  const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const [isNavbarUnpinned, setNavbarUnpinned] = useState(true);
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen || isProductMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isProductMenuOpen]);
 
   return (
     <HeadroomContainer
@@ -107,20 +137,35 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
           <Logo src="/assets/Logo.svg" alt="Maruja Logo" />
         </LogoLink>
 
-        <Link href="/categories/productos" passHref>
-          <StyledLink>productos</StyledLink>
-        </Link>
+        <LinkContainer onClick={() => setIsProductMenuOpen(!isProductMenuOpen)}>
+          <StyledProductTitle>productos</StyledProductTitle>
+          <StyledChevron isOpen={isProductMenuOpen} />
+        </LinkContainer>
+
         <Link href="/contact" passHref>
           <StyledLink>contacto y ayuda</StyledLink>
         </Link>
         <Link href="/about" passHref>
           <StyledLink>sobre Maruja</StyledLink>
         </Link>
-        <Sidebar isOpen={isCartOpen} clickHandler={() => setCartOpen(!isCartOpen)} sidebarTitle="Mi Carrito">
+        <Sidebar
+          isOpen={isCartOpen}
+          clickHandler={() => {
+            setIsProductMenuOpen(false);
+            setCartOpen(!isCartOpen);
+          }}
+          sidebarTitle="Mi Carrito"
+        >
           <Cart />
         </Sidebar>
-        <CartButton clickHandler={() => setCartOpen(!isCartOpen)} />
+        <CartButton
+          clickHandler={() => {
+            setIsProductMenuOpen(false);
+            setCartOpen(!isCartOpen);
+          }}
+        />
       </Container>
+      <NavbarDropHeader isOpen={isProductMenuOpen} categories={categories} />
     </HeadroomContainer>
   );
 };

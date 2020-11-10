@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../../config/global-styled-components';
-import { device } from '../../../config/device';
-import Chevron from '../chevron';
+import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../../../config/global-styled-components';
+import { device } from '../../../../config/device';
+import Chevron from '../../chevron';
 
 const AccordionQuestionContainer = styled.div`
   display: flex;

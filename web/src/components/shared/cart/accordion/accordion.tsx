@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import AccordionQuestion from './accordion-question';
-import { device } from '../../../config/device';
+import { device } from '../../../../config/device';
 
 const PassInContainer = styled.section`
   width: 100%;

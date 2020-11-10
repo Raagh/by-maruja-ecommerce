@@ -99,6 +99,10 @@ const StyledProductTitle = styled.article`
 
   text-transform: ${typography.links.textTransform};
   margin-top: 2rem;
+
+  :hover {
+    color: ${colors.primary.dark};
+  }
 `;
 
 const StyledChevron = styled(Chevron)`

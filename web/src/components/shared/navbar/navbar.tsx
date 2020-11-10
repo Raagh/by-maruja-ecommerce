@@ -158,7 +158,7 @@ const NavBar = ({ categories }: { categories: CategoryConfiguration[] }) => {
             setIsProductMenuOpen(false);
             setCartOpen(!isCartOpen);
           }}
-          sidebarTitle="Mi Carrito"
+          sidebarTitle="Carrito"
         >
           <Cart />
         </Sidebar>

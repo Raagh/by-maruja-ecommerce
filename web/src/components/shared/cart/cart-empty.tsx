@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { CartProduct as CP } from '../../../model/cart-product';
 import { StyledH3, LinksLarge } from '../../../config/global-styled-components';
 import { colors } from '../../../config/global-styles';
-import FooterMobileDesktopLinks from '../footer/footer-mobile-desktop-links';
-import FooterDisclaimer from '../footer/footer-disclaimer';
 
 const EmptyContainer = styled.div<{ cart: CP[] }>`
   ${(props) => (props.cart.length ? 'display: none;' : '')}
@@ -45,9 +43,6 @@ const CartEmpty = ({ cart }: { cart: CP[] }) => {
         <LinkPointer>DESCUBRIR PRODUCTOS</LinkPointer>
       </Link>
       <Line />
-
-      <FooterMobileDesktopLinks isFooter={false} />
-      <FooterDisclaimer />
     </EmptyContainer>
   );
 };

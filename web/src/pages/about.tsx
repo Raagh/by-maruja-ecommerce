@@ -147,7 +147,7 @@ const AboutPage = ({ categories }: { categories: Array<CategoryConfiguration> })
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const sanityResult = await sanity.fetch(
     `
       *[_type == "homeSettings"][0]{

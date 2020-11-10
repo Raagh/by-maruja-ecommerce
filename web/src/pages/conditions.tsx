@@ -151,7 +151,7 @@ const ConditionsPage = ({ categories }: { categories: Array<CategoryConfiguratio
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const sanityResult = await sanity.fetch(
     `
       *[_type == "homeSettings"][0]{

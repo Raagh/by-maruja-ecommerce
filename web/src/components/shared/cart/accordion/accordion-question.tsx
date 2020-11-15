@@ -4,12 +4,14 @@ import { BodyCopyBoldSmall, BodyCopyRegularSmall } from '../../../../config/glob
 import { device } from '../../../../config/device';
 import Chevron from '../../chevron';
 
-const AccordionQuestionContainer = styled.div`
+const AccordionQuestionContainer = styled.div<{ makeStatic: boolean }>`
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
+
   @media ${device.large} {
     margin-top: 0;
+    ${(props) => (props.makeStatic ? 'pointer-events:none;' : '')};
   }
 `;
 
@@ -37,7 +39,12 @@ const AccordionQuestion = ({
   makeStatic?: boolean;
 }) => {
   return (
-    <AccordionQuestionContainer onClick={() => handleClick(open)}>
+    <AccordionQuestionContainer
+      makeStatic={makeStatic}
+      onClick={() => {
+        handleClick(open);
+      }}
+    >
       {isBold && <AccordionQuestionBoldText>{question}</AccordionQuestionBoldText>}
       {!isBold && <AccordionQuestionRegularText>{question}</AccordionQuestionRegularText>}
       <Chevron isOpen={open} makeStatic={makeStatic} />

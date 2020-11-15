@@ -62,8 +62,8 @@ const ConditionsPage = ({ categories }: { categories: Array<CategoryConfiguratio
               En algunos casos, para adquirir un producto, será necesario el registro por parte del usuario, con ingreso
               de datos personales fidedignos y definición de una contraseña. El usuario puede elegir y cambiar la clave
               para su acceso de administración de la cuenta en cualquier momento, en caso de que se haya registrado y
-              que sea necesario para la compra de alguno de nuestros productos. http://www.maruja-accesorios.com no
-              asume la responsabilidad en caso de que entregue dicha clave a terceros.
+              que sea necesario para la compra de alguno de nuestros productos. https://www.bymaruja.com no asume la
+              responsabilidad en caso de que entregue dicha clave a terceros.
             </TextParagraph>
             <TextParagraph>
               Todas las compras y transacciones que se lleven a cabo por medio de este sitio web, están sujetas a un
@@ -134,7 +134,7 @@ const ConditionsPage = ({ categories }: { categories: Array<CategoryConfiguratio
           <Title>PRIVACIDAD</Title>
           <TextContainer>
             <TextParagraph>
-              Este http://www.maruja-accesorios.com garantiza que la información personal que usted envía cuenta con la
+              Este https://www.bymaruja.com garantiza que la información personal que usted envía cuenta con la
               seguridad necesaria. Los datos ingresados por usuario o en el caso de requerir una validación de los
               pedidos no serán entregados a terceros, salvo que deba ser revelada en cumplimiento a una orden judicial o
               requerimientos legales.

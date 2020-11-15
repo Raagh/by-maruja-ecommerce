@@ -125,7 +125,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
       setContent({ value: content.value, error: true });
     } else {
       axios
-        .post('/api/send-email', { name, email, content })
+        .post('/api/send-email', { name: name.value, email: email.value, content: content.value })
         .then(() => router.push('/contact-success'))
         .catch(() => {
           setShowError(true);
@@ -177,7 +177,7 @@ const ContactPage = ({ categories }: { categories: Array<CategoryConfiguration> 
             </SocialNetwork>
             <SocialNetwork>
               <SocialNetworkTitle>CONTACTANOS POR EMAIL</SocialNetworkTitle>
-              <SocialNetworkHeader>hola@maruja.com</SocialNetworkHeader>
+              <SocialNetworkHeader>marujabyrocio@gmail.com</SocialNetworkHeader>
             </SocialNetwork>
           </SocialNetworksContainer>
         </LargeOnlyContainer>

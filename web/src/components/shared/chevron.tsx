@@ -1,12 +1,16 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { device } from '../../config/device';
 
 const ChevronIcon = styled.img<{ isOpen: boolean; makeStatic: boolean }>`
   ${(props) => (props.isOpen ? 'transform: scaleY(-1);' : '')};
   cursor: pointer;
   user-select: none;
-  ${(props) => (props.makeStatic ? 'display: none;' : '')};
+
+  @media ${device.large} {
+    ${(props) => (props.makeStatic ? 'display: none;' : '')};
+  }
 `;
 
 const Chevron = ({

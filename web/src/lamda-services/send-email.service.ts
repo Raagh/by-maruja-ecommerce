@@ -4,19 +4,18 @@ export const sendEmail = ({ name, email, content }: { name: string; email: strin
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
+      user: process.env.gmailUser,
+      pass: process.env.gmailPass,
     },
   });
 
-  const usedName = name ?? email;
   const usedContent = content ?? '';
 
   const mailOptions = {
     from: email,
-    to: process.env.GMAIL_USER,
-    subject: `Email from ${usedName}`,
-    text: `El usuario ${usedName} envio el siguiente mensaje: ${usedContent}. Responder a ${email}`,
+    to: process.env.gmailUser,
+    subject: `Email de ${name} : ${email}`,
+    text: `El usuario ${name} envio el siguiente mensaje:\n\n${usedContent}.\n\nResponder a ${email}`,
   };
 
   const sendMailPromise = () => {

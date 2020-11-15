@@ -34,8 +34,8 @@ const PaymentDescription = () => {
         <PaddedH6Title>PAGO EN EFECTIVO EN LA ENTREGA</PaddedH6Title>
         <BodyCopyRegularSmall>
           Solo hacemos entregas gratis en las estacionesde tren Lomas de Zamora y Témperley. Si preferís pagar en ese
-          momento, seleccioná “Efectivo” en Mercado Pago, ignorá el mail de prepago y escribime a hola@maruja.com para
-          que coordinemos la entrega.
+          momento, seleccioná “Efectivo” en Mercado Pago, ignorá el mail de prepago y escribime a
+          marujabyrocio@gmail.com para que coordinemos la entrega.
         </BodyCopyRegularSmall>
       </Accordion>
     </DeliveryInformationContainer>
